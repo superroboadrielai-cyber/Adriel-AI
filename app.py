@@ -154,7 +154,7 @@ if "modulo_ativo" not in st.session_state:
 # MARCA SUPERIOR CENTRALIZADA E IMPOSTA COM ELEGÂNCIA
 # =============================================================================================================
 st.markdown("<h1 style='color: #ffffff; font-size: 32px; font-weight: 900; margin:0; letter-spacing: 0.5px;'>🤖 Adriel-AI <span style='background: linear-gradient(135deg, #00E5FF 0%, #00FF87 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size:16px; font-weight:bold; vertical-align:middle; margin-left: 5px;'>PLATINUM PRO</span></h1>", unsafe_allow_html=True)
-st.markdown("<p style='color: #475569; font-size: 11px; margin-top:-3px; letter-spacing:1.5px; text-transform: uppercase;'>PREMIUM SOFTWARE FOR TRAFFIC INTELLIGENCE • ENVIRONMENT VERIFIED</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: #475569; font-size: 11px; margin-top:-5px; letter-spacing:1.5px; text-transform: uppercase;'>PREMIUM SOFTWARE FOR TRAFFIC INTELLIGENCE • ENVIRONMENT VERIFIED</p>", unsafe_allow_html=True)
 st.write("---")
 
 # =============================================================================================================
