@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adriel-AI Pro - Painel de Controle</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -15,52 +12,33 @@
             padding: 0;
         }
         .container {
-            width: 90%;
             max-width: 1200px;
-            margin: auto;
+            margin: 20px auto;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
         header {
             background: #007bff;
             color: #fff;
             padding: 20px;
             text-align: center;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            border-radius: 8px 8px 0 0;
         }
         nav {
-            background: #343a40;
-            border-bottom: 2px solid #007bff;
+            margin: 20px 0;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
-        }
-        nav ul li {
-            margin: 0;
-        }
-        nav ul li a {
-            color: #fff;
+        nav a {
+            margin: 0 15px;
             text-decoration: none;
-            padding: 15px 20px;
-            display: block;
+            color: #007bff;
         }
-        nav ul li a:hover {
-            background: #007bff;
-            border-radius: 5px;
-        }
-        main {
-            padding: 20px;
+        nav a:hover {
+            text-decoration: underline;
         }
         section {
             margin-bottom: 20px;
-        }
-        h2 {
-            color: #007bff;
         }
         table {
             width: 100%;
@@ -69,21 +47,18 @@
         }
         th, td {
             padding: 10px;
-            text-align: left;
             border: 1px solid #ddd;
+            text-align: left;
         }
-        thead {
-            background: #007bff;
-            color: #fff;
+        th {
+            background-color: #007bff;
+            color: white;
         }
         .aprovado {
             color: green;
         }
         .revisar {
             color: orange;
-        }
-        .buttons {
-            margin-top: 20px;
         }
         button {
             background: #28a745;
@@ -97,10 +72,10 @@
         button:hover {
             background: #218838;
         }
-        button.fabricar {
+        .btn-blue {
             background: #007bff;
         }
-        button.fabricar:hover {
+        .btn-blue:hover {
             background: #0056b3;
         }
     </style>
@@ -113,61 +88,55 @@
             <p>Status: Sistema Online | Chave Mestre Ativa | Data: 06/06/2026</p>
         </header>
         <nav>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Radar de Produtos</a></li>
-                <li><a href="#">Auditor de Mercado</a></li>
-                <li><a href="#">Gerador de Anúncios</a></li>
-                <li><a href="#">Caçador de Lançamentos</a></li>
-                <li><a href="#">Configurações</a></li>
-                <li><a href="#">Sair</a></li>
-            </ul>
+            <a href="#">Dashboard</a>
+            <a href="#">Radar de Produtos</a>
+            <a href="#">Auditor de Mercado</a>
+            <a href="#">Gerador de Anúncios</a>
+            <a href="#">Caçador de Lançamentos</a>
+            <a href="#">Configurações</a>
+            <a href="#">Sair</a>
         </nav>
-        <main>
-            <section>
-                <h2>MÓDULO 1: RADAR DE PRODUTOS [FILTRO XEQUE-MATE]</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Comissões</th>
-                            <th>Verificado pela IA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Produto-acionado 1</td>
-                            <td>3.00%</td>
-                            <td class="aprovado">APROVADO (Risco Baixo)</td>
-                        </tr>
-                        <tr>
-                            <td>Produto-acionado 2</td>
-                            <td>2.00%</td>
-                            <td class="revisar">REVISAR (Risco Médio)</td>
-                        </tr>
-                        <tr>
-                            <td>Produto-acionado 3</td>
-                            <td>1.00%</td>
-                            <td class="aprovado">APROVADO (Risco Baixo)</td>
-                        </tr>
-                        <tr>
-                            <td>Produto-acionado 4</td>
-                            <td>1.50%</td>
-                            <td class="revisar">REVISAR (Risco Médio)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            <section>
-                <h2>MÓDULO 2: GERADOR DE ANÚNCIOS MASTER & PRE-SELL</h2>
-                <p><strong>PRODUTO Gringo:</strong> Sugar Defender</p>
-                <p><strong>RESUMO:</strong> Suplemento natural para equilíbrio de metabolismo.</p>
-                <div class="buttons">
-                    <button class="gerar">A GERAR ANÚNCIOS ADSMaster (Copy + Roteiro Vídeo)</button>
-                    <button class="fabricar">B FABRICAR PRE-SELL (Landing Page Text)</button>
-                </div>
-            </section>
-        </main>
+        <section>
+            <h2>MÓDULO 1: RADAR DE PRODUTOS [FILTRO XEQUE-MATE]</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Comissões</th>
+                        <th>Verificado pela IA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Produto-acionado 1</td>
+                        <td>3.00%</td>
+                        <td class="aprovado">APROVADO (Risco Baixo)</td>
+                    </tr>
+                    <tr>
+                        <td>Produto-acionado 2</td>
+                        <td>2.00%</td>
+                        <td class="revisar">REVISAR (Risco Médio)</td>
+                    </tr>
+                    <tr>
+                        <td>Produto-acionado 3</td>
+                        <td>1.00%</td>
+                        <td class="aprovado">APROVADO (Risco Baixo)</td>
+                    </tr>
+                    <tr>
+                        <td>Produto-acionado 4</td>
+                        <td>1.50%</td>
+                        <td class="revisar">REVISAR (Risco Médio)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>MÓDULO 2: GERADOR DE ANÚNCIOS MASTER & PRE-SELL</h2>
+            <p><strong>PRODUTO Gringo:</strong> Sugar Defender</p>
+            <p><strong>RESUMO:</strong> Suplemento natural para equilíbrio de metabolismo.</p>
+            <button>A GERAR ANÚNCIOS ADSMaster</button>
+            <button class="btn-blue">FABRICAR PRE-SELL</button>
+        </section>
     </div>
 </body>
 </html>
