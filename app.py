@@ -37,7 +37,7 @@ st.markdown("""
         color: #ffffff !important;
     }
     
-    /* Zera todas as margens e espaços fantasmas que jogavam o texto para baixo */
+    /* Zera todas as margens e espaços fantasmas */
     .block-container {
         padding-top: 1.5rem !important;
         padding-bottom: 1rem !important;
@@ -47,7 +47,7 @@ st.markdown("""
         width: 100% !important;
     }
     
-    /* Esconde as amarras cinzas nativas que espremiam os botões */
+    /* Esconde as amarras cinzas nativas */
     [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
     [data-testid="stHeader"] { display: none !important; }
 
@@ -206,3 +206,6 @@ with menu_assinantes:
         if chave_adm == "jose123":
             st.success("🔓 HANDSHAKE CONCLUÍDO! Planos ativos: Start (142), Elite (89), Black PRO (34). Faturamento: R$ 48.750,00.")
         else:
+            st.error("❌ CHAVE SECRETA INVÁLIDA!")
+
+# Rodapé unificado e institucional
