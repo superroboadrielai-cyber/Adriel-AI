@@ -6,7 +6,7 @@ import time
 st.set_page_config(page_title="Adriel-AI Pro - Painel de Controle", layout="wide", initial_sidebar_state="collapsed")
 
 # =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (CORRIGIDO PARA SINCRONIZAÇÃO TOTAL)
+# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ PRO FALA AO CLICAR NA TELA)
 # =============================================================================================================
 texto_boas_vindas = "Olá, Comandante José Marques da Silva! Painel Adriel A I Pro ativo no novo servidor cyber. Todos os módulos operacionais estão síncronos na memória."
 
@@ -110,7 +110,7 @@ st.markdown("""
     .menu-lateral-container div.stButton > button {
         background: #0f172a !important; color: #cbd5e1 !important; border: 2px solid #1e293b !important;
         text-align: left !important; padding: 14px 20px !important; width: 100% !important; margin-bottom: 8px !important;
-        font-size: 13px !important; animation: none !important;
+        animation: none !important;
     }
     .menu-lateral-container div.stButton > button:hover {
         background: #1e293b !important; color: #00FF87 !important; border-color: #00E5FF !important; box-shadow: 0 0 12px rgba(0, 229, 255, 0.5) !important;
