@@ -6,7 +6,7 @@ import time
 st.set_page_config(page_title="Adriel-AI Pro - Painel de Controle", layout="wide", initial_sidebar_state="collapsed")
 
 # =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ PRO FALA AO CLICAR NA TELA)
+# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (CORRIGIDO PARA SINCRONIZAÇÃO TOTAL)
 # =============================================================================================================
 texto_boas_vindas = "Olá, Comandante José Marques da Silva! Painel Adriel A I Pro ativo no novo servidor cyber. Todos os módulos operacionais estão síncronos na memória."
 
@@ -142,7 +142,7 @@ with col_esquerda:
     if st.button("🏹 4. Caçador de Lançamentos", key="m_cacador"): st.session_state.modulo_ativo = "Cacador"; st.rerun()
     if st.button("🌐 5. Gerador de Pre-Cell", key="m_presell"): st.session_state.modulo_ativo = "PreCell"; st.rerun()
     if st.button("🚀 6. Ativador Google Ads API", key="m_google"): st.session_state.modulo_ativo = "GoogleAds"; st.rerun()
-    if st.button("💎 7. Área de Assinantes", key="m_assinantes"): st.session_state.modulo_ativo = "Assinantes"; st.rerun()
+    if st.button("💎 7. Area Assinantes", key="m_assinantes"): st.session_state.modulo_ativo = "Assinantes"; st.rerun()
     st.write("---")
     st.caption("⚙️ Configurações Gerais PRO")
     st.markdown('</div></div>', unsafe_allow_html=True)
@@ -161,7 +161,7 @@ if st.session_state.modulo_ativo == "Dashboard":
         st.markdown('</div>', unsafe_allow_html=True)
     with col_direita:
         st.markdown('<div class="coluna-container" style="border-right: none;">', unsafe_allow_html=True)
-        st.markdown('<div class="header-box-real" style="text-align: right;">🟢 Status: <span style="color:#00FF87; font-weight:bold;">ZURADO 🟢</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="header-box-real" style="text-align: right;">🟢 Status: <span style="color:#00FF87; font-weight:bold;">OPERACIONAL 🟢</span></div>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
 # 🛰️ INTERFACE B: 1. RADAR DE PRODUTOS
