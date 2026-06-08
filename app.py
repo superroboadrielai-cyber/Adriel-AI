@@ -1,95 +1,14 @@
 import streamlit as st
+import pandas as pd
+import time
 
-# Configuração de Layout Amplo Executivo Premium Black (Grudado no Teto)
-st.set_page_config(page_title="Adriel-AI Pro", layout="wide", initial_sidebar_state="collapsed")
-
-# =============================================================================================================
-# 🚨 COMANDO CIRÚRGICO: EXTERMINA A BARRA BRANCA DO TOPO SEM TOCAR NA SUA INTERFACE
-# =============================================================================================================
-st.markdown("""
-<style>
-    /* 🌌 Fundo Escuro Premium Cyber Onyx Fiel ao seu Print */
-    .stApp {
-        background-color: #0b111e !important;
-        color: #ffffff !important;
-    }
-    
-    /* 🚨 EXTINÇÃO TOTAL DA BARRA SUPERIOR BRANCA DO STREAMLIT (ELIMINA A ESTRELA E A LINHA DO TOPO) */
-    [data-testid="stHeader"] { 
-        display: none !important; 
-        height: 0px !important;
-        background: transparent !important;
-    }
-    .stHeader { display: none !important; }
-    
-    /* Ajusta o espaçamento do teto absoluto */
-    .block-container {
-        padding-top: 1rem !important;
-        padding-bottom: 0rem !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-    
-    /* Oculta de forma definitiva as abas nativas cinzas padrão dos servidores */
-    [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
-
-    /* CORREÇÃO DO BUG DOS QUADRADOS BRANCOS: FORÇA OS BOTÕES LATERAIS A SEREM CARBONO PREMIUM POR EXTENSO */
-    .menu-lateral-container div.stButton > button {
-        background: #0f172a !important; 
-        color: #cbd5e1 !important; 
-        font-weight: 700 !important;
-        font-size: 13px !important;
-        border: 1px solid #1e293b !important; 
-        text-align: left !important;
-        padding: 14px 20px !important;
-        width: 100% !important;
-        margin-bottom: 8px !important;
-        border-radius: 6px !important;
-        cursor: pointer !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    .menu-lateral-container div.stButton > button:hover {
-        background: #1e293b !important;
-        color: #00FF87 !important;
-        border-color: #00FF87 !important;
-    }
-    
-    /* CONSERTO DA CAIXA CENTRAL: RETORNA A MOLDURA HOLOGRÁFICA DO SEU PRINT CAMPEÃO */
-    .caixa-holografica-real-print {
-        background-color: #080f1d !important;
-        border: 2.5px solid #00E5FF !important;
-        border-radius: 14px !important;
-        padding: 26px !important;
-        margin-bottom: 25px !important;
-    }
-
-    /* RESTAURAÇÃO DO SEU LINDO BOTÃO VERDE ORIGINAL DE ÁUDIO DO INÍCIO */
-    .btn-voz-modelo-print div.stButton > button {
-        background: linear-gradient(135deg, #00FF87 0%, #10b981 100%) !important;
-        color: #0b111e !important;
-        font-weight: 800 !important;
-        text-align: center !important;
-        width: auto !important;
-        padding: 12px 26px !important;
-        border-radius: 30px !important;
-        font-size: 13px !important;
-        border: none !important;
-        letter-spacing: 0.5px;
-        cursor: pointer !important;
-    }
-    .btn-voz-modelo-print div.stButton > button:hover {
-        box-shadow: 0 0 15px rgba(0, 255, 135, 0.4) !important;
-    }
-</style>
-""", unsafe_allow_html=True)
+# Configuração de Layout Amplo Premium Black para a Entrada do SaaS
+st.set_page_config(page_title="Adriel AI - Core Dashboard", layout="wide", initial_sidebar_state="expanded")
 
 # =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ PRO FALA EXATAMENTE O SEU TEXTO DO PRINT)
+# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO CLICAR NA TELA)
 # =============================================================================================================
-texto_boas_vindas = "Seja muito bem-vindo, Comandante José Marques da Silva! A estrutura mestre está calibrada. Observe que as bordas da central alternam de cor e o meu Chassi Digitalizado está navegando em patrulha e flutuando na parte inferior do software. Clique na tela para ativar os alto-falantes."
+texto_boas_vindas = "Olá, Comandante José Marques da Silva! O núcleo de Inteligência Artificial tridimensional está ativo nos servidores do Adriel A I. Handshake concluído."
 
 st.markdown(f"""
 <script>
@@ -99,7 +18,7 @@ st.markdown(f"""
             msg.text = "{texto_boas_vindas}";
             msg.lang = "pt-BR";
             msg.rate = 1.0;
-            msg.pitch = 0.95;
+            msg.pitch = 0.85;
             window.speechSynthesis.speak(msg);
             window.audioDisparado = true;
         }}
@@ -108,41 +27,228 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# MONTAGEM RIGOROSA DE DUAS COLUNAS VERTICAIS PARALELAS SÍNCRONAS
+# INJEÇÃO DE CÓDIGO CSS PREMIUM DE ELITE (ESTILO BLACK E PISCADO NEON DO MENU)
 # =============================================================================================================
-col_esquerda, col_centro = st.columns([0.25, 0.75])
-
-# 🏢 COLUNA 1: RETORNO DOS SEUS BOTÕES POR EXTENSO (FIM DOS QUADRADOS EM BRANCO)
-with col_esquerda:
-    st.write("")
-    st.markdown('<div class="menu-lateral-container">', unsafe_allow_html=True)
-    st.button("🎛️ Dashboard", key="btn_app_final")
-    st.button("🛰️ 1. Radar", key="btn_rad_final")
-    st.button("🔬 2. Auditor", key="btn_aud_final")
-    st.button("📝 3. Anúncios", key="btn_ger_final")
-    st.button("🏹 4. Caçador", key="btn_cac_final")
-    st.button("🌐 5. Pre-Cell", key="btn_pre_final")
-    st.button("🚀 6. API Ads", key="btn_ati_final")
-    st.button("💎 7. Painel", key="btn_ass_final")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# 🏢 COLUNA 2: SUA CAIXA DO PRINT INTACTA E RECHEADA
-with col_centro:
-    st.write("")
-    st.markdown("""
-    <div class="caixa-holografica-real-print">
-        <h3 style="color: #00FF87; font-size: 21px; font-weight: 800; margin: 0 0 16px 0; font-family: sans-serif;">
-            🌲 CENTRAL DE INTELIGÊNCIA: ADRIEL AI
-        </h3>
-        <p style="color: #cbd5e1; font-size: 15px; line-height: 1.7; margin-bottom: 0px; font-family: sans-serif; font-weight: 500;">
-            "Seja muito bem-vindo, Comandante José Marques da Silva! A estrutura mestre está calibrada. 
-            Observe que as bordas da central alternam de cor e o meu Chassi Digitalizado está navegando em patrulha e 
-            flutuando na parte inferior do software. Clique na tela para ativar os alto-falantes."
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+st.markdown("""
+<style>
+    /* Fundo Escuro de Luxo */
+    .stApp {
+        background-color: #050811 !important;
+        color: #ffffff !important;
+    }
     
-    # 🟢 SEU LINDO BOTÃO VERDE ORIGINAL COMPACTADO NO LUGAR DA CAIXINHA CINZA FEIA
-    st.markdown('<div class="btn-voz-modelo-print">', unsafe_allow_html=True)
-    st.button("SISTEMA COM ÁUDIO DE VOZ ATIVO 🔊", key="btn_voz_print_vibrante")
-    st.markdown('</div>', unsafe_allow_html=True)
+    /* Customização da Barra Lateral Esquerda */
+    [data-testid="stSidebar"] {
+        background-color: #02040a !important;
+        border-right: 1px solid #1e293b !important;
+    }
+    
+    /* ANIMAÇÃO PULSAR DO MENU LATERAL */
+    @keyframes pulsa-neon {
+        0% { border-color: #1e293b; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1); }
+        50% { border-color: #00FF87; box-shadow: 0 0 15px rgba(0, 255, 135, 0.4); }
+        100% { border-color: #1e293b; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1); }
+    }
+
+    [data-testid="stSidebarNav"] ul li a span {
+        color: #ffffff !important; 
+        font-weight: bold !important;
+        font-size: 14px !important;
+    }
+    
+    [data-testid="stSidebarNav"] ul li a {
+        background-color: #0f172a !important; 
+        border: 2px solid #1e293b !important;
+        border-radius: 8px !important;
+        margin-bottom: 8px !important;
+        padding: 12px 14px !important;
+        animation: pulsa-neon 3s infinite ease-in-out !important;
+        display: block !important;
+    }
+    
+    /* ANIMAÇÃO DA CAIXA DE BOAS-VINDAS (ALTERNA CIANO <-> VERDE) */
+    @keyframes alterna-cores {
+        0% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
+        50% { border-color: #00FF87; box-shadow: 0px 8px 32px rgba(0, 255, 135, 0.3); }
+        100% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
+    }
+
+    .robo-card-welcome {
+        background: linear-gradient(135deg, #0f172a 0%, #050811 100%) !important;
+        border: 2px solid #00E5FF !important;
+        border-radius: 16px !important;
+        padding: 25px !important;
+        margin-bottom: 25px !important;
+        animation: alterna-cores 5s infinite ease-in-out !important;
+    }
+    
+    /* Bloco dos Cards de Status */
+    .status-card {
+        background-color: #0f172a !important;
+        border: 1px solid #1e293b !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+        text-align: center;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# =============================================================================================================
+# 🦾 NÚCLEO REAL DE INTELIGÊNCIA ARTIFICIAL: AMBIENTE 3D ANIMADO EM CANVAS HTML5
+# =============================================================================================================
+st.markdown("### 🧬 NÚCLEO DINÂMICO DE PROCESSAMENTO DA IA")
+
+html_robo_real = """
+<div style="text-align: center; background: #070c16; padding: 20px; border-radius: 16px; border: 1px solid #1e293b; box-shadow: 0px 10px 40px rgba(0,0,0,0.5);">
+    <canvas id="canvasRobo3D" width="800" height="260" style="background: transparent; max-width: 100%;"></canvas>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvasRobo3D');
+    const ctx = canvas.getContext('2d');
+    let angulo = 0;
+
+    function desenharIA() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const centroX = canvas.width / 2;
+        const centroY = canvas.height / 2;
+        
+        angulo += 0.015;
+        ctx.strokeStyle = '#00E5FF';
+        ctx.lineWidth = 1.5;
+        
+        ctx.beginPath();
+        ctx.arc(centroX, centroY, 110, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        ctx.strokeStyle = '#00FF87';
+        ctx.beginPath();
+        ctx.arc(centroX, centroY, 90, angulo, angulo + Math.PI, false);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(centroX, centroY, 90, angulo + Math.PI, angulo, false);
+        ctx.stroke();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#00E5FF';
+        ctx.lineWidth = 3;
+        
+        ctx.beginPath();
+        ctx.roundRect(centroX - 25, centroY - 80, 50, 55, 15);
+        ctx.fill();
+        ctx.stroke();
+        
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath();
+        ctx.roundRect(centroX - 33, centroY - 65, 8, 25, 4);
+        ctx.roundRect(centroX + 25, centroY - 65, 8, 25, 4);
+        ctx.fill();
+        ctx.stroke();
+        
+        ctx.fillStyle = "rgba(0, 229, 255, 0.9)";
+        ctx.beginPath();
+        ctx.arc(centroX - 12, centroY - 55, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(centroX + 12, centroY - 55, 5, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.fillStyle = '#00FF87';
+        ctx.fillRect(centroX - 10, centroY - 40, 20, 3);
+        
+        ctx.fillStyle = '#334155';
+        ctx.fillRect(centroX - 10, centroY - 25, 20, 10);
+        
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.moveTo(centroX - 45, centroY - 15);
+        ctx.lineTo(centroX + 45, centroY - 15);
+        ctx.lineTo(centroX + 35, centroY + 65);
+        ctx.lineTo(centroX - 35, centroY + 65);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath();
+        ctx.roundRect(centroX - 15, centroY, 30, 40, 6);
+        ctx.fill();
+        ctx.stroke();
+        
+        ctx.fillStyle = "rgba(0, 255, 135, 1)";
+        ctx.beginPath();
+        ctx.arc(centroX, centroY + 20, 8, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.lineWidth = 12;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        
+        ctx.beginPath();
+        ctx.moveTo(centroX - 45, centroY - 10);
+        ctx.lineTo(centroX - 100, centroY + 15);
+        ctx.lineTo(centroX - 180, centroY - 15);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(centroX + 45, centroY - 10);
+        ctx.lineTo(centroX + 100, centroY + 15);
+        ctx.lineTo(centroX + 180, centroY - 15);
+        ctx.stroke();
+        
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#0f172a';
+        ctx.beginPath();
+        ctx.moveTo(centroX - 45, centroY - 10);
+        ctx.lineTo(centroX - 100, centroY + 15);
+        ctx.lineTo(centroX - 180, centroY - 15);
+        ctx.moveTo(centroX + 45, centroY - 10);
+        ctx.lineTo(centroX + 100, centroY + 15);
+        ctx.lineTo(centroX + 180, centroY - 15);
+        ctx.stroke();
+        
+        ctx.fillStyle = 'rgba(0, 229, 255, 0.1)';
+        ctx.strokeStyle = '#00E5FF';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(centroX - 280, centroY - 70, 90, 35, 5);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#00E5FF';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.fillText('CORE: SECURE', centroX - 270, centroY - 48);
+        
+        ctx.strokeStyle = '#00E5FF';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(centroX - 180, centroY - 15, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#00E5FF';
+        ctx.fill();
+        
+        ctx.strokeStyle = '#00FF87';
+        ctx.beginPath();
+        ctx.arc(centroX + 180, centroY - 15, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#00FF87';
+        ctx.fill();
+        
+        ctx.strokeStyle = '#00FF87';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(centroX + 240, centroY + 20, 35, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        requestAnimationFrame(desenharIA);
+    }
+    desenharIA();
+</script>
+"""
+st.components.v1.html(html_robo_real, height=310, scrolling=False)
+
+# =============================================================================================================
+# APRESENTAÇÃO MAJESTOSA DA CENTRAL
+# =============================================================================================================
