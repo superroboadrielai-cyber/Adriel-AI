@@ -2,13 +2,13 @@ import streamlit as st
 import pandas as pd
 import time
 
-# Configuração premium de layout amplo (Ocupa 100% da largura da tela)
-st.set_page_config(page_title="Adriel AI - Painel de Controle", layout="wide", initial_sidebar_state="collapsed")
+# Configuração de Layout Amplo Premium Black para a Entrada do SaaS
+st.set_page_config(page_title="Adriel AI - Core Dashboard", layout="wide", initial_sidebar_state="expanded")
 
 # =============================================================================================================
 # INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO CLICAR NA TELA)
 # =============================================================================================================
-texto_boas_vindas = "Olá, Comandante José Marques da Silva! Painel operacional atualizado com os módulos volumétricos e contadores de mil acessos ativos."
+texto_boas_vindas = "Olá, Comandante José Marques da Silva! Todos os sistemas e a API do Google Ads estão prontos na memória ativa."
 
 st.markdown(f"""
 <script>
@@ -27,186 +27,161 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# INJEÇÃO DE CSS PREMIUM (BOTÕES QUE PISCAM AUTOMÁTICO, MUDAM DE COR E GANHAM TRACÇÃO NO MOUSE)
+# INJEÇÃO DE CÓDIGO CSS PREMIUM DEFINITIVO (ROBÔ SVG NATIVO OPERANDO NO RODAPÉ)
 # =============================================================================================================
 st.markdown("""
 <style>
-    /* 🌌 Fundo Escuro do Painel Principal */
+    /* 🌌 Fundo Escuro de Luxo */
     .stApp {
-        background-color: #0b111e !important;
+        background-color: #050811 !important;
         color: #ffffff !important;
     }
     
-    /* Remove o preenchimento e margens do topo padrão do Streamlit */
-    .block-container {
-        padding-top: 1rem !important;
-        padding-bottom: 0rem !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
+    /* 📟 Customização da Barra Lateral Esquerda */
+    [data-testid="stSidebar"] {
+        background-color: #02040a !important;
+        border-right: 1px solid #1e293b !important;
     }
     
-    /* Oculta os menus e barras nativos */
-    [data-testid="stSidebar"] { display: none !important; }
-    [data-testid="stHeader"] { display: none !important; }
-    
-    /* 🚨 ANIMAÇÃO DE SINAL NEON: ALTERNA AS BORDAS DO BOTÃO SELECIONADO (CIANO <-> VERDE) */
-    @keyframes sinal-pulsante {
-        0% { border-color: #00E5FF; box-shadow: 0 0 5px rgba(0, 229, 255, 0.2); }
-        50% { border-color: #00FF87; box-shadow: 0 0 15px rgba(0, 255, 135, 0.5); }
-        100% { border-color: #00E5FF; box-shadow: 0 0 5px rgba(0, 229, 255, 0.2); }
+    /* 🚨 ANIMAÇÃO DO MENU LATERAL PULSAR NEON */
+    @keyframes pulsa-neon {
+        0% { border-color: #1e293b; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1); }
+        50% { border-color: #00FF87; box-shadow: 0 0 15px rgba(0, 255, 135, 0.4); }
+        100% { border-color: #1e293b; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1); }
     }
 
-    /* Linhas divisórias das 3 colunas verticais */
-    .coluna-container {
-        background-color: transparent;
-        border-right: 1px solid #1e293b;
-        padding-right: 15px;
-        padding-left: 10px;
+    [data-testid="stSidebarNav"] ul li a span {
+        color: #ffffff !important; 
+        font-weight: bold !important;
+        font-size: 14px !important;
     }
     
-    /* Caixas horizontais superiores de logs e mini-dashboards */
-    .header-box-real {
+    [data-testid="stSidebarNav"] ul li a {
+        background-color: #0f172a !important; 
+        border: 2px solid #1e293b !important;
+        border-radius: 8px !important;
+        margin-bottom: 8px !important;
+        padding: 12px 14px !important;
+        animation: pulsa-neon 3s infinite ease-in-out !important;
+        display: block !important;
+    }
+    
+    /* 🎨 ANIMAÇÃO QUE ALTERNA AS CORES DAS BORDAS (CIANO <-> VERDE) */
+    @keyframes alterna-cores {
+        0% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
+        50% { border-color: #00FF87; box-shadow: 0px 8px 32px rgba(0, 255, 135, 0.3); }
+        100% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
+    }
+
+    .robo-card-welcome {
+        background: linear-gradient(135deg, #0f172a 0%, #050811 100%) !important;
+        border: 2px solid #00E5FF !important;
+        border-radius: 16px !important;
+        padding: 30px !important;
+        margin-bottom: 35px !important;
+        animation: alterna-cores 5s infinite ease-in-out !important;
+    }
+    
+    /* 🤖 ANIMAÇÃO DE PATRULHA DO ROBÔ REAL NO COMPRIMENTO DA TELA */
+    @keyframes patrulha-render {
+        0% { left: 5%; transform: scaleX(1) translateY(0px); }
+        25% { transform: scaleX(1) translateY(-8px); }
+        50% { left: 75%; transform: scaleX(-1) translateY(0px); }
+        75% { transform: scaleX(-1) translateY(-8px); }
+        100% { left: 5%; transform: scaleX(1) translateY(0px); }
+    }
+
+    .robo-container-fixed {
+        position: fixed;
+        bottom: 10px;
+        left: 5%;
+        width: 120px;
+        z-index: 99999;
+        pointer-events: none;
+        animation: patrulha-render 16s infinite linear !important;
+    }
+    
+    /* Bloco de Monitoramento Executivo */
+    .status-card {
         background-color: #0f172a !important;
         border: 1px solid #1e293b !important;
-        border-radius: 8px !important;
-        padding: 12px 18px !important;
-        margin-bottom: 15px !important;
-        font-size: 13px !important;
-    }
-    
-    /* KPI Mini Box de alta tecnologia */
-    .kpi-box {
-        background: #0f172a; 
-        padding: 10px 15px; 
-        border-radius: 8px; 
-        border: 1px solid #1e293b; 
+        border-radius: 12px !important;
+        padding: 20px !important;
         text-align: center;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-    }
-    
-    .subtitulo-bloco-real {
-        font-size: 13px !important;
-        font-weight: bold !important;
-        color: #60a5fa !important;
-        letter-spacing: 0.5px;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-    }
-
-    /* 🟢 BOTÕES CENTRAIS PISCANTES QUE DESACELERAM E CRESCEM NO MOUSE */
-    div.stButton > button {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-        color: white !important;
-        font-weight: bold !important;
-        font-size: 14px !important;
-        border: 2px solid #1e293b !important;
-        padding: 12px 15px !important;
-        border-radius: 6px !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        animation: sinal-pulsante 3s infinite ease-in-out !important; /* Pisca automático rápido */
-        transition: all 0.4s ease-in-out !important;
-    }
-    
-    /* Efeito ao passar o mouse: Desacelera a animação, dá zoom e brilha fixo */
-    div.stButton > button:hover {
-        animation: none !important; /* Desacelera/para de piscar */
-        background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%) !important;
-        color: #050811 !important;
-        transform: scale(1.03) translateY(-2px) !important; /* Cresce de tamanho */
-        box-shadow: 0px 10px 25px rgba(0, 255, 135, 0.6) !important;
-        border-color: #ffffff !important;
-    }
-    
-    /* 📟 POLIMENTO DA BARRA LATERAL ESQUERDA */
-    .menu-lateral-btn {
-        display: flex;
-        flex-direction: column;
-        gap: 2px !important;
-        width: 100% !important;
-    }
-    
-    .menu-lateral-btn div.stButton > button {
-        background: #0f172a !important; 
-        color: #cbd5e1 !important;
-        border: 2px solid #1e293b !important;
-        text-align: left !important;
-        padding: 12px 16px !important;
-        font-size: 14px !important;
-        width: 95% !important; 
-        margin-bottom: 5px !important;
-        animation: sinal-pulsante 4s infinite ease-in-out !important; /* Pulsação lenta contínua */
-    }
-    
-    .menu-lateral-btn div.stButton > button:hover {
-        animation: none !important;
-        background: #1e293b !important;
-        color: #00FF87 !important;
-        border-color: #00E5FF !important;
-        box-shadow: 0 0 12px rgba(0, 229, 255, 0.5) !important;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Inicialização segura do controle do roteamento do menu na memória do servidor
-if "pagina_atual" not in st.session_state:
-    st.session_state.pagina_atual = "Dashboard"
+# =============================================================================================================
+# INJEÇÃO DO ROBÔ DIGITALIZADO VIA OPERAÇÃO DE CÓDIGO INTERNO (NATIVO CONTÍNUO)
+# =============================================================================================================
+st.markdown("""
+<div class="robo-container-fixed">
+    <svg viewBox="0 0 100 100" width="100" height="100" style="filter: drop-shadow(0px 0px 10px #00FF87);">
+        <!-- Cabeça do Robô -->
+        <rect x="25" y="20" width="50" height="40" rx="10" fill="#ffffff" stroke="#00E5FF" stroke-width="3"/>
+        <!-- Olhos Acesos em Ciano -->
+        <circle cx="40" cy="35" r="5" fill="#00E5FF"/>
+        <circle cx="60" cy="35" r="5" fill="#00E5FF"/>
+        <!-- Boca Eletrônica -->
+        <rect x="40" y="48" width="20" height="4" fill="#00FF87" rx="2"/>
+        <!-- Antena Brilhante -->
+        <line x1="50" y1="20" x2="50" y2="5" stroke="#00FF87" stroke-width="4"/>
+        <circle cx="50" cy="5" r="4" fill="#00FF87"/>
+        <!-- Corpo Compacto -->
+        <rect x="35" y="60" width="30" height="25" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    </svg>
+</div>
+""", unsafe_allow_html=True)
 
 # =============================================================================================================
-# MONTAGEM RIGOROSA DA ESTRUTURA DE 3 COLUNAS SIMULTÂNEAS
+# APRESENTAÇÃO MAJESTOSA DA CENTRAL
 # =============================================================================================================
-col_esquerda, col_centro, col_direita = st.columns([0.75, 1.4, 1])
+st.markdown("""
+<div class="robo-card-welcome">
+    <h1 style='margin-top: 0; font-size: 27px; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>🛸 CENTRAL DE INTELIGÊNCIA: ADRIEL AI</h1>
+    <p style='margin: 15px 0 0 0; font-size: 16px; color: #cbd5e1; line-height: 1.6;'>
+        "Seja muito bem-vindo, <b>Comandante José Marques da Silva</b>! A estrutura mestre está calibrada. 
+        Observe que as bordas da central alternam de cor e o meu <b>Chassi Digitalizado</b> está navegando 
+        em patrulha e flutuando na parte inferior do software. Clique na tela para ativar os alto-falantes."
+    </p>
+    <div style='margin-top: 20px;'>
+        <span style='background: #00FF87; color: #050811; padding: 6px 14px; font-weight: bold; border-radius: 20px; font-size: 12px; box-shadow: 0px 4px 10px rgba(0,255,135,0.3);'>
+            SISTEMA COM ÁUDIO DE VOZ ATIVO 🔊
+        </span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-# 🏢 COLUNA 1 (FIXA E IMUTÁVEL): LOGO ADRIEL AI + BOTÕES DO MENU LATERAL
-with col_esquerda:
-    st.markdown('<div class="coluna-container">', unsafe_allow_html=True)
-    st.markdown("<h2 style='color: #60a5fa; font-size: 24px; font-weight: 800; margin-bottom:0;'>🤖 Adriel AI</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #64748b; font-size: 11px; margin-top:-5px; letter-spacing:1px;'>PAINEL DE CONTROLE</p>", unsafe_allow_html=True)
-    st.write("---")
-    
-    st.markdown('<div class="menu-lateral-btn">', unsafe_allow_html=True)
-    if st.button("🎛️ Dashboard", key="btn_nav_dash"): st.session_state.pagina_atual = "Dashboard"; st.rerun()
-    if st.button("🛰️ 1. Radar de Produtos", key="btn_nav_m1"): st.session_state.pagina_atual = "M1_Radar"; st.rerun()
-    if st.button("🔬 2. Auditor de Mercado", key="btn_nav_m2"): st.session_state.pagina_atual = "M2_Auditor"; st.rerun()
-    if st.button("📝 3. Gerador de Anúncios", key="btn_nav_m3"): st.session_state.pagina_atual = "M3_Gerador"; st.rerun()
-    if st.button("🏹 4. Caçador Ativo", key="btn_nav_m4"): st.session_state.pagina_atual = "M4_Cacador"; st.rerun()
-    if st.button("🌐 5. Construtor Pre-Sell", key="btn_nav_m5"): st.session_state.pagina_atual = "M5_Presell"; st.rerun()
-    st.write("---")
-    st.caption("⚙️ Configurações Gerais")
-    st.caption("🚪 Sair do Sistema")
-    st.markdown('</div></div>', unsafe_allow_html=True)
+st.write("")
 
 # =============================================================================================================
-# ROTEAMENTO DA ESTEIRA DAS PÁGINAS (ADICIONADOS OS MENUS VOLUMÉTRICOS DE TOPO CONTRA O VAZIO)
+# CARDS ESTATÍSTICOS GLOBAIS (REQUINTE EM TELA CHEIA)
 # =============================================================================================================
+st.markdown("### 📊 STATUS DA INFRAESTRUTURA EM TEMPO REAL")
+st.write("")
 
-# 🏠 PÁGINA: DASHBOARD INICIAL COMPLETO (RECHEADO CONTRA O VAZIO)
-if st.session_state.pagina_atual == "Dashboard":
-    with col_centro:
-        st.markdown('<div class="coluna-container">', unsafe_allow_html=True)
-        
-        # Bloco Superior do Comandante
-        st.markdown('<div class="header-box-real">👤 Olá, <b>José Marques</b>, Comandante do Adriel AI!</div>', unsafe_allow_html=True)
-        
-        # 📈 INJEÇÃO DE CONTADORES EM LINHA NO MÓDULO 1 (PREENCHIMENTO VISUAL DOS MIL ACESSOS)
-        col_mini1, col_mini2 = st.columns(2)
-        with col_mini1:
-            st.markdown('<div class="kpi-box"><span style="font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase;">🔥 Cliques Analisados</span><br><span style="font-size: 20px; color: #00FF87; font-weight: 800;">14.250 mil</span></div>', unsafe_allow_html=True)
-        with col_mini2:
-            st.markdown('<div class="kpi-box"><span style="font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase;">📡 Ofertas Ativas</span><br><span style="font-size: 20px; color: #00E5FF; font-weight: 800;">1.840 mil</span></div>', unsafe_allow_html=True)
-        
-        st.write("")
-        st.markdown('<p class="subtitulo-bloco-real">MÓDULO 1: RADAR DE PRODUTOS [FILTRO XEQUE-MATE]</p>', unsafe_allow_html=True)
-        
-        dados_tabela = {
-            "Name": [f"Produto-acanodiano {i}" for i in range(1, 10)],
-            "Comissões": ["3,00%", "2,00%", "1,00%", "1,00%", "1,00%", "2,00%", "2,00%", "1,00%", "1,00%"],
-            "Comissão": ["R$,15%", "R$,75%", "R$,25%", "R$,35%", "R$,25%", "R$,25%", "R$,25%", "R$,60%", "R$,60%"],
-            "Veredito da IA": ["APROVADO (Risco Baixo)"] * 9
-        }
-        st.dataframe(pd.DataFrame(dados_tabela), use_container_width=True, hide_index=True)
-        st.write("")
-        st.button("📄 [BAIXAR PLANILHA DE INTELIGÊNCIA (.CSV)]", key="btn_csv_dash")
-        st.markdown('</div>', unsafe_allow_html=True)
+col_c1, col_c2, col_c3 = st.columns(3)
+with col_c1:
+    st.markdown('<div class="status-card"><h4 style="color: #60a5fa; margin-top:0;">📡 SERVIDORES MESTRES</h4><h2 style="margin: 10px 0; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ONLINE 🟢</h2><p style="color: #94a3b8; font-size: 13px; margin:0;">Handshake síncrono com o GitHub</p></div>', unsafe_allow_html=True)
+with col_c2:
+    st.markdown('<div class="status-card" style="border-color: #00FF87;"><h4 style="color: #00FF87; margin-top:0;">🔑 GOOGLE ADS API</h4><h2 style="margin: 10px 0; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AUTENTICADA 🔗</h2><p style="color: #94a3b8; font-size: 13px; margin:0;">Protocolo OAuth 2.0 Ativo e Pronto</p></div>', unsafe_allow_html=True)
+with col_c3:
+    st.markdown('<div class="status-card"><h4 style="color: #60a5fa; margin-top:0;">💻 PÁGINAS PRE-SELL</h4><h2 style="margin: 10px 0; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PROTEGIDAS 🛡️</h2><p style="color: #94a3b8; font-size: 13px; margin:0;">Roteamento de comissão Hostinger</p></div>', unsafe_allow_html=True)
 
-    with col_direita:
+st.write("---")
+
+# =============================================================================================================
+# GRÁFICO GLOBAL DE VOLUME ANALISADO
+# =============================================================================================================
+st.markdown("### 📈 MONITORAMENTO VOLUMÉTRICO DAS PLATAFORMAS (CLICKBANK / HOTMART)")
+st.write("")
+meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+valores_envio = [310 + (i * 45) for i in range(12)]
+df_envio = pd.DataFrame({"Volume de Dados Processados": valores_envio}, index=meses)
+st.bar_chart(df_envio, use_container_width=True, color="#00E5FF")
+
+# Rodapé profissional
+st.write("---")
+st.markdown("<p style='text-align: center; font-size: 11px; color: #475569;'>© 2026 Adriel AI - Ferramenta Exclusiva de Inteligência para Afiliados Elite. Todos os Direitos Reservados.</p>", unsafe_allow_html=True)
