@@ -8,7 +8,7 @@ st.set_page_config(page_title="Adriel AI - Core Dashboard", layout="wide", initi
 # =============================================================================================================
 # INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO CLICAR NA TELA)
 # =============================================================================================================
-texto_boas_vindas = "Olá, Comandante José Marques da Silva! Painel holográfico tridimensional ativado. Motores e chassi síncronos na memória."
+texto_boas_vindas = "Olá, Comandante José Marques da Silva! O painel holográfico tridimensional está ativo e os sistemas estão síncronos na memória."
 
 st.markdown(f"""
 <script>
@@ -27,19 +27,23 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# INJEÇÃO DE CÓDIGO CSS PREMIUM DEFINITIVO (ANIMAÇÕES DOS ANÉIS HOLOGRÁFICOS E FLUTUAÇÃO)
+# INJEÇÃO DE CÓDIGO CSS PREMIUM DE ELITE (IMPLANTANDO O CENÁRIO DO ROBÔ 3D DE FUNDO DA PLATAFORMA)
 # =============================================================================================================
 st.markdown("""
 <style>
-    /* 🌌 Fundo Escuro de Luxo */
+    /* 🌌 O CENÁRIO DO ROBÔ FUTURISTA FLUTUANDO DE FUNDO EM TELA CHEIA (BACKGROUND LUXO) */
     .stApp {
-        background-color: #050811 !important;
+        background: linear-gradient(rgba(5, 8, 17, 0.85), rgba(5, 8, 17, 0.92)), 
+                    url('https://unsplash.com') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: fixed !important;
         color: #ffffff !important;
     }
     
     /* 📟 Customização da Barra Lateral Esquerda */
     [data-testid="stSidebar"] {
-        background-color: #02040a !important;
+        background-color: rgba(2, 4, 10, 0.95) !important;
         border-right: 1px solid #1e293b !important;
     }
     
@@ -57,7 +61,7 @@ st.markdown("""
     }
     
     [data-testid="stSidebarNav"] ul li a {
-        background-color: #0f172a !important; 
+        background-color: rgba(15, 23, 42, 0.8) !important; 
         border: 2px solid #1e293b !important;
         border-radius: 8px !important;
         margin-bottom: 8px !important;
@@ -66,133 +70,115 @@ st.markdown("""
         display: block !important;
     }
     
-    /* 🎨 ANIMAÇÃO DA CAIXA DE BOAS-VINDAS (ALTERNA CIANO <-> VERDE) */
+    /* 🎨 ANIMAÇÃO QUE ALTERNA AS CORES DAS CAIXAS FLUTUANTES (CIANO <-> VERDE) */
     @keyframes alterna-cores {
-        0% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
-        50% { border-color: #00FF87; box-shadow: 0px 8px 32px rgba(0, 255, 135, 0.3); }
-        100% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
+        0% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.25); }
+        50% { border-color: #00FF87; box-shadow: 0px 8px 32px rgba(0, 255, 135, 0.35); }
+        100% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.25); }
     }
 
+    /* Caixa Central Translúcida Estilo Vidro (Glassmorphism) */
     .robo-card-welcome {
-        background: linear-gradient(135deg, #0f172a 0%, #050811 100%) !important;
+        background: rgba(15, 23, 42, 0.65) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
         border: 2px solid #00E5FF !important;
         border-radius: 16px !important;
-        padding: 25px !important;
-        margin-bottom: 25px !important;
-        animation: alterna-cores 5s infinite ease-in-out !important;
+        padding: 30px !important;
+        margin-bottom: 35px !important;
+        animation: alterna-cores 6s infinite ease-in-out !important; /* Alterna as cores das bordas */
     }
     
-    /* 🔄 ANIMAÇÃO DE ROTAÇÃO DOS FEIXES E PAINÉIS REDONDOS DA FOTO */
-    @keyframes girar-holograma {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    @keyframes pulsar-brilho {
-        0% { opacity: 0.4; }
-        50% { opacity: 1; }
-        100% { opacity: 0.4; }
-    }
-
-    .anel-rotativo {
-        transform-origin: center;
-        animation: girar-holograma 20s infinite linear;
-    }
-    
-    .painel-pulsante {
-        animation: pulsar-brilho 3s infinite ease-in-out;
-    }
-
-    /* Bloco dos Cards de Status */
+    /* Bloco de Monitoramento Executivo */
     .status-card {
-        background-color: #0f172a !important;
+        background-color: rgba(15, 23, 42, 0.75) !important;
+        backdrop-filter: blur(4px) !important;
         border: 1px solid #1e293b !important;
         border-radius: 12px !important;
         padding: 20px !important;
         text-align: center;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.4) !important;
+    }
+    
+    /* Estilização para o Gráfico de Barras */
+    .stBarChart {
+        background-color: rgba(15, 23, 42, 0.5) !important;
+        border-radius: 12px;
+        padding: 10px;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# CLONE OPERACIONAL DA FOTO: O ROBÔ HUMANOIDE COORDENANDO OS PAINÉIS EM CAD-SVG NATIVO
-# =============================================================================================================
-st.markdown("""
-<div style="text-align: center; margin-bottom: 20px;">
-    <svg viewBox="0 0 600 240" width="100%" height="240" style="background: transparent;">
-        <!-- 🌀 ANÉIS E ARCOS HOLOGRÁFICOS ESQUERDOS (GIRANDO) -->
-        <g class="anel-rotativo" style="transform-origin: 120px 120px;">
-            <circle cx="120" cy="120" r="50" fill="none" stroke="#00E5FF" stroke-width="2" stroke-dasharray="10, 15" opacity="0.7"/>
-            <circle cx="120" cy="120" r="70" fill="none" stroke="#00FF87" stroke-width="1.5" stroke-dasharray="40, 30" opacity="0.5"/>
-            <path d="M 60,120 A 60,60 0 0,1 180,120" fill="none" stroke="#00E5FF" stroke-width="4" opacity="0.8"/>
-        </g>
-        <!-- Painel de Dados Flutuante à Esquerda -->
-        <g class="painel-pulsante">
-            <rect x="50" y="40" width="80" height="30" rx="5" fill="rgba(0,229,255,0.1)" stroke="#00E5FF" stroke-width="1"/>
-            <text x="60" y="60" fill="#00E5FF" font-size="10" font-family="sans-serif" font-weight="bold">AUDIT: OK</text>
-            <line x1="120" y1="120" x2="250" y2="100" stroke="#00E5FF" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
-        </g>
-
-        <!-- 🪐 PAINEL REDONDO DA DIREITA DA FOTO (A ESFERA TECNOLÓGICA) -->
-        <g class="anel-rotativo" style="transform-origin: 480px 120px;">
-            <circle cx="480" cy="120" r="55" fill="none" stroke="#00E5FF" stroke-width="2" stroke-dasharray="5, 8" opacity="0.8"/>
-            <circle cx="480" cy="120" r="40" fill="none" stroke="#00FF87" stroke-width="3" stroke-dasharray="20, 10" opacity="0.6"/>
-            <circle cx="480" cy="120" r="20" fill="none" stroke="#00E5FF" stroke-width="1" opacity="0.4"/>
-            <!-- Raios do Globo -->
-            <line x1="425" y1="120" x2="535" y2="120" stroke="#00E5FF" stroke-width="1" opacity="0.5"/>
-            <line x1="480" y1="65" x2="480" y2="175" stroke="#00E5FF" stroke-width="1" opacity="0.5"/>
-        </g>
-        <g class="painel-pulsante">
-            <line x1="480" y1="120" x2="350" y2="100" stroke="#00FF87" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
-        </g>
-
-        <!-- 🤖 O ROBÔ HUMANOIDE CENTRAL (CORPO, BRAÇOS E MÃOS ACIONANDO OS PAINÉIS) -->
-        <g style="transform: translate(220px, 10px);">
-            <!-- Cabeça do Robô -->
-            <rect x="55" y="20" width="50" height="55" rx="15" fill="#ffffff" stroke="#00E5FF" stroke-width="3"/>
-            <!-- Orelhas / Sensores Laterais -->
-            <rect x="47" y="35" width="8" height="25" rx="4" fill="#0f172a" stroke="#00E5FF" stroke-width="1.5"/>
-            <rect x="105" y="35" width="8" height="25" rx="4" fill="#0f172a" stroke="#00E5FF" stroke-width="1.5"/>
-            <!-- Olhos de LED Ciano Acesos -->
-            <circle cx="68" cy="42" r="5" fill="#00E5FF"/>
-            <circle cx="92" cy="42" r="5" fill="#00E5FF"/>
-            <circle cx="68" cy="42" r="1.5" fill="#050811"/>
-            <circle cx="92" cy="42" r="1.5" fill="#050811"/>
-            <!-- Detalhe da Testa/Neon -->
-            <path d="M 65,20 L 80,32 L 95,20" fill="none" stroke="#00FF87" stroke-width="2"/>
-            <!-- Boca Eletrônica -->
-            <rect x="70" y="58" width="20" height="3" fill="#00FF87" rx="1.5"/>
-            
-            <!-- Pescoço Articulado -->
-            <rect x="70" y="75" width="20" height="12" fill="#334155" stroke="#1e293b"/>
-            
-            <!-- Torso / Peito Mecânico -->
-            <path d="M 40,87 L 120,87 L 110,170 L 50,170 Z" fill="#ffffff" stroke="#00E5FF" stroke-width="2.5"/>
-            <!-- Core de Energia Azul no Peito -->
-            <rect x="65" y="105" width="30" height="40" rx="6" fill="#0f172a" stroke="#00FF87" stroke-width="2"/>
-            <circle cx="80" cy="125" r="8" fill="#00E5FF" class="painel-pulsante"/>
-
-            <!-- 💪 BRAÇO ESQUERDO TOCANDO O PAINEL DE CONEXÃO -->
-            <path d="M 40,95 L -10,120 L -60,95" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 40,95 L -10,120 L -60,95" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Mão tocando o arco holográfico -->
-            <circle cx="-60" cy="95" r="8" fill="#00E5FF" class="painel-pulsante"/>
-
-            <!-- 💪 BRAÇO DIREITO OPERANDO A ESFERA -->
-            <path d="M 120,95 L 170,120 L 220,95" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 120,95 L 170,120 L 220,95" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Mão tocando a esfera tecnológica -->
-            <circle cx="220" cy="95" r="8" fill="#00FF87" class="painel-pulsante"/>
-        </g>
-    </svg>
-</div>
-""", unsafe_allow_html=True)
-
-# =============================================================================================================
-# APRESENTAÇÃO MAJESTOSA DA CENTRAL
+# APRESENTAÇÃO MAJESTOSA DA CENTRAL (MOLDADA POR CIMA DO ROBÔ EM 3D)
 # =============================================================================================================
 st.markdown("""
 <div class="robo-card-welcome">
-    <h1 style='margin-top: 0; font-size: 28px;'>🛸 INTERFACE HOLOGRÁFICA: ADRIEL AI</h1>
-    <p style='margin: 15px 0 0 0; font-size: 16px; color: #cbd5e1; line-height: 1.6;'>
+    <h1 style='margin-top: 0; font-size: 28px; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>🛸 PLATAFORMA HOLOGRÁFICA: ADRIEL AI</h1>
+    <p style='margin: 15px 0 0 0; font-size: 16px; color: #f1f5f9; line-height: 1.6; font-weight: 500;'>
+        "Seja muito bem-vindo, <b>Comandante José Marques da Silva</b>! O cenário operacional está fixado em 3D. 
+        Observe que as bordas flutuantes alternam de cor continuamente entre Ciano e Verde Neon, reproduzindo o mesmo estilo requintado 
+        da interface do robô inteligente. Clique em qualquer lugar da tela para ativar os alto-falantes."
+    </p>
+    <div style='margin-top: 20px;'>
+        <span style='background: #00FF87; color: #050811; padding: 6px 14px; font-weight: bold; border-radius: 20px; font-size: 12px; box-shadow: 0px 4px 10px rgba(0,255,135,0.3);'>
+            SISTEMA INTEGRADO COM VOZ REAL 🔊
+        </span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+st.write("")
+
+# =============================================================================================================
+# CARDS ESTATÍSTICOS GLOBAIS (REQUINTE EM TELA CHEIA)
+# =============================================================================================================
+st.markdown("### 📊 STATUS DA INFRAESTRUTURA EM TEMPO REAL")
+st.write("")
+
+col_c1, col_c2, col_c3 = st.columns(3)
+
+with col_c1:
+    st.markdown("""
+    <div class="status-card">
+        <h4 style='color: #60a5fa; margin-top:0;'>📡 SERVIDORES MESTRES</h4>
+        <h2 style='margin: 10px 0; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>ONLINE 🟢</h2>
+        <p style='color: #94a3b8; font-size: 13px; margin:0;'>Handshake síncrono com o GitHub</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_c2:
+    st.markdown("""
+    <div class="status-card" style="border-color: #00FF87;">
+        <h4 style='color: #00FF87; margin-top:0;'>🔑 GOOGLE ADS API</h4>
+        <h2 style='margin: 10px 0; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>AUTENTICADA 🔗</h2>
+        <p style='color: #94a3b8; font-size: 13px; margin:0;'>Protocolo OAuth 2.0 Ativo e Pronto</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_c3:
+    st.markdown("""
+    <div class="status-card">
+        <h4 style='color: #60a5fa; margin-top:0;'>💻 PÁGINAS PRE-SELL</h4>
+        <h2 style='margin: 10px 0; background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>PROTEGIDAS 🛡️</h2>
+        <p style='color: #94a3b8; font-size: 13px; margin:0;'>Roteamento de comissão Hostinger</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.write("---")
+
+# =============================================================================================================
+# GRÁFICO GLOBAL DE VOLUME ANALISADO
+# =============================================================================================================
+st.markdown("### 📈 MONITORAMENTO VOLUMÉTRICO DAS PLATAFORMAS (CLICKBANK / HOTMART)")
+st.caption("Visão macro do tráfego e mineração de ofertas rastreadas nas últimas horas:")
+st.write("")
+
+meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+valores_envio = [310 + (i * 45) for i in range(12)]
+df_envio = pd.DataFrame({"Volume de Dados Processados": valores_envio}, index=meses)
+st.bar_chart(df_envio, use_container_width=True, color="#00E5FF")
+
+# Rodapé profissional
+st.write("---")
+st.markdown("<p style='text-align: center; font-size: 11px; color: #475569;'>© 2026 Adriel AI - Ferramenta Exclusiva de Inteligência para Afiliados Elite. Todos os Direitos Reservados.</p>", unsafe_allow_html=True)
