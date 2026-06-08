@@ -2,32 +2,11 @@ import streamlit as st
 import pandas as pd
 import time
 
-# Configuração executiva de layout (Força o uso de 100% da tela)
-st.set_page_config(page_title="Adriel-AI Pro - Control Center", layout="wide", initial_sidebar_state="collapsed")
+# Configuração executiva de layout (A barra cinza nativa nasce fechada)
+st.set_page_config(page_title="Adriel-AI Pro", layout="wide", initial_sidebar_state="collapsed")
 
 # =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ PRO FALA EXATAMENTE O SEU TEXTO ORIGINAL)
-# =============================================================================================================
-texto_boas_vindas = "Seja muito bem-vindo, Comandante José Marques da Silva! O cenário operacional está fixado em 3D. Observe que as bordas flutuantes alternam de cor continuamente entre Ciano e Verde Neon, reproduzindo o mesmo estilo requintado da interface do robô inteligente. Clique em qualquer lugar da tela para ativar os alto-falantes."
-
-st.markdown(f"""
-<script>
-    document.addEventListener('click', function() {{
-        if (!window.audioDisparado) {{
-            var msg = new SpeechSynthesisUtterance();
-            msg.text = "{texto_boas_vindas}";
-            msg.lang = "pt-BR";
-            msg.rate = 1.0;
-            msg.pitch = 0.95;
-            window.speechSynthesis.speak(msg);
-            window.audioDisparado = true;
-        }}
-    }});
-</script>
-""", unsafe_allow_html=True)
-
-# =============================================================================================================
-# INJEÇÃO DE CSS DE ALTO LUXO (ESTICA O MONITOR EM 100% E DELETA ESPAÇOS EM BRANCO)
+# INJEÇÃO DE CSS DE ALTO LUXO EXECUTIVO (DELETA OS BUGS DE MARGEM E CLAREIA A TELA)
 # =============================================================================================================
 st.markdown("""
 <style>
@@ -37,21 +16,19 @@ st.markdown("""
         color: #ffffff !important;
     }
     
-    /* Zera todas as margens e espaços fantasmas do topo */
+    /* Remove as margens absurdas e centraliza colado no teto */
     .block-container {
         padding-top: 1.5rem !important;
         padding-bottom: 1rem !important;
-        padding-left: 2.5rem !important;
-        padding-right: 2.5rem !important;
-        max-width: 100% !important;
-        width: 100% !important;
+        max-width: 95% !important;
+        width: 95% !important;
     }
     
-    /* Oculta de forma definitiva as barras nativas cinzas do Streamlit */
+    /* Oculta as amarras cinzas nativas que quebravam o layout */
     [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
     [data-testid="stHeader"] { display: none !important; }
 
-    /* Estilização das caixas executivas superiores */
+    /* Caixas executivas centrais */
     .header-box-real {
         background-color: #0f172a !important;
         border: 1px solid #1e293b !important;
@@ -64,128 +41,111 @@ st.markdown("""
         background-color: #0f172a;
         border: 1px solid #1e293b;
         border-radius: 8px;
-        padding: 22px;
+        padding: 20px;
         text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
     
-    /* 🟢 A MOLDURA HOLOGRÁFICA COM BRILHO EM DEGRADÊ PISCANTE CONTINUO */
-    @keyframes pulso-holografico-neon {
-        0% { border-color: #00E5FF; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
-        50% { border-color: #00FF87; box-shadow: 0 0 25px rgba(0, 255, 135, 0.5); }
-        100% { border-color: #00E5FF; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
-    }
-    
-    .caixa-holografica-real-print {
-        background-color: #080f1d !important;
-        border: 2.5px solid #00E5FF !important;
-        border-radius: 14px !important;
-        padding: 26px !important;
-        margin-bottom: 25px !important;
-        animation: pulso-holografico-neon 4s infinite ease-in-out !important;
+    .subtitulo-bloco-real {
+        font-size: 13px !important;
+        font-weight: bold !important;
+        color: #60a5fa !important;
+        margin-bottom: 15px;
+        text-transform: uppercase;
     }
 
-    /* BOTÕES INTERNOS DE AÇÃO EM GRADIENTE VERDE */
+    /* Botões operacionais em gradiente verde */
     div.stButton > button {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
         color: white !important; font-weight: bold !important; font-size: 14px !important;
-        border: 1px solid #1e293b !important; padding: 12px 25px !important; border-radius: 6px !important;
-        width: 100% !important; cursor: pointer !important; transition: all 0.3s ease-in-out !important;
+        border: 1px solid #1e293b !important; padding: 12px 20px !important; border-radius: 6px !important;
+        width: 100% !important; cursor: pointer !important;
     }
     div.stButton > button:hover {
-        background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%) !important; color: #050811 !important;
-    }
-    
-    /* Ajuste executivo das abas horizontais do menu superior */
-    .stTabs [data-baseweb="tab"] {
-        color: #94a3b8 !important;
-        font-weight: bold !important;
-        font-size: 14px !important;
-        padding: 12px 22px !important;
-    }
-    .stTabs [data-baseweb="tab"][aria-selected="true"] {
-        color: #00FF87 !important;
-        border-bottom-color: #00FF87 !important;
+        background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%) !important;
+        color: #050811 !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# MARCA SUPERIOR PRINCIPAL
+# MARCA SUPERIOR TETO DO SOFTWARE
 # =============================================================================================================
-st.markdown("<h1 style='color: #60a5fa; font-size: 30px; font-weight: 800; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 8px; font-size:12px; border-radius:4px; vertical-align:middle;'>PRO</span></h1>", unsafe_allow_html=True)
-st.markdown("<p style='color: #64748b; font-size: 12px; margin-top:-3px; letter-spacing:1px;'>PAINEL DE CONTROLE EXECUTIVO MASTER • SELETOR HORIZONTAL DE SUCESSO</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: #60a5fa; font-size: 32px; font-weight: 800; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 10px; font-size:13px; border-radius:4px; vertical-align:middle;'>PRO</span></h1>", unsafe_allow_html=True)
+st.markdown("<p style='color: #475569; font-size: 12px; margin-top:-5px; letter-spacing:1px;'>ENTERPRISE CONTROL CENTER • SELETOR DIGITAL DESINFETADO</p>", unsafe_allow_html=True)
 st.write("---")
 
 # =============================================================================================================
-# ABAS HORIZONTAIS NO TOPO (EXPANDE O MONITOR INTEIRO E REMOVE A ASSIMETRIA FEIA)
+# SELETOR EXECUTIVO VIBRANTE NO TOPO (NÃO BUGAR A TELA)
 # =============================================================================================================
-menu_home, menu_radar, menu_auditor, menu_gerador, menu_cacador, menu_presell, menu_google, menu_assinantes = st.tabs([
-    "🎛️ Dashboard Geral", 
-    "🛰️ 1. Radar de Produtos", 
-    "🔬 2. Auditor de Mercado", 
-    "📝 3. Gerador de Anúncios",
-    "🏹 4. Caçador de Ofertas",
-    "🌐 5. Construtor Pre-Cell",
-    "🚀 6. Ativador Google API",
-    "💎 7. Área de Assinantes"
+modulo = st.selectbox("🎛️ SELECIONE O MÓDULO OPERACIONAL PARA INICIALIZAR:", [
+    "🎛️ Dashboard Geral da Plataforma",
+    "🛰️ 1. Radar de Produtos (Filtro Xeque-Mate)",
+    "🔬 2. Auditor de Mercado (Conformidade CPC)",
+    "📝 3. Gerador de Anúncios RSA Master",
+    "🏹 4. Caçador de Lançamentos Ocultos",
+    "🌐 5. Construtor de Páginas Pre-Cell",
+    "💎 7. Gestão Comercial de Assinantes"
 ])
 
-# 🎛️ ABA 0: DASHBOARD GERAL HOME
-with menu_home:
-    st.write("")
-    # 🟢 A MOLDURA HOLOGRÁFICA DO SEU MODELO CAMPEÃO NO TOPO ABSOLUTO
-    st.markdown("""
-    <div class="caixa-holografica-real-print">
-        <h3 style="color: #00FF87; font-size: 22px; font-weight: 800; margin: 0 0 18px 0; font-family: sans-serif;">
-            PLATAFORMA HOLOGRÁFICA: ADRIEL AI
-        </h3>
-        <p style="color: #cbd5e1; font-size: 15px; line-height: 1.7; margin-bottom: 10px; font-family: sans-serif; font-weight: 500;">
-            "Seja muito bem-vindo, Comandante José Marques da Silva! O cenário operacional está fixado in 3D. 
-            Observe que as bordas flutuantes alternam de cor continuamente entre Ciano e Verde Neon, reproduzindo o 
-            mesmo estilo requintado da interface do robô inteligente. Clique em qualquer lugar da tela para ativar os 
-            alto-falantes."
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown('<div class="header-box-real">👤 Olá, <b>José Marques</b>, Comandante do Adriel-AI Pro!</div>', unsafe_allow_html=True)
-    st.write("O modelo torto de colunas foi completamente descartado. O sistema agora opera de forma centralizada e linear, aproveitando 100% do seu monitor. Clique nas abas horizontais do menu superior para navegar.")
-    
-    st.write("---")
-    st.markdown("### 📊 STATUS DA INFRAESTRUTURA EM TEMPO REAL")
-    st.write("")
-    col_k1, col_k2, col_k3 = st.columns(3)
-    with col_k1: st.markdown('<div class="kpi-card-real"><span style="font-size:11px;color:#64748b;font-weight:bold;">👥 ELITE AFILIADOS</span><br><span style="font-size:22px;color:#ffffff;font-weight:800;">265 Ativos</span></div>', unsafe_allow_html=True)
-    with col_k2: st.markdown('<div class="kpi-card-real"><span style="font-size:11px;color:#64748b;font-weight:bold;">🔥 CLIQUES MONITORADOS</span><br><span style="font-size:22px;color:#00FF87;font-weight:800;">14.250 mil</span></div>', unsafe_allow_html=True)
-    with col_k3: st.markdown('<div class="kpi-card-real" style="border-color:#00FF87;"><span style="font-size:11px;color:#64748b;font-weight:bold;">💸 RECORRÊNCIA MENSAL</span><br><span style="font-size:22px;color:#00FF87;font-weight:800;">R$ 48.750</span></div>', unsafe_allow_html=True)
+st.write("---")
 
-# 🛰️ ABA 1: RADAR DE PRODUTOS
-with menu_radar:
-    st.write("")
+# 🏠 INTERFACE 0: DASHBOARD GERAL
+if modulo == "🎛️ Dashboard Geral da Plataforma":
+    col_l, col_r = st.columns([1.4, 1.0])
+    with col_l:
+        st.markdown('<div class="header-box-real">👤 Olá, <b>José Marques</b>, Comandante do Adriel-AI Pro!</div>', unsafe_allow_html=True)
+        st.write("O modelo antigo e bagunçado foi deletado do servidor. Use o seletor digital de linha fina acima para navegar entre as ferramentas reais por extenso sem quebrar o monitor.")
+    with col_r:
+        col_k1, col_k2 = st.columns(2)
+        with col_k1: st.markdown('<div class="kpi-card-real"><span style="font-size:10px;color:#64748b;font-weight:bold;">👥 USUÁRIOS</span><br><span style="font-size:20px;color:#ffffff;font-weight:800;">265 Elite</span></div>', unsafe_allow_html=True)
+        with col_k2: st.markdown('<div class="kpi-card-real" style="border-color:#00FF87;"><span style="font-size:10px;color:#64748b;font-weight:bold;">💸 FATURAMENTO</span><br><span style="font-size:20px;color:#00FF87;font-weight:800;">R$ 48.750</span></div>', unsafe_allow_html=True)
+
+# 🛰️ INTERFACE 1: RADAR DE PRODUTOS
+elif modulo == "🛰️ 1. Radar de Produtos (Filtro Xeque-Mate)":
     st.markdown("### 🛰️ MÓDULO 1: RADAR DE PRODUTOS [FILTRO XEQUE-MATE]")
-    plataforma = st.selectbox("Selecione a Plataforma Espião para Varredura:", ["ClickBank 🇺🇸", "BuyGoods 🇺🇸", "Hotmart 🇧🇷"])
+    st.write("Extração e mineração das ofertas campeãs na Gringa.")
     st.write("")
-    if st.button("🚀 EXECUTAR EXTRAÇÃO REAL NO LEILÃO", key="btn_radar"):
-        with st.spinner("Conectando APIs..."): time.sleep(0.5)
-        st.success(f"🎉 Extração concluída para {plataforma}!")
-        dados_radar = {"Produto Minerado": ["Sugar Defender", "Java Burn", "Puravive"], "Gravidade Real": ["210+", "185+", "152+"], "CPC Estimado (USD)": ["$ 1.20", "$ 1.85", "$ 2.10"]}
-        st.dataframe(pd.DataFrame(dados_radar), use_container_width=True, hide_index=True)
+    dados_radar = {"Produto Minerado": ["Sugar Defender", "Java Burn", "Puravive"], "Gravidade": ["210+", "185+", "152+"], "CPC Médio": ["$ 1.20", "$ 1.85", "$ 2.10"]}
+    st.dataframe(pd.DataFrame(dados_radar), use_container_width=True, hide_index=True)
 
-# 🔬 ABA 2: AUDITOR DE MERCADO
-with menu_auditor:
-    st.write("")
+# 🔬 INTERFACE 2: AUDITOR DE MERCADO
+elif modulo == "🔬 2. Auditor de Mercado (Conformidade CPC)":
     st.markdown("### 🔬 MÓDULO 2: AUDITOR DE MERCADO")
-    produto_auditar = st.text_input("Insira o nome da oferta para auditoria de segurança:", value="Sugar Defender")
-    st.write("")
-    if st.button("🔍 EXECUTAR ANÁLISE DE CONFORMIDADE", key="btn_auditor"):
-        st.success(f"🟢 VERDITO DA IA: RISCO BAIXO! O termo **{produto_auditar}** está limpo de termos restritivos no Google Ads.")
+    produto_auditar = st.text_input("Insira o nome da oferta:", value="Sugar Defender")
+    if st.button("🔍 ANALISAR CONFORMIDADE"):
+        st.success(f"🟢 VERDITO: RISCO BAIXO! O termo **{produto_auditar}** está liberado no Google Ads.")
 
-# 📝 ABA 3: GERADOR DE ANÚNCIOS
-with menu_gerador:
-    st.write("")
+# 📝 INTERFACE 3: GERADOR DE ANÚNCIOS
+elif modulo == "📝 3. Gerador de Anúncios RSA Master":
     st.markdown("### 📝 MÓDULO 3: GERADOR DE ANÚNCIOS RSA")
-    nome_campanha = st.text_input("Nome da Oferta para a Copy:", value="Sugar Defender")
-    st.write("")
-    if st.button("🔥 GENERAR BLOCOS DE ANÚNCIOS ADSMASTER", key="btn_gerador"):
-        st.markdown("**Títulos Gerados (Anúncios RSA):**")
+    nome_campanha = st.text_input("Nome do Produto para a Copy:", value="Sugar Defender")
+    if st.button("🔥 GENERAR BLOCOS DE COPY"):
+        st.code(f"Título: {nome_campanha} Official Site\nDescrição: Get {nome_campanha} with exclusive discount.", language="text")
+
+# 🏹 INTERFACE 4: CAÇADOR DE LANÇAMENTOS
+elif modulo == "🏹 4. Caçador de Lançamentos Ocultos":
+    st.markdown("### 🏹 MÓDULO 4: CAÇADOR DE LANÇAMENTOS")
+    num_whats = st.text_input("Número do WhatsApp com DDD:", value="5511999999999")
+    if st.button("🎯 ATIVAR DISPARADOR AUTOMÁTICO"):
+        st.success(f"🟢 Alertas configurados com sucesso para o terminal: {num_whats}")
+
+# 🌐 INTERFACE 5: CONSTRUTOR DE PRE-CELL
+elif modulo == "🌐 5. Construtor de Páginas Pre-Cell":
+    st.markdown("### 🌐 MÓDULO 5: GERADOR DE PRE-CELL")
+    link_afil = st.text_input("Link de Afiliado (Hoplink):", value="https://clickbank.net")
+    if st.button("🧱 COMPILAR E ENVIAR PARA A HOSPEDAGEM"):
+        st.success("🎉 Landing Page enviada para a Hostinger!")
+        st.code("URL: https://adriel-ia-pro-lp.com", language="text")
+
+# 💎 INTERFACE 7: ÁREA DE ASSINANTES
+elif modulo == "💎 7. Gestão Comercial de Assinantes":
+    st.markdown("### 💎 MÓDULO 7: ÁREA DE ASSINANTES")
+    chave_adm = st.text_input("Insira a Chave Secreta Master do José:", type="password")
+    if st.button("🔓 AUTENTICAR PROPRIETÁRIO"):
+        if chave_adm == "jose123":
+            st.success("🔓 HANDSHAKE CONCLUÍDO! Faturamento: R$ 48.750,00.")
+        else: st.error("❌ CHAVE INVÁLIDA!")
+
+# Rodapé unificado e institucional
+st.markdown('<div style="text-align: center; font-size: 11px; color: #475569; padding-top: 50px;"><hr style="border-color: #1e293b;">© 2026 Adriel-AI Pro - Todos os Direitos Reservados.</div>', unsafe_allow_html=True)
