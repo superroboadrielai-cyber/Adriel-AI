@@ -250,5 +250,5 @@ html_robo_real = """
 st.components.v1.html(html_robo_real, height=310, scrolling=False)
 
 # =============================================================================================================
-# APRESENTAÇÃO MAJESTOSA DA CENTRAL (MOLDADA COM ABAS INTERNAS DE STRINGS SIMPLES)
+# APRESENTAÇÃO MAJESTOSA DA CENTRAL
 # =============================================================================================================
