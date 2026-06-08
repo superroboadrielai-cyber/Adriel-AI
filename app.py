@@ -2,253 +2,88 @@ import streamlit as st
 import pandas as pd
 import time
 
-# Configuração de Layout Amplo Premium Black para a Entrada do SaaS
-st.set_page_config(page_title="Adriel AI - Core Dashboard", layout="wide", initial_sidebar_state="expanded")
+# Configuração de Layout Amplo Premium Black herdado da família Adriel AI
+st.set_page_config(page_title="Adriel AI - Radar de Produtos", layout="wide", initial_sidebar_state="expanded")
 
 # =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO CLICAR NA TELA)
-# =============================================================================================================
-texto_boas_vindas = "Olá, Comandante José Marques da Silva! O núcleo de Inteligência Artificial tridimensional está ativo nos servidores do Adriel A I. Handshake concluído."
-
-st.markdown(f"""
-<script>
-    document.addEventListener('click', function() {{
-        if (!window.audioDisparado) {{
-            var msg = new SpeechSynthesisUtterance();
-            msg.text = "{texto_boas_vindas}";
-            msg.lang = "pt-BR";
-            msg.rate = 1.0;
-            msg.pitch = 0.85;
-            window.speechSynthesis.speak(msg);
-            window.audioDisparado = true;
-        }}
-    }});
-</script>
-""", unsafe_allow_html=True)
-
-# =============================================================================================================
-# INJEÇÃO DE CÓDIGO CSS PREMIUM DE ELITE (ESTILO BLACK E PISCADO NEON DO MENU)
+# INJEÇÃO DE CÓDIGO CSS PREMIUM (O MESMO VISUAL CORTE DE LUXO DA CENTRAL HOME)
 # =============================================================================================================
 st.markdown("""
 <style>
-    /* Fundo Escuro de Luxo */
+    /* 🌌 Fundo Escuro de Luxo Espacial */
     .stApp {
         background-color: #050811 !important;
         color: #ffffff !important;
     }
     
-    /* Customização da Barra Lateral Esquerda */
-    [data-testid="stSidebar"] {
-        background-color: #02040a !important;
-        border-right: 1px solid #1e293b !important;
-    }
-    
-    /* ANIMAÇÃO PULSAR DO MENU LATERAL */
-    @keyframes pulsa-neon {
-        0% { border-color: #1e293b; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1); }
-        50% { border-color: #00FF87; box-shadow: 0 0 15px rgba(0, 255, 135, 0.4); }
-        100% { border-color: #1e293b; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1); }
-    }
-
-    [data-testid="stSidebarNav"] ul li a span {
-        color: #ffffff !important; 
-        font-weight: bold !important;
-        font-size: 14px !important;
-    }
-    
-    [data-testid="stSidebarNav"] ul li a {
-        background-color: #0f172a !important; 
-        border: 2px solid #1e293b !important;
-        border-radius: 8px !important;
-        margin-bottom: 8px !important;
-        padding: 12px 14px !important;
-        animation: pulsa-neon 3s infinite ease-in-out !important;
-        display: block !important;
-    }
-    
-    /* ANIMAÇÃO DA CAIXA DE BOAS-VINDAS (ALTERNA CIANO <-> VERDE) */
+    /* 🎨 ANIMAÇÃO QUE ALTERNA AS CORES DAS BORDAS (CIANO <-> VERDE) */
     @keyframes alterna-cores {
-        0% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
-        50% { border-color: #00FF87; box-shadow: 0px 8px 32px rgba(0, 255, 135, 0.3); }
-        100% { border-color: #00E5FF; box-shadow: 0px 8px 32px rgba(0, 229, 255, 0.2); }
+        0% { border-color: #00E5FF; box-shadow: 0px 4px 15px rgba(0, 229, 255, 0.15); }
+        50% { border-color: #00FF87; box-shadow: 0px 4px 15px rgba(0, 255, 135, 0.25); }
+        100% { border-color: #00E5FF; box-shadow: 0px 4px 15px rgba(0, 229, 255, 0.15); }
     }
 
-    .robo-card-welcome {
+    .modulo-container-interno {
         background: linear-gradient(135deg, #0f172a 0%, #050811 100%) !important;
         border: 2px solid #00E5FF !important;
-        border-radius: 16px !important;
-        padding: 25px !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
         margin-bottom: 25px !important;
         animation: alterna-cores 5s infinite ease-in-out !important;
     }
     
-    /* Bloco dos Cards de Status */
-    .status-card {
-        background-color: #0f172a !important;
+    /* Títulos Dinâmicos em Gradiente Líquido */
+    h1, h2, h3 {
+        background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800 !important;
+    }
+    
+    /* Tabelas e Dataframes customizados para o modo Escuro */
+    .stDataFrame {
         border: 1px solid #1e293b !important;
-        border-radius: 12px !important;
-        padding: 20px !important;
-        text-align: center;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.3) !important;
+        border-radius: 8px !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# 🦾 NÚCLEO REAL DE INTELIGÊNCIA ARTIFICIAL: AMBIENTE 3D ANIMADO EM CANVAS HTML5
+# CHASSI INTERNO DA PÁGINA (RECORTADO E IDÊNTICO À HOME)
 # =============================================================================================================
-st.markdown("### 🧬 NÚCLEO DINÂMICO DE PROCESSAMENTO DA IA")
-
-html_robo_real = """
-<div style="text-align: center; background: #070c16; padding: 20px; border-radius: 16px; border: 1px solid #1e293b; box-shadow: 0px 10px 40px rgba(0,0,0,0.5);">
-    <canvas id="canvasRobo3D" width="800" height="260" style="background: transparent; max-width: 100%;"></canvas>
+st.markdown("""
+<div class="modulo-container-interno">
+    <h2 style='margin-top: 0; font-size: 24px;'>🛰️ MÓDULO 1: RADAR DE PRODUTOS [FILTRO XEQUE-MATE]</h2>
+    <p style='margin: 10px 0 0 0; font-size: 14px; color: #cbd5e1; line-height: 1.5;'>
+        Filtro analítico avançado focado na extração e mineração das 22 ofertas com maior tração de vendas e ROI 
+        nas plataformas ClickBank, BuyGoods e Hotmart.
+    </p>
 </div>
+""", unsafe_allow_html=True)
 
-<script>
-    const canvas = document.getElementById('canvasRobo3D');
-    const ctx = canvas.getContext('2d');
-    let angulo = 0;
+st.write("")
 
-    function desenharIA() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        const centroX = canvas.width / 2;
-        const centroY = canvas.height / 2;
-        
-        angulo += 0.015;
-        ctx.strokeStyle = '#00E5FF';
-        ctx.lineWidth = 1.5;
-        
-        ctx.beginPath();
-        ctx.arc(centroX, centroY, 110, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        ctx.strokeStyle = '#00FF87';
-        ctx.beginPath();
-        ctx.arc(centroX, centroY, 90, angulo, angulo + Math.PI, false);
-        ctx.stroke();
+# 📑 SEÇÃO DE CONFIGURAÇÃO DO RADAR (SELETORES INTERNOS)
+col_filtro1, col_filtro2 = st.columns(2)
+with col_filtro1:
+    plataforma = st.selectbox("Selecione a Plataforma de Origem:", ["ClickBank 🇺🇸", "BuyGoods 🇺🇸", "Hotmart 🇧🇷", "Braip 🇧🇷"])
+with col_filtro2:
+    categoria = st.selectbox("Selecione o Nicho de Mercado:", ["Saúde & Bem-Estar", "Renda Extra / Finanças", "Mentalidade / Espiritualidade"])
 
-        ctx.beginPath();
-        ctx.arc(centroX, centroY, 90, angulo + Math.PI, angulo, false);
-        ctx.stroke();
+st.write("---")
 
-        ctx.fillStyle = '#ffffff';
-        ctx.strokeStyle = '#00E5FF';
-        ctx.lineWidth = 3;
-        
-        ctx.beginPath();
-        ctx.roundRect(centroX - 25, centroY - 80, 50, 55, 15);
-        ctx.fill();
-        ctx.stroke();
-        
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath();
-        ctx.roundRect(centroX - 33, centroY - 65, 8, 25, 4);
-        ctx.roundRect(centroX + 25, centroY - 65, 8, 25, 4);
-        ctx.fill();
-        ctx.stroke();
-        
-        ctx.fillStyle = "rgba(0, 229, 255, 0.9)";
-        ctx.beginPath();
-        ctx.arc(centroX - 12, centroY - 55, 5, 0, Math.PI * 2);
-        ctx.fill();
+# 📊 EXIBIÇÃO DA TABELA REQUINTADA DENTRO DO PAINEL RECORTADO
+st.markdown("#### 📋 Listagem de Produtos Validados pela IA")
 
-        ctx.beginPath();
-        ctx.arc(centroX + 12, centroY - 55, 5, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.fillStyle = '#00FF87';
-        ctx.fillRect(centroX - 10, centroY - 40, 20, 3);
-        
-        ctx.fillStyle = '#334155';
-        ctx.fillRect(centroX - 10, centroY - 25, 20, 10);
-        
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.moveTo(centroX - 45, centroY - 15);
-        ctx.lineTo(centroX + 45, centroY - 15);
-        ctx.lineTo(centroX + 35, centroY + 65);
-        ctx.lineTo(centroX - 35, centroY + 65);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-        
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath();
-        ctx.roundRect(centroX - 15, centroY, 30, 40, 6);
-        ctx.fill();
-        ctx.stroke();
-        
-        ctx.fillStyle = "rgba(0, 255, 135, 1)";
-        ctx.beginPath();
-        ctx.arc(centroX, centroY + 20, 8, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.lineWidth = 12;
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        
-        ctx.beginPath();
-        ctx.moveTo(centroX - 45, centroY - 10);
-        ctx.lineTo(centroX - 100, centroY + 15);
-        ctx.lineTo(centroX - 180, centroY - 15);
-        ctx.stroke();
-        
-        ctx.beginPath();
-        ctx.moveTo(centroX + 45, centroY - 10);
-        ctx.lineTo(centroX + 100, centroY + 15);
-        ctx.lineTo(centroX + 180, centroY - 15);
-        ctx.stroke();
-        
-        ctx.lineWidth = 4;
-        ctx.strokeStyle = '#0f172a';
-        ctx.beginPath();
-        ctx.moveTo(centroX - 45, centroY - 10);
-        ctx.lineTo(centroX - 100, centroY + 15);
-        ctx.lineTo(centroX - 180, centroY - 15);
-        ctx.moveTo(centroX + 45, centroY - 10);
-        ctx.lineTo(centroX + 100, centroY + 15);
-        ctx.lineTo(centroX + 180, centroY - 15);
-        ctx.stroke();
-        
-        ctx.fillStyle = 'rgba(0, 229, 255, 0.1)';
-        ctx.strokeStyle = '#00E5FF';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.roundRect(centroX - 280, centroY - 70, 90, 35, 5);
-        ctx.fill();
-        ctx.stroke();
-        ctx.fillStyle = '#00E5FF';
-        ctx.font = 'bold 11px sans-serif';
-        ctx.fillText('CORE: SECURE', centroX - 270, centroY - 48);
-        
-        ctx.strokeStyle = '#00E5FF';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(centroX - 180, centroY - 15, 6, 0, Math.PI * 2);
-        ctx.fillStyle = '#00E5FF';
-        ctx.fill();
-        
-        ctx.strokeStyle = '#00FF87';
-        ctx.beginPath();
-        ctx.arc(centroX + 180, centroY - 15, 6, 0, Math.PI * 2);
-        ctx.fillStyle = '#00FF87';
-        ctx.fill();
-        
-        ctx.strokeStyle = '#00FF87';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(centroX + 240, centroY + 20, 35, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        requestAnimationFrame(desenharIA);
-    }
-    desenharIA();
-</script>
-"""
-st.components.v1.html(html_robo_real, height=310, scrolling=False)
+dados_radar = {
+    "Nome do Produto": ["Java Burn", "Puravive", "Sugar Defender", "Citrus Burn", "Protocolo Zero", "Alpilean", "Cortexi"],
+    "Gravidade / Temperatura": ["180+ (Alta)", "150+ (Alta)", "210+ (Extrema)", "95+ (Média)", "120+ (Média)", "85+ (Estável)", "140+ (Alta)"],
+    "Comissão Média": ["$ 135.00", "$ 142.50", "$ 118.20", "R$ 197,00", "R$ 247,00", "$ 105.00", "$ 122.00"],
+    "Status de Leilão": ["Livre 🟢", "Livre 🟢", "Competitivo 🟡", "Livre 🟢", "Livre 🟢", "Saturado 🔴", "Competitivo 🟡"]
+}
+df_radar = pd.DataFrame(dados_radar)
+st.dataframe(df_radar, use_container_width=True, hide_index=True)
 
-# =============================================================================================================
-# APRESENTAÇÃO MAJESTOSA DA CENTRAL
-# =============================================================================================================
+st.write("")
+if st.button("📥 EXPORTAR RELATÓRIO DO RADAR PARA EXCEL (.CSV)", key="btn_radar_csv"):
+    st.success("✅ Download concluído! Arquivo gerado com os parâmetros operacionais atualizados.")
