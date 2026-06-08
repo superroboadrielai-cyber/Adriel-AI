@@ -5,30 +5,7 @@ import time
 # Configuração premium de layout amplo (Ocupa 100% da largura da tela)
 st.set_page_config(page_title="Adriel AI - Painel de Controle", layout="wide", initial_sidebar_state="collapsed")
 
-# =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO CLICAR NA TELA)
-# =============================================================================================================
-texto_boas_vindas = "Olá, Comandante José Marques da Silva! Menu lateral alinhado e botões padronizados. Pronto para operação."
-
-st.markdown(f"""
-<script>
-    document.addEventListener('click', function() {{
-        if (!window.audioDisparado) {{
-            var msg = new SpeechSynthesisUtterance();
-            msg.text = "{texto_boas_vindas}";
-            msg.lang = "pt-BR";
-            msg.rate = 1.0;
-            msg.pitch = 0.9;
-            window.speechSynthesis.speak(msg);
-            window.audioDisparado = true;
-        }}
-    }});
-</script>
-""", unsafe_allow_html=True)
-
-# =============================================================================================================
-# INJEÇÃO DE CSS DE ALTO PADRÃO (ALINHAMENTO CIRÚRGICO DO MENU ESQUERDO E DOS BOTÕES)
-# =============================================================================================================
+# INJEÇÃO DE CSS DE ALTA PERFORMANCE (CORREÇÃO DE ESPAÇAMENTO FANTASMA E ALINHAMENTO NO TETO)
 st.markdown("""
 <style>
     /* 🌌 Fundo Escuro Fiel ao Print da Imagem */
@@ -45,7 +22,7 @@ st.markdown("""
         padding-right: 2rem !important;
     }
     
-    /* Oculta os menus e barras nativos */
+    /* Oculta as bordas e menus nativos */
     [data-testid="stSidebar"] { display: none !important; }
     [data-testid="stHeader"] { display: none !important; }
     
@@ -56,12 +33,13 @@ st.markdown("""
         100% { border-color: #00E5FF; box-shadow: 0 0 8px rgba(0, 229, 255, 0.2); }
     }
 
-    /* Linhas divisórias das 3 colunas verticais */
+    /* Linhas divisórias das 3 colunas verticais (CORRIGIDO SEM HEIGHT FIXO) */
     .coluna-container {
         background-color: transparent;
         border-right: 1px solid #1e293b;
         padding-right: 15px;
         padding-left: 10px;
+        margin-top: 0px !important;
     }
     
     /* Caixas horizontais superiores de logs */
@@ -83,7 +61,7 @@ st.markdown("""
         text-transform: uppercase;
     }
 
-    /* 🟢 1. BOTÕES GERAIS DO MEIO E DA PLANILHA (PISCANTES E RESPONSIVOS) */
+    /* BOTÕES DA ESTEIRA QUE DISPARAM O SINAL PISCANTE NEON */
     div.stButton > button {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
         color: white !important;
@@ -97,6 +75,7 @@ st.markdown("""
         transition: all 0.3s ease-in-out !important;
     }
     
+    /* Ativa o sinal piscante na interação do mouse */
     div.stButton > button:hover {
         animation: sinal-pulsante 2s infinite ease-in-out !important;
         background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%) !important;
@@ -104,32 +83,20 @@ st.markdown("""
         transform: scale(1.02) !important;
     }
     
-    /* 📟 2. POLIMENTO E ALINHAMENTO CIRÚRGICO DA COLUNA ESQUERDA (MUDANÇA DE COR CORRIGIDA) */
-    .menu-lateral-btn {
-        display: flex;
-        flex-direction: column;
-        gap: 2px !important;
-        width: 100% !important;
-    }
-    
-    .menu-lateral-btn div.stButton > button {
-        background: #0f172a !important; /* Cor idêntica às caixas do print */
-        color: #cbd5e1 !important;
-        border: 2px solid #1e293b !important;
+    /* Customização dos botões pretos chapados do menu esquerdo */
+    .menu-lateral-btn > div.stButton > button {
+        background: transparent !important;
+        color: #94a3b8 !important;
+        border: 1px solid transparent !important;
         text-align: left !important;
-        padding: 12px 16px !important;
+        padding: 10px 15px !important;
         font-size: 14px !important;
-        width: 95% !important; /* Trava todos com a mesma largura milimétrica */
-        margin-bottom: 5px !important;
-        animation: none !important; /* Remove o piscar automático da esquerda */
     }
-    
-    /* Quando o mouse passa nos botões da esquerda: Acende Ciano de alta tecnologia */
-    .menu-lateral-btn div.stButton > button:hover {
+    .menu-lateral-btn > div.stButton > button:hover {
+        animation: none !important;
         background: #1e293b !important;
         color: #00FF87 !important;
-        border-color: #00E5FF !important;
-        box-shadow: 0 0 12px rgba(0, 229, 255, 0.5) !important;
+        border-color: #1e293b !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -143,14 +110,13 @@ if "pagina_atual" not in st.session_state:
 # =============================================================================================================
 col_esquerda, col_centro, col_direita = st.columns([0.75, 1.4, 1])
 
-# 🏢 COLUNA 1 (FIXA E IMUTÁVEL): LOGO ADRIEL AI + BOTÕES DO MENU LATERAL ORGANIZADOS
+# 🏢 COLUNA 1 (FIXA E IMUTÁVEL): LOGO ADRIEL AI + BOTÕES DO MENU LATERAL
 with col_esquerda:
     st.markdown('<div class="coluna-container">', unsafe_allow_html=True)
     st.markdown("<h2 style='color: #60a5fa; font-size: 24px; font-weight: 800; margin-bottom:0;'>🤖 Adriel AI</h2>", unsafe_allow_html=True)
     st.markdown("<p style='color: #64748b; font-size: 11px; margin-top:-5px; letter-spacing:1px;'>PAINEL DE CONTROLE</p>", unsafe_allow_html=True)
     st.write("---")
     
-    # Todos organizados com a mesma largura e alinhados na vertical
     st.markdown('<div class="menu-lateral-btn">', unsafe_allow_html=True)
     if st.button("🎛️ Dashboard", key="btn_nav_dash"): st.session_state.pagina_atual = "Dashboard"; st.rerun()
     if st.button("🛰️ Radar de Produtos", key="btn_nav_radar"): st.session_state.pagina_atual = "Radar"; st.rerun()
@@ -161,7 +127,7 @@ with col_esquerda:
     st.markdown('</div></div>', unsafe_allow_html=True)
 
 # =============================================================================================================
-# ROTEAMENTO DA FAMÍLIA DE PÁGINAS (MANTENDO O MESMO CORTE SEM MUDAR O ESTILO)
+# ROTEAMENTO DA FAMÍLIA DE PÁGINAS (MANTENDO O MESMO CORTE SEM MUDAR O ESTLO)
 # =============================================================================================================
 
 # 🏠 INTERFACE 1: DASHBOARD COMPLETO (PADRÃO DE INSTALAÇÃO DO SEU PRINT)
@@ -206,3 +172,23 @@ elif st.session_state.pagina_atual == "Radar":
 
     with col_direita:
         st.markdown('<div class="coluna-container" style="border-right: none;">', unsafe_allow_html=True)
+        st.markdown('<div class="header-box-real" style="text-align: right;">Volume Escaneado: <b>1.420 Produtos</b></div>', unsafe_allow_html=True)
+        st.markdown('<p class="subtitulo-bloco-real">🏆 AS 3 OFERTAS DE MAIOR GRAVIDADE</p>', unsafe_allow_html=True)
+        st.info("🔥 1. Java Burn - Gravidade 240\n\n⭐ 2. Puravive - Gravidade 190\n\n⚡ 3. Sugar Defender - Gravidade 180")
+        st.markdown('</div>', unsafe_allow_html=True)
+
+# 🚀 INTERFACE 3: PÁGINA RECORTE DO ATIVADOR GOOGLE ADS API
+elif st.session_state.pagina_atual == "GoogleAds":
+    with col_centro:
+        st.markdown('<div class="coluna-container">', unsafe_allow_html=True)
+        st.markdown('<div class="header-box-real">🚀 Painel de Conexão com os Servidores de Tráfego</div>', unsafe_allow_html=True)
+        st.markdown('<p class="subtitulo-bloco-real">🤖 CONFIGURAÇÕES DA CAMPANHA (GOOGLE ADS API)</p>', unsafe_allow_html=True)
+        
+        st.text_input("Nome Técnico da Campanha:", value="Sales-Search-2026")
+        st.selectbox("Métrica de Foco do Leilão:", ["Conversões", "Cliques", "Parcela de impressões"])
+        st.number_input("Orçamento Financeiro Diário (R$):", min_value=10.0, value=50.0, step=5.0)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with col_direita:
+        st.markdown('<div class="coluna-container" style="border-right: none;">', unsafe_allow_html=True)
+        st.markdown('<div class="header-box-real" style="text-align: right;">Handshake: <span style="color:#10b981;">Aprovado 🟢</span></div>', unsafe_allow_html=True)
