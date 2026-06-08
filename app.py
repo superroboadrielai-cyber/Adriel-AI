@@ -6,7 +6,7 @@ import time
 st.set_page_config(page_title="Adriel AI - Core Dashboard", layout="wide", initial_sidebar_state="expanded")
 
 # =============================================================================================================
-# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO CLICAR NA TELA)
+# INJEÇÃO DE ÁUDIO REAL VIA JAVASCRIPT (O ROBÔ FALA AO ENTRAR NA TELA)
 # =============================================================================================================
 texto_boas_vindas = "Olá, Comandante José Marques da Silva! Todos os sistemas e a API do Google Ads estão prontos na memória ativa."
 
@@ -27,7 +27,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# INJEÇÃO DE CÓDIGO CSS PREMIUM DEFINITIVO (ROBÔ SVG NATIVO OPERANDO NO RODAPÉ)
+# INJEÇÃO DE CÓDIGO CSS PREMIUM DEFINITIVO (ROBÔ NATIVO EM VETOR SEM LINKS EXTERNOS)
 # =============================================================================================================
 st.markdown("""
 <style>
@@ -93,7 +93,7 @@ st.markdown("""
 
     .robo-container-fixed {
         position: fixed;
-        bottom: 10px;
+        bottom: 20px;
         left: 5%;
         width: 120px;
         z-index: 99999;
@@ -114,23 +114,27 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# INJEÇÃO DO ROBÔ DIGITALIZADO VIA OPERAÇÃO DE CÓDIGO INTERNO (NATIVO CONTÍNUO)
+# INJEÇÃO DO ROBÔ CONSTRUÍDO VIA VETOR GEOMÉTRICO DIRETO NA TELA (SISTEMA NATIVO IMPOSSÍVEL DE QUEBRAR)
 # =============================================================================================================
 st.markdown("""
 <div class="robo-container-fixed">
-    <svg viewBox="0 0 100 100" width="100" height="100" style="filter: drop-shadow(0px 0px 10px #00FF87);">
-        <!-- Cabeça do Robô -->
-        <rect x="25" y="20" width="50" height="40" rx="10" fill="#ffffff" stroke="#00E5FF" stroke-width="3"/>
-        <!-- Olhos Acesos em Ciano -->
-        <circle cx="40" cy="35" r="5" fill="#00E5FF"/>
-        <circle cx="60" cy="35" r="5" fill="#00E5FF"/>
-        <!-- Boca Eletrônica -->
-        <rect x="40" y="48" width="20" height="4" fill="#00FF87" rx="2"/>
-        <!-- Antena Brilhante -->
-        <line x1="50" y1="20" x2="50" y2="5" stroke="#00FF87" stroke-width="4"/>
-        <circle cx="50" cy="5" r="4" fill="#00FF87"/>
-        <!-- Corpo Compacto -->
-        <rect x="35" y="60" width="30" height="25" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <svg viewBox="0 0 100 100" width="100" height="100" style="filter: drop-shadow(0px 0px 12px #00FF87);">
+        <!-- Cabeça Humanoide Branca do Robô -->
+        <rect x="25" y="20" width="50" height="40" rx="12" fill="#ffffff" stroke="#00E5FF" stroke-width="3"/>
+        <!-- Painéis Tecnológicos Azuis e Olhos de LED Acesos -->
+        <circle cx="42" cy="36" r="6" fill="#00E5FF"/>
+        <circle cx="58" cy="36" r="6" fill="#00E5FF"/>
+        <circle cx="42" cy="36" r="2" fill="#050811"/>
+        <circle cx="58" cy="36" r="2" fill="#050811"/>
+        <!-- Boca de Sinal de Áudio Neon -->
+        <rect x="42" y="48" width="16" height="4" fill="#00FF87" rx="2"/>
+        <!-- Antenas do Radar Holográfico do Topo -->
+        <line x1="50" y1="20" x2="50" y2="4" stroke="#00FF87" stroke-width="4"/>
+        <circle cx="50" cy="4" r="5" fill="#00FF87"/>
+        <!-- Corpo e Chassi Metálico -->
+        <rect x="36" y="60" width="28" height="20" rx="4" fill="#0f172a" stroke="#00E5FF" stroke-width="2"/>
+        <!-- Luz de Core de Energia no Peito -->
+        <circle cx="50" cy="70" r="4" fill="#00FF87"/>
     </svg>
 </div>
 """, unsafe_allow_html=True)
