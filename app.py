@@ -27,29 +27,61 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# INJEÇÃO DE CSS SUPREMO DE HIGH PERFORMANCE (ESTILO BLACK E SINAL PISCANTE HOVER)
+# INJEÇÃO DE CSS DE ALTO LUXO (OCULTA BARRA CINZA NATIVA E ESTICA O MONITOR EM 100%)
 # =============================================================================================================
 st.markdown("""
 <style>
     /* 🌌 Fundo Escuro Fiel ao Print do Leonardo AI */
-    .stApp { background-color: #0b111e !important; color: #ffffff !important; }
-    .block-container { padding-top: 1rem !important; padding-bottom: 0rem !important; padding-left: 2rem !important; padding-right: 2rem !important; }
+    .stApp {
+        background-color: #0b111e !important;
+        color: #ffffff !important;
+    }
     
-    /* Oculta as barras nativas e menus cinzas antigos */
+    /* Remove as margens do topo padrão do Streamlit */
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 0rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    /* 🚨 FORÇA A BARRA CINZA FEIA LATERAL NATIVA A SUMIR DA TELA PARA SEMPRE */
     [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
     [data-testid="stHeader"] { display: none !important; }
     
-    /* 🚨 ANIMAÇÃO DE SINAL NEON: ALTERNA AS BORDAS NO SELETOR (CIANO <-> VERDE) */
+    /* ANIMAÇÃO DE SINAL NEON: ALTERNA AS BORDAS NO SELETOR (CIANO <-> VERDE) */
     @keyframes sinal-pulsante {
         0% { border-color: #00E5FF; box-shadow: 0 0 8px rgba(0, 229, 255, 0.2); }
         50% { border-color: #00FF87; box-shadow: 0 0 18px rgba(0, 255, 135, 0.4); }
         100% { border-color: #00E5FF; box-shadow: 0 0 8px rgba(0, 229, 255, 0.2); }
     }
 
-    .coluna-container { background-color: transparent; border-right: 1px solid #1e293b; padding-right: 15px; padding-left: 10px; min-height: 85vh; }
-    .header-box-real { background-color: #0f172a !important; border: 1px solid #1e293b !important; border-radius: 8px !important; padding: 12px 18px !important; margin-bottom: 15px !important; font-size: 13px !important; }
-    .kpi-box { background: #0f172a; padding: 10px 15px; border-radius: 8px; border: 1px solid #1e293b; text-align: center; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); }
-    .subtitulo-bloco-real { font-size: 13px !important; font-weight: bold !important; color: #60a5fa !important; margin-bottom: 15px; text-transform: uppercase; }
+    .coluna-container {
+        background-color: transparent;
+        border-right: 1px solid #1e293b;
+        padding-right: 15px;
+        padding-left: 10px;
+        min-height: 85vh;
+    }
+    
+    .header-box-real {
+        background-color: #0f172a !important;
+        border: 1px solid #1e293b !important;
+        border-radius: 8px !important;
+        padding: 12px 18px !important;
+        margin-bottom: 15px !important;
+        font-size: 13px !important;
+    }
+    
+    .subtitulo-bloco-real {
+        font-size: 13px !important;
+        font-weight: bold !important;
+        color: #60a5fa !important;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+    }
 
     /* BOTÕES DA COLUNA CENTRAL */
     div.stButton > button {
@@ -98,10 +130,10 @@ with col_esquerda:
     st.markdown('</div></div>', unsafe_allow_html=True)
 
 # =============================================================================================================
-# COLUNAS 2 E 3 DINÂMICAS
+# COLUNAS 2 E 3 DINÂMICAS ROTEADAS (MUDAM O CONTEÚDO SEM SAIR DO ARQUIVO OU PERDER O FOCO)
 # =============================================================================================================
 
-# 🏠 SINAL 0: INTERFACE DO DASHBOARD GERAL
+# 🏠 INTERFACE DO DASHBOARD GERAL
 if st.session_state.modulo_ativo == "Dashboard":
     with col_centro:
         st.markdown('<div class="coluna-container">', unsafe_allow_html=True)
@@ -111,19 +143,29 @@ if st.session_state.modulo_ativo == "Dashboard":
         st.markdown('</div>', unsafe_allow_html=True)
     with col_direita:
         st.markdown('<div class="coluna-container" style="border-right: none;">', unsafe_allow_html=True)
-        st.markdown('<div class="header-box-real" style="text-align: right;">🟢 Status: <span style="color:#00FF87; font-weight:bold;">OPERACIONAL</span></div>', unsafe_allow_html=True)
+        st.markdown('<div class="header-box-real" style="text-align: right;">🟢 Status: <span style="color:#00FF87; font-weight:bold;">OPERACIONAL 🟢</span></div>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
-# 🛰️ SINAL 1: ENCAIXE VAZIO DO RADAR (VAMOS CRIAR NO PRÓXIMO PASSO)
+# 🛰️ INTERFACE DO RADAR DE PRODUTOS COMPLETO DO SEU BACKUP
 elif st.session_state.modulo_ativo == "Radar":
     with col_centro:
         st.markdown('<div class="coluna-container">', unsafe_allow_html=True)
-        st.write("Aguardando ativação do Módulo 1...")
+        st.markdown('<div class="header-box-real">🛰️ Scanner de Extração de Tráfego de Elite</div>', unsafe_allow_html=True)
+        st.markdown('<p class="subtitulo-bloco-real">MÓDULO 1: RADAR DE PRODUTOS [FILTRO XEQUE-MATE]</p>', unsafe_allow_html=True)
+        
+        dados_busca = {
+            "Produto Minerado": ["Sugar Defender", "Java Burn", "Puravive", "Prodentim", "GlucoBerry"],
+            "Gravidade Capturada": ["210+", "185+", "152+", "140+", "122+"],
+            "CPC Médio (USD)": ["$ 1.20", "$ 1.85", "$ 2.10", "$ 1.45", "$ 0.95"]
+        }
+        st.dataframe(pd.DataFrame(dados_busca), use_container_width=True, hide_index=True)
         st.markdown('</div>', unsafe_allow_html=True)
     with col_direita:
         st.markdown('<div class="coluna-container" style="border-right: none;">', unsafe_allow_html=True)
-        st.write("Aguardando parâmetros do Radar...")
+        st.markdown('<div class="header-box-real" style="text-align: right;">Filtro: <b>Top 22 Ativos</b></div>', unsafe_allow_html=True)
+        st.markdown('<p class="subtitulo-bloco-real">📊 VOLUME DE RASTREAMENTO GLOBAL</p>', unsafe_allow_html=True)
+        st.info("🔥 Scanner ativo capturando variações de Gravidade na Gringa 24 horas por dia.")
         st.markdown('</div>', unsafe_allow_html=True)
 
-# Rodapé unificado
+# Rodapé unificado da família PRO
 st.markdown('<div style="clear: both; text-align: center; font-size: 11px; color: #475569; padding-top: 20px;"><hr style="border-color: #1e293b;">© 2026 Adriel-AI Pro - Todos os Direitos Reservados.</div>', unsafe_allow_html=True)
