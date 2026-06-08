@@ -1,0 +1,8 @@
+import streamlit as st
+
+st.title("Caçador")
+st.write("Esta é a página do Caçador.")
+
+# Exemplo de funcionalidade para esta página
+if st.button("Executar Busca"):
+    st.write("Busca iniciada...")
