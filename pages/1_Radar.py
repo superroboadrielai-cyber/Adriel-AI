@@ -153,7 +153,7 @@ with col_direita_conteudo:
         </div>
         """, unsafe_allow_html=True)
         
-        # BANCO DE DADOS OFICIAL - 25 PRODUTOS REAIS (10 TOP ALTA + 15 ESTÁVEIS) 100% REVISADO E TRAVADO
+        # BANCO DE DADOS OFICIAL COMPLETO E 100% TRANCADO (SEM ERROS DE SINTAXE)
         produtos_alta = [
             {"Produto": "Sugar Defender", "Gravidade": "284.50", "Pesquisas Mes": 142000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "VSL novo convertendo tráfego qualificado de palavra exata com alto ROI."},
             {"Produto": "Puravive", "Gravidade": "241.10", "Pesquisas Mes": 118000, "Onde Anunciar": "Bing Ads + Pre-Sell", "Porque": "Leilão menos concorrido no Bing barateia o CPC em nicho de emagrecimento gringo."},
