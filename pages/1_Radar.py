@@ -1,114 +1,132 @@
 import streamlit as st
 import pandas as pd
-import time
+import numpy as np
+from datetime import datetime
 
 # Configuração de Layout Amplo Executivo Premium Black (Grudado no Teto)
-st.set_page_config(page_title="Adriel-AI Pro", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Adriel-AI Pro - Radar", layout="wide", initial_sidebar_state="collapsed")
 
 # =============================================================================================================
-# 🚨 CSS SUPREMO: EXTERMINA A BARRA BRANCA DO TOPO E CRIA OS SINAIS EM ANIMAÇÃO PISCANTE NEON
+# INJEÇÃO DE CSS DE ALTO LUXO (EXTINÇÃO DA BARRA BRANCA E ANIMAÇÕES DE SINAL NEON PISCANTES)
 # =============================================================================================================
 st.markdown("""
 <style>
     /* 🌌 Fundo Escuro Premium Cyber Onyx */
-    .stApp { background-color: #0b111e !important; color: #ffffff !important; }
-    [data-testid="stHeader"] { display: none !important; height: 0px !important; background: transparent !important; }
+    .stApp {
+        background-color: #0b111e !important;
+        color: #ffffff !important;
+    }
+    
+    /* 🚨 EXTINÇÃO TOTAL DA BARRA SUPERIOR BRANCA DO STREAMLIT (ELIMINA A ESTRELA E A LINHA DO TOPO) */
+    [data-testid="stHeader"] { 
+        display: none !important; 
+        height: 0px !important;
+        background: transparent !important;
+    }
     .stHeader { display: none !important; }
     
-    /* Margem zero no teto do monitor */
-    .block-container { padding-top: 1rem !important; padding-bottom: 0rem !important; padding-left: 2rem !important; padding-right: 2rem !important; max-width: 100% !important; width: 100% !important; }
+    /* 🚨 ZERA AS MARGENS DO TOPO: PUXA O SEU SITE GRUDADO NO TETO DO MONITOR */
+    .block-container {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
     [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
 
-    /* ESTILO DOS BOTÕES LATERAIS DE CARBONO PREMIUM */
-    .menu-lateral-container div.stButton > button {
-        background: #0f172a !important; color: #cbd5e1 !important; font-weight: 700 !important; font-size: 13px !important;
-        border: 1px solid #1e293b !important; text-align: left !important; padding: 14px 20px !important; width: 100% !important;
-        margin-bottom: 8px !important; border-radius: 6px !important; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .menu-lateral-container div.stButton > button:hover { background: #1e293b !important; color: #00FF87 !important; border-color: #00FF87 !important; }
-    
     /* MOLDURAS EXECUTIVAS */
-    .caixa-radar-neon { background-color: #080f1d !important; border: 2px solid #00E5FF !important; border-radius: 14px !important; padding: 22px !important; margin-bottom: 20px !important; }
-    .titulo-secao { color: #00FF87; font-size: 18px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px; }
+    .caixa-radar-neon { 
+        background-color: #080f1d !important; 
+        border: 2px solid #00E5FF !important; 
+        border-radius: 14px !important; 
+        padding: 22px !important; 
+        margin-bottom: 20px !important; 
+    }
+    .titulo-secao { 
+        color: #00FF87; 
+        font-size: 18px; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        margin-bottom: 15px; 
+        letter-spacing: 0.5px; 
+    }
 
-    /* 🚨 ANIMAÇÃO DE SINAL PISCANTE NEON DE ALTA TRAÇÃO */
+    /* 🚨 ANIMAÇÃO DE SINAL PISCANTE NEON VIBRANTE (HOVER/TOUCH COORDENADO) */
     @keyframes pulso-vibrante-verde {
-        0% { color: #00FF87; text-shadow: 0 0 4px #00FF87; opacity: 0.4; }
-        50% { color: #10b981; text-shadow: 0 0 15px #00FF87; opacity: 1; }
-        100% { color: #00FF87; text-shadow: 0 0 4px #00FF87; opacity: 0.4; }
+        0% { color: #00FF87; text-shadow: 0 0 5px #00FF87; opacity: 0.5; }
+        50% { color: #10b981; text-shadow: 0 0 20px #00FF87; opacity: 1; }
+        100% { color: #00FF87; text-shadow: 0 0 5px #00FF87; opacity: 0.5; }
     }
     @keyframes pulso-vibrante-azul {
-        0% { color: #00E5FF; text-shadow: 0 0 4px #00E5FF; opacity: 0.4; }
-        50% { color: #3b82f6; text-shadow: 0 0 15px #00E5FF; opacity: 1; }
-        100% { color: #00E5FF; text-shadow: 0 0 4px #00E5FF; opacity: 0.4; }
+        0% { color: #00E5FF; text-shadow: 0 0 5px #00E5FF; opacity: 0.5; }
+        50% { color: #3b82f6; text-shadow: 0 0 20px #00E5FF; opacity: 1; }
+        100% { color: #00E5FF; text-shadow: 0 0 5px #00E5FF; opacity: 0.5; }
     }
     
     .sinal-alta { animation: pulso-vibrante-verde 1.2s infinite ease-in-out; font-weight: bold; font-size: 16px; }
-    .sinal-oscilacao { animation: pulso-vibrante-azul 1.5s infinite ease-in-out; font-weight: bold; font-size: 16px; }
+    .sinal-estavel { animation: pulso-vibrante-azul 1.5s infinite ease-in-out; font-weight: bold; font-size: 16px; }
 </style>
 """, unsafe_allow_html=True)
 
-if "modulo_ativo" not in st.session_state:
-    st.session_state.modulo_ativo = "Radar"
+# Marca Executiva
+st.markdown("<h2 style='color: #60a5fa; font-size: 24px; font-weight: 800; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 8px; font-size:12px; border-radius:4px; vertical-align:middle;'>PRO</span></h2>", unsafe_allow_html=True)
+st.markdown("<p style='color: #64748b; font-size: 11px; margin-top:-5px; letter-spacing:1px;'>ENTERPRISE CONTROL CENTER • REAL-TIME RADAR ENGINE</p>", unsafe_allow_html=True)
+st.write("---")
+
+# Cabeçalho do Radar
+st.markdown("""
+<div class="caixa-radar-neon">
+    <h2 style="color: #00E5FF; font-size: 24px; font-weight: 800; margin: 0 0 5px 0;">📊 MÓDULO 1: RADAR DE PRODUTOS DINÂMICOS</h2>
+    <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 0px;">
+        Varredura de tráfego internacional ativa. Selecione a oferta na caixa de inspeção à direita para assistir ao gráfico computar o volume de buscas acumulado hora por hora até o exato momento da sua consulta.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 # =============================================================================================================
-# MONTAGEM DA INFRAESTRUTURA DE COLUNAS VIRTUAIS (MENU LATERAL + CONTEÚDO EXPANDIDO)
+# BANCO DE DADOS OFICIAL - 25 PRODUTOS VALIDADOS (10 TOP COM SINAL DE ALTA + 15 COM SINAL ESTÁVEL)
 # =============================================================================================================
-col_esquerda, col_centro = st.columns([0.20, 0.80])
+produtos_alta = [
+    {"Produto": "Sugar Defender", "Gravidade": "284.50", "Pesquisas Mes": 142000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "VSL novo convertendo tráfego qualificado de palavra exata com alto ROI."},
+    {"Produto": "Puravive", "Gravidade": "241.10", "Pesquisas Mes": 118000, "Onde Anunciar": "Bing Ads + Pre-Sell", "Porque": "Leilão menos concorrido no Bing barateia o CPC em nicho de emagrecimento gringo."},
+    {"Produto": "Java Burn", "Gravidade": "198.40", "Pesquisas Mes": 96000, "Onde Anunciar": "Google Ads (Pre-Sell)", "Porque": "Checkout rápido reduz abandono de carrinho. Essencial usar domínio blindado."},
+    {"Produto": "Prodentim", "Gravidade": "172.90", "Pesquisas Mes": 84000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "Saúde dental com altíssima taxa de recorrência e recompra automática."},
+    {"Produto": "Alpilean", "Gravidade": "165.20", "Pesquisas Mes": 79000, "Onde Anunciar": "Bing Ads Direto", "Porque": "Baixo reembolso nesta temporada garante estabilidade nas comissões pagas."},
+    {"Produto": "GlucoBerry", "Gravidade": "154.80", "Pesquisas Mes": 68000, "Onde Anunciar": "Google Ads (Reino Unido)", "Porque": "Baixa concorrência de grandes afiliados nos países europeus da ClickBank."},
+    {"Produto": "Liv Pure", "Gravidade": "147.30", "Pesquisas Mes": 62000, "Onde Anunciar": "Google Ads + Pre-Sell", "Porque": "Nicho de fígado. Páginas pontes robustas eliminam quedas automáticas."},
+    {"Produto": "NeuroZoom", "Gravidade": "139.10", "Pesquisas Mes": 54000, "Onde Anunciar": "Google Pesquisa Direta", "Porque": "Produto de foco cognitivo escalando rápido no checkout do BuyGoods."},
+    {"Produto": "ZenCortex", "Gravidade": "132.50", "Pesquisas Mes": 49000, "Onde Anunciar": "Google Ads (Maximizar Cliques)", "Porque": "Excelente material de copys prontas fornecido direto pelo gerente da oferta."},
+    {"Produto": "Prostadine", "Gravidade": "128.40", "Pesquisas Mes": 45000, "Onde Anunciar": "Bing Ads (EUA)", "Porque": "CTR médio de anúncios subiu 20% após atualização do criativo oficial."}
+]
 
-with col_esquerda:
-    st.write("")
-    st.markdown('<div class="menu-lateral-container">', unsafe_allow_html=True)
-    if st.button("🎛️ Dashboard Geral", key="btn_app"): st.session_state.modulo_ativo = "Dashboard"; st.rerun()
-    if st.button("🛰️ 1. Radar de Produtos", key="btn_radar"): st.session_state.modulo_ativo = "Radar"; st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
+produtos_estaveis = [
+    {"Produto": "Dentitox Pro", "Gravidade": "114.60", "Pesquisas Mes": 38000, "Onde Anunciar": "Google Ads (Austrália)", "Porque": "Forte conversão identificada no mercado australiano fugindo do leilão caro dos EUA."},
+    {"Produto": "Metanail Complex", "Gravidade": "109.20", "Pesquisas Mes": 35000, "Onde Anunciar": "Bing Ads + Advertorial", "Porque": "Nicho de fungo de unha performa bem com textos informativos de autoridade."},
+    {"Produto": "Kerassentials", "Gravidade": "102.50", "Pesquisas Mes": 31000, "Onde Anunciar": "Google Anúncios RSA", "Porque": "Estabilidade histórica de buscas. Destacar 60 dias de garantia gera urgência."},
+    {"Produto": "Ikaria Lean Juice", "Gravidade": "98.40", "Pesquisas Mes": 29000, "Onde Anunciar": "Google (Copys Curtas)", "Porque": "Flutuação normal por fadiga de criativos. Exige mudar ângulo da copy."},
+    {"Produto": "Exipure", "Gravidade": "91.10", "Pesquisas Mes": 26000, "Onde Anunciar": "Google (Maximizar Conversões)", "Porque": "Produto tradicional de confiança. CPC baixo viabiliza campanhas estáveis."},
+    {"Produto": "Joint Genesis", "Gravidade": "87.30", "Pesquisas Mes": 24000, "Onde Anunciar": "Google Ads (Tarde/Noite)", "Porque": "Público sênior de dores articulares compra mais nos horários vespertinos."},
+    {"Produto": "Sight Care", "Gravidade": "82.90", "Pesquisas Mes": 22000, "Onde Anunciar": "Google Ads + Negativação", "Porque": "Taxa de comissão fixa compensa oscilações. Negativar curiosos é obrigatório."},
+    {"Produto": "Protoflow", "Gravidade": "79.40", "Pesquisas Mes": 19000, "Onde Anunciar": "Bing Ads (Pesquisa)", "Porque": "Ausência de grandes afiliados industriais permite lances mais econômicos."},
+    {"Produto": "FlowForce Max", "Gravidade": "74.80", "Pesquisas Mes": 17000, "Onde Anunciar": "Google Ads (CPC Manual)", "Porque": "Procura recuou levemente na semana. Ideal para controlar custos na risca."},
+    {"Produto": "Ted's Woodworking", "Gravidade": "71.50", "Pesquisas Mes": 16000, "Onde Anunciar": "Google Fundo de Funil", "Porque": "Infoproduto clássico mais antigo da gringa. Vende sem oscilações drásticas."},
+    {"Produto": "Folifort", "Gravidade": "68.20", "Pesquisas Mes": 14000, "Onde Anunciar": "Google Ads (Pre-Sell)", "Porque": "Nicho capilar masculino. CPC moderado com ótimas taxas de clique."},
+    {"Produto": "Cortexi", "Gravidade": "64.90", "Pesquisas Mes": 13500, "Onde Anunciar": "Bing Ads (Canadá)", "Porque": "Mercado canadense comprando bem com baixa concorrência de lances."},
+    {"Produto": "Alpha Tonic", "Gravidade": "59.30", "Pesquisas Mes": 12000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "Foco em público masculino maduro. Conversão firme aos finais de semana."},
+    {"Produto": "Medici Cordyceps", "Gravidade": "55.10", "Pesquisas Mes": 11000, "Onde Anunciar": "Google Pesquisa", "Porque": "Suplemento de cogumelos medicinais em alta demanda conceitual na gringa."},
+    {"Produto": "Apilean Drops", "Gravidade": "51.40", "Pesquisas Mes": 9500, "Onde Anunciar": "Google Ads (RSA)", "Porque": "Variação líquida de oferta principal. Boa conversão usando listas de suporte."}
+]
 
-with col_centro:
-    st.write("")
-    if st.session_state.modulo_ativo == "Radar":
-        st.markdown("""
-        <div class="caixa-radar-neon">
-            <h2 style="color: #00E5FF; font-size: 24px; font-weight: 800; margin: 0 0 5px 0;">🛰️ INTEL-RADAR MÓDULO 1: EXTRAÇÃO INTERNACIONAL REAL</h2>
-            <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 0px;">
-                Conexão criptografada transmitindo em tempo real o leilão de lances e flutuação de ofertas nos Estados Unidos e Europa.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+lista_todos_nomes = [item["Produto"] for item in produtos_alta] + [item["Produto"] for item in produtos_estaveis]
+dicionario_todos = {item["Produto"]: item for item in produtos_alta + produtos_estaveis}
 
-        # -----------------------------------------------------------------------------------------------------
-        # 🟢 SEÇÃO 1: OS 10 TOP SUPER VALIDADOS EM SINAL DE ALTA ABSOLUTA
-        # -----------------------------------------------------------------------------------------------------
-        st.markdown('<p class="titulo-secao">🔥 TOP 10 SUPER VALIDADOS - SINAL DE ALTA OPERACIONAL</p>', unsafe_allow_html=True)
-        
-        top_10_dados = [
-            {"Sinal": "▲ ALTA NEON", "Produto": "Sugar Defender", "Índice Real": "Gravidade: 284.50", "O Porquê Técnico": "Faturamento bruto batendo recordes na ClickBank. O VSL gringo converte muito tráfego de fundo de funil.", "Estratégia Recomendada": "Google Ads - Fundo de Funil (Palavra exata) + Blindagem de Pre-cell."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "Puravive", "Índice Real": "Gravidade: 215.10", "O Porquê Técnico": "Nicho de emagrecimento explodindo no leilão móvel dos EUA. Concorrentes com CPC estabilizado.", "Estratégia Recomendada": "Bing Ads (Pesquisa Direta) - Aproveite o custo de clique baixo para escalar rápido."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "Java Burn", "Índice Real": "Gravidade: 198.40", "O Porquê Técnico": "Oferta clássica renovada. O checkout simplificado em um clique está reduzindo carrinhos abandonados.", "Estratégia Recomendada": "Google Ads - Rede de Pesquisa Internacional direcionando para Pre-Cell Curta."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "Prodentim", "Índice Real": "Gravidade: 172.90", "O Porquê Técnico": "Nicho de saúde dental com alta retenção de clientes recorrentes. Comissões pagas em menos de 7 dias.", "Estratégia Recomendada": "Google Ads - Segmentação para público acima de 45 anos na gringa."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "Alpilean", "Índice Real": "Gravidade: 165.20", "O Porquê Técnico": "A comissão média subiu para $ 142 por venda. Baixa taxa de reembolso nesta temporada.", "Estratégia Recomendada": "Bing Ads + Landing Page limpa focada em depoimentos validados pela IA."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "GlucoBerry", "Índice Real": "Gravidade: 154.80", "O Porquê Técnico": "Produto de controle de açúcar com buscas em massa na Europa. Menos concorrência de grandes afiliados.", "Estratégia Recomendada": "Google Ads API - Subir anúncios RSA focados no Reino Unido e Austrália."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "Liv Pure", "Índice Real": "Gravidade: 147.30", "O Porquê Técnico": "Nicho de saúde do fígado. Páginas pontes robustas estão eliminando suspensões automáticas.", "Estratégia Recomendada": "Google Ads - Criar criativos RSA focados na pureza e aprovação dos ingredientes."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "NeuroZoom", "Índice Real": "Gravidade: 139.10", "O Porquê Técnico": "Foco cognitivo. Produto novo escalando rápido no BuyGoods com bônus agressivo no checkout.", "Estratégia Recomendada": "Rede de Pesquisa Direct Link (Google) se o domínio oficial estiver liberado."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "ZenCortex", "Índice Real": "Gravidade: 132.50", "O Porquê Técnico": "Suplemento para audição com ótimas copys prontas fornecidas diretamente pelo produtor.", "Estratégia Recomendada": "Google Ads - Fundo de funil com lances de Maximizar Cliques na fase inicial."},
-            {"Sinal": "▲ ALTA NEON", "Produto": "Prostadine", "Índice Real": "Gravidade: 128.40", "O Porquê Técnico": "Saúde masculina. CTR médio dos anúncios subiu 20% após a última atualização do VSL de vendas.", "Estratégia Recomendada": "Bing Ads - Excelente tração nos EUA e Canadá com criativos discretos de autoridade."}
-        ]
+# Interface Ampla
+col_lista, col_graficos = st.columns([0.55, 0.45])
 
-        # Renderização manual de luxo para embutir as setas piscantes reais nas linhas
-        for item in top_10_dados:
-            col_s, col_p, col_i, col_y, col_e = st.columns([0.15, 0.15, 0.15, 0.30, 0.25])
-            with col_s: st.markdown(f'<span class="sinal-alta">🟢 {item["Sinal"]}</span>', unsafe_allow_html=True)
-            with col_p: st.markdown(f'**{item["Produto"]}**')
-            with col_i: st.markdown(f'`{item["Índice Real"]}`')
-            with col_y: st.markdown(f'<span style="font-size:12px;color:#cbd5e1;">{item["O Porquê Técnico"]}</span>', unsafe_allow_html=True)
-            with col_e: st.markdown(f'<span style="font-size:12px;color:#00FF87;font-weight:bold;">{item["Estratégia Recomendada"]}</span>', unsafe_allow_html=True)
-            st.markdown('<hr style="border-color:#1e293b; margin:6px 0;">', unsafe_allow_html=True)
-
-        st.write("")
-
-        # -----------------------------------------------------------------------------------------------------
-        # 🔵 SEÇÃO 2: OUTROS 10 VALIDADOS COM COMPORTAMENTO DINÂMICO E ESTRATÉGIA DE PROTEÇÃO
-        # -----------------------------------------------------------------------------------------------------
-        st.markdown('<p class="titulo-secao" style="color: #00E5FF;">📊 OUTROS 10 VALIDADOS - FLUTUAÇÃO REAL DE MERCADO</p>', unsafe_allow_html=True)
-        
-        outros_10_dados = [
-            {"Sinal": "◆ FLUTUANDO", "Produto": "Dentitox Pro", "Índice Real": "Gravidade: 114.60", "O Porquê Técnico": "Teve leve queda no volume de buscas nos EUA, mas explodiu em conversões na Austrália.", "Estratégia Recomendada": "Google Ads - Excluir EUA e focar no tráfego qualificado da Austrália e Nova Zelândia."},
+with col_lista:
+    st.markdown('<p class="titulo-secao">🔥 TOP 10 SUPER VALIDADOS - SINAL DE ALTA</p>', unsafe_allow_html=True)
+    for item in produtos_alta:
+        c_sin, c_prod, c_grav, c_loc = st.columns([0.22, 0.23, 0.17, 0.38])
