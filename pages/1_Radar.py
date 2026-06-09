@@ -155,7 +155,7 @@ PRODUCTS_POOL = [
 
 # 4. GERAÇÃO ESTÁVEL DOS DADOS
 produtos_ativos = []
-random.seed(10)  # Garante consistência nos números mockados
+random.seed(10)
 
 for index, prod in enumerate(PRODUCTS_POOL):
     is_top_10 = index < 10
@@ -176,3 +176,4 @@ for index, prod in enumerate(PRODUCTS_POOL):
     
     produtos_ativos.append({
         "ranking": index + 1, "nome": prod["name"], "plataforma": prod["platform"], "tipo": prod["type"],
+        "status": status_label, "buscas_mes": buscas_mes, "buscas_hoje": buscas_hoje, "dor_principal": prod["dor"],
