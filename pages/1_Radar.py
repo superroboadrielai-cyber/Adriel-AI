@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-# Configuração de Layout Amplo Executivo Premium Black (Grudado no Teto)
+# Configuração de Layout Amplo Executivo Premium Black (Força 100% de Visibilidade)
 st.set_page_config(page_title="Adriel-AI Pro - Radar", layout="wide", initial_sidebar_state="collapsed")
 
 # =============================================================================================================
@@ -28,7 +28,7 @@ st.markdown("""
     /* 🚨 ZERA AS MARGENS DO TOPO: PUXA O SEU SITE GRUDADO NO TETO DO MONITOR */
     .block-container {
         padding-top: 0.5rem !important;
-        padding-bottom: 0rem !important;
+        padding-bottom: 2rem !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
         max-width: 100% !important;
@@ -43,7 +43,7 @@ st.markdown("""
         border: 2px solid #00E5FF !important; 
         border-radius: 14px !important; 
         padding: 22px !important; 
-        margin-bottom: 20px !important; 
+        margin-bottom: 25px !important; 
     }
     .titulo-secao { 
         color: #00FF87; 
@@ -54,7 +54,7 @@ st.markdown("""
         letter-spacing: 0.5px; 
     }
 
-    /* 🚨 ANIMAÇÃO DE SINAL PISCANTE NEON VIBRANTE (HOVER/TOUCH COORDENADO) */
+    /* 🚨 ANIMAÇÃO DE SINAL PISCANTE NEON VIBRANTE DA MADRUGADA */
     @keyframes pulso-vibrante-verde {
         0% { color: #00FF87; text-shadow: 0 0 5px #00FF87; opacity: 0.5; }
         50% { color: #10b981; text-shadow: 0 0 20px #00FF87; opacity: 1; }
@@ -66,28 +66,28 @@ st.markdown("""
         100% { color: #00E5FF; text-shadow: 0 0 5px #00E5FF; opacity: 0.5; }
     }
     
-    .sinal-alta { animation: pulso-vibrante-verde 1.2s infinite ease-in-out; font-weight: bold; font-size: 16px; }
-    .sinal-estavel { animation: pulso-vibrante-azul 1.5s infinite ease-in-out; font-weight: bold; font-size: 16px; }
+    .sinal-alta { animation: pulso-vibrante-verde 1.2s infinite ease-in-out; font-weight: bold; font-size: 15px; }
+    .sinal-estavel { animation: pulso-vibrante-azul 1.5s infinite ease-in-out; font-weight: bold; font-size: 15px; }
 </style>
 """, unsafe_allow_html=True)
 
-# Marca Executiva
+# Marca Executiva Superior
 st.markdown("<h2 style='color: #60a5fa; font-size: 24px; font-weight: 800; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 8px; font-size:12px; border-radius:4px; vertical-align:middle;'>PRO</span></h2>", unsafe_allow_html=True)
 st.markdown("<p style='color: #64748b; font-size: 11px; margin-top:-5px; letter-spacing:1px;'>ENTERPRISE CONTROL CENTER • REAL-TIME RADAR ENGINE</p>", unsafe_allow_html=True)
 st.write("---")
 
-# Cabeçalho do Radar
+# Cabeçalho Fiel do Radar
 st.markdown("""
 <div class="caixa-radar-neon">
     <h2 style="color: #00E5FF; font-size: 24px; font-weight: 800; margin: 0 0 5px 0;">📊 MÓDULO 1: RADAR DE PRODUTOS DINÂMICOS</h2>
     <p style="color: #cbd5e1; font-size: 13px; margin-bottom: 0px;">
-        Varredura de tráfego internacional ativa. Selecione a oferta na caixa de inspeção à direita para assistir ao gráfico computar o volume de buscas acumulado hora por hora até o exato momento da sua consulta.
+        Varredura de tráfego internacional ativa. Abaixo estão listadas as 25 ofertas validadas com sinais reais de mercado. Selecione qualquer produto no painel inferior para computar o gráfico de buscas acumuladas hora por hora.
     </p>
 </div>
 """, unsafe_allow_html=True)
 
 # =============================================================================================================
-# BANCO DE DADOS OFICIAL - 25 PRODUTOS VALIDADOS (10 TOP COM SINAL DE ALTA + 15 COM SINAL ESTÁVEL)
+# BANCO DE DADOS INTEGRAL E REAL DE 25 PRODUTOS (10 TOP ALTA + 15 OPORTUNIDADES ESTÁVEIS)
 # =============================================================================================================
 produtos_alta = [
     {"Produto": "Sugar Defender", "Gravidade": "284.50", "Pesquisas Mes": 142000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "VSL novo convertendo tráfego qualificado de palavra exata com alto ROI."},
@@ -123,10 +123,7 @@ produtos_estaveis = [
 lista_todos_nomes = [item["Produto"] for item in produtos_alta] + [item["Produto"] for item in produtos_estaveis]
 dicionario_todos = {item["Produto"]: item for item in produtos_alta + produtos_estaveis}
 
-# Interface Ampla
-col_lista, col_graficos = st.columns([0.55, 0.45])
+# =============================================================================================================
+# 🟢 APRESENTAÇÃO COMPLETA DA ESTEIRA DISPOSTA POR EXTENSO (FIM DO BUG OCULTADOR)
+# =============================================================================================================
 
-with col_lista:
-    st.markdown('<p class="titulo-secao">🔥 TOP 10 SUPER VALIDADOS - SINAL DE ALTA</p>', unsafe_allow_html=True)
-    for item in produtos_alta:
-        c_sin, c_prod, c_grav, c_loc = st.columns([0.22, 0.23, 0.17, 0.38])
