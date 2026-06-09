@@ -54,7 +54,7 @@ st.markdown("""
     /* Botão verde fixo de processamento interno */
     .btn-processamento-real div.stButton > button {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-        color: white !important; font-weight: bold !important; border: none !important; text-align: center !important; padding: 14px !important; border-radius: 6px !important; width: 100% !important; cursor: pointer !important;
+        color: white !important; font-weight: bold !important; border: none !important; text-align: center !important; padding: 14px !important; border-radius: 8px !important; width: 100% !important; cursor: pointer !important;
     }
     .btn-processamento-real div.stButton > button:hover { background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%) !important; color: #050811 !important; }
 </style>
@@ -76,7 +76,7 @@ with col_esquerda:
     st.write("---")
     
     st.markdown('<div class="menu-lateral-container">', unsafe_allow_html=True)
-    if st.button("🎛 shrink Dashboard Geral", key="btn_m_dash"): st.session_state.modulo_ativo = "Dashboard"; st.rerun()
+    if st.button("🎛️ Dashboard Geral", key="btn_m_dash"): st.session_state.modulo_ativo = "Dashboard"; st.rerun()
     if st.button("🛰️ 1. Radar de Produtos", key="btn_m_radar"): st.session_state.modulo_ativo = "Radar"; st.rerun()
     if st.button("🔬 2. Auditor de Mercado", key="btn_m_auditor"): st.session_state.modulo_ativo = "Auditor"; st.rerun()
     st.write("---")
