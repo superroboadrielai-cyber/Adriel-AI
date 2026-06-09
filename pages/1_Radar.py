@@ -111,7 +111,7 @@ st.markdown("""
 
 # Inicialização segura do roteador de abas na memória RAM do app
 if "modulo_ativo" not in st.session_state:
-    st.session_state.modulo_ativo = "Dashboard"
+    st.session_state.modulo_ativo = "Radar"
 
 # =============================================================================================================
 # MONTAGEM PARALELA: COLUNA 1 (MENU FIXO) + COLUNA 2 (CONTEÚDO DO RADAR COMPLETO)
@@ -147,13 +147,13 @@ with col_direita_conteudo:
                 📊 MÓDULO 1: RADAR DE PRODUTOS DINÂMICOS
             </h3>
             <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 0px; font-family: sans-serif;">
-                "Varredura de tráfego internacional ativa. Abaixo estão listadas as 25 ofertas validadas com sinais reais de mercado. 
+                "Varredura de tráfego internacional activa. Abaixo estão listadas as 25 ofertas validadas com sinais reais de mercado. 
                 Selecione qualquer produto no painel inferior para computar o gráfico de buscas acumuladas hora por hora."
             </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # BANCO DE DADOS OFICIAL - 25 PRODUTOS REAIS (10 TOP ALTA + 15 ESTÁVEIS)
+        # BANCO DE DADOS OFICIAL CORRIGIDO - 25 PRODUTOS REAIS (10 TOP ALTA + 15 ESTÁVEIS)
         produtos_alta = [
             {"Produto": "Sugar Defender", "Gravidade": "284.50", "Pesquisas Mes": 142000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "VSL novo convertendo tráfego qualificado de palavra exata com alto ROI."},
             {"Produto": "Puravive", "Gravidade": "241.10", "Pesquisas Mes": 118000, "Onde Anunciar": "Bing Ads + Pre-Sell", "Porque": "Leilão menos concorrido no Bing barateia o CPC em nicho de emagrecimento gringo."},
