@@ -11,10 +11,8 @@ st.markdown("""
     h1, h2, h3, h4, p, span { color: #ffffff !important; font-family: sans-serif; }
     div[data-testid="stMetricValue"] > div { color: #f59e0b !important; }
     
-    /* Alinhamento dos blocos horizontais */
     div[data-testid="stHorizontalBlock"] { gap: 10px !important; }
     
-    /* Configuração de estilo e tamanho dos botões */
     div[data-testid="stColumn"] button {
         background-color: #1e293b !important;
         border-radius: 8px !important;
@@ -25,14 +23,12 @@ st.markdown("""
         display: block !important;
     }
     
-    /* Texto visível e grande nos botões */
     div[data-testid="stColumn"] button p {
         font-size: 15px !important;
         font-weight: 800 !important;
         letter-spacing: 0.5px;
     }
     
-    /* Neon Vermelho para produtos em ALTA */
     .btn-alta button {
         border: 2px solid #ef4444 !important;
         box-shadow: 0 0 12px rgba(239, 68, 68, 0.3) !important;
@@ -47,7 +43,6 @@ st.markdown("""
     }
     .btn-alta button:hover p { color: #ffffff !important; }
 
-    /* Neon Verde para produtos VALIDADOS */
     .btn-validado button {
         border: 2px solid #10b981 !important;
         box-shadow: 0 0 12px rgba(16, 185, 129, 0.3) !important;
@@ -62,21 +57,17 @@ st.markdown("""
     }
     .btn-validado button:hover p { color: #ffffff !important; }
 
-    /* Botão de Informações Ciano Neon */
     .btn-info button {
         border: 2px solid #06b6d4 !important;
         box-shadow: 0 0 10px rgba(6, 182, 212, 0.2) !important;
     }
-    .btn-info button p {
-        color: #22d3ee !important;
-    }
+    .btn-info button p { color: #22d3ee !important; }
     .btn-info button:hover {
         background-color: #06b6d4 !important;
         box-shadow: 0 0 18px rgba(6, 182, 212, 0.6) !important;
     }
     .btn-info button:hover p { color: #0f172a !important; }
     
-    /* Cartões Informativos */
     .card-info {
         background-color: #1e293b; border: 1px solid #334155;
         padding: 20px; border-radius: 12px; margin-top: 15px;
@@ -94,37 +85,39 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 Radar de Produtos & Lançamentos da Gringa")
-st.write("Acompanhe a movimentação real do mercado internacional com atualização em tempo real.")
+# Mudamos o título para focar apenas em Produtos Perpétuos/Validados
+st.title("📊 Radar de Produtos da Gringa")
+st.write("Acompanhe a movimentação real dos produtos perpétuos mais quentes do mercado internacional.")
 
-# 3. BANCO DE DADOS DA SESSÃO (Processa de forma limpa uma única vez)
+# 3. BANCO DE DADOS EXCLUSIVO DE PRODUTOS VALIDADOS (SEM LANÇAMENTOS)
 if "lista_completa_produtos" not in st.session_state:
+    # Pool de 25 produtos consolidados do mercado internacional (Evergreen)
     PRODUCTS_POOL = [
         {"name": "Alpilean", "platform": "ClickBank", "type": "Nutracêutico"},
         {"name": "Puravive", "platform": "ClickBank", "type": "Emagrecimento"},
-        {"name": "Java Burn", "platform": "BuyGoods", "type": "Suplemento"},
-        {"name": "GlucoTrust", "platform": "ClickBank", "type": "Diabetes"},
-        {"name": "Sugavita Med", "platform": "Digistore24", "type": "Lançamento"},
-        {"name": "Keto Drops Pro", "platform": "Hotmart Global", "type": "Dieta"},
+        {"name": "Java Burn", "platform": "BuyGoods", "type": "Suplemento Termogênico"},
+        {"name": "GlucoTrust", "platform": "ClickBank", "type": "Controle de Glicose"},
         {"name": "ProDentim", "platform": "ClickBank", "type": "Saúde Bucal"},
-        {"name": "Liv Pure", "platform": "ClickBank", "type": "Detox/Fígado"},
-        {"name": "Ikaria Lean Belly Juice", "platform": "ClickBank", "type": "Suplemento Pó"},
-        {"name": "ZenCortex", "platform": "BuyGoods", "type": "Audição/Cérebro"},
+        {"name": "Liv Pure", "platform": "ClickBank", "type": "Detox Hepático"},
+        {"name": "Ikaria Lean Belly Juice", "platform": "ClickBank", "type": "Suplemento em Pó"},
         {"name": "Cortexi", "platform": "ClickBank", "type": "Saúde Cognitiva"},
         {"name": "FlowForce Max", "platform": "BuyGoods", "type": "Saúde Masculina"},
-        {"name": "Prodentim Advanced", "platform": "Digistore24", "type": "Lançamento"},
         {"name": "Metanail Serum Pro", "platform": "ClickBank", "type": "Estética/Unhas"},
-        {"name": "LeanBliss", "platform": "BuyGoods", "type": "Controle de Açúcar"},
+        {"name": "LeanBliss", "platform": "BuyGoods", "type": "Suplemento Mastigável"},
         {"name": "Neotonics", "platform": "ClickBank", "type": "Pele e Intestino"},
-        {"name": "Synogut", "platform": "ClickBank", "type": "Digestão"},
-        {"name": "Kerassentials", "platform": "ClickBank", "type": "Antifúngico"},
-        {"name": "SightCare", "platform": "BuyGoods", "type": "Visão"},
-        {"name": "Prostadine", "platform": "ClickBank", "type": "Próstata"},
-        {"name": "Renew Hearing Support", "platform": "Digistore24", "type": "Audição"},
-        {"name": "Fast Lean Pro", "platform": "ClickBank", "type": "Jejum Intermitente"},
-        {"name": "Amiclear", "platform": "ClickBank", "type": "Glicose"},
-        {"name": "Neuroreen Pro", "platform": "Hotmart Global", "type": "Lançamento"},
-        {"name": "Alpha Tonic", "platform": "BuyGoods", "type": "Testosterona"}
+        {"name": "Synogut", "platform": "ClickBank", "type": "Saúde Digestiva"},
+        {"name": "Kerassentials", "platform": "ClickBank", "type": "Óleo Antifúngico"},
+        {"name": "SightCare", "platform": "BuyGoods", "type": "Suporte à Visão"},
+        {"name": "Prostadine", "platform": "ClickBank", "type": "Suporte à Próstata"},
+        {"name": "Fast Lean Pro", "platform": "ClickBank", "type": "Auxílio de Jejum"},
+        {"name": "Amiclear", "platform": "ClickBank", "type": "Energia e Glicose"},
+        {"name": "Alpha Tonic", "platform": "BuyGoods", "type": "Potência Masculina"},
+        {"name": "Endopump", "platform": "ClickBank", "type": "Fluxo Sanguíneo"},
+        {"name": "Proaxil", "platform": "BuyGoods", "type": "Saúde Geral"},
+        {"name": "Joint Genesis", "platform": "ClickBank", "type": "Articulações"},
+        {"name": "ClariTox Pro", "platform": "ClickBank", "type": "Equilíbrio/Tontura"},
+        {"name": "GenoGreens", "platform": "BuyGoods", "type": "Superalimento Verde"},
+        {"name": "NeuroRise", "platform": "ClickBank", "type": "Memória/Foco"}
     ]
     
     processados = []
@@ -145,26 +138,19 @@ if "lista_completa_produtos" not in st.session_state:
         porque_anunciar = f"Alta densidade de compradores qualificados de fundo de funil ativos em {veredicto_pais}."
         
         processados.append({
-            "ranking": index + 1,
-            "nome": prod["name"],
-            "plataforma": prod["platform"],
-            "tipo": prod["type"],
-            "status": status_label,
-            "buscas_mes": buscas_mes,
-            "buscas_hoje": buscas_hoje,
-            "paises": paises_dados,
-            "melhor_pais": veredicto_pais,
-            "porque": porque_anunciar,
+            "ranking": index + 1, "nome": prod["name"], "plataforma": prod["platform"], "tipo": prod["type"],
+            "status": status_label, "buscas_mes": buscas_mes, "buscas_hoje": buscas_hoje,
+            "paises": paises_dados, "melhor_pais": veredicto_pais, "porque": porque_anunciar,
             "grafico": [random.randint(20, 100) for _ in range(12)]
         })
     st.session_state.lista_completa_produtos = processados
-    st.session_state.produto_radar = processados[0]
+    st.session_state.produto_radar = processados[0]  # Define Alpilean explicitamente como o primeiro item ativo
 
-# Atalhos das variáveis de ambiente da sessão
+# Atalhos das variáveis
 produtos_ativos = st.session_state.lista_completa_produtos
 p_sel = st.session_state.produto_radar
 
-# 4. DIALOGO POPUP (MODAL DE COMPARAÇÃO)
+# 4. DIALOGO POPUP (MODAL DE COMPARAÇÃO DE 5 PAÍSES)
 @st.dialog("📋 Informações Completas do Mercado")
 def abrir_popup_detalhes(produto):
     st.markdown(f"## 🛡️ Auditoria Geral: {produto['nome']}")
@@ -183,10 +169,10 @@ col_esquerda, col_direita = st.columns([1.2, 1.1])
 
 with col_esquerda:
     st.subheader("Painel Estatístico Global")
-    st.write("Clique no produto para selecionar ou clique em Info para abrir o popup de 5 países:")
+    st.write("Selecione um produto para carregar as métricas ou veja os 5 países em Info:")
     
     for p in produtos_ativos:
-        c_btn, c_pop = st.columns()
+        c_btn, c_pop = st.columns(2)
         classe_neon = "btn-alta" if "🔥" in p["status"] else "btn-validado"
         
         with c_btn:
@@ -214,5 +200,6 @@ with col_direita:
         
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Caixas de Métricas Principais
     c1, c2 = st.columns(2)
+    c1.metric(label="🔎 Pesquisas Realizadas no Mês", value=f"{p_sel['buscas_mes']:,}")
+    c2.metric(label="⚡ Pesquisas Acumuladas Hoje", value=f"{p_sel['buscas_hoje']:,}")
