@@ -31,12 +31,12 @@ st.markdown("""
         transition: all 0.3s ease !important;
     }
     div[data-testid="stColumn"] button p {
-        font-size: 15px !important;
+        font-size: 14px !important;
         font-weight: 800 !important;
         letter-spacing: 0.5px;
     }
     
-    /* 🔴 Animação Piscante para os Botões em ALTA */
+    /* Animação Piscante para os Botões em ALTA */
     @keyframes pulseVermelho {
         0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055, inset 0 0 2px #ff0055; }
         50% { border-color: #ff4d88; box-shadow: 0 0 18px #ff0055, inset 0 0 8px #ff0055; }
@@ -50,7 +50,7 @@ st.markdown("""
     .btn-alta button:hover { background: #ff0055 !important; transform: scale(1.02); }
     .btn-alta button:hover p { color: #ffffff !important; }
 
-    /* 🟢 Animação Piscante para os Botões VALIDADOS */
+    /* Animação Piscante para os Botões VALIDADOS */
     @keyframes pulseVerde {
         0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc, inset 0 0 2px #00ffcc; }
         50% { border-color: #33ffdd; box-shadow: 0 0 18px #00ffcc, inset 0 0 8px #00ffcc; }
@@ -64,7 +64,7 @@ st.markdown("""
     .btn-validado button:hover { background: #00ffcc !important; transform: scale(1.02); }
     .btn-validado button:hover p { color: #060913 !important; }
 
-    /* 🔵 Botão de Informações Roxo Premium */
+    /* Botão de Informações Roxo Premium */
     .btn-info button {
         border: 2px solid #9900ff !important;
         box-shadow: 0 0 8px rgba(153, 0, 255, 0.3) !important;
@@ -98,19 +98,79 @@ st.markdown('<h1 class="titulo-cyber">💎 Radar de Produtos AdrielAI</h1>', uns
 st.write("Acompanhe o maior ecossistema de monitoramento perpétuo da gringa com atualização em tempo real.")
 st.markdown("<br>", unsafe_allow_html=True)
 
-# 3. BASE DE DADOS COMPLETA COM EXATAMENTE 20 PRODUTOS VALIDADOS (EVERGREEN)
+# 3. BASE DE DADOS COMPLETA COM AUDITORIA PROFISSIONAL (20 PRODUTOS VALIDADOS)
 PRODUTOS_DADOS = [
-    # ---- TOP 10 (SÍMBOLO DE ALTA - PISCANDO EM VERMELHO) ----
-    {"ranking": 1, "nome": "Alpilean", "plataforma": "ClickBank", "tipo": "Nutracêutico", "status": "🔥 ALTA", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "dor_principal": "Metabolismo travado e baixa temperatura interna celular que impede o emagrecimento.", "porque": "Volume massivo de buscas de fundo de funil e criativos de alta conversão.", "grafico": [45, 55, 62, 70, 68, 75, 85, 90, 95, 110, 105, 112]},
-    {"ranking": 2, "nome": "Puravive", "plataforma": "ClickBank", "tipo": "Emagrecimento", "status": "🔥 ALTA", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "dor_principal": "Falta de ativação do tecido adiposo marrom, acumulando gordura profunda e resistente.", "porque": "Baixo índice de reembolso nas plataformas gringas e alta comissão por pote vendido.", "grafico": [30, 42, 50, 58, 61, 70, 78, 83, 89, 92, 95, 98]},
-    {"ranking": 3, "nome": "Java Burn", "plataforma": "BuyGoods", "tipo": "Suplemento", "status": "🔥 ALTA", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "dor_principal": "Falta de energia logo pela manhã e lentidão crônica na queima de gordura diária.", "porque": "Excelente aceitação em massa no mercado europeu com leilão de CPC menor que os EUA.", "grafico": [50, 48, 55, 60, 65, 72, 70, 74, 80, 85, 83, 87]},
-    {"ranking": 4, "nome": "GlucoTrust", "platform": "ClickBank", "tipo": "Diabetes", "status": "🔥 ALTA", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "dor_principal": "Picos elevados de açúcar na corrente sanguínea e desejo incontrolável por doces à noite.", "porque": "Público comprador muito qualificado acima de 45 anos e com alto poder aquisitivo.", "grafico": [60, 62, 59, 64, 68, 70, 73, 71, 75, 78, 72, 74]},
-    {"ranking": 5, "nome": "ProDentim", "platform": "ClickBank", "tipo": "Saúde Bucal", "status": "🔥 ALTA", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "dor_principal": "Mau hálito insuportável, cáries frequentes e sangramentos sérios na gengiva.", "porque": "Nicho com concorrência absurdamente baixa em rede de pesquisa do Google Ads.", "grafico": [40, 43, 47, 51, 56, 54, 59, 63, 61, 65, 67, 69]},
-    {"ranking": 6, "nome": "Liv Pure", "platform": "ClickBank", "tipo": "Detox Hepático", "status": "🔥 ALTA", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "dor_principal": "Fígado intoxicado por gordura que paralisa o funcionamento natural do metabolismo.", "porque": "Funil de vendas agressivo do produtor que gera muitos upsells na mesma compra.", "grafico": [35, 38, 42, 48, 52, 50, 55, 58, 60, 62, 61, 65]},
-    {"ranking": 7, "nome": "Ikaria Lean Belly", "platform": "ClickBank", "tipo": "Suplemento Pó", "status": "🔥 ALTA", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "dor_principal": "Altas concentrações de ácido úrico que inflamam as articulações e inflamam o abdômen.", "porque": "Formato inovador em pó que gera alta curiosidade e cliques qualificados nos anúncios.", "grafico": [25, 29, 34, 40, 45, 48, 52, 55, 53, 58, 60, 61]},
-    {"ranking": 8, "nome": "Cortexi", "platform": "ClickBank", "tipo": "Audição", "status": "🔥 ALTA", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "dor_principal": "Zumbido estridente no ouvido que impede o sono e causa extrema perda de foco.", "porque": "Nicho de dor latente onde o cliente compra no desespero para resolver o problema.", "grafico": [20, 24, 28, 35, 41, 45, 49, 52, 50, 54, 56, 58]},
-    {"ranking": 9, "nome": "FlowForce Max", "platform": "BuyGoods", "tipo": "Saúde Masculina", "status": "🔥 ALTA", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "dor_principal": "Próstata inflamada forçando idas dolorosas e constantes ao banheiro durante as noites.", "porque": "OFERTA Fundo de Funil excelente para vender na rede de pesquisa do Google Ads.", "grafico": [15, 22, 26, 31, 37, 40, 44, 48, 47, 51, 52, 54]},
-    {"ranking": 10, "nome": "Metanail Serum", "platform": "ClickBank", "tipo": "Unhas/Estética", "status": "🔥 ALTA", "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)", "dor_principal": "Fungos severos amarelos que destroem, quebram e deixam as unhas feias.", "porque": "Apelo visual fortíssimo, ideal para vender escalando com tráfego no Youtube Ads.", "grafico": [18, 20, 25, 28, 33, 36, 40, 43, 42, 46, 48, 51]},
-    # ---- OUTROS 10 VALIDADOS (SÍMBOLO NORMAL - PISCANDO EM VERDE COM BAIXA CONCORRÊNCIA) ----
-    {"ranking": 11, "nome": "LeanBliss", "platform": "BuyGoods", "tipo": "Nutracêutico", "status": "✅ VALIDADO", "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)", "dor_principal": "Ganho rápido de peso associado a picos de ansiedade por comida e descontrole de açúcar.", "porque": "Pouquíssimos afiliados anunciando na Austrália, gerando leilões vazios de CPC.", "grafico": [10, 12, 11, 13, 14, 15, 14, 16, 15, 17, 16, 14]},
-    {"ranking": 12, "nome": "Neotonics", "platform": "ClickBank", "tipo": "Pele e Intestino", "status": "✅ VALIDADO", "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)", "dor_principal": "Flacidez cutânea e rugas geradas por envelhecimento celular precoce do estômago.", "porque": "Perfeito para criar artigos Review de alta conversão em blogs nativos na Europa.", "grafico": [9, 11, 10, 12, 11, 13, 12, 14, 13, 15, 14, 13]},
+    # ---- TOP 10 (SÍMBOLO DE ALTA - VERMELHO PISCANTE) ----
+    {
+        "ranking": 1, "nome": "Alpilean", "plataforma": "ClickBank", "tipo": "Nutracêutico", "status": "🔥 ALTA", 
+        "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", 
+        "dor_principal": "Metabolismo travado e baixa temperatura interna celular que impede totalmente o emagrecimento.", 
+        "porque": "Volume massivo de buscas de fundo de funil e criativos de alta conversão para público sênior.", 
+        "concorrencia": "Alta (Leilão disputado)", "cpc_medio": "$2.80 - $3.90", "funil": "Google Ads (Fundo de Funil)", 
+        "avatar": "Mulheres e Homens acima de 45 anos focados em saúde e perda de peso sem dietas radicais.",
+        "grafico": 
+    },
+    {
+        "ranking": 2, "nome": "Puravive", "plataforma": "ClickBank", "tipo": "Emagrecimento", "status": "🔥 ALTA", 
+        "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", 
+        "dor_principal": "Falta de ativação do tecido adiposo marrom (BAT), acumulando gordura profunda e resistente.", 
+        "porque": "Baixo índice de reembolso nas plataformas gringas e alta comissão por pacotes de potes.", 
+        "concorrencia": "Média-Alta", "cpc_medio": "$2.30 - $3.40", "funil": "YouTube Ads + Pre-Sell de Quiz", 
+        "avatar": "Mulheres de 35 a 60 anos que buscam soluções baseadas em ingredientes naturais e exóticos.",
+        "grafico": 
+    },
+    {
+        "ranking": 3, "nome": "Java Burn", "plataforma": "BuyGoods", "tipo": "Suplemento", "status": "🔥 ALTA", 
+        "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", 
+        "dor_principal": "Falta de energia logo pela manhã e lentidão crônica na queima calórica diária.", 
+        "porque": "Excelente aceitação em massa no mercado europeu com leilão de CPC menor que os Estados Unidos.", 
+        "concorrencia": "Média", "cpc_medio": "$1.80 - $2.70", "funil": "Google Ads ou Bing Ads (Fundo de Funil)", 
+        "avatar": "Trabalhadores e entusiastas de café (30 a 55 anos) que querem emagrecer adicionando o produto na rotina diária.",
+        "grafico": 
+    },
+    {
+        "ranking": 4, "nome": "GlucoTrust", "plataforma": "ClickBank", "tipo": "Diabetes", "status": "🔥 ALTA", 
+        "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", 
+        "dor_principal": "Picos elevados de açúcar na corrente sanguínea e desejo incontrolável por doces no período da noite.", 
+        "porque": "Público comprador altamente qualificado acima de 50 anos e com alta recorrência de compra.", 
+        "concorrencia": "Alta (Leilão aquecido)", "cpc_medio": "$3.10 - $4.50", "funil": "Google Ads (Rede de Pesquisa)", 
+        "avatar": "Pessoas de meia-idade e idosos pré-diabéticos que buscam controle de glicose natural.",
+        "grafico": 
+    },
+    {
+        "ranking": 5, "nome": "ProDentim", "plataforma": "ClickBank", "tipo": "Saúde Bucal", "status": "🔥 ALTA", 
+        "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", 
+        "dor_principal": "Mau hálito crônico embaraçoso, cáries recorrentes e sangramentos sérios na gengiva.", 
+        "porque": "Nicho com concorrência limpa e ótimos custos por clique na rede de pesquisa internacional.", 
+        "concorrencia": "Média-Baixa", "cpc_medio": "$1.40 - $2.20", "funil": "Google Ads + Advertorial Clínico", 
+        "avatar": "Pessoas de 40 a 70 anos sofrendo com cáries ou sensibilidade dentária severa.",
+        "grafico": 
+    },
+    {
+        "ranking": 6, "nome": "Liv Pure", "plataforma": "ClickBank", "tipo": "Detox Hepático", "status": "🔥 ALTA", 
+        "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", 
+        "dor_principal": "Fígado sobrecarregado por toxinas alimentares que paralisam o funcionamento do metabolismo.", 
+        "porque": "Funil do produtor altamente otimizado com ofertas de upsell que disparam o valor da comissão.", 
+        "concorrencia": "Alta", "cpc_medio": "$2.50 - $3.80", "funil": "YouTube Ads / Tráfego de Review", 
+        "avatar": "Adultos acima do peso (40-65 anos) com cansaço crônico e dificuldades metabólicas.",
+        "grafico": 
+    },
+    {
+        "ranking": 7, "nome": "Ikaria Lean Belly", "plataforma": "ClickBank", "tipo": "Suplemento Pó", "status": "🔥 ALTA", 
+        "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", 
+        "dor_principal": "Altas concentrações de ácido úrico que inflamam o organismo e geram acúmulo de gordura abdominal.", 
+        "porque": "Formato inovador em pó que gera alta curiosidade, cliques rápidos e conversão acelerada.", 
+        "concorrencia": "Média-Alta", "cpc_medio": "$2.10 - $3.20", "funil": "Bing Ads + Pre-Sell Blindada", 
+        "avatar": "Homens e mulheres focados em desinflamar o corpo e reduzir medidas na região da barriga.",
+        "grafico": 
+    },
+    {
+        "ranking": 8, "nome": "Cortexi", "plataforma": "ClickBank", "tipo": "Audição", "status": "🔥 ALTA", 
+        "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", 
+        "dor_principal": "Zumbido estridente permanente no ouvido (Tinnitus) que tira o sono e destrói o foco mental.", 
+        "porque": "Nicho focado em uma dor extrema, onde o cliente compra de forma imediata e prefere pacotes grandes.", 
+        "concorrencia": "Média", "cpc_medio": "$1.70 - $2.50", "funil": "Google Ads (Fundo de Funil)", 
+        "avatar": "Idosos e profissionais expostos a ruídos (45+ anos) desesperados para silenciar o zumbido auditivo.",
+        "grafico": 
+    },
+    {
