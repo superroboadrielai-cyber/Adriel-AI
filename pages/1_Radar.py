@@ -91,20 +91,103 @@ st.markdown('<h1 class="titulo-cyber">💎 Radar de Produtos AdrielAI</h1>', uns
 st.write("Ecossistema premium de monitoramento contínuo com auditoria detalhada de mercado gringo.")
 st.markdown("<br>", unsafe_allow_html=True)
 
-# 3. BANCO DE DADOS ISOLADO DENTRO DE FUNÇÃO (BLINDA CONTRA ERROS DE COMPILAÇÃO DO STREAMLIT)
-def obter_banco_produtos():
-    return [
-        {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Nutracêutico", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "dor": "Metabolismo travado por baixa temperatura interna celular.", "porque": "Volume alto de tráfego qualificado de fundo de funil.", "cpc": "USA: $2.80 | UK: $1.90 | CA: $2.10", "grafico": [30, 45, 55, 40, 65, 75, 85, 90, 95, 100, 110, 112]},
-        {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Emagrecimento", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "dor": "Falta de ativação do tecido adiposo marrom (BAT).", "porque": "Baixa taxa de reembolso e comissões altas por potes.", "cpc": "USA: $3.10 | UK: $2.20 | CA: $2.40", "grafico": [20, 35, 40, 50, 60, 70, 80, 85, 90, 95, 96, 98]},
-        {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "nicho": "Suplemento Café", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "dor": "Falta de energia matinal e metabolismo lento no dia.", "porque": "Grande aceitação na Europa com leilão de levedura baixo.", "cpc": "USA: $2.60 | UK: $1.65 | CA: $1.95", "grafico": [15, 25, 30, 45, 50, 55, 65, 70, 75, 80, 85, 87]},
-        {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Diabetes", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "dor": "Picos de açúcar no sangue e compulsão noturna por doces.", "porque": "Público alvo sênior acima de 45 anos com alto poder de compra.", "cpc": "USA: $2.95 | UK: $1.85 | CA: $2.15", "grafico": [40, 42, 45, 48, 52, 55, 58, 62, 65, 68, 70, 74]},
-        {"ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Saúde Bucal", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "dor": "Mau hálito constante e inflamação crônica na gengiva.", "porque": "Concorrência controlada e excelente ROI em anúncios Bing.", "cpc": "USA: $2.40 | UK: $1.50 | CA: $1.75", "grafico": [30, 32, 35, 38, 42, 45, 50, 52, 55, 60, 65, 69]},
-        {"ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Detox Fígado", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "dor": "Fígado sobrecarregado impedindo queima natural de gordura.", "porque": "Funil de vendas forte do produtor gerando upsells recorrentes.", "cpc": "USA: $3.20 | UK: $2.10 | CA: $2.30", "grafico": [25, 28, 32, 35, 40, 45, 48, 52, 55, 58, 62, 65]},
-        {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Suplemento Pó", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "dor": "Altos níveis de ácido úrico gerando inchaço abdominal.", "porque": "Formato em pó inovador com ótima conversão visual.", "cpc": "USA: $2.85 | UK: $1.95 | CA: $2.05", "grafico": [20, 22, 26, 30, 35, 40, 43, 47, 50, 54, 58, 61]},
-        {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Audição", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "dor": "Zumbido chato no ouvido tirando o sono e a paciência.", "porque": "Mercado focado em dor latente de resolução imediata.", "cpc": "USA: $2.50 | UK: $1.60 | CA: $1.80", "grafico": [18, 20, 24, 28, 32, 36, 40, 44, 48, 50, 54, 58]},
-        {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "nicho": "Saúde Homem", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "dor": "Problemas de próstata forçando idas ao banheiro à noite.", "porque": "Excelente público comprador fundo de funil estruturado.", "cpc": "USA: $3.00 | UK: $2.00 | CA: $2.20", "grafico": [12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 50, 54]},
-        {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Unhas/Estética", "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)", "dor": "Fungos e micoses persistentes amarelas destruindo as unhas.", "porque": "Apelo visual incrível e excelente para rodar no YouTube Ads.", "cpc": "USA: $2.35 | UK: $1.45 | CA: $1.65", "grafico": [10, 14, 18, 22, 26, 30, 34, 38, 42, 45, 48, 51]},
-        {"ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "nicho": "Suplemento", "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)", "dor": "Ganho rápido de peso associado a picos de ansiedade.", "porque": "Poucos afiliados anunciando, leilões vazios de CPC.", "cpc": "USA: $1.90 | UK: $1.20 | CA: $1.40", "grafico": [5, 6, 7, 8, 9, 10, 11, 12, 13, 13, 14, 145]},
-        {"ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Pele/Estômago", "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)", "dor": "Flacidez e rugas causadas por envelhecimento celular interno.", "porque": "Perfeito para criar artigos de Review de alta conversão.", "cpc": "USA: $2.10 | UK: $1.30 | CA: $1.50", "grafico": [4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 12, 132]},
-        {"ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Digestão", "buscas_mes": 12400, "buscas_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "dor": "Constipação intestinal crônica e gases estufando a barriga.", "porque": "Produto antigo com forte autoridade de mercado.", "cpc": "USA: $2.20 | UK: $1.40 | CA: $1.60", "grafico": [3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 124]},
-        {"ranking": 14, "nome": "Kerassentials", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Antifúngico", "buscas_mes": 11800, "buscas_hoje": 240, "melhor_pais": "Reino Unido (UK)", "dor": "Coceira severa nos dedos e descamação dolorosa.", "porque": "Página oficial limpa convertendo muito tráfego vindo do Bing.", "cpc": "USA: $1.95 | UK: $1.25 | CA: $1.45", "grafico": [2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 11, 118]},
+# 3. BASE DE DADOS COMPLETA COM EXATAMENTE 20 PRODUTOS VALIDADOS (SINTAXE LIMPA E FIXA)
+PRODUTOS_DADOS = [
+    {
+        "ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Nutracêutico",
+        "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Metabolismo travado por baixa temperatura interna celular.",
+        "porque": "Volume alto de tráfego qualificado de fundo de funil.",
+        "cpc": "USA: $2.80 | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40",
+        "grafico": [45, 55, 60, 65, 75, 80, 85, 90, 95, 100, 110, 112]
+    },
+    {
+        "ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Emagrecimento",
+        "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Falta de ativação do tecido adiposo marrom (BAT).",
+        "porque": "Baixa taxa de reembolso e comissões altas por potes.",
+        "cpc": "USA: $3.10 | UK: $2.20 | CA: $2.40 | AU: $2.50 | DE: $1.60",
+        "grafico": [35, 42, 50, 58, 62, 70, 75, 83, 89, 92, 95, 98]
+    },
+    {
+        "ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "nicho": "Suplemento Café",
+        "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)",
+        "dor": "Falta de energia matinal e metabolismo lento no dia.",
+        "porque": "Grande aceitação na Europa com leilão de levedura baixo.",
+        "cpc": "USA: $2.60 | UK: $1.65 | CA: $1.95 | AU: $2.10 | DE: $1.30",
+        "grafico": [20, 28, 35, 45, 50, 58, 62, 70, 74, 80, 83, 87]
+    },
+    {
+        "ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Diabetes",
+        "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Picos de açúcar no sangue e compulsão noturna por doces.",
+        "porque": "Público alvo sênior acima de 45 anos com alto poder de compra.",
+        "cpc": "USA: $2.95 | UK: $1.85 | CA: $2.15 | AU: $2.20 | DE: $1.45",
+        "grafico": [50, 52, 55, 58, 60, 62, 65, 68, 70, 71, 73, 74]
+    },
+    {
+        "ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Saúde Bucal",
+        "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)",
+        "dor": "Mau hálito constante e inflamação crônica na gengiva.",
+        "porque": "Concorrência controlada e excelente ROI em anúncios Bing.",
+        "cpc": "USA: $2.40 | UK: $1.50 | CA: $1.75 | AU: $1.90 | DE: $1.20",
+        "grafico": [30, 35, 38, 42, 48, 52, 55, 59, 61, 64, 66, 69]
+    },
+    {
+        "ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Detox Fígado",
+        "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Fígado sobrecarregado impedindo queima natural de gordura.",
+        "porque": "Funil de vendas forte do produtor gerando upsells recorrentes.",
+        "cpc": "USA: $3.20 | UK: $2.10 | CA: $2.30 | AU: $2.40 | DE: $1.50",
+        "grafico": [25, 30, 34, 40, 45, 49, 52, 56, 58, 60, 63, 65]
+    },
+    {
+        "ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Suplemento Pó",
+        "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)",
+        "dor": "Altos níveis de ácido úrico gerando inchaço abdominal.",
+        "porque": "Formato em pó inovador com ótima conversão visual.",
+        "cpc": "USA: $2.85 | UK: $1.95 | CA: $2.05 | AU: $2.15 | DE: $1.35",
+        "grafico": [15, 22, 28, 32, 38, 42, 45, 49, 53, 56, 59, 61]
+    },
+    {
+        "ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Audição",
+        "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)",
+        "dor": "Zumbido chato no ouvido tirando o sono e a paciência.",
+        "porque": "Mercado focado em dor latente de resolução imediata.",
+        "cpc": "USA: $2.50 | UK: $1.60 | CA: $1.80 | AU: $1.95 | DE: $1.15",
+        "grafico": [40, 42, 44, 46, 48, 50, 52, 53, 55, 56, 57, 58]
+    },
+    {
+        "ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "nicho": "Saúde Homem",
+        "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Problemas de próstata forçando idas ao banheiro à noite.",
+        "porque": "Excelente público comprador fundo de funil estruturado.",
+        "cpc": "USA: $3.00 | UK: $2.00 | CA: $2.20 | AU: $2.30 | DE: $1.40",
+        "grafico": [18, 23, 27, 31, 35, 39, 42, 45, 48, 50, 52, 54]
+    },
+    {
+        "ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Unhas/Estética",
+        "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)",
+        "dor": "Fungos e micoses persistentes amarelas destruindo as unhas.",
+        "porque": "Apelo visual incrível e excelente para rodar no YouTube Ads.",
+        "cpc": "USA: $2.35 | UK: $1.45 | CA: $1.65 | AU: $1.80 | DE: $1.10",
+        "grafico": [10, 15, 19, 23, 28, 32, 35, 39, 42, 45, 48, 51]
+    },
+    {
+        "ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "nicho": "Suplemento",
+        "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)",
+        "dor": "Ganho rápido de peso associado a picos de ansiedade.",
+        "porque": "Poucos afiliados anunciando, leilões vazios de CPC.",
+        "cpc": "USA: $1.90 | UK: $1.20 | CA: $1.40 | AU: $1.50 | DE: $0.95",
+        "grafico": [5, 7, 9, 10, 11, 12, 12, 13, 13, 14, 14, 14]
+    },
+    {
+        "ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Pele/Estômago",
+        "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)",
+        "dor": "Flacidez e rugas causadas por envelhecimento celular interno.",
+        "porque": "Perfeito para criar artigos de Review de alta conversão.",
+        "cpc": "USA: $2.10 | UK: $1.30 | CA: $1.50 | AU: $1.60 | DE: $1.10",
+        "grafico": [4, 5, 6, 7, 8, 9, 9, 10, 11, 11, 12, 13]
+    },
+    {
+        "ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Digestão",
