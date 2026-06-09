@@ -1,122 +1,193 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-from datetime import datetime
 
-# Configuração de Layout Amplo Executivo Premium Black (Grudado no Teto)
-st.set_page_config(page_title="Adriel-AI Pro", layout="wide", initial_sidebar_state="collapsed")
+# 1. CONFIGURAÇÃO DA PÁGINA
+st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="📊", layout="wide")
 
-# =============================================================================================================
-# INJEÇÃO DE CSS DE ALTO LUXO (ELIMINA A BARRA BRANCA DO TOPO E FIXA AS ANIMAÇÕES NEON)
-# =============================================================================================================
+# 2. ESTILIZAÇÃO LUXO COM ANIMAÇÃO NEON CONTINUA (PISCANDO)
 st.markdown("""
-<style>
-    /* 🌌 Fundo Escuro Premium Cyber Onyx Original do seu Print */
-    .stApp { background-color: #0b111e !important; color: #ffffff !important; }
-    [data-testid="stHeader"] { display: none !important; height: 0px !important; background: transparent !important; }
-    .stHeader { display: none !important; }
+    <style>
+    .stApp { background-color: #060913; color: #f8fafc; }
+    h1, h2, h3, h4, p, span { font-family: 'Segoe UI', Roboto, sans-serif; }
     
-    /* Zera as margens do topo do monitor */
-    .block-container { padding-top: 0.5rem !important; padding-bottom: 2rem !important; padding-left: 2rem !important; padding-right: 2rem !important; max-width: 100% !important; width: 100% !important; }
-    [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
-
-    /* DIVISÃO RIGOROSA DAS COLUNAS VIRTUAIS DO CHASSI DE LUXO */
-    .coluna-container-lateral { background-color: transparent; border-right: 1px solid #1e293b; padding-right: 20px; min-height: 85vh; }
-    .coluna-container-central { background-color: transparent; padding-left: 15px; min-height: 85vh; }
-
-    /* ANIMAÇÃO DE SINAL NEON PISCANTE */
-    @keyframes pulso-vibrante-verde {
-        0% { color: #00FF87; text-shadow: 0 0 5px #00FF87; opacity: 0.5; }
-        50% { color: #10b981; text-shadow: 0 0 20px #00FF87; opacity: 1; }
-        100% { color: #00FF87; text-shadow: 0 0 5px #00FF87; opacity: 0.5; }
+    .titulo-cyber {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #00ffcc;
+        text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
     }
-    @keyframes pulso-vibrante-azul {
-        0% { color: #00E5FF; text-shadow: 0 0 5px #00E5FF; opacity: 0.5; }
-        50% { color: #3b82f6; text-shadow: 0 0 20px #00E5FF; opacity: 1; }
-        100% { color: #00E5FF; text-shadow: 0 0 5px #00E5FF; opacity: 0.5; }
+
+    div[data-testid="stHorizontalBlock"] { gap: 14px !important; }
+    
+    /* Configuração de Luxo dos Botões */
+    div[data-testid="stColumn"] button {
+        background: #0f1526 !important;
+        border-radius: 12px !important;
+        padding: 14px 10px !important;
+        min-height: 52px !important;
+        width: 100% !important;
+        display: block !important;
+        transition: all 0.3s ease !important;
+    }
+    div[data-testid="stColumn"] button p {
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.5px;
     }
     
-    .sinal-alta { animation: pulso-vibrante-verde 1.2s infinite ease-in-out; font-weight: bold; font-size: 14px; }
-    .sinal-estavel { animation: pulso-vibrante-azul 1.5s infinite ease-in-out; font-weight: bold; font-size: 14px; }
-
-    /* DESIGN DOS BOTÕES LATERAIS DE CARBONO PREMIUM POR EXTENSO */
-    .menu-lateral-container div.stButton > button {
-        background: #0f172a !important; color: #cbd5e1 !important; font-weight: 700 !important; font-size: 13px !important;
-        border: 1px solid #1e293b !important; text-align: left !important; padding: 14px 20px !important; width: 100% !important;
-        margin-bottom: 8px !important; border-radius: 6px !important; cursor: pointer !important; text-transform: uppercase; letter-spacing: 0.5px;
+    /* Animação Neon Pulsar para botões em ALTA (Vermelho) */
+    @keyframes pulseVermelho {
+        0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
+        50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
+        100% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
     }
-    .menu-lateral-container div.stButton > button:hover { background: #1e293b !important; color: #00FF87 !important; border-color: #00FF87 !important; }
+    .btn-alta button {
+        border: 2px solid #ff0055 !important;
+        animation: pulseVermelho 2s infinite !important;
+    }
+    .btn-alta button p { color: #ff4d88 !important; }
+    .btn-alta button:hover { background: #ff0055 !important; }
+    .btn-alta button:hover p { color: #ffffff !important; }
+
+    /* Animação Neon Pulsar para botões VALIDADOS (Verde) */
+    @keyframes pulseVerde {
+        0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
+        50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
+        100% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
+    }
+    .btn-validado button {
+        border: 2px solid #00ffcc !important;
+        animation: pulseVerde 2.5s infinite !important;
+    }
+    .btn-validado button p { color: #33ffdd !important; }
+    .btn-validado button:hover { background: #00ffcc !important; }
+    .btn-validado button:hover p { color: #060913 !important; }
+
+    /* Botão de Info Roxo */
+    .btn-info button {
+        border: 2px solid #9900ff !important;
+    }
+    .btn-info button p { color: #cc66ff !important; }
+    .btn-info button:hover { background: #9900ff !important; }
+    .btn-info button:hover p { color: #ffffff !important; }
     
-    /* MOLDURA HOLOGRÁFICA DO SEU PRINT CAMPEÃO */
-    .caixa-holografica-real-print { background-color: #080f1d !important; border: 2.5px solid #00E5FF !important; border-radius: 14px !important; padding: 24px !important; margin-bottom: 25px !important; }
-    .titulo-secao { color: #00FF87; font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }
-
-    /* Botão verde fixo de processamento interno */
-    .btn-processamento-real div.stButton > button {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-        color: white !important; font-weight: bold !important; border: none !important; text-align: center !important; padding: 14px !important; border-radius: 8px !important; width: 100% !important; cursor: pointer !important;
+    .badge-alta-cyber {
+        background-color: #2a0813; color: #ff4d88 !important;
+        padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px;
+        border: 2px solid #ff0055; display: inline-block;
     }
-    .btn-processamento-real div.stButton > button:hover { background: linear-gradient(135deg, #00FF87 0%, #00E5FF 100%) !important; color: #050811 !important; }
-</style>
+    .badge-normal-cyber {
+        background-color: #04251d; color: #33ffdd !important;
+        padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px;
+        border: 2px solid #00ffcc; display: inline-block;
+    }
+    .card-cyber-info {
+        background: #0f1526; border: 2px solid #1e293b;
+        padding: 24px; border-radius: 16px; margin-top: 20px;
+    }
+    </style>
 """, unsafe_allow_html=True)
 
-# Inicialização segura do seletor de abas na memória RAM
-if "modulo_ativo" not in st.session_state:
-    st.session_state.modulo_ativo = "Radar"
+st.markdown('<h1 class="titulo-cyber">💎 Radar de Produtos AdrielAI</h1>', unsafe_allow_html=True)
+st.write("Ecossistema premium de monitoramento contínuo com auditoria detalhada de mercado gringo.")
+st.markdown("<br>", unsafe_allow_html=True)
 
-# =============================================================================================================
-# MONTAGEM PARALELA: COLUNA 1 (MENU FIXO) + COLUNA 2 (CONTEÚDO DINÂMICO)
-# =============================================================================================================
-col_esquerda, col_direita_conteudo = st.columns([0.22, 0.78])
-
-with col_esquerda:
-    st.markdown('<div class="coluna-container-lateral">', unsafe_allow_html=True)
-    st.markdown("<h2 style='color: #60a5fa; font-size: 22px; font-weight: 800; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 6px; font-size:11px; border-radius:4px; vertical-align:middle;'>PRO</span></h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #475569; font-size: 10px; margin-top:-3px; letter-spacing:1px;'>CONTROL PANEL</p>", unsafe_allow_html=True)
-    st.write("---")
-    
-    st.markdown('<div class="menu-lateral-container">', unsafe_allow_html=True)
-    if st.button("🎛️ Dashboard Geral", key="btn_m_dash"): st.session_state.modulo_ativo = "Dashboard"; st.rerun()
-    if st.button("🛰️ 1. Radar de Produtos", key="btn_m_radar"): st.session_state.modulo_ativo = "Radar"; st.rerun()
-    if st.button("🔬 2. Auditor de Mercado", key="btn_m_auditor"): st.session_state.modulo_ativo = "Auditor"; st.rerun()
-    st.write("---")
-    st.caption("⚙️ Configurações SaaS")
-    st.markdown('</div></div>', unsafe_allow_html=True)
-
-with col_direita_conteudo:
-    st.markdown('<div class="coluna-container-central">', unsafe_allow_html=True)
-    
-    # =========================================================================================================
-    # 🛰️ RECHEIO DO MÓDULO 1: RADAR DE PRODUTOS (MANTIDO 100% COMPLETO E VERDADEIRO)
-    # =========================================================================================================
-    if st.session_state.modulo_ativo == "Radar":
-        st.markdown("""
-        <div class="caixa-holografica-real-print">
-            <h3 style="color: #00FF87; font-size: 21px; font-weight: 800; margin: 0 0 14px 0; font-family: sans-serif;">
-                📊 MÓDULO 1: RADAR DE PRODUTOS DINÂMICOS
-            </h3>
-            <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 0px; font-family: sans-serif;">
-                Varredura de tráfego internacional ativa. Abaixo estão listadas as 25 ofertas validadas com sinais reais de mercado. 
-                Selecione qualquer produto no painel inferior para computar o gráfico de buscas acumuladas hora por hora.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        produtos_alta = [
-            {"Produto": "Sugar Defender", "Gravidade": "284.50", "Pesquisas Mes": 142000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "VSL novo convertendo tráfego qualificado de palavra exata com alto ROI."},
-            {"Produto": "Puravive", "Gravidade": "241.10", "Pesquisas Mes": 118000, "Onde Anunciar": "Bing Ads + Pre-Sell", "Porque": "Leilão menos concorrido no Bing barateia o CPC em nicho de emagrecimento gringo."},
-            {"Produto": "Java Burn", "Gravidade": "198.40", "Pesquisas Mes": 96000, "Onde Anunciar": "Google Ads (Pre-Sell)", "Porque": "Checkout rápido reduz abandono de carrinho. Essencial usar domínio blindado."},
-            {"Produto": "Prodentim", "Gravidade": "172.90", "Pesquisas Mes": 84000, "Onde Anunciar": "Google Ads (Fundo)", "Porque": "Saúde dental com altíssima taxa de recorrência e recompra automática."},
-            {"Produto": "Alpilean", "Gravidade": "165.20", "Pesquisas Mes": 79000, "Onde Anunciar": "Bing Ads Direto", "Porque": "Baixo reembolso nesta temporada garante estabilidade nas comissões pagas."},
-            {"Produto": "GlucoBerry", "Gravidade": "154.80", "Pesquisas Mes": 68000, "Onde Anunciar": "Google Ads (Reino Unido)", "Porque": "Baixa concorrência de grandes afiliados nos países europeus da ClickBank."},
-            {"Produto": "Liv Pure", "Gravidade": "147.30", "Pesquisas Mes": 62000, "Onde Anunciar": "Google Ads + Pre-Sell", "Porque": "Nicho de fígado. Páginas pontes robustas eliminam quedas automáticas."},
-            {"Produto": "NeuroZoom", "Gravidade": "139.10", "Pesquisas Mes": 54000, "Onde Anunciar": "Google Pesquisa Direta", "Porque": "Produto de foco cognitivo escalando rápido no checkout do BuyGoods."},
-            {"Produto": "ZenCortex", "Gravidade": "132.50", "Pesquisas Mes": 49000, "Onde Anunciar": "Google Ads (Maximizar Cliques)", "Porque": "Excelente material de copys prontas fornecido direto pelo gerente da oferta."},
-            {"Produto": "Prostadine", "Gravidade": "128.40", "Pesquisas Mes": 45000, "Onde Anunciar": "Bing Ads (EUA)", "Porque": "CTR médio de anúncios subiu 20% após atualização do criativo oficial."}
-        ]
-
-        produtos_estaveis = [
-            {"Produto": "Dentitox Pro", "Gravidade": "114.60", "Pesquisas Mes": 38000, "Onde Anunciar": "Google Ads (Austrália)", "Porque": "Forte conversão na Austrália fugindo do leilão caro dos EUA."},
-            {"Produto": "Metanail Complex", "Gravidade": "109.20", "Pesquisas Mes": 35000, "Onde Anunciar": "Bing Ads + Advertorial", "Porque": "Nicho de fungo de unha performa bem com advertoriais de autoridade."},
-            {"Produto": "Kerassentials", "Gravidade": "102.50", "Pesquisas Mes": 31000, "Onde Anunciar": "Google Anúncios RSA", "Porque": "Estabilidade de buscas. Destacar 60 dias de garantia gera urgência."},
-            {"Produto": "Ikaria Lean Juice", "Gravidade": "98.40", "Pesquisas Mes": 29000, "Onde Anunciar": "Google (Copys Curtas)", "Porque": "Flutuação normal por fadiga de criativos. Exige mudar ângulo da copy."},
+# 3. BASE DE DADOS COMPLETA COM EXATAMENTE 20 PRODUTOS VALIDADOS (SINTAXE CORRIGIDA)
+PRODUTOS_DADOS = [
+    {
+        "ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Nutracêutico",
+        "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Metabolismo travado por baixa temperatura interna celular.",
+        "porque": "Volume alto de tráfego qualificado de fundo de funil.",
+        "cpc": "USA: $2.80 | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40",
+        "grafico": [45, 52, 60, 68, 75, 82, 88, 92, 95, 98, 100, 99]
+    },
+    {
+        "ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Emagrecimento",
+        "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Falta de ativação do tecido adiposo marrom (BAT).",
+        "porque": "Baixa taxa de reembolso e comissões altas por potes.",
+        "cpc": "USA: $3.10 | UK: $2.20 | CA: $2.40 | AU: $2.50 | DE: $1.60",
+        "grafico": [30, 42, 55, 61, 68, 74, 80, 85, 90, 94, 98, 97]
+    },
+    {
+        "ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "nicho": "Suplemento Café",
+        "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)",
+        "dor": "Falta de energia matinal e metabolismo lento no dia.",
+        "porque": "Grande aceitação na Europa com leilão de levedura baixo.",
+        "cpc": "USA: $2.60 | UK: $1.65 | CA: $1.95 | AU: $2.10 | DE: $1.30",
+        "grafico": [50, 48, 52, 58, 62, 70, 75, 78, 82, 85, 87, 86]
+    },
+    {
+        "ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Diabetes",
+        "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Picos de açúcar no sangue e compulsão noturna por doces.",
+        "porque": "Público alvo sênior acima de 45 anos com alto poder de compra.",
+        "cpc": "USA: $2.95 | UK: $1.85 | CA: $2.15 | AU: $2.20 | DE: $1.45",
+        "grafico": [40, 45, 43, 50, 55, 60, 65, 70, 72, 75, 78, 76]
+    },
+    {
+        "ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Saúde Bucal",
+        "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)",
+        "dor": "Mau hálito constante e inflamação crônica na gengiva.",
+        "porque": "Concorrência controlada e excelente ROI em anúncios Bing.",
+        "cpc": "USA: $2.40 | UK: $1.50 | CA: $1.75 | AU: $1.90 | DE: $1.20",
+        "grafico": [60, 58, 62, 65, 67, 72, 70, 75, 79, 82, 85, 83]
+    },
+    {
+        "ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Detox Fígado",
+        "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Fígado sobrecarregado impedindo queima natural de gordura.",
+        "porque": "Funil de vendas forte do produtor gerando upsells recorrentes.",
+        "cpc": "USA: $3.20 | UK: $2.10 | CA: $2.30 | AU: $2.40 | DE: $1.50",
+        "grafico": [25, 32, 40, 48, 55, 62, 70, 75, 82, 88, 92, 90]
+    },
+    {
+        "ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Suplemento Pó",
+        "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)",
+        "dor": "Altos níveis de ácido úrico gerando inchaço abdominal.",
+        "porque": "Formato em pó inovador com ótima conversão visual.",
+        "cpc": "USA: $2.85 | UK: $1.95 | CA: $2.05 | AU: $2.15 | DE: $1.35",
+        "grafico": [35, 38, 42, 47, 52, 58, 64, 70, 73, 78, 81, 80]
+    },
+    {
+        "ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Audição",
+        "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)",
+        "dor": "Zumbido chato no ouvido tirando o sono e a paciência.",
+        "porque": "Mercado focado em dor latente de resolução imediata.",
+        "cpc": "USA: $2.50 | UK: $1.60 | CA: $1.80 | AU: $1.95 | DE: $1.15",
+        "grafico": [42, 44, 48, 50, 53, 59, 62, 68, 71, 75, 79, 78]
+    },
+    {
+        "ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "nicho": "Saúde Homem",
+        "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)",
+        "dor": "Problemas de próstata forçando idas ao banheiro à noite.",
+        "porque": "Excelente público comprador fundo de funil estruturado.",
+        "cpc": "USA: $3.00 | UK: $2.00 | CA: $2.20 | AU: $2.30 | DE: $1.40",
+        "grafico": [30, 35, 41, 46, 52, 59, 65, 71, 76, 82, 85, 84]
+    },
+    {
+        "ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Unhas/Estética",
+        "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)",
+        "dor": "Fungos e micoses persistentes amarelas destruindo as unhas.",
+        "porque": "Apelo visual incrível e excelente para rodar no YouTube Ads.",
+        "cpc": "USA: $2.35 | UK: $1.45 | CA: $1.65 | AU: $1.80 | DE: $1.10",
+        "grafico": [48, 50, 53, 56, 60, 64, 69, 73, 78, 81, 84, 82]
+    },
+    {
+        "ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "nicho": "Suplemento",
+        "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)",
+        "dor": "Ganho rápido de peso associado a picos de ansiedade.",
+        "porque": "Poucos afiliados anunciando, leilões vazios de CPC.",
+        "cpc": "USA: $1.90 | UK: $1.20 | CA: $1.40 | AU: $1.50 | DE: $0.95",
+        "grafico": [15, 18, 22, 25, 29, 32, 36, 40, 43, 45, 48, 47]
+    },
+    {
+        "ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Pele/Estômago",
+        "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)",
+        "dor": "Flacidez e rugas causadas por envelhecimento celular interno.",
+        "porque": "Perfeito para criar artigos de Review de alta conversão.",
+        "cpc": "USA: $2.10 | UK: $1.30 | CA: $1.50 | AU: $1.60 | DE: $1.10",
+        "grafico": [20, 22, 25, 28, 31, 35, 39, 42, 45, 48, 51, 50]
+    },
+    {
+        "ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "nicho": "Digestão",
