@@ -4,94 +4,134 @@ import random
 # 1. CONFIGURAÇÃO DA PÁGINA
 st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="📊", layout="wide")
 
-# 2. ESTILIZAÇÃO CSS AVANÇADA
+# 2. ESTILIZAÇÃO NEON E ANIMAÇÕES AVANÇADAS (CSS INJETADO)
 st.markdown("""
     <style>
-    .stApp { background-color: #0f172a; color: #f8fafc; }
-    h1, h2, h3, h4, p, span { color: #ffffff !important; font-family: sans-serif; }
-    div[data-testid="stMetricValue"] > div { color: #f59e0b !important; }
+    /* Fundo do App e Fontes */
+    .stApp { background-color: #0b0f19; color: #f8fafc; }
+    h1, h2, h3, h4, p, span { font-family: 'Segoe UI', Roboto, sans-serif; }
     
-    div[data-testid="stHorizontalBlock"] { gap: 10px !important; }
+    /* Título Principal com Gradiente Animado */
+    .titulo-cyber {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, #ff0055, #00ffcc, #9900ff);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientCyber 8s ease infinite;
+    }
+    @keyframes gradientCyber {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Ajuste de Espaçamento das Colunas */
+    div[data-testid="stHorizontalBlock"] { gap: 12px !important; }
     
+    /* Customização dos Botões Gerais */
     div[data-testid="stColumn"] button {
-        background-color: #1e293b !important;
-        border-radius: 8px !important;
-        padding: 12px 10px !important;
-        min-height: 45px !important;
-        transition: all 0.3s ease-in-out !important;
+        background: #131a2c !important;
+        border-radius: 10px !important;
+        padding: 14px 10px !important;
+        min-height: 50px !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
         width: 100% !important;
         display: block !important;
     }
-    
     div[data-testid="stColumn"] button p {
         font-size: 15px !important;
         font-weight: 800 !important;
         letter-spacing: 0.5px;
     }
     
+    /* 🔴 Botão Neon Vermelho (ALTA) */
     .btn-alta button {
-        border: 2px solid #ef4444 !important;
-        box-shadow: 0 0 12px rgba(239, 68, 68, 0.3) !important;
+        border: 2px solid #ff0055 !important;
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.25) !important;
     }
     .btn-alta button p {
-        color: #f87171 !important;
-        text-shadow: 0 0 8px rgba(239, 68, 68, 0.5) !important;
+        color: #ff4d88 !important;
+        text-shadow: 0 0 8px rgba(255, 0, 85, 0.6) !important;
     }
     .btn-alta button:hover {
-        background-color: #ef4444 !important;
-        box-shadow: 0 0 20px rgba(239, 68, 68, 0.7) !important;
+        background: #ff0055 !important;
+        box-shadow: 0 0 25px rgba(255, 0, 85, 0.8) !important;
+        transform: scale(1.02);
     }
     .btn-alta button:hover p { color: #ffffff !important; }
 
+    /* 🟢 Botão Neon Verde (VALIDADO) */
     .btn-validado button {
-        border: 2px solid #10b981 !important;
-        box-shadow: 0 0 12px rgba(16, 185, 129, 0.3) !important;
+        border: 2px solid #00ffcc !important;
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.2) !important;
     }
     .btn-validado button p {
-        color: #34d399 !important;
-        text-shadow: 0 0 8px rgba(16, 185, 129, 0.5) !important;
+        color: #33ffdd !important;
+        text-shadow: 0 0 8px rgba(0, 255, 204, 0.5) !important;
     }
     .btn-validado button:hover {
-        background-color: #10b981 !important;
-        box-shadow: 0 0 20px rgba(16, 185, 129, 0.7) !important;
+        background: #00ffcc !important;
+        box-shadow: 0 0 25px rgba(0, 255, 204, 0.7) !important;
+        transform: scale(1.02);
     }
-    .btn-validado button:hover p { color: #ffffff !important; }
+    .btn-validado button:hover p { color: #0b0f19 !important; }
 
+    /* 🔵 Botão Neon Info (Ciano/Roxo) */
     .btn-info button {
-        border: 2px solid #06b6d4 !important;
-        box-shadow: 0 0 10px rgba(6, 182, 212, 0.2) !important;
+        border: 2px solid #9900ff !important;
+        box-shadow: 0 0 10px rgba(153, 0, 255, 0.2) !important;
     }
-    .btn-info button p { color: #22d3ee !important; }
+    .btn-info button p { color: #cc66ff !important; }
     .btn-info button:hover {
-        background-color: #06b6d4 !important;
-        box-shadow: 0 0 18px rgba(6, 182, 212, 0.6) !important;
+        background: #9900ff !important;
+        box-shadow: 0 0 20px rgba(153, 0, 255, 0.7) !important;
     }
-    .btn-info button:hover p { color: #0f172a !important; }
+    .btn-info button:hover p { color: #ffffff !important; }
     
-    .card-info {
-        background-color: #1e293b; border: 1px solid #334155;
-        padding: 20px; border-radius: 12px; margin-top: 15px;
+    /* 🔴 Badge de Alta com Animação de Pulsar */
+    .badge-alta-cyber {
+        background-color: #2a0813; color: #ff4d88 !important;
+        padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px;
+        border: 2px solid #ff0055; display: inline-block;
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+        animation: pulseRed 2s infinite;
     }
-    .badge-alta {
-        background-color: #991b1b; color: #ffffff !important;
-        padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 13px;
-        border: 1px solid #f87171; box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    @keyframes pulseRed {
+        0% { box-shadow: 0 0 5px rgba(255, 0, 85, 0.4); }
+        50% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.8); }
+        100% { box-shadow: 0 0 5px rgba(255, 0, 85, 0.4); }
     }
-    .badge-normal {
-        background-color: #16a34a; color: #ffffff !important;
-        padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 13px;
-        border: 1px solid #34d399; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+
+    /* 🟢 Badge de Validado */
+    .badge-normal-cyber {
+        background-color: #04251d; color: #33ffdd !important;
+        padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px;
+        border: 2px solid #00ffcc; display: inline-block;
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
     }
+    
+    /* Card de Veredito Estilizado */
+    .card-cyber-info {
+        background: linear-gradient(135deg, #131a2c, #1a243f);
+        border: 2px solid #1e293b;
+        padding: 22px; border-radius: 14px; margin-top: 20px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    /* Força os textos dos labels das métricas a ficarem brancos */
+    div[data-testid="stMetricLabel"] > div > p { color: #94a3b8 !important; font-weight: 600; }
     </style>
 """, unsafe_allow_html=True)
 
-# Mudamos o título para focar apenas em Produtos Perpétuos/Validados
-st.title("📊 Radar de Produtos da Gringa")
+# Título com a classe animada nova
+st.markdown('<h1 class="titulo-cyber">📊 Radar de Produtos da Gringa</h1>', unsafe_allow_html=True)
 st.write("Acompanhe a movimentação real dos produtos perpétuos mais quentes do mercado internacional.")
+st.markdown("<br>", unsafe_allow_html=True)
 
-# 3. BANCO DE DADOS EXCLUSIVO DE PRODUTOS VALIDADOS (SEM LANÇAMENTOS)
+# 3. BANCO DE DADOS FIXO E CRIPTO-ESTILIZADO
 if "lista_completa_produtos" not in st.session_state:
-    # Pool de 25 produtos consolidados do mercado internacional (Evergreen)
     PRODUCTS_POOL = [
         {"name": "Alpilean", "platform": "ClickBank", "type": "Nutracêutico"},
         {"name": "Puravive", "platform": "ClickBank", "type": "Emagrecimento"},
@@ -106,18 +146,7 @@ if "lista_completa_produtos" not in st.session_state:
         {"name": "LeanBliss", "platform": "BuyGoods", "type": "Suplemento Mastigável"},
         {"name": "Neotonics", "platform": "ClickBank", "type": "Pele e Intestino"},
         {"name": "Synogut", "platform": "ClickBank", "type": "Saúde Digestiva"},
-        {"name": "Kerassentials", "platform": "ClickBank", "type": "Óleo Antifúngico"},
-        {"name": "SightCare", "platform": "BuyGoods", "type": "Suporte à Visão"},
-        {"name": "Prostadine", "platform": "ClickBank", "type": "Suporte à Próstata"},
-        {"name": "Fast Lean Pro", "platform": "ClickBank", "type": "Auxílio de Jejum"},
-        {"name": "Amiclear", "platform": "ClickBank", "type": "Energia e Glicose"},
-        {"name": "Alpha Tonic", "platform": "BuyGoods", "type": "Potência Masculina"},
-        {"name": "Endopump", "platform": "ClickBank", "type": "Fluxo Sanguíneo"},
-        {"name": "Proaxil", "platform": "BuyGoods", "type": "Saúde Geral"},
-        {"name": "Joint Genesis", "platform": "ClickBank", "type": "Articulações"},
-        {"name": "ClariTox Pro", "platform": "ClickBank", "type": "Equilíbrio/Tontura"},
-        {"name": "GenoGreens", "platform": "BuyGoods", "type": "Superalimento Verde"},
-        {"name": "NeuroRise", "platform": "ClickBank", "type": "Memória/Foco"}
+        {"name": "Kerassentials", "platform": "ClickBank", "type": "Óleo Antifúngico"}
     ]
     
     processados = []
@@ -135,7 +164,7 @@ if "lista_completa_produtos" not in st.session_state:
             "Alemanha (DE)": {"cpc": f"${random.uniform(1.15, 2.15):.2f}", "interesse": "Médio"}
         }
         veredicto_pais = "Estados Unidos (USA)" if is_top_10 else "Reino Unido (UK)"
-        porque_anunciar = f"Alta densidade de compradores qualificados de fundo de funil ativos em {veredicto_pais}."
+        porque_anunciar = f"Concentração massiva de buscas exatas fundo de funil. Baixa barreira de concorrência ativa detectada no país: {veredicto_pais}."
         
         processados.append({
             "ranking": index + 1, "nome": prod["name"], "plataforma": prod["platform"], "tipo": prod["type"],
@@ -144,9 +173,10 @@ if "lista_completa_produtos" not in st.session_state:
             "grafico": [random.randint(20, 100) for _ in range(12)]
         })
     st.session_state.lista_completa_produtos = processados
-    st.session_state.produto_radar = processados[0]  # Define Alpilean explicitamente como o primeiro item ativo
+    # CORREÇÃO CRUCIAL AQUI: Agora salvamos apenas o PRIMEIRO PRODUTO em vez da lista inteira!
+    st.session_state.produto_radar = processados[0]
 
-# Atalhos das variáveis
+# Atalhos das variáveis limpas
 produtos_ativos = st.session_state.lista_completa_produtos
 p_sel = st.session_state.produto_radar
 
@@ -168,8 +198,9 @@ def abrir_popup_detalhes(produto):
 col_esquerda, col_direita = st.columns([1.2, 1.1])
 
 with col_esquerda:
-    st.subheader("Painel Estatístico Global")
-    st.write("Selecione um produto para carregar as métricas ou veja os 5 países em Info:")
+    st.markdown("### 🎯 Painel Estatístico Global")
+    st.write("Selecione o produto perpétuo para projetar os dados na central ao lado:")
+    st.markdown("<br>", unsafe_allow_html=True)
     
     for p in produtos_ativos:
         c_btn, c_pop = st.columns(2)
@@ -187,19 +218,3 @@ with col_esquerda:
             st.markdown('<div class="btn-info">', unsafe_allow_html=True)
             if st.button("ℹ️ Info", key=f"pop_r_{p['nome']}_{p['ranking']}", use_container_width=True):
                 abrir_popup_detalhes(p)
-            st.markdown('</div>', unsafe_allow_html=True)
-
-with col_direita:
-    st.subheader("⚡ Movimentação de Mercado em Tempo Real")
-    st.markdown(f"## {p_sel['nome']}")
-    
-    if "🔥" in p_sel["status"]:
-        st.markdown(f'<span class="badge-alta">{p_sel["status"]}</span>', unsafe_allow_html=True)
-    else:
-        st.markdown(f'<span class="badge-normal">{p_sel["status"]}</span>', unsafe_allow_html=True)
-        
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    c1, c2 = st.columns(2)
-    c1.metric(label="🔎 Pesquisas Realizadas no Mês", value=f"{p_sel['buscas_mes']:,}")
-    c2.metric(label="⚡ Pesquisas Acumuladas Hoje", value=f"{p_sel['buscas_hoje']:,}")
