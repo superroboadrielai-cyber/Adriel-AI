@@ -13,16 +13,7 @@ st.markdown("""
     .titulo-cyber {
         font-size: 2.5rem;
         font-weight: 900;
-        background: linear-gradient(45deg, #ff0055, #00ffcc, #9900ff);
-        background-size: 400% 400%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientCyber 8s ease infinite;
-    }
-    @keyframes gradientCyber {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        color: #00ffcc;
     }
 
     div[data-testid="stHorizontalBlock"] { gap: 12px !important; }
@@ -32,7 +23,6 @@ st.markdown("""
         border-radius: 10px !important;
         padding: 14px 10px !important;
         min-height: 50px !important;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
         width: 100% !important;
         display: block !important;
     }
@@ -42,79 +32,54 @@ st.markdown("""
         letter-spacing: 0.5px;
     }
     
-    /* 🔴 Botão Neon Vermelho (ALTA) */
     .btn-alta button {
         border: 2px solid #ff0055 !important;
-        box-shadow: 0 0 15px rgba(255, 0, 85, 0.25) !important;
     }
     .btn-alta button p {
         color: #ff4d88 !important;
-        text-shadow: 0 0 8px rgba(255, 0, 85, 0.6) !important;
     }
     .btn-alta button:hover {
         background: #ff0055 !important;
-        box-shadow: 0 0 25px rgba(255, 0, 85, 0.8) !important;
-        transform: scale(1.02);
     }
     .btn-alta button:hover p { color: #ffffff !important; }
 
-    /* 🟢 Botão Neon Verde (VALIDADO) */
     .btn-validado button {
         border: 2px solid #00ffcc !important;
-        box-shadow: 0 0 15px rgba(0, 255, 204, 0.2) !important;
     }
     .btn-validado button p {
         color: #33ffdd !important;
-        text-shadow: 0 0 8px rgba(0, 255, 204, 0.5) !important;
     }
     .btn-validado button:hover {
         background: #00ffcc !important;
-        box-shadow: 0 0 25px rgba(0, 255, 204, 0.7) !important;
-        transform: scale(1.02);
     }
     .btn-validado button:hover p { color: #0b0f19 !important; }
 
-    /* 🔵 Botão Neon Info */
     .btn-info button {
         border: 2px solid #9900ff !important;
-        box-shadow: 0 0 10px rgba(153, 0, 255, 0.2) !important;
     }
     .btn-info button p { color: #cc66ff !important; }
     .btn-info button:hover {
         background: #9900ff !important;
-        box-shadow: 0 0 20px rgba(153, 0, 255, 0.7) !important;
     }
     .btn-info button:hover p { color: #ffffff !important; }
     
-    /* Badges */
     .badge-alta-cyber {
         background-color: #2a0813; color: #ff4d88 !important;
         padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px;
         border: 2px solid #ff0055; display: inline-block;
-        box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
-        animation: pulseRed 2s infinite;
-    }
-    @keyframes pulseRed {
-        0% { box-shadow: 0 0 5px rgba(255, 0, 85, 0.4); }
-        50% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.8); }
-        100% { box-shadow: 0 0 5px rgba(255, 0, 85, 0.4); }
     }
 
     .badge-normal-cyber {
         background-color: #04251d; color: #33ffdd !important;
         padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px;
         border: 2px solid #00ffcc; display: inline-block;
-        box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
     }
     
     .card-cyber-info {
-        background: linear-gradient(135deg, #131a2c, #1a243f);
+        background: #131a2c;
         border: 2px solid #1e293b;
         padding: 22px; border-radius: 14px; margin-top: 20px;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
-    
-    div[data-testid="stMetricLabel"] > div > p { color: #94a3b8 !important; font-weight: 600; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -122,58 +87,129 @@ st.markdown('<h1 class="titulo-cyber">📊 Radar de Produtos da Gringa</h1>', un
 st.write("Acompanhe a movimentação real de mercado atualizada em tempo real.")
 st.markdown("<br>", unsafe_allow_html=True)
 
-# 3. POOL GLOBAL DE PRODUTOS VALIDADOS (25 PRODUTOS FIXOS)
-PRODUCTS_POOL = [
-    # TOP 10 - CRUCIAL (EVERGREEN EM ALTA)
-    {"name": "Alpilean", "platform": "ClickBank", "type": "Nutracêutico", "dor": "Dificuldade extrema de emagrecer por metabolismo lento e baixa temperatura interna."},
-    {"name": "Puravive", "platform": "ClickBank", "type": "Emagrecimento", "dor": "Acúmulo de gordura profunda no tecido adiposo marrom resistente a dietas."},
-    {"name": "Java Burn", "platform": "BuyGoods", "type": "Suplemento", "dor": "Falta de energia matinal e lentidão na queima calórica diária."},
-    {"name": "GlucoTrust", "platform": "ClickBank", "type": "Diabetes", "dor": "Picos descontrolados de açúcar no sangue e compulsão por doces à noite."},
-    {"name": "ProDentim", "platform": "ClickBank", "type": "Saúde Bucal", "dor": "Sangramento na gengiva, mau hálito crônico e dentes enfraquecidos."},
-    {"name": "Liv Pure", "platform": "ClickBank", "type": "Detox Hepático", "dor": "Fígado sobrecarregado por toxinas que impedem a queima natural de gordura."},
-    {"name": "Ikaria Lean Belly Juice", "platform": "ClickBank", "type": "Suplemento Pó", "dor": "Altos níveis de ácido úrico que causam inflamação e ganho de peso abdominal."},
-    {"name": "Cortexi", "platform": "ClickBank", "type": "Saúde Cognitiva", "dor": "Zumbido incômodo no ouvido (Tinnitus) e perda de foco mental."},
-    {"name": "FlowForce Max", "platform": "BuyGoods", "type": "Saúde Masculina", "dor": "Inflamação na próstata causando idas frequentes e dolorosas ao banheiro à noite."},
-    {"name": "Metanail Serum Pro", "platform": "ClickBank", "type": "Estética/Unhas", "dor": "Fungos persistentes, unhas quebradiças, escuras e descascando."},
-    # MAIS 15 VALIDADOS (MENOS CONCORRÊNCIA / SÍMBOLO NORMAL)
-    {"name": "LeanBliss", "platform": "BuyGoods", "type": "Suplemento", "dor": "Ganho de peso rápido associado a oscilações de glicose no organismo."},
-    {"name": "Neotonics", "platform": "ClickBank", "type": "Pele e Intestino", "dor": "Envelhecimento precoce da pele causado por má absorção celular intestinal."},
-    {"name": "Synogut", "platform": "ClickBank", "type": "Saúde Digestiva", "dor": "Constipação crônica, gases dolorosos e estômago estufado após comer."},
-    {"name": "Kerassentials", "platform": "ClickBank", "type": "Óleo Antifúngico", "dor": "Micose severa nos pés que não desaparece com pomadas comuns."},
-    {"name": "SightCare", "platform": "BuyGoods", "type": "Visão", "dor": "Visão embaçada, vista cansada ao ler e degeneração macular precoce."},
-    {"name": "Prostadine", "platform": "ClickBank", "type": "Suporte Próstata", "dor": "Jato urinário fraco e perda de vitalidade masculina após os 40 anos."},
-    {"name": "Fast Lean Pro", "platform": "ClickBank", "type": "Auxílio Jejum", "dor": "Fome psicológica que impede o sucesso em protocolos de jejum intermitente."},
-    {"name": "Amiclear", "platform": "ClickBank", "type": "Energia", "dor": "Fadiga extrema ao longo do dia combinada com metabolismo travado."},
-    {"name": "Alpha Tonic", "platform": "BuyGoods", "type": "Potência", "dor": "Queda drástica nos níveis de testosterona livre e perda de massa muscular."},
-    {"name": "Endopump", "platform": "ClickBank", "type": "Fluxo Sanguíneo", "dor": "Má circulação e falta de oxigenação muscular durante os treinos."},
-    {"name": "Joint Genesis", "platform": "ClickBank", "type": "Articulações", "dor": "Dores crônicas nos joelhos e falta de lubrificação nas juntas ao caminhar."},
-    {"name": "ClariTox Pro", "platform": "ClickBank", "type": "Equilíbrio", "dor": "Tonturas frequentes e perda de equilíbrio físico ao levantar rápido."},
-    {"name": "GenoGreens", "platform": "BuyGoods", "type": "Superalimento", "dor": "Baixa imunidade e falta de nutrientes vegetais na rotina diária."},
-    {"name": "NeuroRise", "platform": "ClickBank", "type": "Memória/Foco", "dor": "Esquecimentos frequentes e cansaço mental extremo no trabalho."},
-    {"name": "ZenCortex", "platform": "BuyGoods", "type": "Audição", "dor": "Dificuldade de compreender conversas em ambientes barulhentos."}
+# 3. BASE DE DADOS FIXA (Definida de forma estática global para evitar falhas)
+PRODUTOS_DADOS = [
+    {
+        "ranking": 1, "nome": "Alpilean", "plataforma": "ClickBank", "tipo": "Nutracêutico", "status": "🔥 ALTA",
+        "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)",
+        "dor_principal": "Dificuldade extrema de emagrecer por metabolismo lento e baixa temperatura interna.",
+        "porque": "Volume massivo de buscas exatas e compradores ativos fundo de funil.",
+        "grafico": [45, 55, 60, 65, 70, 85, 90, 95, 100, 110, 115, 112]
+    },
+    {
+        "ranking": 2, "nome": "Puravive", "plataforma": "ClickBank", "tipo": "Emagrecimento", "status": "🔥 ALTA",
+        "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)",
+        "dor_principal": "Acúmulo de gordura profunda no tecido adiposo marrom resistente a dietas.",
+        "porque": "Alta conversão em páginas de VSL nativas com baixo reembolso.",
+        "grafico": [30, 40, 45, 50, 60, 75, 80, 85, 90, 95, 99, 98]
+    },
+    {
+        "ranking": 3, "nome": "Java Burn", "plataforma": "BuyGoods", "tipo": "Suplemento", "status": "🔥 ALTA",
+        "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)",
+        "dor_principal": "Falta de energy matinal e lentidão na queima calórica diária.",
+        "porque": "Excelente aceitação no mercado europeu com CPC mais barato que nos EUA.",
+        "grafico": [50, 52, 55, 58, 62, 65, 70, 74, 78, 82, 85, 87]
+    },
+    {
+        "ranking": 4, "nome": "GlucoTrust", "plataforma": "ClickBank", "tipo": "Diabetes", "status": "🔥 ALTA",
+        "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)",
+        "dor_principal": "Picos descontrolados de açúcar no sangue e compulsão por doces à noite.",
+        "porque": "Público comprador qualificado acima de 45 anos com alto poder aquisitivo.",
+        "grafico": [40, 42, 45, 48, 52, 55, 60, 64, 68, 70, 72, 74]
+    },
+    {
+        "ranking": 5, "nome": "ProDentim", "plataforma": "ClickBank", "tipo": "Saúde Bucal", "status": "🔥 ALTA",
+        "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)",
+        "dor_principal": "Sangramento na gengiva, mau hálito crônico e dentes enfraquecidos.",
+        "porque": "Nicho pouco explorado por afiliados na Europa e América do Norte.",
+        "grafico": [35, 38, 40, 44, 48, 52, 56, 60, 62, 65, 67, 69]
+    },
+    {
+        "ranking": 6, "nome": "LeanBliss", "plataforma": "BuyGoods", "tipo": "Suplemento", "status": "✅ VALIDADO",
+        "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)",
+        "dor_principal": "Ganho de peso rápido associado a oscilações de glicose no organismo.",
+        "porque": "Leilão de CPC vazio na Austrália, gerando ROI alto por clique barato.",
+        "grafico": [10, 11, 12, 12, 13, 13, 14, 14, 14, 15, 15, 14]
+    },
+    {
+        "ranking": 7, "nome": "Neotonics", "plataforma": "ClickBank", "tipo": "Pele e Intestino", "status": "✅ VALIDADO",
+        "buscas_mes": 12800, "buscas_hoje": 280, "melhor_pais": "Alemanha (DE)",
+        "dor_principal": "Envelhecimento precoce da pele causado por má absorção celular intestinal.",
+        "porque": "Excelente oportunidade para rodar tráfego direto via anúncios de pesquisa.",
+        "grafico": [8, 9, 10, 10, 11, 11, 12, 12, 12, 13, 13, 12]
+    }
 ]
 
-# 4. GERAÇÃO ESTÁVEL DOS DADOS
-produtos_ativos = []
-random.seed(10)
+# Inicializa o estado de sessão de forma simples e direta
+if "produto_radar" not in st.session_state:
+    st.session_state.produto_radar = PRODUTOS_DADOS[0]
 
-for index, prod in enumerate(PRODUCTS_POOL):
-    is_top_10 = index < 10
-    status_label = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
+p_sel = st.session_state.produto_radar
+
+# 4. DIALOGO POPUP (MODAL DE COMPARAÇÃO DE PAÍSES)
+@st.dialog("📋 Auditoria Completa")
+def abrir_popup_detalhes(produto):
+    st.markdown(f"## 🛡️ Auditoria Geral: {produto['nome']}")
+    st.markdown(f"**Plataforma:** `{produto['plataforma']}` | **Nicho:** `{produto['tipo']}`")
+    st.markdown("---")
+    st.markdown("### 💔 Dores do Cliente:")
+    st.warning(produto["dor_principal"])
+    st.markdown("---")
+    st.markdown("### 🏆 Veredito Estratégico:")
+    st.success(f"**País Indicado:** {produto['melhor_pais']}")
+    st.info(produto["porque"])
+
+# 5. ESTRUTURA DE LAYOUT
+col_esquerda, col_direita = st.columns([1.2, 1.1])
+
+with col_esquerda:
+    st.markdown("### 🎯 Painel Estatístico Global")
+    st.write("Selecione o produto para projetar os dados na central ao lado:")
+    st.markdown("<br>", unsafe_allow_html=True)
     
-    buscas_mes = random.randint(58000, 115000) if is_top_10 else random.randint(4800, 17500)
-    buscas_hoje = random.randint(1600, 4200) if is_top_10 else random.randint(70, 420)
+    for p in PRODUTOS_DADOS:
+        c_btn, c_pop = st.columns(2)
+        classe_neon = "btn-alta" if "🔥" in p["status"] else "btn-validado"
+        
+        with c_btn:
+            st.markdown(f'<div class="{classe_neon}">', unsafe_allow_html=True)
+            if st.button(f"#{p['ranking']} - {p['nome']}", key=f"btn_r_{p['nome']}"):
+                st.session_state.produto_radar = p
+                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
+                
+        with c_pop:
+            st.markdown('<div class="btn-info">', unsafe_allow_html=True)
+            if st.button("ℹ️ Info", key=f"pop_r_{p['nome']}"):
+                abrir_popup_detalhes(p)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+with col_direita:
+    st.markdown("### ⚡ Central de Inteligência")
+    st.markdown(f"## {p_sel['nome']}")
     
-    paises_dados = {
-        "Estados Unidos (USA)": {"cpc": f"${random.uniform(2.20, 3.70):.2f}", "interesse": "Muito Alto"},
-        "Reino Unido (UK)": {"cpc": f"${random.uniform(1.60, 2.60):.2f}", "interesse": "Alto"},
-        "Canadá (CA)": {"cpc": f"${random.uniform(1.85, 2.85):.2f}", "interesse": "Médio-Alto"},
-        "Austrália (AU)": {"cpc": f"${random.uniform(1.95, 3.05):.2f}", "interesse": "Alto"},
-        "Alemanha (DE)": {"cpc": f"${random.uniform(1.15, 2.15):.2f}", "interesse": "Médio"}
-    }
-    veredicto_pais = "Estados Unidos (USA)" if is_top_10 else "Reino Unido (UK)"
-    porque_anunciar = f"Volume ideal de buscas exatas e compradores ativos fundo de funil detectados em {veredicto_pais}."
+    if "🔥" in p_sel["status"]:
+        st.markdown(f'<span class="badge-alta-cyber">{p_sel["status"]}</span>', unsafe_allow_html=True)
+    else:
+        st.markdown(f'<span class="badge-normal-cyber">{p_sel["status"]}</span>', unsafe_allow_html=True)
+        
+    st.markdown("<br><br>", unsafe_allow_html=True)
     
-    produtos_ativos.append({
-        "ranking": index + 1, "nome": prod["name"], "plataforma": prod["platform"], "tipo": prod["type"],
-        "status": status_label, "buscas_mes": buscas_mes, "buscas_hoje": buscas_hoje, "dor_principal": prod["dor"],
+    c1, c2 = st.columns(2)
+    c1.metric(label="🔎 Pesquisas no Mês", value=f"{p_sel['buscas_mes']:,}")
+    c2.metric(label="⚡ Pesquisas Hoje", value=f"{p_sel['buscas_hoje']:,}")
+    
+    st.markdown(f"""
+        <div class="card-cyber-info">
+            <h4 style="margin-top:0; color:#ff0055; font-weight:bold;">💔 Dor Principal do Cliente:</h4>
+            <p style="font-size:14px; color:#cbd5e1; line-height:1.4;">{p_sel['dor_principal']}</p>
+            <br>
+            <h4 style="margin-top:0; color:#00ffcc; font-weight:bold;">📍 Veredito Onde Anunciar:</h4>
+            <p style="font-size:15px; margin-bottom:5px;"><b>Melhor País:</b> {p_sel['melhor_pais']}</p>
+            <p style="font-size:14px; color:#94a3b8; line-height:1.4;">{p_sel['porque']}</p>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("### 📊 Histórico de Demanda (Últimos 12 Meses)")
+    st.bar_chart(p_sel["grafico"])
