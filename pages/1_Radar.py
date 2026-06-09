@@ -159,11 +159,9 @@ if "lista_completa_produtos" not in st.session_state:
         is_top_10 = index < 10
         status_label = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
         
-        # Gera o volume de buscas em tempo real
         buscas_mes = random.randint(58000, 115000) if is_top_10 else random.randint(4800, 17500)
         buscas_hoje = random.randint(1600, 4200) if is_top_10 else random.randint(70, 420)
         
-        # Dados da auditoria de 5 países obrigatórios
         paises_dados = {
             "Estados Unidos (USA)": {"cpc": f"${random.uniform(2.20, 3.70):.2f}", "interesse": "Muito Alto"},
             "Reino Unido (UK)": {"cpc": f"${random.uniform(1.60, 2.60):.2f}", "interesse": "Alto"},
