@@ -153,9 +153,9 @@ PRODUCTS_POOL = [
     {"name": "ZenCortex", "platform": "BuyGoods", "type": "Audição", "dor": "Dificuldade de compreender conversas em ambientes barulhentos."}
 ]
 
-# 4. GERAÇÃO ESTÁVEL DOS DADOS (RODA TODA VEZ SEM DEPENDER DE CACHE QUE TRAVA)
+# 4. GERAÇÃO ESTÁVEL DOS DADOS
 produtos_ativos = []
-random.seed(10)  # Mantém os números gerados firmes e alinhados
+random.seed(10)  # Garante consistência nos números mockados
 
 for index, prod in enumerate(PRODUCTS_POOL):
     is_top_10 = index < 10
