@@ -4,17 +4,17 @@ import random
 # 1. CONFIGURAÇÃO DA PÁGINA
 st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="📊", layout="wide")
 
-# 2. ESTILIZAÇÃO CSS AVANÇADA (Aumenta o texto dos botões e força o tema neon gamer)
+# 2. ESTILIZAÇÃO CSS AVANÇADA
 st.markdown("""
     <style>
     .stApp { background-color: #0f172a; color: #f8fafc; }
     h1, h2, h3, h4, p, span { color: #ffffff !important; font-family: sans-serif; }
     div[data-testid="stMetricValue"] > div { color: #f59e0b !important; }
     
-    /* Zera margens das colunas para os botões ficarem perfeitamente alinhados */
+    /* Alinhamento dos blocos horizontais */
     div[data-testid="stHorizontalBlock"] { gap: 10px !important; }
     
-    /* Configuração e Forçamento de Texto dos Botões do Streamlit */
+    /* Configuração de estilo e tamanho dos botões */
     div[data-testid="stColumn"] button {
         background-color: #1e293b !important;
         border-radius: 8px !important;
@@ -25,7 +25,7 @@ st.markdown("""
         display: block !important;
     }
     
-    /* Texto Grande e Visível dentro dos Botões */
+    /* Texto visível e grande nos botões */
     div[data-testid="stColumn"] button p {
         font-size: 15px !important;
         font-weight: 800 !important;
@@ -76,7 +76,7 @@ st.markdown("""
     }
     .btn-info button:hover p { color: #0f172a !important; }
     
-    /* Cartões e Selos */
+    /* Cartões Informativos */
     .card-info {
         background-color: #1e293b; border: 1px solid #334155;
         padding: 20px; border-radius: 12px; margin-top: 15px;
@@ -97,7 +97,7 @@ st.markdown("""
 st.title("📊 Radar de Produtos & Lançamentos da Gringa")
 st.write("Acompanhe a movimentação real do mercado internacional com atualização em tempo real.")
 
-# 3. BANCO DE DADOS FIXO E CONFIGURADO PARA 25 PRODUTOS
+# 3. BANCO DE DADOS DA SESSÃO (Processa de forma limpa uma única vez)
 if "lista_completa_produtos" not in st.session_state:
     PRODUCTS_POOL = [
         {"name": "Alpilean", "platform": "ClickBank", "type": "Nutracêutico"},
@@ -127,7 +127,6 @@ if "lista_completa_produtos" not in st.session_state:
         {"name": "Alpha Tonic", "platform": "BuyGoods", "type": "Testosterona"}
     ]
     
-    # Processa as métricas fixas uma única vez na sessão para evitar dados nulos
     processados = []
     for index, prod in enumerate(PRODUCTS_POOL):
         is_top_10 = index < 10
@@ -143,30 +142,37 @@ if "lista_completa_produtos" not in st.session_state:
             "Alemanha (DE)": {"cpc": f"${random.uniform(1.15, 2.15):.2f}", "interesse": "Médio"}
         }
         veredicto_pais = "Estados Unidos (USA)" if is_top_10 else "Reino Unido (UK)"
-        porque_anunciar = f"Alta densidade de compradores qualificados de fundo de funil ativos. Leilão favorável para campanhas estruturadas em {veredicto_pais}."
+        porque_anunciar = f"Alta densidade de compradores qualificados de fundo de funil ativos em {veredicto_pais}."
         
         processados.append({
-            "ranking": index + 1, "nome": prod["name"], "plataforma": prod["platform"], "tipo": prod["type"],
-            "status": status_label, "buscas_mes": buscas_mes, "buscas_hoje": buscas_hoje,
-            "paises": paises_dados, "melhor_pais": veredicto_pais, "porque": porque_anunciar,
+            "ranking": index + 1,
+            "nome": prod["name"],
+            "plataforma": prod["platform"],
+            "tipo": prod["type"],
+            "status": status_label,
+            "buscas_mes": buscas_mes,
+            "buscas_hoje": buscas_hoje,
+            "paises": paises_dados,
+            "melhor_pais": veredicto_pais,
+            "porque": porque_anunciar,
             "grafico": [random.randint(20, 100) for _ in range(12)]
         })
     st.session_state.lista_completa_produtos = processados
-    st.session_state.produto_radar = processados[0] # Alpilean inicial padrão
+    st.session_state.produto_radar = processados[0]
 
-# Cria atalho das variáveis de sessão
+# Atalhos das variáveis de ambiente da sessão
 produtos_ativos = st.session_state.lista_completa_produtos
 p_sel = st.session_state.produto_radar
 
-# 4. DIALOGO POPUP (MODAL DE COMPARAÇÃO TOTALMENTE CORRIGIDO)
+# 4. DIALOGO POPUP (MODAL DE COMPARAÇÃO)
 @st.dialog("📋 Informações Completas do Mercado")
 def abrir_popup_detalhes(produto):
     st.markdown(f"## 🛡️ Auditoria Geral: {produto['nome']}")
-    st.markdown(f"**Plataforma de Afiliados:** `{produto['plataforma']}` | **Nicho:** `{produto['tipo']}`")
+    st.markdown(f"**Plataforma:** `{produto['plataforma']}` | **Nicho:** `{produto['tipo']}`")
     st.markdown("---")
     st.markdown("### 🗺️ Análise de Métricas em 5 Países Reais:")
     for pais, info in produto["paises"].items():
-        st.markdown(f"📍 **{pais}** — Média de CPC no Google Ads: ` {info['cpc']} ` | Nível de Busca: **{info['interesse']}**")
+        st.markdown(f"📍 **{pais}** — Média de CPC: ` {info['cpc']} ` | Nível de Busca: **{info['interesse']}**")
     st.markdown("---")
     st.markdown("### 🏆 Veredito de Onde Anunciar:")
     st.success(f"**Melhor País Estratégico:** {produto['melhor_pais']}")
@@ -177,10 +183,10 @@ col_esquerda, col_direita = st.columns([1.2, 1.1])
 
 with col_esquerda:
     st.subheader("Painel Estatístico Global")
-    st.write("Clique no produto para abrir no painel principal ou clique em Info para abrir o popup de 5 países:")
+    st.write("Clique no produto para selecionar ou clique em Info para abrir o popup de 5 países:")
     
     for p in produtos_ativos:
-        c_btn, c_pop = st.columns([3, 1])
+        c_btn, c_pop = st.columns()
         classe_neon = "btn-alta" if "🔥" in p["status"] else "btn-validado"
         
         with c_btn:
@@ -202,3 +208,11 @@ with col_direita:
     st.markdown(f"## {p_sel['nome']}")
     
     if "🔥" in p_sel["status"]:
+        st.markdown(f'<span class="badge-alta">{p_sel["status"]}</span>', unsafe_allow_html=True)
+    else:
+        st.markdown(f'<span class="badge-normal">{p_sel["status"]}</span>', unsafe_allow_html=True)
+        
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Caixas de Métricas Principais
+    c1, c2 = st.columns(2)
