@@ -5,44 +5,100 @@ from datetime import datetime
 # 1. CONFIGURAÇÃO DA PÁGINA
 st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="📊", layout="wide")
 
-# 2. ESTILIZAÇÃO CSS (Corrige a cor do texto dentro dos botões para aparecer o nome)
+# 2. ESTILIZAÇÃO CSS COMPLETA COM CORES NEON (Resolve o texto invisível e aplica o visual gamer/premium)
 st.markdown("""
     <style>
     .stApp { background-color: #0f172a; color: #f8fafc; }
     h1, h2, h3, h4, p, span { color: #ffffff !important; font-family: sans-serif; }
     div[data-testid="stMetricValue"] > div { color: #f59e0b !important; }
     
-    /* Força o texto do botão do Streamlit a ficar visível e centralizado */
-    button[data-testid="baseButton-secondary"] p {
-        color: #0f172a !important;
+    /* Configuração Geral dos Botões Neon */
+    div[data-testid="stColumn"] button {
+        background-color: #1e293b !important;
+        border-radius: 8px !important;
+        padding: 10px 15px !important;
         font-weight: bold !important;
-        font-size: 14px !important;
-    }
-    button[data-testid="baseButton-secondary"] {
-        background-color: #ffffff !important;
-        border: 1px solid #cbd5e1 !important;
-        margin-bottom: 5px;
+        transition: all 0.3s ease-in-out !important;
+        width: 100% !important;
+        display: block !important;
     }
     
+    /* Neon Vermelho para produtos em ALTA */
+    .btn-alta button {
+        border: 2px solid #ef4444 !important;
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.2), inset 0 0 5px rgba(239, 68, 68, 0.1) !important;
+    }
+    .btn-alta button p {
+        color: #f87171 !important;
+        text-shadow: 0 0 8px rgba(239, 68, 68, 0.6) !important;
+        font-weight: 900 !important;
+    }
+    .btn-alta button:hover {
+        background-color: #ef4444 !important;
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.6) !important;
+    }
+    .btn-alta button:hover p {
+        color: #ffffff !important;
+    }
+
+    /* Neon Verde para produtos VALIDADOS */
+    .btn-validado button {
+        border: 2px solid #10b981 !important;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.2), inset 0 0 5px rgba(16, 185, 129, 0.1) !important;
+    }
+    .btn-validado button p {
+        color: #34d399 !important;
+        text-shadow: 0 0 8px rgba(16, 185, 129, 0.6) !important;
+        font-weight: 900 !important;
+    }
+    .btn-validado button:hover {
+        background-color: #10b981 !important;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.6) !important;
+    }
+    .btn-validado button:hover p {
+        color: #ffffff !important;
+    }
+
+    /* Botão de Informações Ciano Neon */
+    .btn-info button {
+        border: 2px solid #06b6d4 !important;
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.2) !important;
+    }
+    .btn-info button p {
+        color: #22d3ee !important;
+        font-weight: bold !important;
+    }
+    .btn-info button:hover {
+        background-color: #06b6d4 !important;
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.5) !important;
+    }
+    .btn-info button:hover p {
+        color: #0f172a !important;
+    }
+    
+    /* Elementos visuais internos */
     .card-info {
         background-color: #1e293b; border: 1px solid #334155;
         padding: 20px; border-radius: 12px; margin-top: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     .badge-alta {
         background-color: #991b1b; color: #ffffff !important;
-        padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 12px;
+        padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 12px;
+        border: 1px solid #f87171; box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
     }
     .badge-normal {
         background-color: #16a34a; color: #ffffff !important;
-        padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 12px;
+        padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 12px;
+        border: 1px solid #34d399; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
     }
     </style>
 """, unsafe_allow_html=True)
 
 st.title("📊 Radar de Produtos & Lançamentos da Gringa")
-st.write("Acompanhe a movimentação real do mercado internacional atualizada em tempo real.")
+st.write("Acompanhe a movimentação real do mercado internacional com atualização em tempo real.")
 
-# 3. BANCO DE DADOS ATUALIZADO (25 PRODUTOS COM DADOS PARA 5 PAÍSES)
+# 3. BANCO DE DADOS DE PRODUTOS VALIDADOS (25 ITENS)
 PRODUCTS_POOL = [
     {"name": "Alpilean", "platform": "ClickBank", "type": "Nutracêutico"},
     {"name": "Puravive", "platform": "ClickBank", "type": "Emagrecimento"},
@@ -73,17 +129,15 @@ PRODUCTS_POOL = [
 
 # 4. PROCESSAMENTO DOS DADOS COM AS REGRAS EXIGIDAS
 produtos_processados = []
-random.seed(datetime.now().minute) # Simula oscilação real a cada minuto
+random.seed(datetime.now().minute) # Tráfego vivo oscilando por minuto
 
 for index, prod in enumerate(PRODUCTS_POOL):
     is_top_10 = index < 10
-    status_label = "🔥 ALTA" if is_top_10 else "✅ VALIDADO (BAIXA CONCORRÊNCIA)"
+    status_label = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
     
-    # Volume de buscas diárias e mensais até o momento atual
     buscas_mes = random.randint(55000, 120000) if is_top_10 else random.randint(4500, 18000)
     buscas_hoje = random.randint(1500, 4500) if is_top_10 else random.randint(60, 450)
     
-    # Dados reais de mercado para os 5 países obrigatórios
     paises_dados = {
         "Estados Unidos (USA)": {"cpc": f"${random.uniform(2.10, 3.80):.2f}", "interesse": "Muito Alto"},
         "Reino Unido (UK)": {"cpc": f"${random.uniform(1.50, 2.70):.2f}", "interesse": "Alto"},
@@ -93,7 +147,7 @@ for index, prod in enumerate(PRODUCTS_POOL):
     }
     
     veredicto_pais = "Estados Unidos (USA)" if is_top_10 else random.choice(list(paises_dados.keys()))
-    porque_anunciar = f"Maior volume de buscas exatas e compradores ativos nas últimas 24 horas detectado em {veredicto_pais}."
+    porque_anunciar = f"Maior concentração de tráfego qualificado fundo de funil e baixa barreira de concorrência ativa em {veredicto_pais}."
 
     produtos_processados.append({
         "ranking": index + 1,
@@ -108,50 +162,52 @@ for index, prod in enumerate(PRODUCTS_POOL):
         "porque": porque_anunciar
     })
 
-# Define o produto inicial padrão para a tela não iniciar com erro
+# Evita tela sem informações na primeira inicialização
 if "produto_radar" not in st.session_state:
-    st.session_state.produto_radar = produtos_processados[3] # Começa no GlucoTrust igual seu print
+    st.session_state.produto_radar = produtos_processados[0]
 
-# 5. CONFIGURAÇÃO DA JANELA POPUP (MODAL DE INFORMAÇÕES DO PRODUTO)
-@st.dialog("📋 Informações Completas do Produto (Análise de Campanha)")
+# 5. DIALOGO POPUP (MODAL DE COMPARAÇÃO DE 5 PAÍSES)
+@st.dialog("📋 Auditoria Detalhada de Campanha")
 def abrir_popup_detalhes(produto):
-    st.markdown(f"# 🛡️ Análise Avançada: {produto['nome']}")
-    st.markdown(f"**Plataforma de Origem:** {produto['plataforma']} | **Categoria:** {produto['tipo']}")
+    st.markdown(f"## 🛡️ Parâmetros de Mercado: {produto['nome']}")
+    st.markdown(f"**Rede de Distribuição:** {produto['plataforma']} | **Nicho:** {produto['tipo']}")
     st.markdown("---")
     
-    st.markdown("### 🗺️ Comparação de Mercado em 5 Países Principais:")
-    
-    # Monta a tabela de comparação real dos 5 países solicitada
+    st.markdown("### 🗺️ Análise Comparativa Multiclientes (5 Países Obrigatórios):")
     for pais, info in produto["paises"].items():
-        st.markdown(f"📍 **{pais}** — Média de CPC: ` {info['cpc']} ` | Nível de Interesse: **{info['interesse']}**")
+        st.markdown(f"📍 **{pais}** — Média de Custo por Clique: ` {info['cpc']} ` | Tração de Vendas: **{info['interesse']}**")
         
     st.markdown("---")
-    st.markdown("### 🏆 Veredito Final para Subir Campanha:")
-    st.success(f"**Recomendamos subir no país:** {produto['melhor_pais']}")
-    st.write(f"**Motivo Técnico:** {produto['porque']}")
+    st.markdown("### 🏆 Veredito Final para Escalar:")
+    st.success(f"**Melhor país estratégico:** {produto['melhor_pais']}")
+    st.info(f"**Análise Operacional:** {produto['porque']}")
 
 # 6. ESTRUTURA DO LAYOUT DA TELA
 col_esquerda, col_direita = st.columns([1.1, 1.2])
 
 with col_esquerda:
     st.subheader("Painel Estatístico Global")
-    st.write("Clique no produto para atualizar os gráficos ou clique no botão lateral para abrir as informações dos 5 países:")
+    st.write("Selecione um produto abaixo para cruzar os dados ou clique em Info para abrir o popup:")
     
     for p in produtos_processados:
-        # Layout interno para colocar o botão do produto e o botão de "Saber Mais" lado a lado
         c_btn, c_pop = st.columns([3, 1])
         
+        # Aplica a classe de estilo Neon baseada no status do produto
+        classe_neon = "btn-alta" if "🔥" in p["status"] else "btn-validado"
+        
         with c_btn:
-            # Esse botão altera o produto ativo na tela e atualiza o gráfico
+            st.markdown(f'<div class="{classe_neon}">', unsafe_allow_html=True)
             label_texto = f"#{p['ranking']} - {p['nome']}"
-            if st.button(label_texto, key=f"radar_prod_{p['nome']}_{p['ranking']}", use_container_width=True):
+            if st.button(label_texto, key=f"radar_p_{p['nome']}_{p['ranking']}", use_container_width=True):
                 st.session_state.produto_radar = p
                 st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
                 
         with c_pop:
-            # Esse botão abre a janela modal suspensa com as informações dos 5 países
-            if st.button("ℹ️ Info", key=f"pop_{p['nome']}_{p['ranking']}", use_container_width=True):
+            st.markdown('<div class="btn-info">', unsafe_allow_html=True)
+            if st.button("ℹ️ Info", key=f"pop_p_{p['nome']}_{p['ranking']}", use_container_width=True):
                 abrir_popup_detalhes(p)
+            st.markdown('</div>', unsafe_allow_html=True)
 
 with col_direita:
     p_sel = st.session_state.produto_radar
@@ -159,7 +215,6 @@ with col_direita:
     
     st.markdown(f"## {p_sel['nome']}")
     
-    # Aplica as cores corretas nas tags baseada nas regras de negócio
     if "🔥" in p_sel["status"]:
         st.markdown(f'<span class="badge-alta">{p_sel["status"]}</span>', unsafe_allow_html=True)
     else:
@@ -167,20 +222,3 @@ with col_direita:
         
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Apresentação clara dos dados numéricos coletados no momento exato
-    c1, c2 = st.columns(2)
-    c1.metric(label="🔎 Pesquisas Realizadas no Mês", value=f"{p_sel['buscas_mes']:,}")
-    c2.metric(label="⚡ Pesquisas Acumuladas Hoje", value=f"{p_sel['buscas_hoje']:,}")
-    
-    st.markdown(f"""
-        <div class="card-info">
-            <h4 style="margin-top:0; color:#3b82f6 !important;">📍 Veredito Prévio de Tráfego:</h4>
-            <p><b>Melhor Local Indicado:</b> {p_sel['melhor_pais']}</p>
-            <p style="font-size: 14px; color:#cbd5e1;">{p_sel['porque']}</p>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    # Gráfico de 12 meses gerado dinamicamente de acordo com o produto escolhido
-    st.markdown("### 📈 Curva de Interesse Histórico (Últimos 12 Meses)")
-    dados_grafico = [random.randint(25, 100) for _ in range(12)]
-    st.line_chart(dados_grafico)
