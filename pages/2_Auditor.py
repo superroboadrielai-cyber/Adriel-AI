@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.graph_objects as go
 from datetime import datetime
 
 def main():
@@ -114,36 +113,25 @@ def main():
             
             st.markdown("---")
             
-            # 📊 GRÁFICO PLOTLY PREMIUM REVISADO COM HOVER NEON ATIVO E SEM ERROS
-            st.markdown("<h4 style='color:#00ffcc;'>📊 Historico de Demanda Coletado em Tempo Real (Sinais Comportamentais Neon)</h4>", unsafe_allow_html=True)
+            # 📊 GRÁFICO CYBER-NEON COM PALETA DE CORES VIVAS SINCRONIZADA EM MILHARES
+            st.markdown("<h4 style='color:#00ffcc;'>📊 Historico de Demanda Coletado em Tempo Real (Sinais Comportamentais)</h4>", unsafe_allow_html=True)
             
-            meses_eixo = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
             base_mes_real = pesquisas_mes // 4
+            df_auditor = pd.DataFrame({
+                "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                "Verde Neon (Subindo)":    [base_mes_real, 0, 0, int(base_mes_real * 1.1), 0, 0, int(base_mes_real * 1.2), 0, 0, int(base_mes_real * 1.3), 0, 0],
+                "Laser Vermelho (Decendo)": [0, int(base_mes_real * 0.9), 0, 0, int(base_mes_real * 0.95), 0, 0, int(base_mes_real * 1.05), 0, 0, int(base_mes_real * 1.15), 0],
+                "Azul Eletrico (Indecisao)": [0, 0, int(base_mes_real * 0.85), 0, 0, int(base_mes_real * 1.0), 0, 0, int(base_mes_real * 1.1), 0, 0, int(base_mes_real * 1.2)]
+            })
             
-            valores_barras = [
-                base_mes_real, int(base_mes_real * 0.9), int(base_mes_real * 0.85),
-                int(base_mes_real * 1.1), int(base_mes_real * 0.95), int(base_mes_real * 1.0),
-                int(base_mes_real * 1.2), int(base_mes_real * 1.05), int(base_mes_real * 1.1),
-                int(base_mes_real * 1.3), int(base_mes_real * 1.15), int(base_mes_real * 1.2)
-            ]
+            cores_auditor = ["#00ffcc", "#ff0055", "#0066ff"]
             
-            cores_por_mes = [
-                "#00ffcc", "#ff0055", "#0066ff",  
-                "#00ffcc", "#ff0055", "#0066ff",  
-                "#00ffcc", "#ff0055", "#0066ff",  
-                "#00ffcc", "#ff0055", "#0066ff"   
-            ]
-            
-            cores_hover = [
-                "#33ffdd", "#ff4d88", "#3385ff",
-                "#33ffdd", "#ff4d88", "#3385ff",
-                "#33ffdd", "#ff4d88", "#3385ff",
-                "#33ffdd", "#ff4d88", "#3385ff"
-            ]
+            st.bar_chart(
+                df_auditor, 
+                x="Meses", 
+                y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"],
+                color=cores_auditor
+            )
 
-            fig = go.Figure()
-            fig.add_trace(go.Bar(
-                x=meses_eixo,
-                y=valores_barras,
-                marker=dict(
-                    color=cores_por_mes,
+if __name__ == "__main__":
+    main()
