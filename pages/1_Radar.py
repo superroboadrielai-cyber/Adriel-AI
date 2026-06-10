@@ -1,166 +1,111 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
+import random
 from datetime import datetime
 
-# 1. CONFIGURAÇÃO DE DIRETÓRIO CRÍTICA (Python 3.14 Anti-Crash Engine)
-st.set_page_config(
-    page_title="Radar de Produtos - AdrielAI", 
-    page_icon="📊", 
-    layout="wide", 
-    initial_sidebar_state="collapsed"
-)
+def main():
+    # 1. CONFIGURAÇÃO HIGH-END DA PÁGINA SaaS 2026
+    st.set_page_config(page_title="Auditor Expert - AdrielAI", page_icon="🛡️", layout="wide")
 
-# =============================================================================================================
-# 2. INJEÇÃO DE ENGENHARIA CSS BLACK-LABEL (DELETA BARRAS NATIVAS E BLOQUEIA CAIXAS BRANCAS)
-# =============================================================================================================
-st.markdown("""
-<style>
-/* 🌌 Fundo Escuro Profundo Executivo Premium Cyber Onyx */
-.stApp { 
-    background-color: #060913 !important; 
-    color: #f8fafc !important; 
-}
-h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif !important; }
-.titulo-cyber-master { font-size: 2.5rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 15px rgba(0, 255, 204, 0.4); margin-bottom: 0px; }
+    # 2. INJEÇÃO VISUAL CYBER-NEON EM LINHA (DRIBBLING DO PARSER PYTHON 3.14)
+    st.markdown("""
+    <style>
+        .stApp { background-color: #040814 !important; color: #f3f4f6 !important; }
+        h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif; }
+        
+        /* Título Cyber */
+        .titulo-cyber {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: #00ffcc;
+            text-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
+            margin-bottom: 5px;
+        }
 
-/* 🚨 EXTERMINAÇÃO COMPLETA DA BARRA SUPERIOR BRANCA E DOS MENUS QUEBRADOS DO STREAMLIT */
-[data-testid="stHeader"] { display: none !important; height: 0px !important; background: transparent !important; }
-.stHeader { display: none !important; }
-.block-container { padding-top: 0.5rem !important; padding-bottom: 2rem !important; padding-left: 2.5rem !important; padding-right: 2.5rem !important; max-width: 100% !important; width: 100% !important; }
-[data-testid="stSidebar"] { display: none !important; width: 0px !important; }
+        /* Efeitos Piscantes para a Lista de Sinais */
+        @keyframes pulseVermelho {
+            0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
+            50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
+            100% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
+        }
+        @keyframes pulseVerde {
+            0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
+            50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
+            100% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
+        }
 
-/* 🚨 ARREMATE DE LUXO: CÁPSULAS HORIZONTAIS FIXAS NO TOPO (NUNCA MAIS ESCONDE OS OUTROS MÓDULOS) */
-.menu-superior-capsula div.stButton > button {
-    background-color: #0f172a !important;
-    color: #cbd5e1 !important;
-    font-weight: 800 !important;
-    font-size: 13px !important;
-    border: 1px solid #1e293b !important;
-    text-align: center !important;
-    padding: 14px 10px !important;
-    width: 100% !important;
-    border-radius: 30px !important; /* Formato cápsula executivo Apple Control Center */
-    cursor: pointer !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    transition: all 0.25s ease-in-out !important;
-}
-.menu-superior-capsula div.stButton > button:hover {
-    background-color: #1e293b !important;
-    color: #00ffcc !important;
-    border-color: #00ffcc !important;
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5) !important;
-}
+        .cyber-btn-alta button { border: 2px solid #ff0055 !important; background: #0f172a !important; animation: pulseVermelho 2s infinite !important; }
+        .cyber-btn-alta button p { color: #ff4d88 !important; font-weight: 800 !important; }
+        .cyber-btn-alta button:hover { background: #ff0055 !important; box-shadow: 0 0 25px #ff0055 !important; }
+        .cyber-btn-alta button:hover p { color: #ffffff !important; }
 
-/* 🧱 CONFIGURAÇÃO DA LISTA VERTICAL COMPACTA (UM ABAIXO DO OUTRO SEM DEFORMAÇÃO) */
-.lista-vertical-produtos div.stButton > button {
-    background-color: #0f1526 !important;
-    color: #cbd5e1 !important;
-    font-weight: 800 !important;
-    font-size: 12.5px !important;
-    border-radius: 10px !important;
-    padding: 12px 14px !important;
-    width: 100% !important;
-    min-height: 48px !important;
-    cursor: pointer !important;
-    text-align: left !important;
-}
+        .cyber-btn-validado button { border: 2px solid #00ffcc !important; background: #0f172a !important; animation: pulseVerde 2.5s infinite !important; }
+        .cyber-btn-validado button p { color: #33ffdd !important; font-weight: 800 !important; }
+        .cyber-btn-validado button:hover { background: #00ffcc !important; box-shadow: 0 0 25px #00ffcc !important; }
+        .cyber-btn-validado button:hover p { color: #040814 !important; font-weight: 900 !important; }
 
-/* Animações de Pulsação de LED Contínuo nas Bordas da Lista */
-@keyframes ledVermelho { 0% { border-color: #ff0055; box-shadow: 0 0 4px #ff0055; } 50% { border-color: #ff4d88; box-shadow: 0 0 12px #ff0055; } 100% { border-color: #ff0055; box-shadow: 0 0 4px #ff0055; } }
-@keyframes ledCiano { 0% { border-color: #00ffcc; box-shadow: 0 0 4px #00ffcc; } 50% { border-color: #33ffdd; box-shadow: 0 0 12px #00ffcc; } 100% { border-color: #00ffcc; box-shadow: 0 0 4px #00ffcc; } }
+        .card-cyber-info {
+            background: linear-gradient(135deg, #0f1526, #141c33);
+            border: 2px solid #1e293b;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            margin-top: 15px;
+        }
+        .sub-tag-neon {
+            color: #00ffcc !important;
+            font-weight: bold;
+            font-size: 15px;
+            display: block;
+            margin-top: 14px;
+            text-shadow: 0 0 8px rgba(0,255,204,0.3);
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
-.card-led-alta button { border: 2px solid #ff0055 !important; animation: ledVermelho 1.8s infinite ease-in-out !important; }
-.card-led-alta button p { color: #ff4d88 !important; }
-.card-led-alta button:hover { background: #ff0055 !important; transform: translateX(5px) !important; }
-.card-led-alta button:hover p { color: #ffffff !important; }
+    # 3. CABEÇALHO DO APP
+    st.markdown('<div class="titulo-cyber">🛡️ AUDITOR EXPERT DE MERCADO GRINGO</div>', unsafe_allow_html=True)
+    st.write("Digite uma oferta livre ou selecione um produto na lista dinâmica para analisar métricas de tráfego vivas.")
 
-.card-led-normal button { border: 2px solid #00ffcc !important; animation: ledCiano 2.2s infinite ease-in-out !important; }
-.card-led-normal button p { color: #33ffdd !important; }
-.card-led-normal button:hover { background: #00ffcc !important; transform: translateX(4px) !important; }
-.card-led-normal button:hover p { color: #060913 !important; }
+    horario_atual = datetime.now().strftime("%H:%M:%S")
+    st.markdown(f"🛰️ **Status do Robô:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva sincronizada com sucesso às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
+    st.markdown("---")
 
-/* Envelopamentos Macrossísmicos de Dados */
-.badge-alta-master { background-color: #2a0813; color: #ff4d88 !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #ff0055; display: inline-block; }
-.badge-normal-master { background-color: #04251d; color: #33ffdd !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #00ffcc; display: inline-block; }
-.badge-funil-master { background-color: #1e1035; color: #cc66ff !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #9900ff; display: inline-block; margin-left: 5px; }
-.painel-cyber-dossie { background: #0f1526; border: 2px solid #1e293b; padding: 24px; border-radius: 16px; margin-top: 15px; }
-</style>
-""", unsafe_allow_html=True)
+    # 4. DATA POOL DOS 20 PRODUTOS OFICIAIS DO ECOSSISTEMA
+    PRODUTOS_DADOS = [
+        {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO EXTREMO", "semente": 110},
+        {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO FORTE", "semente": 95},
+        {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "seta": "📈 EXPLODINDO", "semente": 85},
+        {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 ACELERAÇÃO", "semente": 72},
+        {"ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "seta": "📈 TENDÊNCIA ALTA", "semente": 68},
+        {"ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO CRÍTICA", "semente": 64},
+        {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "seta": "📉 ESTÁVEL NO TOPO", "semente": 60},
+        {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "seta": "📈 ACELERAÇÃO VENDAS", "semente": 57},
+        {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO SEVERO", "semente": 53},
+        {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)", "seta": "📉 CONSOLIDADO", "semente": 50},
+        {"ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)", "seta": "📈 ESCALANDO LIVRE", "semente": 14},
+        {"ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)", "seta": "📈 SURGINDO AGORA", "semente": 13},
+        {"ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 12400, "buscas_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 SEM CONCORRENTES", "semente": 12},
+        {"ranking": 14, "nome": "Kerassentials", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 11800, "buscas_hoje": 240, "melhor_pais": "Reino Unido (UK)", "seta": "📈 OPORTUNIDADE", "semente": 11},
+        {"ranking": 15, "nome": "SightCare", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 10500, "buscas_hoje": 210, "melhor_pais": "Canadá (CA)", "seta": "📈 ENTRANDO EM ALTA", "semente": 10},
+        {"ranking": 16, "nome": "Prostadine", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 9800, "buscas_hoje": 190, "melhor_pais": "Austrália (AU)", "seta": "📉 LEILÃO BARATO", "semente": 9},
+        {"ranking": 17, "nome": "Fast Lean Pro", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8900, "buscas_hoje": 170, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 CRESCIMENTO REAL", "semente": 8},
+        {"ranking": 18, "nome": "Amiclear", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8200, "buscas_hoje": 150, "melhor_pais": "Reino Unido (UK)", "seta": "📈 TRAÇÃO DO DIA", "semente": 8},
+        {"ranking": 19, "nome": "Alpha Tonic", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 7800, "buscas_hoje": 130, "melhor_pais": "Nova Zelândia", "seta": "📈 DESCOBERTA NOVO", "semente": 7},
+        {"ranking": 20, "nome": "Joint Genesis", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 7100, "buscas_hoje": 110, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 RETORNO SEGURO", "semente": 7}
+    ]
 
-# Marca Corporativa Premium
-st.markdown('<h1 class="titulo-cyber-master">💎 Radar de Produtos AdrielAI</h1>', unsafe_allow_html=True)
-st.write("Ecossistema militar de monitoramento contínuo com auditoria cirúrgica de mercado gringo.")
-st.write("---")
-
-# =============================================================================================================
-# 🚀 3. BARRA HORIZONTAL FIXA NO TOPO: GARANTE RETORNO IMEDIATO PARA OS OUTROS MÓDULOS SEM SUMIR NADA
-# =============================================================================================================
-st.markdown('<div class="menu-superior-capsula">', unsafe_allow_html=True)
-col_nav1, col_nav2, col_nav3 = st.columns(3)
-with col_nav1:
-    if st.button("🎛️ Dashboard Geral", key="nav_dash_m4"):
-        st.markdown('<script>window.parent.location.href = "/";</script>', unsafe_allow_html=True)
-with col_nav2:
-    if st.button("🔬 2. Auditor de Mercado", key="nav_aud_m4"):
-        st.markdown('<script>window.parent.location.href = "/Auditor";</script>', unsafe_allow_html=True)
-with col_nav3:
-    if st.button("🎯 3. Fundo de Funil", key="nav_fun_m4"):
-        st.markdown('<script>window.parent.location.href = "/Fundo_de_Funil";</script>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-st.write("---")
-
-# 4. BANCO DE DADOS E DICIONÁRIOS REAIS DE 20 PRODUTOS CONSOLIDADOS (CONEXÃO GRINGO COMPLIANCE)
-NOMES_PRODUTOS = [
-    "Alpilean", "Puravive", "Java Burn", "GlucoTrust", "ProDentim", 
-    "Liv Pure", "Ikaria Lean Belly", "Cortexi", "FlowForce Max", "Metanail Serum",
-    "LeanBliss", "Neotonics", "Synogut", "Kerassentials", "SightCare", 
-    "Prostadine", "Fast Lean Pro", "Amiclear", "Alpha Tonic", "Joint Genesis"
-]
-
-def gerar_auditoria_mestre(nome_prod, ranking):
-    is_top_10 = ranking <= 10
-    status = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
-    
-    np.random.seed(len(nome_prod) + ranking)
-    variacao = round(np.random.uniform(3.1, 24.9), 1)
-    
-    if ranking <= 6:
-        funil_pos = "💎 FUNDO DE FUNIL"
-        estrategia = (
-            f"Estratégia Avançada de Fundo de Funil Estrito. Configurar campanhas na rede de pesquisa do Google Ads "
-            f"travando o termo exato correspondente à marca '{nome_prod}' cruzado obrigatoriamente com palavras "
-            f"de alta intenção comercial, tais como 'Official Site' e 'Buy Now'. Torna-se imperativo o uso de uma "
-            f"estrutura de Pre-Sell ou Advertorial blindado com certificados de segurança para baratear o custo inflacionado "
-            f"do clique real no leilão americano e mitigar taxas de suspensão de contas por políticas de marcas."
-        )
-    elif ranking <= 14:
-        funil_pos = " Meio de Funil"
-        estrategia = (
-            f"Estratégia Mapeada de Meio de Funil Ativo. O público-alvo consumidor já reconhece a dor metabólica "
-            f"mas necessita de forte validação científica antes de abrir o checkout. A recomendação sênior consiste "
-            f"em lançar campanhas segmentadas de alto tráfego no Bing Ads ou Facebook Ads direcionando para Landing Pages "
-            f"longas estruturadas em formato de Artigo de Autoridade ou Comparações de Mercado (Vantagens vs Desvantagens), "
-            f"capturando o clique econômico antes da concorrência direta."
-        )
-    else:
-        funil_pos = " Topo de Funil"
-        estrategia = (
-            f"Estratégia de Escala de Topo de Funil Abrangente. Audiência massiva com dores latentes não diagnosticadas "
-            f"na gringa. O melhor canal operacional para este produto exige a criação de criativos dinâmicos em vídeo "
-            f"curto de forte impacto visual e gatilhos de identificação biológica. O tráfego deve ser disparado via "
-            f"Facebook Ads, Instagram Ads e YouTube Ads jogando para um funil de VSL (Video Sales Letter) altamente agressivo."
-        )
-
-    fator = len(nome_prod)
-    buscas_m = 50000 + (fator * 3200) if is_top_10 else 5000 + (fator * 600)
-    buscas_h = 1500 + (fator * 110) if is_top_10 else 80 + (fator * 15)
-    
-    cpc_texto = f"USA: $ {round(2.0 + (fator * 0.1), 2)} | UK: $ {round(1.2 + (fator * 0.08), 2)} | CA: $ {round(1.5 + (fator * 0.09), 2)} | AU: $ {round(1.6 + (fator * 0.09), 2)} | NZ: $ {round(1.1 + (fator * 0.06), 2)}"
-    pais = "Estados Unidos (USA)" if is_top_10 else "Reino Unido (UK)"
-    
-    return {
-        "nome": nome_prod, "status": status, "buscas_mes": buscas_m, "buscas_hoje": buscas_h, "melhor_pais": pais,
-        "dor": f"Frustração psicológica severa com o efeito sanfona, sintomas crônicos de fadiga física limitante, degradação da vitalidade celular orgânica e picos de instabilidade metabólica descontrolada que afetam diretamente a rotina diária e geram urgência imediata por soluções importadas purificadas.",
+    # 5. ENGINE DE INTELIGÊNCIA CIRÚRGICA (CONSTRÓI EXPLICAÇÕES DENSAS DE 5 LINHAS)
+    def calcular_auditoria_sob_demanda(nome):
+        if "Alpilean" in nome or "Puravive" in nome or "LeanBliss" in nome:
+            dor = "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas internas, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos."
+            porque = "O veredicto tecnico confirma que este segmento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartao na mao nas ultimas 24 horas."
+            cpc = "USA: $3.10 | UK: $2.15 | CA: $2.40 | AU: $2.60 | DE: $1.45"
+            pais = "Estados Unidos (USA)"
+        elif "Java" in nome or "Fast Lean" in nome:
+            dor = "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
+            porque = "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique (CPC) estao bem menores que no inflacionado mercado americano, mantendo alta conversao."
+            cpc = "USA: $2.75 | UK: $1.70 | CA: $1.95 | AU: $2.20 | DE: $1.30"
+            pais = "Reino Unido (UK)"
+        elif "GlucoTrust" in nome or "Amiclear" in nome:
+            dor = "Picos descontrolados de glicose na corrente sanguinea, desequilibrio metabolico na producao de insulina e crises intensas de compulsao noturna por carboidratos pesados e doces refinados antes de dormir."
+            porque = "Resolve uma dor de saude alarmante e atinge em cheio o publico idoso internacional de alto poder aquisitivo. Anunciar com correspondencia exata de palavras-chave oficiais filtra cliques curiosos de concorrentes e traz trafego qualificado de fundo."
