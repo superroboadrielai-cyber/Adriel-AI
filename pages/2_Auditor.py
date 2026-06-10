@@ -45,6 +45,24 @@ def main():
                 box-shadow: 0 0 15px rgba(0, 255, 204, 0.3) !important;
             }
             
+            /* Botão de Execução Executar Varredura */
+            .stButton>button {
+                background-color: #0b1329 !important;
+                color: #00ffcc !important;
+                border: 2px solid #00ffcc !important;
+                border-radius: 8px !important;
+                font-weight: bold !important;
+                box-shadow: 0 0 12px rgba(0, 255, 204, 0.2) !important;
+                transition: all 0.3s ease-in-out !important;
+                width: 100% !important;
+                height: 45px !important;
+            }
+            .stButton>button:hover {
+                background-color: #00ffcc !important;
+                color: #020617 !important;
+                box-shadow: 0 0 25px #00ffcc !important;
+            }
+            
             /* Customização das Caixas de Métricas Neon */
             [data-testid="stMetricContainer"] {
                 background: linear-gradient(135deg, #0f172a, #020617) !important;
@@ -67,6 +85,11 @@ def main():
                 border: 1px solid #1e293b !important;
                 border-radius: 10px !important;
             }
+            /* Remove a borda padrão feia do formulário do streamlit */
+            [data-testid="stForm"] {
+                border: none !important;
+                padding: 0px !important;
+            }
         </style>
     """, unsafe_allow_html=True)
 
@@ -74,11 +97,17 @@ def main():
     st.write("Digite o nome de qualquer oferta internacional no terminal para que o robo realize a engenharia reversa operacional.")
     st.markdown("---")
 
-    # 2. TERMINAL DE CAPTURA INTELIGENTE
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
-    produto_digitado = st.text_input("Insira o nome do produto gringo para auditar (Aperte Enter para Sincronizar):", value="Sugar Defender")
+    
+    # 🚀 ENGENHARIA DE FORMULÁRIO: Força o botão a funcionar ativando o gatilho na hora do clique
+    with st.form(key="auditor_form"):
+        produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
+        st.markdown("<br>", unsafe_allow_html=True)
+        botao_pesquisa_ativo = st.form_submit_button(label="🚀 EXECUTAR VARREDURA AO VIVO")
+
     st.markdown("---")
 
+    # O sistema carrega os dados ou executa se o botão for clicado
     if produto_digitado:
         nome_prod = produto_digitado.strip()
         fator = len(nome_prod) if len(nome_prod) > 0 else 10
@@ -86,11 +115,10 @@ def main():
         # Marcador de tempo real
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
-        st.write("🛰️ Sincronizacao de trafego ativa para " + nome_prod + " as " + horario_atual)
+        st.write("Sincronizacao de trafego ativa para " + nome_prod + " as " + horario_atual)
         st.write("")
 
-        # 🚨 MECANISMO DE DETECÇÃO DE RISCO (ALERTA DE PRODUTO RUIM)
-        # Se o produto digitado tiver menos de 5 letras ou contiver termos de teste, o robo aciona o alerta de fraude
+        # MECANISMO DE DETECÇÃO DE RISCO (ALERTA DE PRODUTO RUIM)
         score_integridade = (fator * 7 + tempo_segundo) % 100
         produto_e_ruim = score_integridade < 30 or fator < 5
 
@@ -99,7 +127,7 @@ def main():
             st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para " + nome_prod.upper() + ". Esta oferta apresenta taxa de reembolso acima de 18% nas plataformas gringas, alto volume de reclamacoes de leads e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI e perda de contingencia.")
             st.markdown("---")
 
-        # 3. ENGINE DINAMICO ANALITICO
+        # ENGINE DINAMICO ANALITICO
         pesquisas_mes = 35000 + (fator * 2400) + (tempo_segundo * 8)
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
@@ -110,11 +138,11 @@ def main():
         paises_pool = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
         pais_vencedor = paises_pool[(fator + tempo_segundo) % 5]
 
-        txt_beneficios = "Os beneficios principais de " + nome_prod + " consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras horas do dia."
+        txt_beneficios = "Os beneficios principais de " + nome_prod + " consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras hours do dia."
         txt_dor = "O comprador gringo que busca por " + nome_prod + " sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico que aprisiona seu bem-estar cotidiano."
         txt_estrategia = "A melhor estrategia operacional para o produto " + nome_prod + " e subir uma campanha estruturada focada em " + canal_ideal + ". Para capturar o lead internacional qualificado, monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando agressivamente nas palavras-chave exatas de intencao de compra fundo de funil."
 
-        # 4. CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
+        # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
         col_esquerda, col_direita = st.columns([1.0, 1.3])
 
         with col_esquerda:
@@ -134,7 +162,7 @@ def main():
 
         with col_direita:
             st.markdown("<h3 style='color:#00ffcc !important;'>⚡ Metricas de Leilao & Trafego Global</h3>", unsafe_allow_html=True)
-            st.write("Dados de mercado processados e atualizados em tempo real:")
+            st.write("Dados de mercado processados e updated em tempo real:")
             st.write("")
             
             # Grid Numérico SaaS
@@ -151,16 +179,3 @@ def main():
             # Afirmação final de destino conforme roteiro
             st.markdown("<h4 style='color:#ff0055 !important;'>🏆 VEREDITO OPERACIONAL FINAL (ALVO DE GUERRA):</h4>", unsafe_allow_html=True)
             if produto_e_ruim:
-                st.error("RECOMENDACAO ADRIEL-AI: NAO SUBA CAMPANHA PARA ESTE PRODUTO NESTE MOMENTO. OFERTA COM ALTA TAXA DE REEMBOLSO DETECTADA.")
-            else:
-                st.error("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR " + nome_prod.upper() + " AGORA E OS " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA MAXIMA CONVERSAO EM RECORRENCIA.")
-            
-            st.markdown("---")
-            
-            # 📊 GRÁFICO PURIFICADO COM CORES SÓLIDAS E INDEPENDENTES POR MÊS (SEM MISTURA)
-            st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
-            
-            df_auditor = pd.DataFrame({
-                "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-                "Verde Neon (Subindo)":    [semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 5, 0, 0, semente_grafico * 6, 0, 0],
-                "Laser Vermelho (Decendo)": [0, semente_grafico * 2, 0, 0, semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 5, 0],
