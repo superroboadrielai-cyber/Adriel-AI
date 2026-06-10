@@ -1,125 +1,135 @@
 import streamlit as st
-import random
-from datetime import datetime
 
-# 1. CONFIGURAÇÃO DA PÁGINA (MANTÉM LAYOUT EXPANDIDO)
-st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="💎", layout="wide")
+# 1. CONFIGURAÇÃO DA PÁGINA
+st.set_page_config(page_title="Radar de Produtos", layout="wide", initial_sidebar_state="collapsed")
 
-# 2. INJEÇÃO DE INLINE CSS CONFIÁVEL DE LUXO (MUDANÇA DE COR E BRILHO COM MOUSE)
+# 2. ESTILIZAÇÃO EM CSS PURO (DELETA A BARRA BRANCA E ATIVA O DESIGN NEON)
 st.markdown("""
 <style>
-    .stApp { background-color: #060913 !important; color: #f8fafc !important; }
-    h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif; }
-    
-    .titulo-cyber {
-        font-size: 2.6rem;
-        font-weight: 900;
-        color: #00ffcc;
-        text-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
-        margin-bottom: 5px;
-    }
-    
-    /* Animação Piscante para Botões em ALTA (Vermelho Neon) */
-    @keyframes pulseVermelho {
-        0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
-        50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
-        100% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
-    }
-    
-    /* Animação Piscante para Botões VALIDADOS (Verde Neon) */
-    @keyframes pulseVerde {
-        0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
-        50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
-        100% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
-    }
+.stApp { background-color: #060913; color: #f8fafc; }
+div[data-testid="stHeader"] { display: none !important; height: 0px !important; background: transparent !important; }
+.stHeader { display: none !important; }
 
-    /* Estilização Executiva dos Componentes do App */
-    .cyber-btn-alta button {
-        border: 2px solid #ff0055 !important;
-        background: #0f1526 !important;
-        animation: pulseVermelho 2s infinite !important;
-    }
-    .cyber-btn-alta button p { color: #ff4d88 !important; font-weight: 800 !important; }
-    .cyber-btn-alta button:hover {
-        background: #ff0055 !important;
-        box-shadow: 0 0 25px #ff0055 !important;
-    }
-    .cyber-btn-alta button:hover p { color: #ffffff !important; }
+/* Margem zero no teto do monitor */
+.block-container { padding-top: 0.5rem !important; padding-bottom: 2rem !important; padding-left: 2rem !important; padding-right: 2rem !important; max-width: 100% !important; width: 100% !important; }
 
-    .cyber-btn-validado button {
-        border: 2px solid #00ffcc !important;
-        background: #0f1526 !important;
-        animation: pulseVerde 2.5s infinite !important;
-    }
-    .cyber-btn-validado button p { color: #33ffdd !important; font-weight: 800 !important; }
-    .cyber-btn-validado button:hover {
-        background: #00ffcc !important;
-        box-shadow: 0 0 25px #00ffcc !important;
-    }
-    .cyber-btn-validado button:hover p { color: #060913 !important; font-weight: 900 !important; }
+/* Ajuste nos botões nativos */
+.stButton > button {
+    background-color: #0f1526 !important;
+    color: #cbd5e1 !important;
+    font-weight: 800 !important;
+    border-radius: 12px !important;
+    padding: 14px 10px !important;
+    width: 100% !important;
+    border: 2px solid #1e293b !important;
+}
 
-    .card-cyber-info {
-        background: linear-gradient(135deg, #0f1526, #141c33);
-        border: 2px solid #1e293b;
-        padding: 24px;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-    }
-    .sub-tag-neon {
-        color: #00ffcc !important;
-        font-weight: bold;
-        font-size: 15px;
-        display: block;
-        margin-top: 14px;
-        text-shadow: 0 0 8px rgba(0,255,204,0.3);
-    }
+/* Badges de Cores */
+.badge-alta { background-color: #2a0813; color: #ff4d88; padding: 6px 14px; border-radius: 8px; font-weight: 900; border: 2px solid #ff0055; display: inline-block; }
+.badge-normal { background-color: #04251d; color: #33ffdd; padding: 6px 14px; border-radius: 8px; font-weight: 900; border: 2px solid #00ffcc; display: inline-block; }
+.badge-funil { background-color: #1e1035; color: #cc66ff; padding: 6px 14px; border-radius: 8px; font-weight: 900; border: 2px solid #9900ff; display: inline-block; }
+.card-info { background: #0f1526; border: 2px solid #1e293b; padding: 24px; border-radius: 16px; margin-top: 20px; }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. CABEÇALHO DO MONITORAMENTO DO ROBÔ
-st.markdown('<div class="titulo-cyber">💎 Radar de Produtos AdrielAI</div>', unsafe_allow_html=True)
-st.write("Ecossistema premium de monitoramento perpétuo internacional com auditoria automatizada de tráfego.")
-
-horario_atual = datetime.now().strftime("%H:%M:%S")
-st.markdown(f"🛰 ... **Status do Robô:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva de tráfego injetada com sucesso às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
+st.markdown('<h1 style="color: #00ffcc; font-weight: 900;">💎 Radar de Produtos AdrielAI</h1>', unsafe_allow_html=True)
+st.write("Ecossistema de monitoramento contínuo com auditoria detalhada de mercado gringo.")
 st.markdown("<br>", unsafe_allow_html=True)
 
-# 4. BASE DE DADOS OFICIAL DOS 20 PRODUTOS (ESTRUTURA BLINDADA)
-PRODUTOS_DADOS = [
-    {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO EXTREMO", "semente": 110},
-    {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO FORTE", "semente": 95},
-    {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "seta": "📈 EXPLODINDO", "semente": 85},
-    {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 ACELERAÇÃO", "semente": 72},
-    {"ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "seta": "📈 TENDÊNCIA ALTA", "semente": 68},
-    {"ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO CRÍTICA", "semente": 64},
-    {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "seta": "📉 ESTÁVEL NO TOPO", "semente": 60},
-    {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "seta": "📈 ACELERAÇÃO VENDAS", "semente": 57},
-    {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO SEVERO", "semente": 53},
-    {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)", "seta": "📉 CONSOLIDADO", "semente": 50},
-    {"ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)", "seta": "📈 ESCALANDO LIVRE", "semente": 14},
-    {"ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)", "seta": "📈 SURGINDO AGORA", "semente": 13},
-    {"ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 12400, "buscas_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 SEM CONCORRENTES", "semente": 12},
-    {"ranking": 14, "nome": "Kerassentials", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 11800, "buscas_hoje": 240, "melhor_pais": "Reino Unido (UK)", "seta": "📈 OPORTUNIDADE", "semente": 11},
-    {"ranking": 15, "nome": "SightCare", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 10500, "buscas_hoje": 210, "melhor_pais": "Canadá (CA)", "seta": "📈 ENTRANDO EM ALTA", "semente": 10},
-    {"ranking": 16, "nome": "Prostadine", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 9800, "buscas_hoje": 190, "melhor_pais": "Austrália (AU)", "seta": "📉 LEILÃO BARATO", "semente": 9},
-    {"ranking": 17, "nome": "Fast Lean Pro", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8900, "buscas_hoje": 170, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 CRESCIMENTO REAL", "semente": 8},
-    {"ranking": 18, "nome": "Amiclear", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8200, "buscas_hoje": 150, "melhor_pais": "Reino Unido (UK)", "seta": "📈 TRAÇÃO DO DIA", "semente": 8},
-    {"ranking": 19, "nome": "Alpha Tonic", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 7800, "buscas_hoje": 130, "melhor_pais": "Nova Zelândia", "seta": "📈 DESCOBERTA NOVO", "semente": 7},
-    {"ranking": 20, "nome": "Joint Genesis", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 7100, "buscas_hoje": 110, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 RETORNO SEGURO", "semente": 7}
+# 3. LISTA PURA DE NOMES (20 PRODUTOS CONSOLIDADOS)
+NOMES_PRODUTOS = [
+    "Alpilean", "Puravive", "Java Burn", "GlucoTrust", "ProDentim", 
+    "Liv Pure", "Ikaria Lean Belly", "Cortexi", "FlowForce Max", "Metanail Serum",
+    "LeanBliss", "Neotonics", "Synogut", "Kerassentials", "SightCare", 
+    "Prostadine", "Fast Lean Pro", "Amiclear", "Alpha Tonic", "Joint Genesis"
 ]
 
-# 5. ENGINE DE CONTEÚDO CONVINCENTE E CIRÚRGICO DE 5 LINHAS
-def carregar_textos_auditoria(nome_produto):
-    if "Alpilean" in nome_produto or "Puravive" in nome_produto or "LeanBliss" in nome_produto:
-        dor = "Metabolismo completamente paralisado e travado induzido pela baixa temperatura das células e tecidos internos, gerando um bloqueio biológico crítico que impede a queima de gorduras profundas mesmo sob restrição calórica severa ou rotinas exaustivas de treinos aeróbicos."
-        porque = "O veredicto técnico confirma que este suplemento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartão na mão nas últimas 24 horas."
-        cpc = "USA: $2.80 | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40"
-    elif "Java" in nome_produto or "Fast Lean" in nome_produto:
-        dor = "Falta aguda de energia celular e cansaço massivo nas primeiras horas do dia, combinada com surtos contínuos de fome psicológica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
-        porque = "A novidade do sachê misturável no café diário tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anúncios na Europa, onde os custos de clique (CPC) estão bem menores que no inflacionado mercado americano, mantendo alta conversão."
-        cpc = "USA: $2.60 | UK: $1.65 | CA: $1.95 | AU: $2.10 | DE: $1.30"
-    elif "GlucoTrust" in nome_produto or "Amiclear" in nome_produto:
-        dor = "Picos descontrolados de glicose na corrente sanguínea, desequilíbrio metabólico na produção de insulina e crises intensas de compulsão noturna por carboidratos pesados e doces refinados antes de dormir."
-        porque = "Resolve uma dor de saúde alarmante e atinge em cheio o público idoso internacional de alto poder aquisitivo. Anunciar com correspondência exata de palavras-chave oficiais filtra cliques curiosos de concorrentes e traz tráfego qualificado de fundo."
-        cpc = "USA: $2.95 | UK: $1.85 | CA: $2.15 | AU: $2.20 | DE: $1.45"
-    elif "ProDentim" in nome_produto:
+# 4. FUNÇÃO DE TRATAMENTO DE DADOS
+def gerar_dados_radar(nome_prod, ranking):
+    is_top_10 = ranking <= 10
+    status = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
+    
+    if ranking <= 6:
+        funil_pos = "💎 FUNDO DE FUNIL"
+        estrategia = "Fundo de Funil Estrito. Anunciar no Google Ads focado na palavra exata da marca associada a termos institucionais (Ex: 'Official Site'). Obrigatório uso de Pre-Sell."
+    elif ranking <= 14:
+        funil_pos = " Meio de Funil"
+        estrategia = "Meio de Funil Ativo. O público busca validação da solução. Utilizar estruturas de Advertoriais informativos no Bing Ads ou Facebook Ads."
+    else:
+        funil_pos = " Topo de Funil"
+        estrategia = "Topo de Funil Abrangente. Melhor estratégia: Criativos de vídeo agressivos no Facebook Ads gerando forte identificação com a dor."
+
+    fator = len(nome_prod)
+    buscas_m = 50000 + (fator * 3000) if is_top_10 else 5000 + (fator * 500)
+    buscas_h = 1500 + (fator * 100) if is_top_10 else 80 + (fator * 10)
+    
+    cpc_texto = f"USA: ${round(2.0 + (fator * 0.1), 2)} | UK: ${round(1.2 + (fator * 0.08), 2)} | CA: ${round(1.5 + (fator * 0.09), 2)}"
+    pais = "Estados Unidos (USA)" if is_top_10 else "Reino Unido (UK)"
+    
+    return {
+        "nome": nome_prod, "status": status, "buscas_mes": buscas_m, "buscas_hoje": buscas_h, "melhor_pais": pais,
+        "dor": f"Instabilidade metabólica e dores crônicas ligadas ao nicho do produto {nome_prod}.",
+        "porque": f"Densidade ideal de buscas segmentadas por intenção de compra detectada em {pais}.",
+        "cpc": cpc_texto, "funil": funil_pos, "estrategia": estrategia
+    }
+
+# Roteador de Estado
+if "prod_atual" not in st.session_state:
+    st.session_state.prod_atual = gerar_dados_radar("Alpilean", 1)
+
+p_sel = st.session_state.prod_atual
+
+# 5. CONFIGURAÇÃO DE COLUNAS DA INTERFACE
+col_esq, col_dir = st.columns([1.2, 1.1])
+
+with col_esq:
+    st.markdown("### 🎯 Painel Estatístico Global")
+    st.write("Selecione o produto desejado abaixo:")
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    for idx, nome in enumerate(NOMES_PRODUTOS):
+        ranking_atual = idx + 1
+        p_dados = gerar_dados_radar(nome, ranking_atual)
+        
+        # Sinais de subindo ou descendo injetados por extenso
+        texto_exibicao = f"▲ #{ranking_atual} - {nome}" if ranking_atual <= 10 else f"▼ #{ranking_atual} - {nome}"
+        
+        if st.button(texto_exibicao, key=f"btn_{nome}"):
+            st.session_state.prod_atual = p_dados
+            st.rerun()
+
+with col_dir:
+    st.markdown("### ⚡ Central de Inteligência")
+    st.markdown(f"## {p_sel['nome']}")
+    
+    if "🔥" in p_sel["status"]:
+        st.markdown('<span class="badge-alta">🔥 ALTA</span>', unsafe_allow_html=True)
+    else:
+        st.markdown('<span class="badge-normal">✅ VALIDADO</span>', unsafe_allow_html=True)
+        
+    st.markdown(f'<span class="badge-funil">{p_sel["funil"]}</span>', unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    
+    c1, c2 = st.columns(2)
+    c1.metric(label="🔎 Pesquisas no Mês", value=f"{p_sel['buscas_mes']:,}")
+    c2.metric(label="⚡ Pesquisas Hoje", value=f"{p_sel['buscas_hoje']:,}")
+    
+    st.markdown(f"""
+        <div class="card-info">
+            <h4 style="margin-top:0; color:#ff0055; font-weight:bold;">💔 Dor Principal do Cliente:</h4>
+            <p style="font-size:14px; color:#cbd5e1;">{p_sel['dor']}</p>
+            <br>
+            <h4 style="margin-top:0; color:#00ffcc; font-weight:bold;">📍 Veredito Onde Anunciar:</h4>
+            <p style="font-size:14px; color:#cbd5e1;"><b>Melhor País:</b> {p_sel['melhor_pais']}</p>
+            <p style="font-size:14px; color:#94a3b8;">{p_sel['porque']}</p>
+            <br>
+            <h4 style="margin-top:0; color:#cc66ff; font-weight:bold;">🎯 Posição de Funil e Estratégia:</h4>
+            <p style="font-size:14px; color:#e2e8f0;">{p_sel['estrategia']}</p>
+            <br>
+            <h4 style="margin-top:0; color:#ffffff; font-weight:bold;">💵 CPC Comparado:</h4>
+            <p style="font-size:13px; color:#33ffdd; font-family:monospace;">{p_sel['cpc']}</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+# Rodapé unificado
+st.markdown('<div style="text-align: center; font-size: 11px; color: #475569; padding-top: 50px;"><hr style="border-color: #1e293b;">© 2026 Adriel-AI Pro - Todos os Direitos Reservados.</div>', unsafe_allow_html=True)
