@@ -1,4 +1,4 @@
-import streamlit st
+import streamlit as st
 import random
 import pandas as pd
 from datetime import datetime
@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Captura limpa e estavel em tempo real livre de erros
+    # Entrada de texto limpa e direta
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -101,7 +101,6 @@ def main():
         pesquisas_hoje = 1200 + (fator * 105) + (tempo_segundo * 2)
 
         # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR CONSIDERADO RUIM
-        # Metodo de analise tradicional 100% livre de operadores instaveis
         produto_e_ruim = False
         if fator < 5:
             produto_e_ruim = True
@@ -115,7 +114,7 @@ def main():
             st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas, alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI.")
             st.markdown("---")
 
-        st.write("Sincronizacao de trafego ativa as " + horario_atual)
+        st.write("Sincronizacao de trafego activa as " + horario_atual)
         st.write("")
 
         canal_ideal = "Google Ads (Rede de Pesquisa)"
@@ -170,7 +169,7 @@ def main():
             
             st.markdown("---")
             
-            # 🌟 SINCRONIZAÇÃO TOTAL: Gráfico agora puxa o número real exato das pesquisas mensais divididas por mês
+            # 📊 GRÁFICO TOTALMENTE INTEGRADO EM MILHARES IGUAL AS MÉTRICAS
             st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
             
             base_mes_real = pesquisas_mes // 4
@@ -184,3 +183,5 @@ def main():
             cores_auditor = ["#00ffcc", "#ff0055", "#0066ff"]
             
             st.bar_chart(
+                df_auditor, 
+                x="Meses", 
