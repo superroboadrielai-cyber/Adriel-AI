@@ -28,21 +28,23 @@ def main():
     st.write("Varredura de ofertas recentes atualizando em tempo real com disparo de relatorio operacional via WhatsApp.")
     st.markdown("---")
 
-    # 🪐 NOVO COMPONENTE: CONFIGURAÇÃO E PERSISTÊNCIA DO NÚMERO DE WHATSAPP
+    # 📲 CENTRAL DE ALERTAS COM MEMÓRIA DE SESSÃO ESTÁVEL
     st.markdown("<h3 style='color:#00ffcc;'>📲 Central de Alertas e Notificacoes</h3>", unsafe_allow_html=True)
     
     if "user_whatsapp_saved" not in st.session_state:
         st.session_state.user_whatsapp_saved = "5511999999999"
 
-    # Input para salvar o número do usuário na sessão viva
+    # Captura linear estável de dados
     whats_input = st.text_input("Insira seu WhatsApp com Codigo do Pais e DDD (Ex: 5511999999999):", value=st.session_state.user_whatsapp_saved)
-    if st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO"):
+    botao_salvar_whats = st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO")
+    
+    if botao_salvar_whats:
         st.session_state.user_whatsapp_saved = whats_input.strip()
-        st.success("Configuracao salva com sucesso! O sistema enviara os relatorios para: " + st.session_state.user_whatsapp_saved)
+        st.success("Configuracao salva com sucesso!")
     
     st.markdown("---")
 
-    # Terminal de entrada de dados
+    # Terminal de varredura mestre
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura Sincronizada</h3>", unsafe_allow_html=True)
     
     produtos_novos_pool = ["KeraBiotics Gringo", "Glucovibe Launch", "LeanPulse Pro", "NeuroShield V2"]
@@ -68,7 +70,7 @@ def main():
         if (fator + tempo_segundo) % 3 == 0:
             e_oportunidade = False
 
-        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. O leilao encontra-se limpo (Oceano Azul), permitindo capturar cliques baratos fundo de funil e extrair altas comissoes com baixa contingência."
+        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. O leilao encontra-se limpo (Oceano Azul), permitindo clicar barato e extrair lucro."
         txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. Aposta arriscada devido a taxas de reembolso oscilantes nas plataformas gringas."
 
         # 3. MONTAGEM DAS DUAS COLUNAS PRINCIPAIS LUXO
@@ -122,14 +124,13 @@ def main():
 
             st.markdown("---")
 
-            # 🪐 5. INTEGRAÇÃO REAL DO DISPARO PARA O WHATSAPP CONFIGURADO
+            # 📲 INTEGRAÇÃO INDESTRUTÍVEL DO DISPARO PARA O WHATSAPP SALVO
             st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
             st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
             
-            # Geração textual linear livre de caracteres e chaves que travam o compilador
+            # Geração textual 100% limpa livre de caracteres e chaves que travam o compilador
             texto_cru_whats = "ALERTA DE LANCAMENTO ADRIEL-AI - Produto: " + nome_lancamento + " - Plataforma: " + plataforma_ativa + " - Termometro: " + status_termo + " - Veredito: " + veredito_texto
             
-            # Puxa dinamicamente o número salvo e injeta na API oficial do WhatsApp
             num_destino = st.session_state.user_whatsapp_saved
             link_final_whats = "https://whatsapp.com" + num_destino + "&text=" + str(texto_cru_whats).replace(" ", "%20")
             
@@ -143,3 +144,4 @@ def main():
             df_cacador = pd.DataFrame({
                 "Semanas": ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
                 "Verde Neon (Subindo)": [base_semana, 0, int(base_semana * 1.2), 0],
+                "Laser Vermelho (Decendo)": [0, int(base_semana * 0.95), 0, 0],
