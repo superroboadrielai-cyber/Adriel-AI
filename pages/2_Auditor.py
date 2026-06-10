@@ -47,7 +47,7 @@ def main():
                 border: 2px solid #00ffcc !important;
                 border-radius: 8px !important;
                 font-weight: bold !important;
-                box-shadow: 0 0 12px rgba(0, 25 5, 204, 0.2) !important;
+                box-shadow: 0 0 12px rgba(0,255,204,0.2) !important;
                 width: 100% !important;
                 height: 45px !important;
             }
@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Sistema de captura estavel e linear imune a bugs do compilador
+    # Captura limpa e estavel anti falhas
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,9 +96,9 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO: Identifica se o produto e ruim ou teste de forma estrita
+        # 🚨 ALERTA IMEDIATO: Deteta se o produto e ruim de forma estrita
         produto_e_ruim = False
-        if fator < 5:
+        if falar_com_fator := (fator < 5):
             produto_e_ruim = True
         if "teste" in nome_prod.lower():
             produto_e_ruim = True
@@ -113,7 +113,7 @@ def main():
         st.write("Sincronizacao de trafego ativa as " + horario_atual)
         st.write("")
 
-        # ENGINE DINAMICO ANALITICO PURIFICADO
+        # ENGINE DINAMICO ANALITICO
         pesquisas_mes = 35000 + (fator * 2400) + (tempo_segundo * 8)
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
@@ -186,3 +186,6 @@ def main():
                 df_auditor, 
                 x="Meses", 
                 y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"],
+                color=cores_auditor
+            )
+
