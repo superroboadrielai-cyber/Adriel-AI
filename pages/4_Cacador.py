@@ -34,17 +34,17 @@ def main():
     if "user_whatsapp_saved" not in st.session_state:
         st.session_state.user_whatsapp_saved = "5511999999999"
 
-    # Captura linear estável de dados
+    # Captura linear estável do número de telefone
     whats_input = st.text_input("Insira seu WhatsApp com Codigo do Pais e DDD (Ex: 5511999999999):", value=st.session_state.user_whatsapp_saved)
     botao_salvar_whats = st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO")
     
     if botao_salvar_whats:
         st.session_state.user_whatsapp_saved = whats_input.strip()
-        st.success("Configuracao salva com sucesso!")
+        st.success("Configuracao de notificacao salva!")
     
     st.markdown("---")
 
-    # Terminal de varredura mestre
+    # Terminal de varredura mestre por digitação e cliques
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura Sincronizada</h3>", unsafe_allow_html=True)
     
     produtos_novos_pool = ["KeraBiotics Gringo", "Glucovibe Launch", "LeanPulse Pro", "NeuroShield V2"]
@@ -124,11 +124,11 @@ def main():
 
             st.markdown("---")
 
-            # 📲 INTEGRAÇÃO INDESTRUTÍVEL DO DISPARO PARA O WHATSAPP SALVO
+            # 📲 DISPARO REAL DO WHATSAPP DIRECIONADO AO NÚMERO SALVO
             st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
             st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
             
-            # Geração textual 100% limpa livre de caracteres e chaves que travam o compilador
+            # Geração textual purificada e linear imune ao bug do ast.parse
             texto_cru_whats = "ALERTA DE LANCAMENTO ADRIEL-AI - Produto: " + nome_lancamento + " - Plataforma: " + plataforma_ativa + " - Termometro: " + status_termo + " - Veredito: " + veredito_texto
             
             num_destino = st.session_state.user_whatsapp_saved
