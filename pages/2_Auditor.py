@@ -39,7 +39,7 @@ def main():
             }
             .stTextInput>div>div>input:focus {
                 border-color: #00ffcc !important;
-                box-shadow: 0 0 15px rgba(0, 25 5, 204, 0.3) !important;
+                box-shadow: 0 0 15px rgba(0,255,204,0.3) !important;
             }
             .stButton>button {
                 background-color: #0b1329 !important;
@@ -100,7 +100,7 @@ def main():
         pesquisas_mes = 50000 + (fator * 3100) + (tempo_segundo * 8)
         pesquisas_hoje = 1200 + (fator * 105) + (tempo_segundo * 2)
 
-        # 🚨 ALERTA IMEDIATO: Identifica se o produto e ruim ou teste de forma tradicional limpa
+        # 🚨 ALERTA IMEDIATO SE O PRODUTO FOR CONSIDERADO RUIM
         produto_e_ruim = False
         if fator < 5:
             produto_e_ruim = True
