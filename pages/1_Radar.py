@@ -15,7 +15,7 @@ def main():
     st.write("Status do Ecossistema: ATIVO | Varredura viva realizada as " + horario_atual)
     st.markdown("---")
 
-    # 3. BASE DE DADOS COMPLETA DOS 20 PRODUTOS (SINTAXE 100% PURA E LINEAR)
+    # 2. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS OBRIGATÓRIOS DO ROTEIRO
     PRODUTOS_POOL = [
         {"ranking": 1, "nome": "Alpilean", "status": "ALTA", "plataforma": "ClickBank", "base_mes": 112000, "base_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "semente": 110,
          "dor": "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos.",
