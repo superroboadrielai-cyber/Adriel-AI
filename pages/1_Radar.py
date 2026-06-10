@@ -7,7 +7,7 @@ def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    # FORCADOR GLOBAL DE TEMA BLACK-LABEL CYBER-NEON E REMOCAO DA BARRA BRANCA SUPERIOR
+    # FORCADOR GLOBAL DE TEMA BLACK-LABEL COM BRILHO NEON NAS BORDAS E TEXTOS
     st.markdown("""
         <style>
             header, [data-testid="stHeader"] {
@@ -19,40 +19,56 @@ def main():
                 padding-top: 0px !important;
             }
             html, body, [data-testid="stAppViewContainer"], .stApp {
-                background-color: #030712 !important;
+                background-color: #020617 !important;
                 color: #f9fafb !important;
             }
             [data-testid="stSidebar"], section[data-testid="stSidebar"] div {
-                background-color: #090d16 !important;
+                background-color: #070a13 !important;
             }
             [data-testid="stSidebar"] nav ul li div a span {
                 color: #00ffcc !important;
                 font-weight: bold !important;
-                text-shadow: 0 0 5px rgba(0,255,204,0.4) !important;
+                text-shadow: 0 0 8px rgba(0,255,204,0.5) !important;
             }
+            
+            /* Botões Laterais com Brilho Pulsante */
             .stButton>button {
-                background-color: #0f172a !important;
+                background-color: #0b1329 !important;
                 color: #00ffcc !important;
                 border: 2px solid #00ffcc !important;
                 border-radius: 8px !important;
                 font-weight: bold !important;
-                box-shadow: 0 0 8px rgba(0, 255, 204, 0.2) !important;
+                box-shadow: 0 0 10px rgba(0, 255, 204, 0.15) !important;
+                transition: all 0.3s ease-in-out !important;
             }
             .stButton>button:hover {
                 background-color: #00ffcc !important;
-                color: #030312 !important;
-                box-shadow: 0 0 15px #00ffcc !important;
+                color: #020617 !important;
+                box-shadow: 0 0 20px #00ffcc, 0 0 40px rgba(0,255,204,0.3) !important;
+                transform: scale(1.01);
             }
+            
+            /* Customização das Caixas de Métricas Neon */
+            [data-testid="stMetricContainer"] {
+                background: linear-gradient(135deg, #0f172a, #020617) !important;
+                border: 1px solid #1e293b !important;
+                border-left: 4px solid #00ffcc !important;
+                padding: 15px !important;
+                border-radius: 10px !important;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+            }
+            
             h1, h2, h3, h4, span, p, label {
                 color: #f3f4f6 !important;
             }
             h1 {
                 color: #00ffcc !important;
-                text-shadow: 0 0 10px rgba(0,255,204,0.3) !important;
+                text-shadow: 0 0 15px rgba(0,255,204,0.4) !important;
             }
             [data-testid="stNotification"] {
-                background-color: #111827 !important;
-                border: 1px solid #1f2937 !important;
+                background-color: #0b1329 !important;
+                border: 1px solid #1e293b !important;
+                border-radius: 10px !important;
             }
         </style>
     """, unsafe_allow_html=True)
@@ -98,7 +114,7 @@ def main():
     col_esquerda, col_direita = st.columns([1.0, 1.3])
 
     with col_esquerda:
-        st.markdown("<h3 style='color:#00ffcc !important;'>🎯 Painel Estatistico Global</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color:#00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.2);'>🎯 Painel Estatistico Global</h3>", unsafe_allow_html=True)
         st.write("Selecione o produto abaixo para ativar os sinais:")
         st.write("")
         
@@ -115,7 +131,7 @@ def main():
                 st.rerun()
 
     with col_direita:
-        st.markdown("<h3 style='color:#00ffcc !important;'>⚡ Central de Inteligencia de Mercado</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color:#00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.2);'>⚡ Central de Inteligencia de Mercado</h3>", unsafe_allow_html=True)
         st.header(p_nome)
         st.write("Classificacao: " + p_status + " - MONITORAMENTO ATIVO DO ROBO V5")
         st.write("")
@@ -126,32 +142,38 @@ def main():
         
         st.markdown("---")
         
-        st.markdown("<h4 style='color:#ff0055 !important;'>💔 Dor Cirurgica do Comprador Gringo (Motivo da busca):</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color:#ff0055; text-shadow: 0 0 5px rgba(255,0,85,0.2);'>💔 Dor Cirurgica do Comprador Gringo (Motivo da busca):</h4>", unsafe_allow_html=True)
         st.warning(p_dor)
         
-        st.markdown("<h4 style='color:#00ffcc !important;'>🏆 Veredito Estrategico Convincente (Onde anunciar e por que):</h4>", unsafe_allow_html=True)
-        st.info("Melhor Pais para Subir Campanha: " + p_pais)
-        st.write(p_porque)
+        st.markdown("<h4 style='color:#00ffcc; text-shadow: 0 0 5px rgba(0,255,204,0.2);'>🏆 Veredito Estrategico Convincente (Onde anunciar e por que):</h4>", unsafe_allow_html=True)
+        st.info(p_pais + " - " + p_porque)
         
-        st.markdown("<h4 style='color:#cc66ff !important;'>💵 Mapeamento de CPC por Regiao (5 Paises Oficiais):</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color:#cc66ff; text-shadow: 0 0 5px rgba(204,102,255,0.2);'>💵 Mapeamento de CPC por Regiao (5 Paises Oficiais):</h4>", unsafe_allow_html=True)
         cpc_base_dinamico = round(1.85 + (posicao_lista * 0.08), 2)
         st.code("USA: $" + str(cpc_base_dinamico) + " | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40", language="text")
         
         st.markdown("---")
         
-        # 🌟 GRÁFICO ULTRA LUXO ESTILO SEMÁFORO (CONVERSÃO EM CAMADAS DINÂMICAS)
-        st.markdown("<h4>📊 Densidade de Tráfego por Canal Preditivo (Sinal Semáforo)</h4>", unsafe_allow_html=True)
+        # 🌟 GRÁFICO ULTRA LUXO CYBER-NEON COM PALETA SEMÁFORO FORÇADA
+        st.markdown("<h4 style='color:#00ffcc;'>📊 Canal Preditivo de Conversao (Sinal Semaforo Neon)</h4>", unsafe_allow_html=True)
         
-        # Criação da estrutura de dados empilhada para forçar o mapa de cores estático do Streamlit
+        # Estrutura de dados organizada
         df_semaforo = pd.DataFrame({
             "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-            "🟢 Baixo CPC (Oceano Azul)": [p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3],
-            "🟡 Volume Medio (Escala)": [p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 3, p_semente * 3],
-            "🔴 Alto Leilao (Top Volume)": [0, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 3]
+            "Verde Neon (Oceano Azul)": [p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 3, p_semente * 4, p_semente * 4, p_semente * 3, p_semente * 4, p_semente * 5, p_semente * 5, p_semente * 4],
+            "Ciber Amarelo (Tracao Real)": [p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3],
+            "Laser Vermelho (Top Leilao)": [0, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2]
         })
         
-        # Renderiza o gráfico multinível gerando o contraste semáforo nativo imediatamente
-        st.bar_chart(df_semaforo, x="Meses", y=["🟢 Baixo CPC (Oceano Azul)", "🟡 Volume Medio (Escala)", "🔴 Alto Leilao (Top Volume)"])
+        # Injeção de paleta hexadecimal direta no gráfico nativo (Verde Neon, Amarelo Cíber, Vermelho Laser)
+        cores_neon = ["#00ffcc", "#ffea00", "#ff0055"]
+        
+        st.bar_chart(
+            df_semaforo, 
+            x="Meses", 
+            y=["Verde Neon (Oceano Azul)", "Ciber Amarelo (Tracao Real)", "Laser Vermelho (Top Leilao)"],
+            color=cores_neon
+        )
 
 if __name__ == "__main__":
     main()
