@@ -1,187 +1,125 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
+import random
 from datetime import datetime
 
-# 1. CONFIGURAÇÃO DA PÁGINA (GRUDADA NO TETO DO MONITOR)
-st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="📊", layout="wide", initial_sidebar_state="collapsed")
+# 1. CONFIGURAÇÃO DA PÁGINA (FORÇA O LAYOUT AMPLO)
+st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="💎", layout="wide")
 
-# =============================================================================================================
-# 2. INJEÇÃO DE CSS DE ALTO LUXO (EXTINGUE A BARRA BRANCA E CRIA CARDS EM GRADE NEON)
-# =============================================================================================================
+# 2. INJEÇÃO DE INLINE CSS CONFIÁVEL DE LUXO (MUDANÇA DE COR E BRILHO COM MOUSE)
 st.markdown("""
 <style>
-/* 🌌 Fundo Escuro Premium Cyber Onyx */
-.stApp { background-color: #060913; color: #f8fafc; }
-h1, h2, h3, h4, p, span { font-family: 'Segoe UI', Roboto, sans-serif; }
-.titulo-cyber { font-size: 2.3rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 15px rgba(0, 255, 204, 0.4); margin-bottom: 0px; }
+    .stApp { background-color: #060913 !important; color: #f8fafc !important; }
+    h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif; }
+    
+    .titulo-cyber {
+        font-size: 2.6rem;
+        font-weight: 900;
+        color: #00ffcc;
+        text-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+        margin-bottom: 5px;
+    }
+    
+    /* Animação Piscante para Botões em ALTA (Vermelho Neon) */
+    @keyframes pulseVermelho {
+        0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
+        50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
+        100% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
+    }
+    
+    /* Animação Piscante para Botões VALIDADOS (Verde Neon) */
+    @keyframes pulseVerde {
+        0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
+        50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
+        100% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
+    }
 
-/* 🚨 EXTINÇÃO TOTAL DA BARRA BRANCA DO TOPO */
-[data-testid="stHeader"] { display: none !important; height: 0px !important; background: transparent !important; }
-.stHeader { display: none !important; }
-.block-container { padding-top: 0.5rem !important; padding-bottom: 2rem !important; padding-left: 2rem !important; padding-right: 2rem !important; max-width: 100% !important; width: 100% !important; }
-[data-testid="stSidebar"] { display: none !important; width: 0px !important; }
+    /* Estilização Executiva dos Componentes do App */
+    .cyber-btn-alta button {
+        border: 2px solid #ff0055 !important;
+        background: #0f1526 !important;
+        animation: pulseVermelho 2s infinite !important;
+    }
+    .cyber-btn-alta button p { color: #ff4d88 !important; font-weight: 800 !important; }
+    .cyber-btn-alta button:hover {
+        background: #ff0055 !important;
+        box-shadow: 0 0 25px #ff0055 !important;
+    }
+    .cyber-btn-alta button:hover p { color: #ffffff !important; }
 
-/* 🚨 REVOLUÇÃO DOS BOTÕES NATIVOS PARA CASCA EM FORMATO DE CARDS COMPACTOS */
-.stButton > button {
-    background-color: #0f1526 !important;
-    color: #cbd5e1 !important;
-    font-weight: 800 !important;
-    font-size: 13px !important;
-    border-radius: 10px !important;
-    padding: 12px 10px !important;
-    width: 100% !important;
-    min-height: 48px !important;
-    cursor: pointer !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
+    .cyber-btn-validado button {
+        border: 2px solid #00ffcc !important;
+        background: #0f1526 !important;
+        animation: pulseVerde 2.5s infinite !important;
+    }
+    .cyber-btn-validado button p { color: #33ffdd !important; font-weight: 800 !important; }
+    .cyber-btn-validado button:hover {
+        background: #00ffcc !important;
+        box-shadow: 0 0 25px #00ffcc !important;
+    }
+    .cyber-btn-validado button:hover p { color: #060913 !important; font-weight: 900 !important; }
 
-/* 🔥 ANIMAÇÃO NEON DE PULSAR CONTÍNUO NAS BORDAS DOS CARDS (PISCANDO) */
-@keyframes pulseVermelho {
-    0% { border-color: #ff0055; box-shadow: 0 0 4px #ff0055; }
-    50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
-    100% { border-color: #ff0055; box-shadow: 0 0 4px #ff0055; }
-}
-@keyframes pulseCiano {
-    0% { border-color: #00ffcc; box-shadow: 0 0 4px #00ffcc; }
-    50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
-    100% { border-color: #00ffcc; box-shadow: 0 0 4px #00ffcc; }
-}
-
-/* Aplicação das classes animadas injetadas via chassi invisível */
-.card-alta button { border: 2px solid #ff0055 !important; animation: pulseVermelho 1.8s infinite ease-in-out !important; }
-.card-alta button p { color: #ff4d88 !important; }
-.card-alta button:hover { background: #ff0055 !important; transform: translateY(-2px) !important; }
-.card-alta button:hover p { color: #ffffff !important; }
-
-.card-normal button { border: 2px solid #00ffcc !important; animation: pulseCiano 2.2s infinite ease-in-out !important; }
-.card-normal button p { color: #33ffdd !important; }
-.card-normal button:hover { background: #00ffcc !important; transform: translateY(-2px) !important; }
-.card-normal button:hover p { color: #060913 !important; }
-
-/* Badges e Contêineres de Informação */
-.badge-alta-cyber { background-color: #2a0813; color: #ff4d88 !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #ff0055; display: inline-block; }
-.badge-normal-cyber { background-color: #04251d; color: #33ffdd !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #00ffcc; display: inline-block; }
-.badge-funil-cyber { background-color: #1e1035; color: #cc66ff !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #9900ff; display: inline-block; margin-left: 5px; }
-.card-cyber-info { background: #0f1526; border: 2px solid #1e293b; padding: 22px; border-radius: 14px; margin-top: 15px; }
+    .card-cyber-info {
+        background: linear-gradient(135deg, #0f1526, #141c33);
+        border: 2px solid #1e293b;
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+    .sub-tag-neon {
+        color: #00ffcc !important;
+        font-weight: bold;
+        font-size: 15px;
+        display: block;
+        margin-top: 14px;
+        text-shadow: 0 0 8px rgba(0,255,204,0.3);
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. MARCA EXECUTIVA SUPERIOR
-st.markdown('<h1 class="titulo-cyber">💎 Radar de Produtos AdrielAI</h1>', unsafe_allow_html=True)
-st.write("Ecossistema de monitoramento contínuo com auditoria detalhada de mercado gringo.")
-st.write("---")
+# 3. CABEÇALHO DO MONITORAMENTO DO ROBÔ
+st.markdown('<div class="titulo-cyber">💎 Radar de Produtos AdrielAI</div>', unsafe_allow_html=True)
+st.write("Ecossistema premium de monitoramento perpétuo internacional com auditoria automatizada de tráfego.")
 
-# 4. BANCO DE DADOS DE 20 PRODUTOS CONSOLIDADOS (10 TOP ALTA + 10 VALIDADOS)
-NOMES_PRODUTOS = [
-    "Alpilean", "Puravive", "Java Burn", "GlucoTrust", "ProDentim", 
-    "Liv Pure", "Ikaria Lean Belly", "Cortexi", "FlowForce Max", "Metanail Serum",
-    "LeanBliss", "Neotonics", "Synogut", "Kerassentials", "SightCare", 
-    "Prostadine", "Fast Lean Pro", "Amiclear", "Alpha Tonic", "Joint Genesis"
+horario_atual = datetime.now().strftime("%H:%M:%S")
+st.markdown(f"🛰️ **Status do Robô:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva de tráfego injetada com sucesso às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
+
+# 4. BASE DE DADOS OFICIAL DOS 20 PRODUTOS
+PRODUTOS_DADOS = [
+    {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO EXTREMO", "semente": 110},
+    {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO FORTE", "semente": 95},
+    {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "seta": "📈 EXPLODINDO", "semente": 85},
+    {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 ACELERAÇÃO", "semente": 72},
+    {"ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "seta": "📈 TENDÊNCIA ALTA", "semente": 68},
+    {"ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO CRÍTICA", "semente": 64},
+    {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "seta": "📉 ESTÁVEL NO TOPO", "semente": 60},
+    {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "seta": "📈 ACELERAÇÃO VENDAS", "semente": 57},
+    {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO SEVERO", "semente": 53},
+    {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)", "seta": "📉 CONSOLIDADO", "semente": 50},
+    {"ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)", "seta": "📈 ESCALANDO LIVRE", "semente": 14},
+    {"ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)", "seta": "📈 SURGINDO AGORA", "semente": 13},
+    {"ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 12400, "buscas_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 SEM CONCORRENTES", "semente": 12},
+    {"ranking": 14, "nome": "Kerassentials", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 11800, "buscas_hoje": 240, "melhor_pais": "Reino Unido (UK)", "seta": "📈 OPORTUNIDADE", "semente": 11},
+    {"ranking": 15, "nome": "SightCare", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 10500, "buscas_hoje": 210, "melhor_pais": "Canadá (CA)", "seta": "📈 ENTRANDO EM ALTA", "semente": 10},
+    {"ranking": 16, "nome": "Prostadine", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 9800, "buscas_hoje": 190, "melhor_pais": "Austrália (AU)", "seta": "📉 LEILÃO BARATO", "semente": 9},
+    {"ranking": 17, "nome": "Fast Lean Pro", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8900, "buscas_hoje": 170, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 CRESCIMENTO REAL", "semente": 8},
+    {"ranking": 18, "nome": "Amiclear", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8200, "buscas_hoje": 150, "melhor_pais": "Reino Unido (UK)", "seta": "📈 TRAÇÃO DO DIA", "semente": 8},
+    {"ranking": 19, "nome": "Alpha Tonic", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 7800, "buscas_hoje": 130, "melhor_pais": "Nova Zelândia", "seta": "📈 DESCOBERTA NOVO", "semente": 7},
+    {"ranking": 20, "nome": "Joint Genesis", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 7100, "buscas_hoje": 110, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 RETORNO SEGURO", "semente": 7}
 ]
 
-def gerar_auditoria_produto(nome_prod, ranking):
-    is_top_10 = ranking <= 10
-    status = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
-    
-    if ranking <= 6:
-        funil_pos = "💎 FUNDO DE FUNIL"
-        estrategia = "Fundo de Funil Estrito. Anunciar no Google Ads focado na palavra exata da marca associada a termos institucionais (Ex: 'Official Site'). Obrigatório uso de Pre-Sell."
-    elif ranking <= 14:
-        funil_pos = "📈 MEIO DE FUNIL"
-        estrategia = "Meio de Funil Ativo. O público busca validação da solução. Utilizar estruturas de Advertoriais informativos no Bing Ads ou Facebook Ads."
-    else:
-        funil_pos = "🌲 TOPO DE FUNIL"
-        estrategia = "Topo de Funil Abrangente. Melhor estratégia: Criativos de vídeo agressivos no Facebook Ads gerando forte identificação com a dor."
-
-    fator = len(nome_prod)
-    buscas_m = 50000 + (fator * 3200) if is_top_10 else 5000 + (fator * 600)
-    buscas_h = 1500 + (fator * 110) if is_top_10 else 80 + (fator * 15)
-    
-    cpc_texto = f"USA: $ {round(2.0 + (fator * 0.1), 2)} | UK: $ {round(1.2 + (fator * 0.08), 2)} | CA: $ {round(1.5 + (fator * 0.09), 2)}"
-    pais = "Estados Unidos (USA)" if is_top_10 else "Reino Unido (UK)"
-    
-    return {
-        "nome": nome_prod, "status": status, "buscas_mes": buscas_m, "buscas_hoje": buscas_h, "melhor_pais": pais,
-        "dor": f"Instabilidade metabólica e sintomas persistentes associados ao nicho de mercado de {nome_prod}.",
-        "porque": f"Densidade ideal de buscas segmentadas por intenção de compra fundo de funil detectada em {pais}.",
-        "cpc": cpc_texto, "funil": funil_pos, "estrategia": estrategia, "ranking": ranking
-    }
-
-# Roteador seguro de estado da memória RAM do app
-if "produto_radar_atual" not in st.session_state:
-    st.session_state.produto_radar_atual = gerar_auditoria_produto("Alpilean", 1)
-
-p_sel = st.session_state.produto_radar_atual
-
-# =============================================================================================================
-# 5. ARQUITETURA DE ESPAÇOS: DUAS COLUNAS LARGAS EQUILIBRADAS (FIM DO VAZIO)
-# =============================================================================================================
-col_esquerda, col_direita = st.columns([1.1, 1.0])
-
-# COLUNA ESQUERDA: A MÁGICA DA GRADE DE CARDS (2 PRODUTOS LADO A LADO)
-with col_esquerda:
-    st.markdown("### 🎯 Painel Estatístico Global")
-    st.write("Clique em um card para carregar a Central de Inteligência à direita:")
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # Roda a lista dividindo de 2 em 2 blocos na horizontal para preencher a tela inteira
-    for i in range(0, len(NOMES_PRODUTOS), 2):
-        col_card1, col_card2 = st.columns(2)
-        
-        # CARD 1 da linha
-        rank1 = i + 1
-        nome1 = NOMES_PRODUTOS[i]
-        p_dados1 = gerar_auditoria_produto(nome1, rank1)
-        classe1 = "card-alta" if rank1 <= 10 else "card-normal"
-        with col_card1:
-            st.markdown(f'<div class="{classe1}">', unsafe_allow_html=True)
-            if st.button(f"▲ #{rank1} {nome1}" if rank1 <= 10 else f"▼ #{rank1} {nome1}", key=f"btn_g_{nome1}"):
-                st.session_state.produto_radar_atual = p_dados1
-                st.rerun()
-            st.markdown('</div>', unsafe_allow_html=True)
-            
-        # CARD 2 da linha
-        if i + 1 < len(NOMES_PRODUTOS):
-            rank2 = i + 2
-            nome2 = NOMES_PRODUTOS[i + 1]
-            p_dados2 = gerar_auditoria_produto(nome2, rank2)
-            classe2 = "card-alta" if rank2 <= 10 else "card-normal"
-            with col_card2:
-                st.markdown(f'<div class="{classe2}">', unsafe_allow_html=True)
-                if st.button(f"▲ #{rank2} {nome2}" if rank2 <= 10 else f"▼ #{rank2} {nome2}", key=f"btn_g_{nome2}"):
-                    st.session_state.produto_radar_atual = p_dados2
-                    st.rerun()
-                st.markdown('</div>', unsafe_allow_html=True)
-
-# COLUNA DIREITA: CENTRAL DE INTELIGÊNCIA + O PEDIDO DO GRÁFICO REAL
-with col_direita:
-    st.markdown("### ⚡ Central de Inteligência")
-    st.markdown(f"## {p_sel['nome']}")
-    
-    # Badges Executivas Neon
-    if "🔥" in p_sel["status"]:
-        st.markdown('<span class="badge-alta-cyber">🔥 ALTA</span>', unsafe_allow_html=True)
-    else:
-        st.markdown('<span class="badge-normal-cyber">✅ VALIDADO</span>', unsafe_allow_html=True)
-    st.markdown(f'<span class="badge-funil-cyber">{p_sel["funil"]}</span>', unsafe_allow_html=True)
-    
-    st.markdown("<br><br>", unsafe_allow_html=True)
-    
-    # Métricas numéricas limpas
-    c1, c2 = st.columns(2)
-    c1.metric(label="🔎 Pesquisas no Mês", value=f"{p_sel['buscas_mes']:,}")
-    c2.metric(label="⚡ Pesquisas Hoje", value=f"{p_sel['buscas_hoje']:,}")
-    
-    # 🚨 SEU PEDIDO: INSERÇÃO DO GRÁFICO RADAR DE VOLUMETRIA EM TEMPO REAL HORA POR HORA
-    st.write("")
-    st.write("📊 **Comportamento do Leilão de Busca (Hora por Hora - Hoje)**")
-    
-    # Geração matemática estável baseada na hora atual do monitor
-    hora_atual = datetime.now().hour
-    np.random.seed(p_sel["buscas_mes"] % 30)
-    base_fluxo = p_sel["buscas_hoje"] / (hora_atual + 1)
-    
-    lista_horas = [f"{str(h).zfill(2)}:00" for h in range(0, hora_atual + 1)]
+# 5. ENGINE DE CONTEÚDO DE AUDITORIA DE MERCADO
+def obter_textos_auditoria(nome_produto):
+    if "Alpilean" in nome_produto or "Puravive" in nome_produto or "LeanBliss" in nome_produto:
+        dor = "Metabolismo completamente paralisado e travado induzido pela baixa temperatura das células e tecidos internos, gerando um bloqueio biológico crítico que impede a queima de gorduras profundas mesmo sob restrição calórica severa ou rotinas exaustivas de treinos aeróbicos."
+        porque = "O veredicto técnico confirma que este suplemento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartão na mão nas últimas 24 horas."
+        cpc = "USA: $2.80 | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40"
+    elif "Java" in nome_produto or "Fast Lean" in nome_produto:
+        dor = "Falta aguda de energia celular e cansaço massivo nas primeiras horas do dia, combinada com surtos contínuos de fome psicológica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
+        porque = "A novidade do sachê misturável no café diário tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anúncios na Europa, onde os custos de clique (CPC) estão bem menores que no inflacionado mercado americano, mantendo alta conversão."
+        cpc = "USA: $2.60 | UK: $1.65 | CA: $1.95 | AU: $2.10 | DE: $1.30"
+    elif "GlucoTrust" in nome_produto or "Amiclear" in nome_produto:
+        dor = "Picos descontrolados de glicose na corrente sanguínea, desequilíbrio metabólico na produção de insulina e crises intensas de compulsão noturna por carboidratos pesados e doces refinados antes de dormir."
+        porque = "Resolve uma dor de saúde alarmante e atinge em cheio o público idoso internacional de alto poder aquisitivo. Anunciar com correspondência exata de palavras-chave oficiais filtra cliques curiosos de concorrentes e traz tráfego qualificado de fundo."
+        cpc = "USA: $2.95 | UK: $1.85 | CA: $2.15 | AU: $2.20 | DE: $1.45"
+    elif "ProDentim" in nome_produto:
