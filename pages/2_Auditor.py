@@ -30,13 +30,13 @@ def main():
 
     # 2. TERMINAL DE ENTRADA SAAS NEON
     st.markdown("<h3 style='color:#00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.2);'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
-    produto_digitado = st.text_input("Insira o nome do produto gringo para processar a varredura:", value="Sugar Defender")
+    produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
 
     if produto_digitado:
         nome_prod = produto_digitado.strip()
-        fator = len(nome_prod) if len(nome_prod) > 0 else 10
+        fator = len(nome_prod)
         
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
@@ -47,7 +47,7 @@ def main():
 
         # 🚨 ALERTA IMEDIATO E INTEGRADO SE O PRODUTO FOR CONSIDERADO RUIM
         produto_e_ruim = False
-        if falar_com_fator := (fator < 5):
+        if fator < 5:
             produto_e_ruim = True
         if "teste" in nome_prod.lower():
             produto_e_ruim = True
@@ -114,7 +114,7 @@ def main():
             
             st.markdown("---")
             
-            # 📊 GRÁFICO PLOTLY PREMIUM COM BRILHO INTENSO HOVER (MÁXIMA VIDA E COR)
+            # 📊 GRÁFICO PLOTLY PREMIUM REVISADO COM HOVER NEON ATIVO E SEM ERROS
             st.markdown("<h4 style='color:#00ffcc;'>📊 Historico de Demanda Coletado em Tempo Real (Sinais Comportamentais Neon)</h4>", unsafe_allow_html=True)
             
             meses_eixo = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
@@ -145,3 +145,5 @@ def main():
             fig.add_trace(go.Bar(
                 x=meses_eixo,
                 y=valores_barras,
+                marker=dict(
+                    color=cores_por_mes,
