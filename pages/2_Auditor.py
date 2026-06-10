@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Captura limpa e estavel anti falhas
+    # Captura estavel de dados em tempo de execucao
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,7 +96,7 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO: Deteta se o produto e ruim de forma estrita
+        # 🚨 ALERTA IMEDIATO NO TOPO DA CENTRAL SE O PRODUTO FOR RUIM
         produto_e_ruim = False
         if falar_com_fator := (fator < 5):
             produto_e_ruim = True
@@ -130,7 +130,7 @@ def main():
         txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal e bloqueio biologico profundo."
         txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
-        # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
+        # 🪐 CORREÇÃO CRÍTICA DO COMPILADOR: Apenas uma chamada estrita de colunas sem redundância
         col_esquerda, col_direita = st.columns([1.0, 1.3])
 
         with col_esquerda:
@@ -170,7 +170,7 @@ def main():
             
             st.markdown("---")
             
-            # GRAFICO EM COLUNAS SOLIDAS DO RADAR MESTRE
+            # GRAFICO EM COLUNAS SOLIDAS NO PADRÃO DO RADAR
             st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
             
             df_auditor = pd.DataFrame({
@@ -186,6 +186,3 @@ def main():
                 df_auditor, 
                 x="Meses", 
                 y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"],
-                color=cores_auditor
-            )
-
