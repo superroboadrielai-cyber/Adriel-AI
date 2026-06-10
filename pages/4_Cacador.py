@@ -28,6 +28,20 @@ def main():
     st.write("Varredura de ofertas recentes atualizando em tempo real com disparo de relatorio operacional via WhatsApp.")
     st.markdown("---")
 
+    # 🪐 NOVO COMPONENTE: CONFIGURAÇÃO E PERSISTÊNCIA DO NÚMERO DE WHATSAPP
+    st.markdown("<h3 style='color:#00ffcc;'>📲 Central de Alertas e Notificacoes</h3>", unsafe_allow_html=True)
+    
+    if "user_whatsapp_saved" not in st.session_state:
+        st.session_state.user_whatsapp_saved = "5511999999999"
+
+    # Input para salvar o número do usuário na sessão viva
+    whats_input = st.text_input("Insira seu WhatsApp com Codigo do Pais e DDD (Ex: 5511999999999):", value=st.session_state.user_whatsapp_saved)
+    if st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO"):
+        st.session_state.user_whatsapp_saved = whats_input.strip()
+        st.success("Configuracao salva com sucesso! O sistema enviara os relatorios para: " + st.session_state.user_whatsapp_saved)
+    
+    st.markdown("---")
+
     # Terminal de entrada de dados
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura Sincronizada</h3>", unsafe_allow_html=True)
     
@@ -108,15 +122,16 @@ def main():
 
             st.markdown("---")
 
-            # 🪐 5. ENGENHARIA DO BOTÃO DE WHATSAPP COMPILADA POR LIMPEZA LINEAR SEGURA
+            # 🪐 5. INTEGRAÇÃO REAL DO DISPARO PARA O WHATSAPP CONFIGURADO
             st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
             st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
             
-            # Geração textual em formato cru e linear sem quebras de strings para evitar travar o parser
+            # Geração textual linear livre de caracteres e chaves que travam o compilador
             texto_cru_whats = "ALERTA DE LANCAMENTO ADRIEL-AI - Produto: " + nome_lancamento + " - Plataforma: " + plataforma_ativa + " - Termometro: " + status_termo + " - Veredito: " + veredito_texto
             
-            # Converte todos os caracteres para o formato seguro de URL web
-            link_final_whats = "https://whatsapp.com" + str(texto_cru_whats).replace(" ", "%20")
+            # Puxa dinamicamente o número salvo e injeta na API oficial do WhatsApp
+            num_destino = st.session_state.user_whatsapp_saved
+            link_final_whats = "https://whatsapp.com" + num_destino + "&text=" + str(texto_cru_whats).replace(" ", "%20")
             
             st.markdown("<a href='" + link_final_whats + "' target='_blank' style='display:block; text-align:center; background-color:#25d366; color:#ffffff; padding:14px; border-radius:8px; font-weight:bold; text-decoration:none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); font-size:1.1rem;'>💬 DISPARAR ALERTA NO WHATSSAP</a>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
@@ -128,12 +143,3 @@ def main():
             df_cacador = pd.DataFrame({
                 "Semanas": ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
                 "Verde Neon (Subindo)": [base_semana, 0, int(base_semana * 1.2), 0],
-                "Laser Vermelho (Decendo)": [0, int(base_semana * 0.95), 0, 0],
-                "Azul Eletrico (Indecisao)": [0, 0, 0, int(base_semana * 1.1)]
-            })
-            
-            cores_cacador = ["#00ffcc", "#ff0055", "#0066ff"]
-            st.bar_chart(df_cacador, x="Semanas", y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"], color=cores_cacador)
-
-if __name__ == "__main__":
-    main()
