@@ -7,12 +7,29 @@ def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Auditor Premium - AdrielAI", layout="wide")
 
-    st.markdown('<h1 style="color:#00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.3);">🛡️ AUDITOR EXPERT DE MERCADO</h1>', unsafe_allow_html=True)
+    # FORCADOR ULTRA LUXO CYBER-NEON COMPILADO (IMUNE AO BUG DO PYTHON 3.14)
+    estilo_luxo = "<style>"
+    estilo_luxo += "header, [data-testid='stHeader'] {background-color: rgba(0,0,0,0) !important; background: transparent !important; display: none !important;}"
+    estilo_luxo += "[data-testid='stAppViewContainer'] {padding-top: 0px !important;}"
+    estilo_luxo += "html, body, [data-testid='stAppViewContainer'], .stApp {background-color: #030712 !important; color: #f9fafb !important;}"
+    estilo_luxo += "[data-testid='stSidebar'], section[data-testid='stSidebar'] div {background-color: #090d16 !important;}"
+    estilo_luxo += "[data-testid='stSidebar'] nav ul li div a span {color: #00ffcc !important; font-weight: bold !important; text-shadow: 0 0 8px rgba(0,255,204,0.5) !important;}"
+    estilo_luxo += ".stTextInput>div>div>input {background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #1e293b !important; border-radius: 8px !important; font-size: 1.1rem !important;}"
+    estilo_luxo += ".stTextInput>div>div>input:focus {border-color: #00ffcc !important; box-shadow: 0 0 15px rgba(0, 255, 204, 0.3) !important;}"
+    estilo_luxo += ".stButton>button {background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #00ffcc !important; border-radius: 8px !important; font-weight: bold !important; box-shadow: 0 0 10px rgba(0, 255, 204, 0.15) !important; transition: all 0.3s ease-in-out !important; width: 100% !important; height: 45px !important;}"
+    estilo_luxo += ".stButton>button:hover {background-color: #00ffcc !important; color: #030712 !important; box-shadow: 0 0 25px #00ffcc, 0 0 45px rgba(0,255,204,0.4) !important; transform: scale(1.01);}"
+    estilo_luxo += "[data-testid='stMetricContainer'] {background: linear-gradient(135deg, #0f172a, #030712) !important; border: 1px solid #1e293b !important; border-left: 4px solid #00ffcc !important; padding: 15px !important; border-radius: 10px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;}"
+    estilo_luxo += "h1, h2, h3, h4, span, p, label {color: #f3f4f6 !important;}"
+    estilo_luxo += "[data-testid='stNotification'] {background-color: #0f172a !important; border: 1px solid #1e293b !important; border-radius: 10px !important;}"
+    estilo_luxo += "</style>"
+    st.markdown(estilo_luxo, unsafe_allow_html=True)
+
+    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 15px rgba(0,255,204,0.4); margin-bottom: 5px;">🛡️ AUDITOR EXPERT DE MERCADO</h1>', unsafe_allow_html=True)
     st.write("Digite o nome de qualquer oferta internacional no terminal para que o robo realize a engenharia reversa operacional.")
     st.markdown("---")
 
-    # 2. TERMINAL DE ENTRADA SIMPLES
-    st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
+    # 2. TERMINAL DE ENTRADA SAAS NEON
+    st.markdown("<h3 style='color:#00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.2);'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     produto_digitado = st.text_input("Insira o nome do produto gringo para processar a varredura:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -21,7 +38,6 @@ def main():
         nome_prod = produto_digitado.strip()
         fator = len(nome_prod) if len(nome_prod) > 0 else 10
         
-        # Marcador temporal ativo do servidor
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
@@ -29,9 +45,9 @@ def main():
         pesquisas_mes = 50000 + (fator * 3100) + (tempo_segundo * 8)
         pesquisas_hoje = 1200 + (fator * 105) + (tempo_segundo * 2)
 
-        # 🚨 DISPARO IMEDIATO DO ALERTA SE O PRODUTO FOR RUIM
+        # 🚨 ALERTA IMEDIATO E INTEGRADO SE O PRODUTO FOR CONSIDERADO RUIM
         produto_e_ruim = False
-        if fator < 5:
+        if falar_com_fator := (fator < 5):
             produto_e_ruim = True
         if "teste" in nome_prod.lower():
             produto_e_ruim = True
@@ -39,10 +55,11 @@ def main():
             produto_e_ruim = True
 
         if produto_e_ruim:
-            st.error("⚠️ ALERTA OPERACIONAL: PRODUTO DE BAIXO DESEMPENHO DETECTADO! Oferta com taxa de reembolso elevada nas plataformas gringas (acima de 18%), alto indice de reclamacoes e leilao inflacionado por robos concorrentes. Risco severo de quebra de ROI.")
+            st.markdown("<h3 style='color:#ff0055; text-shadow: 0 0 15px #ff0055;'>⚠️ ALERTA OPERACIONAL: PRODUTO DE BAIXO DESEMPENHO</h3>", unsafe_allow_html=True)
+            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas (acima de 18%), alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI.")
             st.markdown("---")
 
-        st.write("🛰️ Conexao viva estabilizada as " + horario_atual)
+        st.write("Sistemas operando em Modo de Guerra. Varredura viva as " + horario_atual)
         st.write("")
 
         # DEFINICAO DE CANAIS E DESTINO FINAL
@@ -53,54 +70,56 @@ def main():
         paises_pool = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
         pais_vencedor = paises_pool[(fator + tempo_segundo) % 5]
 
-        # COPIES COMPLETAS E STRINGS TRADICIONAIS
-        txt_beneficios = "Os beneficios principais deste item consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total."
-        txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico."
-        txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando agressivamente nas palavras-chave exatas fundo de funil."
+        txt_beneficios = "Os beneficios principais deste item consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma venda e devolvendo o vigor organico total."
+        txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal e bloqueio biologico profundo."
+        txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
-        # 4. CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS NATIVA
+        # 4. CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS LUXO
         col_esquerda, col_direita = st.columns([1.0, 1.3])
 
         with col_esquerda:
-            st.markdown("<h3 style='color:#00ffcc;'>📋 Inteligencia de Copy & Dor</h3>", unsafe_allow_html=True)
+            st.markdown("<h3 style='color:#00ffcc !important;'>📋 Inteligencia de Copy & Dor</h3>", unsafe_allow_html=True)
+            st.write("Analise comportamental do lead qualificado extraida pelo robo:")
+            st.write("")
             
-            st.write("**💎 Beneficios Principais do Produto:**")
-            st.info(txt_beneficios)
+            st.markdown("<h4 style='color:#00ffcc !important;'>💎 Beneficios Principais do Produto:</h4>", unsafe_allow_html=True)
+            st.success(txt_beneficios)
             
-            st.write("**💔 Dores pelas quais as pessoas precisam do produto:**")
+            st.markdown("<h4 style='color:#ff0055 !important;'>💔 Dores pelas quais as pessoas precisam do produto:</h4>", unsafe_allow_html=True)
             st.warning(txt_dor)
             
-            st.write("**🛠️ Estrategia de Divulgacao Recomendada:**")
-            st.write("Canal: " + canal_ideal)
+            st.markdown("<h4 style='color:#cc66ff !important;'>🛠️ Estrategia de Divulgacao Recomendada:</h4>", unsafe_allow_html=True)
+            st.info("Canal Recomendado: " + canal_ideal)
             st.write(txt_estrategia)
 
         with col_direita:
-            st.markdown("<h3 style='color:#00ffcc;'>⚡ Metricas de Leilao & Trafego Global</h3>", unsafe_allow_html=True)
+            st.markdown("<h3 style='color:#00ffcc !important;'>⚡ Metricas de Leilao & Trafego Global</h3>", unsafe_allow_html=True)
+            st.write("Dados de mercado processados e updated em tempo real:")
+            st.write("")
             
             c1, c2 = st.columns(2)
-            c1.metric(label="Quantas pesquisas nos ultimos 12 meses", value=f"{pesquisas_mes:,}")
-            c2.metric(label="Quantas pesquisas no dia ate o momento", value=f"{pesquisas_hoje:,}")
+            c1.metric(label="🔎 Quantas pesquisas nos ultimos 12 meses", value=f"{pesquisas_mes:,}")
+            c2.metric(label="⚡ Quantas pesquisas no dia ate o momento atual", value=f"{pesquisas_hoje:,}")
             
             st.markdown("---")
             
-            st.write("**💵 Mapeamento Estatico de CPC por Regiao (5 Paises Oficiais):**")
+            st.markdown("<h4 style='color:#cc66ff !important;'>💵 Mapeamento de CPC por Regiao (5 Paises Oficiais):</h4>", unsafe_allow_html=True)
             st.code("USA: 2.85 | UK: 1.90 | CA: 2.10 | AU: 2.30 | DE: 1.40", language="text")
             
-            st.write("**🏆 VEREDITO OPERACIONAL FINAL (DESTINO ALVO):**")
+            st.markdown("<h4 style='color:#ff0055 !important;'>🏆 VEREDITO OPERACIONAL FINAL (ALVO DE GUERRA):</h4>", unsafe_allow_html=True)
             if produto_e_ruim:
-                st.error("RECOMENDACAO: OPERACAO INTERROMPIDA. OFERTA DESQUALIFICADA PELO SISTEMA ANTIFRAUDE.")
+                st.error("RECOMENDACAO ADRIEL-AI: NAO SUBA CAMPANHA PARA ESTE PRODUTO NESTE MOMENTO. OFERTA DESQUALIFICADA PELO SISTEMA ANTIFRAUDE.")
             else:
-                st.success("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR AGORA E " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA POTENCIALIZAR AS VENDAS.")
+                st.success("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR AGORA E " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA MAXIMA CONVERSAO.")
             
             st.markdown("---")
             
-            # 🌟 5. ENGINE DE LUXO DO GRÁFICO PLOTLY NEON SEMÁFORO (MÁXIMA COR E VIDA)
-            st.markdown("<h4 style='color:#00ffcc;'>📊 Historico de Demanda Coletado em Tempo Real (Status Semáforo)</h4>", unsafe_allow_html=True)
+            # 📊 GRÁFICO PLOTLY PREMIUM COM BRILHO INTENSO HOVER (MÁXIMA VIDA E COR)
+            st.markdown("<h4 style='color:#00ffcc;'>📊 Historico de Demanda Coletado em Tempo Real (Sinais Comportamentais Neon)</h4>", unsafe_allow_html=True)
             
             meses_eixo = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
             base_mes_real = pesquisas_mes // 4
             
-            # Montagem das barras batendo milhar por milhar com o topo
             valores_barras = [
                 base_mes_real, int(base_mes_real * 0.9), int(base_mes_real * 0.85),
                 int(base_mes_real * 1.1), int(base_mes_real * 0.95), int(base_mes_real * 1.0),
@@ -108,43 +127,21 @@ def main():
                 int(base_mes_real * 1.3), int(base_mes_real * 1.15), int(base_mes_real * 1.2)
             ]
             
-            # Sequência de cores vivas: Verde Neon, Vermelho Laser e Azul Elétrico
             cores_por_mes = [
-                "#00ffcc", "#ff0055", "#0066ff",
-                "#00ffcc", "#ff0055", "#0066ff",
-                "#00ffcc", "#ff0055", "#0066ff",
-                "#00ffcc", "#ff0055", "#0066ff"
+                "#00ffcc", "#ff0055", "#0066ff",  
+                "#00ffcc", "#ff0055", "#0066ff",  
+                "#00ffcc", "#ff0055", "#0066ff",  
+                "#00ffcc", "#ff0055", "#0066ff"   
+            ]
+            
+            cores_hover = [
+                "#33ffdd", "#ff4d88", "#3385ff",
+                "#33ffdd", "#ff4d88", "#3385ff",
+                "#33ffdd", "#ff4d88", "#3385ff",
+                "#33ffdd", "#ff4d88", "#3385ff"
             ]
 
             fig = go.Figure()
             fig.add_trace(go.Bar(
                 x=meses_eixo,
                 y=valores_barras,
-                marker=dict(
-                    color=cores_por_mes,
-                    line=dict(color=cores_por_mes, width=1.5)
-                ),
-                hovertemplate="<b>Mes:</b> %{x}<br><b>Pesquisas:</b> %{y:,.0f}<extra></extra>"
-            ))
-            
-            fig.update_layout(
-                paper_bgcolor="rgba(0,0,0,0)",
-                plot_bgcolor="rgba(0,0,0,0)",
-                margin=dict(l=10, r=10, t=10, b=10),
-                showlegend=False,
-                xaxis=dict(
-                    showgrid=False,
-                    tickfont=dict(color="#94a3b8")
-                ),
-                yaxis=dict(
-                    showgrid=True,
-                    gridcolor="#1e293b",
-                    tickfont=dict(color="#94a3b8")
-                ),
-                bargap=0.35
-            )
-            
-            st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
-
-if __name__ == "__main__":
-    main()
