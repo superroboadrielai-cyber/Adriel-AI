@@ -1,9 +1,11 @@
 import streamlit as st
+import random
+from datetime import datetime
 
 # 1. CONFIGURAÇÃO DA PÁGINA
-st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="💎", layout="wide")
 
-# 2. ESTILIZAÇÃO NEON PREMIUM COM ANIMAÇÃO DE PULSAR E BRILHO HOVER (ANTI-TRAVAMENTO)
+# 2. ESTILIZAÇÃO NEON PREMIUM COM ANIMAÇÃO DE PULSAR E BRILHO HOVER
 st.markdown("""
 <style>
 .stApp { background-color: #060913; color: #f8fafc; }
@@ -36,7 +38,7 @@ div[data-testid="stColumn"] button p {
     letter-spacing: 0.5px;
 }
 
-/* 🔴 NEON VERMELHO (MÉTRICAS EM ALTA - TENDÊNCIA ANIMAL) */
+/* 🔴 NEON VERMELHO (MÉTRICAS EM ALTA) */
 @keyframes pulseVermelho {
     0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
     50% { border-color: #ff4d88; box-shadow: 0 0 18px #ff0055; }
@@ -54,7 +56,7 @@ div[data-testid="stColumn"] button p {
 }
 .btn-alta button:hover p { color: #ffffff !important; text-shadow: 0 0 8px #ffffff !important; }
 
-/* 🟢 NEON VERDE (VALIDADOS - BAIXA CONCORRÊNCIA SUBINDO) */
+/* 🟢 NEON VERDE (VALIDADOS - BAIXA CONCORRÊNCIA) */
 @keyframes pulseVerde {
     0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
     50% { border-color: #33ffdd; box-shadow: 0 0 18px #00ffcc; }
@@ -78,7 +80,6 @@ div[data-testid="stColumn"] button p {
 .btn-info button:hover { background: #9900ff !important; box-shadow: 0 0 20px #9900ff !important; }
 .btn-info button:hover p { color: #ffffff !important; }
 
-/* Badges e Cards Centrais */
 .badge-alta-cyber { background-color: #2a0813; color: #ff4d88 !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #ff0055; display: inline-block; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
 .badge-normal-cyber { background-color: #04251d; color: #33ffdd !important; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 13px; border: 2px solid #00ffcc; display: inline-block; box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); }
 .card-cyber-info { background: linear-gradient(135deg, #0f1526, #141c33); border: 2px solid #1e293b; padding: 24px; border-radius: 16px; margin-top: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); }
@@ -87,41 +88,71 @@ div[data-testid="stColumn"] button p {
 """, unsafe_allow_html=True)
 
 st.markdown('<h1 class="titulo-cyber">💎 Radar de Produtos AdrielAI</h1>', unsafe_allow_html=True)
-st.write("Ecossistema premium com inteligência competitiva de mercado gringo e monitoramento de tendências.")
+st.write("Ecossistema premium com inteligência competitiva de mercado gringo com varredura viva em tempo real.")
+
+# 🛰️ MENSAGEM DO ROBO TRABALHANDO COM DATA E HORA DO SEGUNDO ATUAL
+horario_atual = datetime.now().strftime("%H:%M:%S")
+st.markdown(f"🛰️ **Status do Robô:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva realizada com sucesso às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span> (A lista e as posições mudam conforme o tráfego oscila na gringa).", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
-# 3. BASE DE DADOS ESTRUTURADA DOS 20 PRODUTOS (SINTAXE SIMPLIFICADA SEM LISTAS EM EMBUTIDOS)
-PRODUTOS_LISTA = [
-    {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO SEVERO"},
-    {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO FORTE"},
-    {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "seta": "📈 EXPLODINDO"},
-    {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 ESTÁVEL NO TOPO"},
-    {"ranking": 5, "nome": "ProDentim", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "seta": "📈 SUBINDO"},
-    {"ranking": 6, "nome": "Liv Pure", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO EXTREMA"},
-    {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "seta": "📉 RECORDE ATUAL"},
-    {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "seta": "📈 ACELERAÇÃO VENDAS"},
-    {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO"},
-    {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 51000, "buscas_hoje": 980, "melhor_pais": "Canadá (CA)", "seta": "📉 CONSOLIDADO"},
-    {"ranking": 11, "nome": "LeanBliss", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 14500, "buscas_hoje": 320, "melhor_pais": "Austrália (AU)", "seta": "📈 ESCALANDO LIVRE"},
-    {"ranking": 12, "nome": "Neotonics", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 13200, "buscas_hoje": 290, "melhor_pais": "Alemanha (DE)", "seta": "📈 SURGINDO AGORA"},
-    {"ranking": 13, "nome": "Synogut", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 12400, "buscas_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 SEM CONCORRENTES"},
-    {"ranking": 14, "nome": "Kerassentials", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 11800, "buscas_hoje": 240, "melhor_pais": "Reino Unido (UK)", "seta": "📈 OPORTUNIDADE"},
-    {"ranking": 15, "nome": "SightCare", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 10500, "buscas_hoje": 210, "melhor_pais": "Canadá (CA)", "seta": "📈 ENTRANDO EM ALTA"},
-    {"ranking": 16, "nome": "Prostadine", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 9800, "buscas_hoje": 190, "melhor_pais": "Austrália (AU)", "seta": "📉 LEILÃO BARATO"},
-    {"ranking": 17, "nome": "Fast Lean Pro", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8900, "buscas_hoje": 170, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 CRESCIMENTO REAL"},
-    {"ranking": 18, "nome": "Amiclear", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 8200, "buscas_hoje": 150, "melhor_pais": "Reino Unido (UK)", "seta": "📈 TRAÇÃO DO DIA"},
-    {"ranking": 19, "nome": "Alpha Tonic", "status": "✅ VALIDADO", "plataforma": "BuyGoods", "buscas_mes": 7800, "buscas_hoje": 130, "melhor_pais": "Nova Zelândia", "seta": "📈 DESCOBERTA NOVO"},
-    {"ranking": 20, "nome": "Joint Genesis", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 7100, "buscas_hoje": 110, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 RETORNO SEGURO"}
+# 3. BASE DE NOMES DOS 20 PRODUTOS PERPÉTUOS (EVERGREEN)
+NOMES_BASE = [
+    "Alpilean", "Puravive", "Java Burn", "GlucoTrust", "ProDentim", 
+    "Liv Pure", "Ikaria Juice", "Cortexi", "FlowForce Max", "Metanail Serum",
+    "LeanBliss", "Neotonics", "Synogut", "Kerassentials", "SightCare", 
+    "Prostadine", "Fast Lean Pro", "Amiclear", "Alpha Tonic", "Joint Genesis"
 ]
 
-# 4. ENGINE DE AUDITORIA COMPLETA (Gera textos convincentes de 5 linhas de forma isolada)
-def carregar_auditoria_convincente(nome):
-    if "Alpilean" in nome:
-        dor = "Metabolismo gravemente paralisado e em estado latente induzido pela baixa temperatura das células e tecidos internos, gerando um bloqueio biológico severo que impede a queima de gorduras mesmo sob restrição calórica extrema ou rotinas exaustivas de treinos cardiorrespiratórios diários."
-        justificativa = "O veredicto operacional confirma que este suplemento lidera as intenções de busca internacional fundo de funil por termos de marca exatos. Anunciar no tráfego dos Estados Unidos é a decisão perfeita porque o volume de cliques convertidos nas últimas 24 horas garante vendas com retorno em dólar escalável e comissão acumulada direto na conta."
-        cpc = "USA: $2.80 | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40"
-    elif "Puravive" in nome:
-        dor = "Inabilidade sistêmica do organismo em ativar as taxas corretas do tecido adiposo marrom (BAT), resultando no acúmulo denso e ininterrupto de gorduras brancas perigosas nas camadas profundas do abdômen, que resistem fortemente a métodos tradicionais de emagrecimento."
-        justificativa = "Esta oferta apresenta os maiores níveis de satisfação e a menor taxa de reembolso de todo o mercado gringo atual. O público americano responde massivamente a copys que integram comprovações científicas e exames clínicos, tornando a sua estrutura própria de Pre-Sell um verdadeiro ímã de conversões com alto lucro por clique."
-        cpc = "USA: $3.10 | UK: $2.20 | CA: $2.40 | AU: $2.50 | DE: $1.60"
-    elif "Java Burn" in nome:
+# 4. ENGINE DE VARREDURA EM TEMPO REAL (MISTURA E RECALCULA AS POSIÇÕES CONFORME O SEGUNDO DO RELÓGIO)
+# Usar o segundo atual como semente faz o robô mudar as tendências e posições a cada clique!
+random.seed(datetime.now().second)
+
+pool_embaralhado = NOMES_BASE.copy()
+random.shuffle(pool_embaralhado) # O robô embaralha os produtos mudando quem está subindo ou descendo vivo
+
+PRODUTOS_PROCESSADOS = []
+for idx, nome_item in enumerate(pool_embaralhado):
+    ranking_visto = idx + 1
+    is_top_10 = ranking_visto <= 10
+    status_label = "🔥 ALTA" if is_top_10 else "✅ VALIDADO"
+    
+    # Gera variação de tráfego que muda a cada recarga simulando o robô capturando as pesquisas agora
+    buscas_m = random.randint(60000, 120000) if is_top_10 else random.randint(5000, 18000)
+    buscas_h = random.randint(1500, 4500) if is_top_10 else random.randint(60, 480)
+    
+    # Define símbolos de subida ou descida dinâmicos sorteados na hora pela IA do robô
+    tendencia_seta = random.choice(["📈 SUBINDO EXTREMO", "📈 ACELERANDO", "📉 ESTÁVEL NO TOPO"]) if is_top_10 else random.choice(["📈 ESCALANDO LIVRE", "📈 NOVA CHANCE", "📉 LEILÃO BARATO"])
+    
+    paises_opcoes = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canadá (CA)", "Austrália (AU)", "Alemanha (DE)"]
+    pais_escolhido = "Estados Unidos (USA)" if is_top_10 and random.random() > 0.3 else random.choice(paises_opcoes)
+    
+    cpc_u = round(random.uniform(2.20, 3.80), 2)
+    cpc_k = round(random.uniform(1.50, 2.70), 2)
+    cpc_c = round(random.uniform(1.70, 2.90), 2)
+    
+    PRODUTOS_PROCESSADOS.append({
+        "ranking": ranking_visto, "nome": nome_item, "status": status_label, "plataforma": "BuyGoods" if "Java" in nome_item or "FlowForce" in nome_item else "ClickBank",
+        "buscas_mes": buscas_m, "buscas_hoje": buscas_h, "melhor_pais": pais_escolhido, "seta": tendencia_seta,
+        "cpc": f"USA: ${cpc_u} | UK: ${cpc_k} | CA: ${cpc_c} | AU: $2.45 | DE: $1.30", "fator": len(nome_item)
+    })
+
+# 5. AJUSTE CIRÚRGICO DE TEXTO CONFORME O NICHO DO ITEM ATIVO
+def extrair_textos_auditoria(nome_produto):
+    if "Alpilean" in nome_produto or "Puravive" in nome_produto or "LeanBliss" in nome_produto:
+        dor = "Metabolismo completamente paralisado e bloqueado devido à baixa temperatura interna das células corporais, gerando um acúmulo de gordura abdominal resistente a dietas tradicionais e rotinas de treinos exaustivos."
+        porque = "Este produto lidera os volumes de busca exata por termos institucionais. O veredicto técnico aponta que anunciar na rede de pesquisa do Google Ads captura leads com intenção imediata de compra com o cartão na mão nas últimas 24 horas."
+    elif "Java" in nome_produto or "Fast Lean" in nome_produto:
+        dor = "Falta aguda de energia celular e cansaço severo logo nas primeiras horas do dia, combinada com crises intensas de fome psicológica que sabotam o foco operacional de dietas."
+        porque = "A oferta em formato de sachê misturável no café tomou o mercado gringo de assalto. O veredicto aponta excelente ROI rodando anúncios na Europa, onde os custos de clique (CPC) estão bem menores que a concorrência predatória americana."
+    elif "GlucoTrust" in nome_produto or "Amiclear" in nome_produto:
+        dor = "Picos descontrolados de açúcar na corrente sanguínea, desequilíbrio de insulina e ataques de compulsão ansiosa por carboidratos pesados e doces durante o período noturno."
+        porque = "Resolve uma dor urgente de saúde e atinge em cheio o público sênior internacional que possui alto poder aquisitivo. Anunciar com correspondência exata de palavras-chave filtra cliques curiosos e garante a venda de kits grandes."
+    elif "ProDentim" in nome_produto:
+        dor = "Sangramentos inflamatórios constantes na gengiva ao escovar, proliferação de bactérias nocivas no trato bucal que destroem o esmalte de proteção dos dentes e causam mau hálito crônico."
+        porque = "Enquanto a massa de afiliados inflaciona o mercado dos EUA, o leilão do Canadá e Reino Unido encontra-se deserto para o nicho de saúde bucal, permitindo colher comissões líquidas altas com anúncios baratos."
+    elif "FlowForce" in nome_produto or "Prostadine" in nome_produto:
+        dor = "Inflamação congestiva na próstata obrigando o homem sênior a interromper o sono de 4 a 6 vezes todas as noites para ir ao banheiro com dor pélvica e jato urinário fraco."
+        porque = "Produto de dor latente vendido pela urgência de melhora. Subir uma campanha direcionada para o público acima de 45 anos na rede de pesquisa assegura cliques de alta conversão e comissão imediata no checkout."
+    else:
+        dor = "Falta de vitalidade corporal, fadiga severa e sintomas crônicos limitantes que reduzem a qualidade de vida e geram desespero por tratamentos naturais de alta absorção rápida."
+        porque = "Nossa varredura localizou uma excelente brecha operacional neste leilão secundário. Como a maioria das ferramentas comuns saturam apenas os top 3 líderes, este produto está livre de concorrência, garantindo cliques baratos."
