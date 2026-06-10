@@ -23,7 +23,7 @@ def main():
         "Prostadine", "Fast Lean Pro", "Amiclear", "Alpha Tonic", "Joint Genesis"
     ]
 
-    # 3. LOGICA SEQUENCIAL PURA SEGMENTADA (BLINDAGEM TOTAL ANTI TELA BRANCA)
+    # 3. LOGICA SEQUENCIAL PURA SEGMENTADA (BLINDAGEM TOTAL ANTI INDENTATION E TELA BRANCA)
     def buscar_produto_dados(nome):
         if nome == "Alpilean":
             dor = "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa."
@@ -31,7 +31,7 @@ def main():
             return 1, "ALTA", 112000, 3420, "Estados Unidos (USA)", 110, dor, porque
             
         elif nome == "Puravive":
-            dor = "Falta de ativacao biologica do tecido adiposo marrom, fazendo com que o corpo armazene gordura profunda em areas criticas do abdomen e desacelere o gasto calorico diario de forma continua."
+            dor = "Falta de ativacao biologica do tissue adiposo marrom, fazendo com que o corpo armazene gordura profunda em areas criticas do abdomen e desacelere o gasto calorico diario de forma continua."
             porque = "A oferta mantem uma taxa de reembolso historicamente baixa e paga altas comissoes. O publico comprador dos Estados Unidos responde muito bem a paginas que expoem estudos cientificos estruturados."
             return 2, "ALTA", 98500, 2890, "Estados Unidos (USA)", 95, dor, porque
             
@@ -57,7 +57,7 @@ def main():
 
         elif nome == "Ikaria Juice":
             dor = "Acumulo nocivo de acido urico que gera inflamacoes nas articulacoes, cansaco muscular continuo e retencao liquida severa na regiao do avental abdominal."
-            porque = "O formato inovador em po simula um suco natural gringo e ativa forte curiosidade visual, gerando cliques baratos na regiao da Australia, onde a concorrência de afiliados e quase nula."
+            porque = "O formato inovador em po simula um suco natural gringo e ativa forte curiosidade visual, gerando cliques baratos na regiao da Australia, onde a concorrencia de afiliados e quase nula."
             return 7, "ALTA", 61000, 1310, "Australia (AU)", 60, dor, porque
 
         elif nome == "Cortexi":
