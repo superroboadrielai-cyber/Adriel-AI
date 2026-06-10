@@ -12,17 +12,17 @@ def main():
     # Marcador de Varredura Viva Baseado no Relogio Atual do Servidor
     tempo_segundo = datetime.now().second
     horario_atual = datetime.now().strftime("%H:%M:%S")
-    st.write(f"Status do Ecossistema: ATIVO | Varredura viva realizada as {horario_atual}.")
+    st.write("Status do Ecossistema: ATIVO | Varredura viva realizada as " + horario_atual)
     st.markdown("---")
 
-    # 3. BASE DE DADOS COMPLETA (SINTAXE 100% PURA SEM ACENTOS OU EMOJIS BRUTOS)
+    # 3. BASE DE DADOS COMPLETA DOS 20 PRODUTOS (SINTAXE 100% PURA E LINEAR)
     PRODUTOS_POOL = [
         {"ranking": 1, "nome": "Alpilean", "status": "ALTA", "plataforma": "ClickBank", "base_mes": 112000, "base_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "semente": 110,
          "dor": "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos.",
          "porque": "O veredicto tecnico confirma que este suplemento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartao na mao nas ultimas 24 horas."},
         
         {"ranking": 2, "nome": "Puravive", "status": "ALTA", "plataforma": "ClickBank", "base_mes": 98500, "base_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "semente": 95,
-         "dor": "Falta de ativacao biologica do tecido adiposo marrom, fazendo com que o corpo armazene gordura profunda em areas criticas do abdomen e desacelere o gasto calorico diario de forma continua.",
+         "dor": "Falta de ativacao biologica do tissue adiposo marrom, fazendo com que o corpo armazene gordura profunda em areas criticas do abdomen e desacelere o gasto calorico diario de forma continua.",
          "porque": "A oferta mantem uma taxa de reembolso historicamente baixa e paga altas comissoes. O publico comprador dos Estados Unidos responde muito bem a paginas que expoem estudos cientificos estruturados, tornando a rede de pesquisa um oceano de lucro estavel."},
         
         {"ranking": 3, "nome": "Java Burn", "status": "ALTA", "plataforma": "BuyGoods", "base_mes": 87000, "base_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "semente": 85,
@@ -62,11 +62,11 @@ def main():
          "porque": "Excelente cenario de arbitragem de leilao oculto. Como a maioria dos afiliados satura o topo, esta oferta entrega retorno alto com custo baixo nos paises principais por ser menos concorrida."},
 
         {"ranking": 12, "nome": "Neotonics", "status": "NORMAL", "plataforma": "ClickBank", "base_mes": 13200, "base_hoje": 290, "melhor_pais": "Alemanha (DE)", "semente": 13,
-         "dor": "Flacidez celular cutanea precoce e envelhecimento da derme provocado por ma absorcao de nutrientes no sistema digestivo.",
+         "dor": "Flacidez cellular cutanea precoce e envelhecimento da derme provocado por ma absorcao de nutrientes no sistema digestivo.",
          "porque": "Oportunidade deserta no leilao europeu. O custo por clique na regiao da Alemanha entrega leads qualificados operando paginas limpas de review nativo com baixa concorrencia."},
 
         {"ranking": 13, "nome": "Synogut", "status": "NORMAL", "plataforma": "ClickBank", "base_mes": 12400, "base_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "semente": 12,
-         "dor": "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal pos-refeicoes basicas.",
+         "dor": "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal pos-refeicoes básicas.",
          "porque": "Oferta evergreen de altissima conversao e estabilidade de mercado, estruturada com um funil de vendas altamente responsivo gringo de menor leilao concorrente."},
 
         {"ranking": 14, "nome": "Kerassentials", "status": "NORMAL", "plataforma": "ClickBank", "base_mes": 11800, "base_hoje": 240, "melhor_pais": "Reino Unido (UK)", "semente": 11,
