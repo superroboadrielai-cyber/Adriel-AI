@@ -47,7 +47,7 @@ def main():
                 border: 2px solid #00ffcc !important;
                 border-radius: 8px !important;
                 font-weight: bold !important;
-                box-shadow: 0 0 12px rgba(0, 255, 204, 0.2) !important;
+                box-shadow: 0 0 12px rgba(0, 25 5, 204, 0.2) !important;
                 width: 100% !important;
                 height: 45px !important;
             }
@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Sistema de captura estavel imune a travamentos
+    # Sistema de captura estavel e linear imune a bugs do compilador
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,7 +96,7 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO CORRIGIDO: Identifica se o produto e ruim ou teste de forma estrita
+        # 🚨 ALERTA IMEDIATO: Identifica se o produto e ruim ou teste de forma estrita
         produto_e_ruim = False
         if fator < 5:
             produto_e_ruim = True
@@ -131,7 +131,6 @@ def main():
         txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
         # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
-        st.columns([1.0, 1.3])
         col_esquerda, col_direita = st.columns([1.0, 1.3])
 
         with col_esquerda:
@@ -151,7 +150,7 @@ def main():
 
         with col_direita:
             st.markdown("<h3 style='color:#00ffcc !important;'>⚡ Metricas de Leilao & Trafego Global</h3>", unsafe_allow_html=True)
-            st.write("Dados de mercado processados e atualizados em tempo real:")
+            st.write("Dados de mercado processados e updated em tempo real:")
             st.write("")
             
             c1, c2 = st.columns(2)
@@ -186,3 +185,4 @@ def main():
             st.bar_chart(
                 df_auditor, 
                 x="Meses", 
+                y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"],
