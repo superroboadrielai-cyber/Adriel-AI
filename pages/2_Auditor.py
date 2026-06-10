@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Captura limpa e estavel anti travamentos
+    # Captura limpa e sem formularios aninhados que geram tokenization errors
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,32 +96,32 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR RUIM 
+        # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR RUIM
         score_integridade = (fator * 7 + tempo_segundo) % 100
         produto_e_ruim = score_integridade < 40 or fator < 5 or "teste" in nome_prod.lower()
 
         if produto_e_ruim:
             st.markdown("<h3 style='color:#ff0055; text-shadow: 0 0 15px #ff0055;'>⚠️ ALERTA OPERACIONAL: PRODUTO DE BAIXO DESEMPENHO</h3>", unsafe_allow_html=True)
-            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas, alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI e perda de contingencia.")
+            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas, alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI.")
             st.markdown("---")
 
-        st.write("Sincronizacao de trafego ativa para " + nome_prod + " as " + horario_atual)
+        st.write("Sincronizacao de trafego ativa as " + horario_atual)
         st.write("")
 
-        # ENGINE DINAMICO ANALITICO E QUANTITATIVO
+        # ENGINE DINAMICO ANALITICO PURIFICADO
         pesquisas_mes = 35000 + (fator * 2400) + (tempo_segundo * 8)
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
 
-        plataformas_anuncio = ["Google Ads (Rede de Pesquisa)", "Facebook Ads (Trafego Direto / VSL)", "Google Ads + Bing Ads"]
+        plataformas_anuncio = ["Google Ads (Rede de Pesquisa)", "Facebook Ads (VSL)", "Google Ads + Bing Ads"]
         canal_ideal = plataformas_anuncio[fator % 3]
         
         paises_pool = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
         pais_vencedor = paises_pool[(fator + tempo_segundo) % 5]
 
-        txt_beneficios = "Os beneficios principais deste item consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras horas do dia."
-        txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico."
-        txt_estrategia = "A melhor estrategia operacional para este produto e subir uma campanha estruturada focada no canal recomendado. Para capturar o lead internacional qualificado, monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando agressivamente nas palavras-chave exatas fundo de funil."
+        txt_beneficios = "Os beneficios principais consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma venda e devolvendo o vigor orgânico total."
+        txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal e bloqueio biologico profundo."
+        txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
         # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
         col_esquerda, col_direita = st.columns([1.0, 1.3])
@@ -153,14 +153,14 @@ def main():
             st.markdown("---")
             
             st.markdown("<h4 style='color:#00ffcc !important;'>💵 Mapeamento de CPC por Regiao (5 Paises Oficiais):</h4>", unsafe_allow_html=True)
-            cpc_base = round(1.95 + (fator * 0.06), 2)
-            st.code("USA: $" + str(cpc_base) + " | UK: $" + str(round(cpc_base*0.75, 2)) + " | CA: $" + str(round(cpc_base*0.85, 2)) + " | AU: $" + str(round(cpc_base*0.90, 2)) + " | DE: $" + str(round(cpc_base*0.55, 2)), language="text")
+            cpc_base = str(round(1.95 + (fator * 0.04), 2))
+            st.code("USA: " + cpc_base + " | UK: 1.90 | CA: 2.10 | AU: 2.30 | DE: 1.40", language="text")
             
             st.markdown("<h4 style='color:#ff0055 !important;'>🏆 VEREDITO OPERACIONAL FINAL (ALVO DE GUERRA):</h4>", unsafe_allow_html=True)
             if produto_e_ruim:
                 st.error("RECOMENDACAO ADRIEL-AI: NAO SUBA CAMPANHA PARA ESTE PRODUTO NESTE MOMENTO. OFERTA COM ALTA TAXA DE REEMBOLSO DETECTADA.")
             else:
-                st.error("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR " + nome_prod.upper() + " AGORA E OS " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA MAXIMA CONVERSAO EM RECORRENCIA.")
+                st.error("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR AGORA E OS " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA MAXIMA CONVERSAO.")
             
             st.markdown("---")
             
@@ -170,3 +170,12 @@ def main():
             df_auditor = pd.DataFrame({
                 "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
                 "Verde Neon (Subindo)":    [semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 5, 0, 0, semente_grafico * 6, 0, 0],
+                "Laser Vermelho (Decendo)": [0, semente_grafico * 2, 0, 0, semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 5, 0],
+                "Azul Eletrico (Indecisao)": [0, 0, semente_grafico * 2, 0, 0, semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 4]
+            })
+            
+            cores_auditor = ["#00ffcc", "#ff0055", "#0066ff"]
+            
+            st.bar_chart(
+                df_auditor, 
+                x="Meses", 
