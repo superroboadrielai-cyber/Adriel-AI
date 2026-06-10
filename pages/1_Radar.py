@@ -154,18 +154,17 @@ def main():
         
         st.markdown("---")
         
-        # 🌟 GRÁFICO CYBER-NEON COMPORTAMENTAL (VERDE=SUBINDO, VERMELHO=DECENDO, AZUL=INDECIZAO)
-        st.markdown("<h4 style='color:#00ffcc;'>📊 Movimentacao Historica de Leilao (Padrao de Sinais)</h4>", unsafe_allow_html=True)
+        # 🌟 GRÁFICO CYBER-NEON COM COLUNAS DE CORES SÓLIDAS E INDEPENDENTES
+        st.markdown("<h4 style='color:#00ffcc;'>📊 Movimentacao Historica de Leilao (Status do Sinal Mensal)</h4>", unsafe_allow_html=True)
         
-        # Estrutura de dados organizada conforme seu comando
+        # Estrutura de dados reformulada de forma estrita: cada mês ganha um valor em apenas uma categoria de cor sólida
         df_comportamento = pd.DataFrame({
             "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-            "Verde Neon (Subindo)": [p_semente * 2, p_semente * 3, p_semente * 4, p_semente * 3, p_semente * 5, p_semente * 6, p_semente * 7, p_semente * 6, p_semente * 8, p_semente * 9, p_semente * 10, p_semente * 9],
-            "Laser Vermelho (Decendo)": [p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3],
-            "Azul Eletrico (Indecisao)": [p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3]
+            "Verde Neon (Subindo)":    [p_semente * 3, 0, 0, p_semente * 4, 0, 0, p_semente * 5, 0, 0, p_semente * 6, 0, 0],
+            "Laser Vermelho (Decendo)": [0, p_semente * 2, 0, 0, p_semente * 3, 0, 0, p_semente * 4, 0, 0, p_semente * 5, 0],
+            "Azul Eletrico (Indecisao)": [0, 0, p_semente * 2, 0, 0, p_semente * 3, 0, 0, p_semente * 4, 0, 0, p_semente * 4]
         })
         
-        # Injeção da paleta comportamental exata (Verde Neon, Vermelho Laser, Azul Elétrico)
         cores_comportamento = ["#00ffcc", "#ff0055", "#0066ff"]
         
         st.bar_chart(
