@@ -6,19 +6,19 @@ def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    # 2. INJECAO VISUAL PREMIUM COMPILADA
-    st.markdown('<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);}</style>', unsafe_allow_html=True)
+    # Injeção visual Black-Label linear sem chaves que quebram o parser
+    st.markdown("<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);}</style>", unsafe_allow_html=True)
 
-    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPETUOS</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPETUOS</h1>', unsafe_allow_html=True)
     st.write("Varredura automatizada e mapeamento operacional de ofertas de alta tracao nas plataformas gringas.")
 
     # Marcador de Varredura Viva Baseado no Relogio Atual do Servidor
     tempo_segundo = datetime.now().second
     horario_atual = datetime.now().strftime("%H:%M:%S")
-    st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva realizada com sucesso as <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
+    st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva realizada com sucesso as <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span> (Dados recalculados conforme a oscilacao de trafego gringo).", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 3. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS (SINTAXE 100% PURIFICADA)
+    # 3. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS OBRIGATÓRIOS DO ROTEIRO
     PRODUTOS_POOL = [
         {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 112000, "base_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "semente": 110,
          "dor": "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos.",
@@ -57,19 +57,19 @@ def main():
          "porque": "Nicho focado em publico idoso internacional com alto poder financeiro disponivel para aquisicao imediata de kits de tratamento completo."},
 
         {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 51000, "base_hoje": 980, "melhor_pais": "Canadá (CA)", "semente": 50,
-         "dor": "Infeccao fungica severa e micoses profundas que destroem a queratina protetora e deixam as unhas dos pes amareladas e quebradicas.",
+         "dor": "Infeccao fungica sever e micoses profundas que destroem a queratina protetora e deixam as unhas dos pes amareladas e quebradicas.",
          "porque": "Fator de transformacao de forte impacto visual. Rodar trafego utilizando campanhas de rede de display no mercado canadense entrega cliques qualificadissimos."},
 
         {"ranking": 11, "nome": "LeanBliss", "status": "✅ NORMAL", "plataforma": "BuyGoods", "base_mes": 14500, "base_hoje": 320, "melhor_pais": "Austrália (AU)", "semente": 14,
          "dor": "Ganho acelerado de gordura associado a picos severos de ansiedade alimentar cronica e desejos noturnos incontrolaveis por doces.",
-         "porque": "Excelente cenario de arbitragem de leilao oculto! Como a maioria dos afiliados satura o topo, esta oferta entrega ROI alto com custo baixo."},
+         "porque": "Excelente cenario de arbitragem de leilao oculto! Como a maioria dos afiliados satura o topo, esta oferta entrega retorno alto com custo baixo nos 5 paises principais."},
 
         {"ranking": 12, "nome": "Neotonics", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 13200, "base_hoje": 290, "melhor_pais": "Alemanha (DE)", "semente": 13,
          "dor": "Flacidez celular cutanea precoce e envelhecimento da derme provocado por ma absorcao de nutrientes no sistema digestivo.",
-         "porque": "Oportunidade deserta no leilao europeu! O CPC na regiao da Alemanha entrega leads qualificados operando paginas limpas de review nativo."},
+         "porque": "Oportunidade deserta no leilao europeu! O custo por clique na regiao da Alemanha entrega leads qualificados operando paginas limpas de review nativo."},
 
         {"ranking": 13, "nome": "Synogut", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 12400, "base_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "semente": 12,
-         "dor": "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal pos-refeicoes básicas.",
+         "dor": "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal pos-refeicoes basicas.",
          "porque": "Oferta evergreen de altissima conversao e estabilidade de mercado, estruturada com um funil de vendas altamente responsivo gringo."},
 
         {"ranking": 14, "nome": "Kerassentials", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 11800, "base_hoje": 240, "melhor_pais": "Reino Unido (UK)", "semente": 11,
