@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Captura estavel de dados em tempo de execucao
+    # Captura limpa e estavel em tempo real imune a quedas
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,9 +96,9 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO NO TOPO DA CENTRAL SE O PRODUTO FOR RUIM
+        # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR RUIM (LÓGICA TRADICIONAL LIMPA)
         produto_e_ruim = False
-        if falar_com_fator := (fator < 5):
+        if fator < 5:
             produto_e_ruim = True
         if "teste" in nome_prod.lower():
             produto_e_ruim = True
@@ -113,7 +113,7 @@ def main():
         st.write("Sincronizacao de trafego ativa as " + horario_atual)
         st.write("")
 
-        # ENGINE DINAMICO ANALITICO
+        # ENGINE DINAMICO ANALITICO PURIFICADO
         pesquisas_mes = 35000 + (fator * 2400) + (tempo_segundo * 8)
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
@@ -130,7 +130,7 @@ def main():
         txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal e bloqueio biologico profundo."
         txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
-        # 🪐 CORREÇÃO CRÍTICA DO COMPILADOR: Apenas uma chamada estrita de colunas sem redundância
+        # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS FIXAS
         col_esquerda, col_direita = st.columns([1.0, 1.3])
 
         with col_esquerda:
@@ -170,7 +170,7 @@ def main():
             
             st.markdown("---")
             
-            # GRAFICO EM COLUNAS SOLIDAS NO PADRÃO DO RADAR
+            # GRAFICO EM COLUNAS SOLIDAS DO RADAR MESTRE
             st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
             
             df_auditor = pd.DataFrame({
