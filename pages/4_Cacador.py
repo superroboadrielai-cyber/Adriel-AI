@@ -28,13 +28,13 @@ def main():
     st.write("Varredura de ofertas recentes atualizando em tempo real com disparo de relatorio operacional via WhatsApp.")
     st.markdown("---")
 
-    # 📲 CENTRAL DE ALERTAS COM PERSISTÊNCIA REESTRUTURADA
+    # 📲 CENTRAL DE ALERTAS COM MEMÓRIA DE SESSÃO ESTÁVEL
     st.markdown("<h3 style='color:#00ffcc;'>📲 Central de Alertas e Notificacoes</h3>", unsafe_allow_html=True)
     
     if "user_whatsapp_saved" not in st.session_state:
         st.session_state.user_whatsapp_saved = "5511999999999"
 
-    # Input estavel para salvar o numero na memoria de sessao viva do SaaS
+    # Input estavel para persistencia do telefone do usuario
     whats_input = st.text_input("Insira seu WhatsApp com Codigo do Pais e DDD (Ex: 5511999999999):", value=st.session_state.user_whatsapp_saved)
     botao_salvar_whats = st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO")
     
@@ -128,7 +128,7 @@ def main():
             st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
             st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
             
-            # Formatação de string linear livre de quebras que sabotavam o interpretador
+            # Geração textual linear purificada livre de quebras internas
             texto_cru_whats = "ALERTA DE LANCAMENTO ADRIEL-AI - Produto: " + nome_lancamento + " - Plataforma: " + plataforma_ativa + " - Termometro: " + status_termo + " - Veredito: " + veredito_texto
             
             num_destino = st.session_state.user_whatsapp_saved
@@ -137,7 +137,7 @@ def main():
             st.markdown("<a href='" + link_final_whats + "' target='_blank' style='display:block; text-align:center; background-color:#25d366; color:#ffffff; padding:14px; border-radius:8px; font-weight:bold; text-decoration:none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); font-size:1.1rem;'>💬 DISPARAR ALERTA NO WHATSSAP</a>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
 
-            # 📊 GRÁFICO EM MILHARES REAIS CORES SÓLIDAS SEM MISTURA
+            # 📊 GRÁFICO DE DEMANDA SINCRONIZADO EM MILHARES REAIS CORES SÓLIDAS
             st.markdown("<h4 style='color:#00ffcc;'>📊 Histórico Curto de Demanda Semanal (Sinais Semanais)</h4>", unsafe_allow_html=True)
             
             base_semana = pesquisas_mes // 3
