@@ -6,13 +6,13 @@ def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    st.title("RADAR DE PRODUTOS PERPETUOS")
+    st.title("💎 RADAR DE PRODUTOS PERPETUOS")
     st.write("Varredura automatizada e mapeamento operacional de ofertas de alta tracao nas plataformas gringas.")
 
     # Marcador de Varredura Viva Baseado no Relogio Atual do Servidor
     tempo_segundo = datetime.now().second
     horario_atual = datetime.now().strftime("%H:%M:%S")
-    st.write("Status do Ecossistema: ATIVO | Varredura viva realizada as " + horario_atual)
+    st.write("🛰️ Status do Ecossistema: ATIVO | Varredura viva realizada as " + horario_atual)
     st.markdown("---")
 
     # 2. LISTA FIXA DOS 20 PRODUTOS EXIGIDOS NO ROTEIRO
@@ -36,7 +36,7 @@ def main():
             return 2, "ALTA", 98500, 2890, "Estados Unidos (USA)", 95, dor, porque
             
         elif nome == "Java Burn":
-            dor = "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
+            dor = "Falta aguda de energia cellular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
             porque = "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique estao bem menores que nos EUA."
             return 3, "ALTA", 87000, 2100, "Reino Unido (UK)", 85, dor, porque
             
@@ -97,7 +97,7 @@ def main():
 
         elif nome == "SightCare":
             dor = "Visao turva, fadiga ocular cronica devido ao uso excessivo de telas e degeneracao macular acelerada em leads seniores que temem a perda definitiva da autonomia visual."
-            porque = "Faco cirurgico em publico de alta idade no Canada. O leilao limpo permite vender kits de alta duracao com comissao cheia e cliques mais em conta na rede de pesquisa de fundo."
+            porque = "Foco cirurgico em publico de alta idade no Canada. O leilao limpo permite vender kits de alta duracao com comissao cheia e cliques mais em conta na rede de pesquisa de fundo."
             return 15, "NORMAL", 10500, 210, "Canada (CA)", 10, dor, porque
 
         elif nome == "Prostadine":
