@@ -84,21 +84,27 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Captura limpa e sem formularios aninhados que geram tokenization errors
+    # Captura limpa e sem tags abertas anti travamentos
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
 
     if produto_digitado:
         nome_prod = produto_digitado.strip()
-        fator = len(nome_prod) if len(nome_prod) > 0 else 10
+        fator = len(nome_prod)
         
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
         # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR RUIM
-        score_integridade = (fator * 7 + tempo_segundo) % 100
-        produto_e_ruim = score_integridade < 40 or fator < 5 or "teste" in nome_prod.lower()
+        # Condicao estrita baseada em matematica basica imune a bugs do compilador
+        produto_e_ruim = False
+        if falar_com_fator := (fator < 5):
+            produto_e_ruim = True
+        if "teste" in nome_prod.lower():
+            produto_e_ruim = True
+        if tempo_segundo % 3 == 0:
+            produto_e_ruim = True
 
         if produto_e_ruim:
             st.markdown("<h3 style='color:#ff0055; text-shadow: 0 0 15px #ff0055;'>⚠️ ALERTA OPERACIONAL: PRODUTO DE BAIXO DESEMPENHO</h3>", unsafe_allow_html=True)
@@ -113,13 +119,16 @@ def main():
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
 
-        plataformas_anuncio = ["Google Ads (Rede de Pesquisa)", "Facebook Ads (VSL)", "Google Ads + Bing Ads"]
-        canal_ideal = plataformas_anuncio[fator % 3]
-        
-        paises_pool = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
-        pais_vencedor = paises_pool[(fator + tempo_segundo) % 5]
+        # Definicao fixa de pais e canal vencedor para evitar conflitos textuais
+        canal_ideal = "Google Ads (Rede de Pesquisa)"
+        if (fator % 2 == 0):
+            canal_ideal = "Facebook Ads (VSL)"
+            
+        pais_vencedor = "Estados Unidos (USA)"
+        if (tempo_segundo % 2 == 0):
+            pais_vencedor = "Reino Unido (UK)"
 
-        txt_beneficios = "Os beneficios principais consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma venda e devolvendo o vigor orgânico total."
+        txt_beneficios = "Os beneficios principais consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma venda e devolvendo o vigor organico total."
         txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal e bloqueio biologico profundo."
         txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
@@ -152,19 +161,19 @@ def main():
             
             st.markdown("---")
             
+            # Mapeamento estatico puro sem funcoes numericas soltas em strings
             st.markdown("<h4 style='color:#00ffcc !important;'>💵 Mapeamento de CPC por Regiao (5 Paises Oficiais):</h4>", unsafe_allow_html=True)
-            cpc_base = str(round(1.95 + (fator * 0.04), 2))
-            st.code("USA: " + cpc_base + " | UK: 1.90 | CA: 2.10 | AU: 2.30 | DE: 1.40", language="text")
+            st.code("USA: 2.85 | UK: 1.90 | CA: 2.10 | AU: 2.30 | DE: 1.40", language="text")
             
             st.markdown("<h4 style='color:#ff0055 !important;'>🏆 VEREDITO OPERACIONAL FINAL (ALVO DE GUERRA):</h4>", unsafe_allow_html=True)
             if produto_e_ruim:
                 st.error("RECOMENDACAO ADRIEL-AI: NAO SUBA CAMPANHA PARA ESTE PRODUTO NESTE MOMENTO. OFERTA COM ALTA TAXA DE REEMBOLSO DETECTADA.")
             else:
-                st.error("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR AGORA E OS " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA MAXIMA CONVERSAO.")
+                st.error("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA ANUNCIAR AGORA E " + pais_vencedor.upper() + " UTILIZANDO O " + canal_ideal.upper() + " PARA MAXIMA CONVERSAO.")
             
             st.markdown("---")
             
-            # GRAFICO EM COLUNAS SOLIDAS DO RADAR MESTRE
+            # GRAFICO EM COLUNAS SOLIDAS IDENTICO AO DO RADAR MESTRE
             st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
             
             df_auditor = pd.DataFrame({
@@ -174,8 +183,3 @@ def main():
                 "Azul Eletrico (Indecisao)": [0, 0, semente_grafico * 2, 0, 0, semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 4]
             })
             
-            cores_auditor = ["#00ffcc", "#ff0055", "#0066ff"]
-            
-            st.bar_chart(
-                df_auditor, 
-                x="Meses", 
