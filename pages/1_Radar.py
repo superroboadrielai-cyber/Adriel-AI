@@ -2,16 +2,15 @@ import streamlit as st
 import random
 from datetime import datetime
 
-# 1. CONFIGURAÇÃO DA PÁGINA (FORÇA O MODO ESCURO E O LAYOUT AMPLO)
+# 1. CONFIGURAÇÃO DA PÁGINA
 st.set_page_config(page_title="Radar de Produtos - AdrielAI", page_icon="💎", layout="wide")
 
-# 2. INJEÇÃO DE INLINE CSS CONFIÁVEL (Dribla o parser do Python 3.14 e faz as bordas piscarem)
+# 2. INJEÇÃO DE INLINE CSS CONFIÁVEL DE LUXO
 st.markdown("""
 <style>
     .stApp { background-color: #060913 !important; color: #f8fafc !important; }
     h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif; }
     
-    /* Título Futurista */
     .titulo-cyber {
         font-size: 2.6rem;
         font-weight: 900;
@@ -20,30 +19,18 @@ st.markdown("""
         margin-bottom: 5px;
     }
     
-    /* Configuração de Estilo dos Botões do Menu Lateral */
-    .container-botoes {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 12px;
-        align-items: center;
-        width: 100%;
-    }
-    
-    /* Animação Piscante para Botões em ALTA (Vermelho Neon) */
     @keyframes pulseVermelho {
         0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
         50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
         100% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
     }
     
-    /* Animação Piscante para Botões VALIDADOS (Verde Neon) */
     @keyframes pulseVerde {
         0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
         50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
         100% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
     }
 
-    /* Aplicação dos Efeitos do Painel SaaS */
     .cyber-btn-alta button {
         border: 2px solid #ff0055 !important;
         background: #0f1526 !important;
@@ -68,13 +55,6 @@ st.markdown("""
     }
     .cyber-btn-validado button:hover p { color: #060913 !important; font-weight: 900 !important; }
 
-    /* Caixa Info Roxo Premium */
-    .cyber-btn-info button { border: 2px solid #9900ff !important; background: #0f1526 !important; }
-    .cyber-btn-info button p { color: #cc66ff !important; font-weight: bold !important; }
-    .cyber-btn-info button:hover { background: #9900ff !important; box-shadow: 0 0 15px #9900ff !important; }
-    .cyber-btn-info button:hover p { color: #ffffff !important; }
-
-    /* Cards e Central de Informações */
     .card-cyber-info {
         background: linear-gradient(135deg, #0f1526, #141c33);
         border: 2px solid #1e293b;
@@ -135,3 +115,9 @@ def carregar_textos_auditoria(nome_produto):
         dor = "Falta aguda de energia celular e cansaço massivo nas primeiras horas do dia, combinada com surtos contínuos de fome psicológica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
         porque = "A novidade do sachê misturável no café diário tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anúncios na Europa, onde os custos de clique (CPC) estão bem menores que no inflacionado mercado americano, mantendo alta conversão."
         cpc = "USA: $2.60 | UK: $1.65 | CA: $1.95 | AU: $2.10 | DE: $1.30"
+    elif "GlucoTrust" in nome_produto or "Amiclear" in nome_produto:
+        dor = "Picos descontrolados de glicose na corrente sanguínea, desequilíbrio metabólico na produção de insulina e crises intensas de compulsão noturna por carboidratos pesados e doces refinados antes de dormir."
+        porque = "Resolve uma dor de saúde alarmante e atinge em cheio o público idoso internacional de alto poder aquisitivo. Anunciar com correspondência exata de palavras-chave oficiais filtra cliques curiosos de concorrentes e traz tráfego qualificado de fundo."
+        cpc = "USA: $2.95 | UK: $1.85 | CA: $2.15 | AU: $2.20 | DE: $1.45"
+    elif "ProDentim" in nome_produto:
+        dor = "Sangramentos gengivais constantes durante a escovação básica, proliferação de bactérias nocivas no trato bucal que destroem o esmalte protetor e causam um mau hálito crônico de difícil eliminação social."
