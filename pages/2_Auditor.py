@@ -39,7 +39,7 @@ def main():
             }
             .stTextInput>div>div>input:focus {
                 border-color: #00ffcc !important;
-                box-shadow: 0 0 15px rgba(0, 255, 204, 0.3) !important;
+                box-shadow: 0 0 15px rgba(0, 25 5, 204, 0.3) !important;
             }
             .stButton>button {
                 background-color: #0b1329 !important;
@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Entrada de texto limpa e direta
+    # Sistema de captura estavel e sem tags corrompidas
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -100,7 +100,7 @@ def main():
         pesquisas_mes = 50000 + (fator * 3100) + (tempo_segundo * 8)
         pesquisas_hoje = 1200 + (fator * 105) + (tempo_segundo * 2)
 
-        # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR CONSIDERADO RUIM
+        # 🚨 ALERTA IMEDIATO: Identifica se o produto e ruim ou teste de forma tradicional limpa
         produto_e_ruim = False
         if fator < 5:
             produto_e_ruim = True
@@ -111,10 +111,10 @@ def main():
 
         if produto_e_ruim:
             st.markdown("<h3 style='color:#ff0055; text-shadow: 0 0 15px #ff0055;'>⚠️ ALERTA OPERACIONAL: PRODUTO DE BAIXO DESEMPENHO</h3>", unsafe_allow_html=True)
-            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas, alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI.")
+            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas, alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI e contingência.")
             st.markdown("---")
 
-        st.write("Sincronizacao de trafego activa as " + horario_atual)
+        st.write("Sincronizacao de trafego ativa as " + horario_atual)
         st.write("")
 
         canal_ideal = "Google Ads (Rede de Pesquisa)"
@@ -169,7 +169,7 @@ def main():
             
             st.markdown("---")
             
-            # 📊 GRÁFICO TOTALMENTE INTEGRADO EM MILHARES IGUAL AS MÉTRICAS
+            # 📊 GRÁFICO TOTALMENTE INTEGRADO EM MILHARES IGUAL AS MÉTRICAS SUPERIORES
             st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
             
             base_mes_real = pesquisas_mes // 4
