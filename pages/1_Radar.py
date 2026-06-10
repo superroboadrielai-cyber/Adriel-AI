@@ -3,72 +3,20 @@ import random
 from datetime import datetime
 
 def main():
-    # 1. CONFIGURAÇÃO HIGH-END DA INTERFACE SAAS
+    # 1. CONFIGURAÇÃO HIGH-END DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    # 2. INJEÇÃO VISUAL CYBER-NEON EM LINHA (BLINDAGEM COMPILADA ANTI-MAGIC)
-    st.markdown("""
-    <style>
-        .stApp { background-color: #040814 !important; color: #f3f4f6 !important; }
-        h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif; }
-        
-        .titulo-cyber {
-            font-size: 2.6rem;
-            font-weight: 900;
-            color: #00ffcc;
-            text-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
-            margin-bottom: 5px;
-        }
+    # 2. INJEÇÃO VISUAL CYBER-NEON EM LINHA (FORMATO ANTI-MAGIC ULTRA PURIFICADO)
+    st.markdown('<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);}</style>', unsafe_allow_html=True)
 
-        @keyframes pulseVermelho {
-            0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
-            50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
-            100% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
-        }
-        @keyframes pulseVerde {
-            0% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
-            50% { border-color: #33ffdd; box-shadow: 0 0 15px #00ffcc; }
-            100% { border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; }
-        }
-
-        .cyber-btn-alta button { border: 2px solid #ff0055 !important; background: #0f172a !important; animation: pulseVermelho 2s infinite !important; }
-        .cyber-btn-alta button p { color: #ff4d88 !important; font-weight: 800 !important; }
-        .cyber-btn-alta button:hover { background: #ff0055 !important; box-shadow: 0 0 25px #ff0055 !important; }
-        .cyber-btn-alta button:hover p { color: #ffffff !important; }
-
-        .cyber-btn-validado button { border: 2px solid #00ffcc !important; background: #0f172a !important; animation: pulseVerde 2.5s infinite !important; }
-        .cyber-btn-validado button p { color: #33ffdd !important; font-weight: 800 !important; }
-        .cyber-btn-validado button:hover { background: #00ffcc !important; box-shadow: 0 0 25px #00ffcc !important; }
-        .cyber-btn-validado button:hover p { color: #040814 !important; font-weight: 900 !important; }
-
-        .card-cyber-info {
-            background: linear-gradient(135deg, #0f1526, #141c33);
-            border: 2px solid #1e293b;
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-            margin-top: 15px;
-        }
-        .sub-tag-neon {
-            color: #00ffcc !important;
-            font-weight: bold;
-            font-size: 15px;
-            display: block;
-            margin-top: 14px;
-            text-shadow: 0 0 8px rgba(0,255,204,0.3);
-        }
-    </style>
-    """, unsafe_allow_html=True)
-
-    # 3. CABEÇALHO DO MONITORAMENTO
-    st.markdown('<div class="titulo-cyber">💎 RADAR DE PRODUTOS PERPÉTUOS</div>', unsafe_allow_html=True)
+    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPÉTUOS</h1>', unsafe_allow_html=True)
     st.write("Varredura automatizada e mapeamento operacional de ofertas de alta tracao nas plataformas gringas.")
 
     horario_atual = datetime.now().strftime("%H:%M:%S")
     st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva de leilão estabilizada às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 4. BASE DE DADOS COMPLETA E DETALHADA DOS 20 PRODUTOS
+    # 3. BASE DE DADOS COMPLETA DOS 20 PRODUTOS OBLIGATÓRIOS (REVISADA E BLINDADA)
     produtos_dados = [
         {"ranking": 1, "nome": "Alpilean", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO EXTREMO", "semente": 110,
          "dor": "Metabolismo severamente travado e em estado latente induzido pela baixa temperatura das células e tecidos internos, gerando um bloqueio biológico crítico que impede a queima de gorduras profundas mesmo sob restrição calórica severa ou rotinas exaustivas de treinos aeróbicos.",
@@ -109,3 +57,17 @@ def main():
         {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "seta": "📉 ESTÁVEL NO TOPO", "semente": 60,
          "dor": "Acúmulo nocivo de ácido úrico no organismo que deflagra processos inflamatórios severos nas articulações corporais, cansaço muscular contínuo e retenção acelerada de líquidos e gorduras na região do avental abdominal.",
          "porque": "O formato inovador em pó que simula um suco natural gera um apelo de curiosidade visual muito forte nos anúncios. O rastreamento de dados em tempo real pegou um estouro na demanda de tráfego na Austrália, onde os afiliados locais raramente anunciam.",
+         "cpc": "USA: $2.85 | UK: $1.95 | CA: $2.05 | AU: $2.15 | DE: $1.35"},
+        
+        {"ranking": 8, "nome": "Cortexi", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "seta": "📈 ACELERAÇÃO VENDAS", "semente": 57,
+         "dor": "Zumbido estridente, agudo e incessante no pavilhão auditivo (Tinnitus) que interrompe o descanso noturno, causa irritabilidade psicológica severa e bloqueia a capacidade de memorização e concentração intelectual no dia a dia.",
+         "ganho": "Proteção das células ciliadas auditivas e otimização da conducao nervosa cerebral contra inflamacoes.",
+         "porque": "Ofertas direcionadas para dores auditivas extremas convertem puramente pelo desespero do cliente em obter alívio rápido. O lead gringo que sofre com zumbidos não gasta tempo pesquisando blogs, ele busca uma cura direta, clica no topo do leilão e compra.",
+         "cpc": "USA: $2.50 | UK: $1.60 | CA: $1.80 | AU: $1.95 | DE: $1.15"},
+        
+        {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 TOP COMPRA", "plataforma": "BuyGoods", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO SEVERO", "semente": 53,
+         "dor": "Inflamação severa na próstata obrigando o homem sênior a interromper o sono de 4 a 6 vezes todas as noites para ir ao banheiro com forte queimação pélvica e jato urinário interrompido.",
+         "ganho": "Desinflamação imediata do trato urinário e eliminação de sedimentos e toxinas minerais acumuladas no sistema reprodutor masculino.",
+         "porque": "Produto de dor urgente vendido pela extrema necessidade de alívio rápido do lead gringo. Subir uma campanha direcionada para a rede de busca do Google Ads assegura cliques de alta intenção e comissões robustas por vendas de kits completos.",
+         "cpc": "USA: $3.25 | UK: $2.20 | CA: $2.40 | AU: $2.55 | DE: $1.65"},
+        
