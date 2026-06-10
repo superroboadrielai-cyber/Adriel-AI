@@ -6,13 +6,12 @@ def main():
     # 1. CONFIGURAÇÃO HIGH-END DA PÁGINA SaaS 2026
     st.set_page_config(page_title="Auditor Expert - AdrielAI", page_icon="🛡️", layout="wide")
 
-    # 2. INJEÇÃO VISUAL CYBER-NEON EM LINHA (DRIBBLING DO PARSER PYTHON 3.14)
+    # 2. INJEÇÃO VISUAL CYBER-NEON EM LINHA (FORMATO ANTI-TRAVAMENTO)
     st.markdown("""
     <style>
         .stApp { background-color: #040814 !important; color: #f3f4f6 !important; }
         h1, h2, h3, h4, p, span, div { font-family: 'Segoe UI', Roboto, sans-serif; }
         
-        /* Título Cyber */
         .titulo-cyber {
             font-size: 2.6rem;
             font-weight: 900;
@@ -21,7 +20,6 @@ def main():
             margin-bottom: 5px;
         }
 
-        /* Efeitos Piscantes para a Lista de Sinais */
         @keyframes pulseVermelho {
             0% { border-color: #ff0055; box-shadow: 0 0 5px #ff0055; }
             50% { border-color: #ff4d88; box-shadow: 0 0 15px #ff0055; }
@@ -70,7 +68,7 @@ def main():
     st.markdown(f"🛰️ **Status do Robô:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva sincronizada com sucesso às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 4. DATA POOL DOS 20 PRODUTOS OFICIAIS DO ECOSSISTEMA
+    # 4. BASE DE DADOS OFICIAL DOS 20 PRODUTOS DO ECOSSISTEMA
     PRODUTOS_DADOS = [
         {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO EXTREMO", "semente": 110},
         {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO FORTE", "semente": 95},
@@ -94,18 +92,19 @@ def main():
         {"ranking": 20, "nome": "Joint Genesis", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 7100, "buscas_hoje": 110, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 RETORNO SEGURO", "semente": 7}
     ]
 
-    # 5. ENGINE DE INTELIGÊNCIA CIRÚRGICA (CONSTRÓI EXPLICAÇÕES DENSAS DE 5 LINHAS)
+    # 5. ENGINE DE INTELIGÊNCIA CIRÚRGICA DE AUDITORIA COMPLETA
     def calcular_auditoria_sob_demanda(nome):
         if "Alpilean" in nome or "Puravive" in nome or "LeanBliss" in nome:
             dor = "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas internas, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos."
-            porque = "O veredicto tecnico confirma que este segmento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartao na mao nas ultimas 24 horas."
+            porque = "O veredicto tecnico confirma que este segmento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartao na mão nas ultimas 24 horas."
             cpc = "USA: $3.10 | UK: $2.15 | CA: $2.40 | AU: $2.60 | DE: $1.45"
             pais = "Estados Unidos (USA)"
         elif "Java" in nome or "Fast Lean" in nome:
-            dor = "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
-            porque = "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique (CPC) estao bem menores que no inflacionado mercado americano, mantendo alta conversao."
+            dor = "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicológica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos."
+            porque = "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique (CPC) estao bem menores que no inflacionado mercado americano, mantendo alta conversão."
             cpc = "USA: $2.75 | UK: $1.70 | CA: $1.95 | AU: $2.20 | DE: $1.30"
             pais = "Reino Unido (UK)"
         elif "GlucoTrust" in nome or "Amiclear" in nome:
             dor = "Picos descontrolados de glicose na corrente sanguinea, desequilibrio metabolico na producao de insulina e crises intensas de compulsao noturna por carboidratos pesados e doces refinados antes de dormir."
             porque = "Resolve uma dor de saude alarmante e atinge em cheio o publico idoso internacional de alto poder aquisitivo. Anunciar com correspondencia exata de palavras-chave oficiais filtra cliques curiosos de concorrentes e traz trafego qualificado de fundo."
+            cpc = "USA: $2.95 | UK: $1.90 | CA: $2.15 | AU: $2.30 | DE: $1.50"
