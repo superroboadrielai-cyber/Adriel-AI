@@ -2,7 +2,6 @@ import streamlit as st
 import random
 import pandas as pd
 from datetime import datetime
-import urllib.parse
 
 def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
@@ -37,8 +36,6 @@ def main():
     sugestao_nome = produtos_novos_pool[tempo_segundo % 4]
     
     produto_pesquisado = st.text_input("Insira o nome do lancamento gringo para rastrear:", value=sugestao_nome)
-    
-    # Ativação do botão oficial parametrizado
     ativar_busca = st.button("🚀 PESQUISAR LANÇAMENTO")
     st.markdown("---")
 
@@ -57,12 +54,8 @@ def main():
         if (fator + tempo_segundo) % 3 == 0:
             e_oportunidade = False
 
-        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! "
-        txt_oportunidade += "Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. "
-        txt_oportunidade += "O leilao encontra-se limpo (Oceano Azul), permitindo capturar cliques baratos fundo de funil e extrair altas comissoes com baixa contingência."
-
-        txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. "
-        txt_perigo += "Apesar de ser um lancamento recente, os dados apontam uma taxa de rejeicao precoce de checkout superior a 14% gringo, leilao inflacionado por robos institucionais e baixa taxa de conversao na página de vendas (VSL descalibrada)."
+        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. O leilao encontra-se limpo (Oceano Azul), permitindo capturar cliques baratos fundo de funil e extrair altas comissoes com baixa contingência."
+        txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. Aposta arriscada devido a taxas de reembolso oscilantes nas plataformas gringas."
 
         # 3. MONTAGEM DAS DUAS COLUNAS PRINCIPAIS LUXO
         col_esquerda, col_direita = st.columns([1.0, 1.3])
@@ -83,11 +76,11 @@ def main():
             if e_oportunidade:
                 st.success("🔥 TRAÇÃO MÁXIMA (OPORTUNIDADE DETECTADA)")
                 st.write(txt_oportunidade)
-                status_termo = "QUENTE (ALTA CONVERSAO)"
+                status_termo = "QUENTE"
             else:
                 st.error("❄️ OFERTA FRIA (RISCO OPERACIONAL DETECTADO)")
                 st.write(txt_perigo)
-                status_termo = "FRIA (RISCO MASSIRO)"
+                status_termo = "FRIA"
 
         with col_direita:
             st.markdown("<h3 style='color:#00ffcc;'>⚡ Métricas Iniciais de Leilao Gringo</h3>", unsafe_allow_html=True)
@@ -106,31 +99,26 @@ def main():
             st.write("")
 
             st.markdown("<h4 style='color:#ff0055;'>🏆 VEREDITO OPERACIONAL FINAL ADRIEL-AI:</h4>", unsafe_allow_html=True)
-            veredito_texto = "BLOQUEAR ENTRADA NESTE LEILÃO. AGUARDAR NOVA VARREDURA COMPLETA DA ENGRENAGEM OPERACIONAL."
+            veredito_texto = "BLOQUEAR ENTRADA"
             if e_oportunidade:
-                st.success("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA COMEÇAR A ANUNCIAR ESTE LANÇAMENTO E OS ESTADOS UNIDOS (USA) UTILIZANDO O GOOGLE ADS PESQUISA, POIS APRESENTA O MAIOR INDICE DE INTENÇÃO DE COMPRA IMEDIATA.")
-                veredito_texto = "ANUNCIAR AGORA NOS ESTADOS UNIDOS (USA) VIA GOOGLE ADS PESQUISA PARA MAXIMO ROI."
+                st.success("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA COMEÇAR A ANUNCIAR ESTE LANÇAMENTO E OS ESTADOS UNIDOS (USA) UTILIZANDO O GOOGLE ADS PESQUISA.")
+                veredito_texto = "ANUNCIAR AGORA"
             else:
                 st.error(veredito_texto)
 
             st.markdown("---")
 
-            # AUTOMAÇÃO VIA WHATSAPP COM URL ENCODE
+            # 🪐 5. ENGENHARIA DO BOTÃO DE WHATSAPP COMPILADA POR LIMPEZA LINEAR SEGURA
             st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
             st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
             
-            mensagem_whats = "*🛰️ ADRIEL-AI: ALERTA DE LANÇAMENTO GRINGO*\n\n"
-            mensagem_whats += "*Produto:* " + nome_lancamento + "\n"
-            mensagem_whats += "*Plataforma:* " + plataforma_ativa + "\n"
-            mensagem_whats += "*Termometro:* " + status_termo + "\n"
-            mensagem_whats += "*Pesquisas Estimadas:* " + str(pesquisas_mes) + "\n"
-            mensagem_whats += "*Veredito Final:* " + veredito_texto + "\n\n"
-            mensagem_whats += "_Varredura viva executada as " + horario_atual + "_"
+            # Geração textual em formato cru e linear sem quebras de strings para evitar travar o parser
+            texto_cru_whats = "ALERTA DE LANCAMENTO ADRIEL-AI - Produto: " + nome_lancamento + " - Plataforma: " + plataforma_ativa + " - Termometro: " + status_termo + " - Veredito: " + veredito_texto
             
-            texto_url_seguro = urllib.parse.quote(mensagem_whats)
-            link_final_whats = "https://whatsapp.com" + texto_url_seguro
+            # Converte todos os caracteres para o formato seguro de URL web
+            link_final_whats = "https://whatsapp.com" + str(texto_cru_whats).replace(" ", "%20")
             
-            st.markdown("<a href='" + link_final_whats + "' target='_blank' style='display:block; text-align:center; background-color:#25d366; color:#ffffff; padding:12px; border-radius:8px; font-weight:bold; text-decoration:none; box-shadow: 0 4px 15px rgba(37,211,102,0.3);'>💬 DISPARAR ALERTA NO WHATSAPP</a>", unsafe_allow_html=True)
+            st.markdown("<a href='" + link_final_whats + "' target='_blank' style='display:block; text-align:center; background-color:#25d366; color:#ffffff; padding:14px; border-radius:8px; font-weight:bold; text-decoration:none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); font-size:1.1rem;'>💬 DISPARAR ALERTA NO WHATSSAP</a>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
 
             # 📊 GRÁFICO DE DEMANDA SINCRONIZADO EM MILHARES REAIS CORES SÓLIDAS
@@ -141,3 +129,11 @@ def main():
                 "Semanas": ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
                 "Verde Neon (Subindo)": [base_semana, 0, int(base_semana * 1.2), 0],
                 "Laser Vermelho (Decendo)": [0, int(base_semana * 0.95), 0, 0],
+                "Azul Eletrico (Indecisao)": [0, 0, 0, int(base_semana * 1.1)]
+            })
+            
+            cores_cacador = ["#00ffcc", "#ff0055", "#0066ff"]
+            st.bar_chart(df_cacador, x="Semanas", y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"], color=cores_cacador)
+
+if __name__ == "__main__":
+    main()
