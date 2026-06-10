@@ -6,31 +6,31 @@ def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    # 2. INJECAO VISUAL PREMIUM COMPILADA (ESTABILIDADE TOTAL CONTRA TELA BRANCA)
+    # 2. INJECAO VISUAL PREMIUM COMPILADA (ESTABILIDADE TOTAL CONTRA QUEDAS)
     st.markdown('<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);}</style>', unsafe_allow_html=True)
 
-    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPÉTUOS</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPETUOS</h1>', unsafe_allow_html=True)
     st.write("Varredura automatizada e mapeamento operacional de ofertas de alta tracao nas plataformas gringas.")
 
     # Marcador de Varredura Viva Baseado no Relogio Atual do Servidor
     tempo_segundo = datetime.now().second
     horario_atual = datetime.now().strftime("%H:%M:%S")
-    st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva realizada com sucesso às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span> (Dados recalculados conforme a oscilação de tráfego gringo).", unsafe_allow_html=True)
+    st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva realizada com sucesso as <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span> (Dados recalculados conforme a oscilacao de trafego gringo).", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 3. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS OBRIGATÓRIOS DO ROTEIRO
+    # 3. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS OBRIGATÓRIOS (SINTAXE PURA)
     PRODUTOS_POOL = [
         {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 112000, "base_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "semente": 110,
          "dor": "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos.",
          "porque": "O veredicto tecnico confirma que este suplemento lidera com folga as buscas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartao na mao nas ultimas 24 horas."},
         
         {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 98500, "base_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "semente": 95,
-         "dor": "Falta de ativacao biologica do tecido adiposo marrom (BAT), fazendo com que o corpo armazene gordura profunda em areas criticas e desacelere o gasto calorico diario de forma continua.",
+         "dor": "Falta de ativacao biologica do tecido adiposo marrom, fazendo com que o corpo armazene gordura profunda em areas criticas do abdomen e desacelere o gasto calorico diario de forma continua.",
          "porque": "A oferta mantem uma taxa de reembolso historicamente baixa e paga altas comissoes. O publico comprador dos Estados Unidos responde muito bem a paginas que expoem estudos cientificos estruturados, tornando a rede de pesquisa um oceano de lucro estavel."},
         
         {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "base_mes": 87000, "base_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "semente": 85,
-         "dor": "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos.",
-         "porque": "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique (CPC) estao bem menores que no inflacionado mercado americano, mantendo alta conversao."},
+         "dor": "Falta aguda de energy celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos.",
+         "porque": "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique estao bem menores que no inflacionado mercado americano, mantendo alta conversao."},
         
         {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 74000, "base_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "semente": 72,
          "dor": "Picos descontrolados de glicose na corrente sanguinea, desequilibrio metabolico na producao de insulina e crises intensas de compulsao noturna por carboidratos pesados e doces refinados antes de dormir.",
@@ -49,19 +49,19 @@ def main():
          "porque": "O formato inovador em pó simula um suco natural gringo e ativa forte curiosidade visual, gerando cliques baratos na regiao da Australia."},
 
         {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 58000, "base_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "semente": 57,
-         "dor": "Zumbido estridente e agudo incessante no pavilhao auditivo que destroi a qualidade do sono profundo e gera cansaço mental diário.",
+         "dor": "Zumbido estridente e agudo incessante no pavilhao auditivo que destroi a qualidade do sono profundo e gera cansaco mental diario.",
          "porque": "Oferta movida pelo desespero por alivio imediato. O lead gringo nao pesquisa blogs, ele busca uma solucao direta e compra kits grandes na hora."},
 
         {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 ALTA", "plataforma": "BuyGoods", "base_mes": 54000, "base_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "semente": 53,
-         "dor": "Inflamacao severa na prostata obrigando o homem senior a interromper o sono de 4 a 6 vezes por noite para urinar com queimação.",
+         "dor": "Inflamacao severa na prostata obrigando o homem senior a interromper o sono de 4 a 6 vezes por noite para urinar com queimacao.",
          "porque": "Nicho focado em publico idoso internacional com alto poder financeiro disponivel para aquisicao imediata de kits de tratamento completo."},
 
         {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 51000, "base_hoje": 980, "melhor_pais": "Canadá (CA)", "semente": 50,
          "dor": "Infeccao fungica severa e micoses profundas que destroem a queratina protetora e deixam as unhas dos pes amareladas e quebradicas.",
-         "porque": "Fator de transformacao visual violento. Rodar tráfego utilizando campanhas de display no mercado canadense entrega cliques qualificadissimos."},
+         "porque": "Fator de transformacao visual violento. Rodar tráfego utilizando campanhas de display no mercado canadense entrega cliques  qualificadissimos."},
 
         {"ranking": 11, "nome": "LeanBliss", "status": "✅ NORMAL", "plataforma": "BuyGoods", "base_mes": 14500, "base_hoje": 320, "melhor_pais": "Austrália (AU)", "semente": 14,
-         "dor": "Ganho acelerado de gordura associado a picos severos de ansiedade alimentar crônica e desejos noturnos incontrolaveis por doces.",
+         "dor": "Ganho acelerado de gordura associado a picos severos de ansiedade alimentar cronica e desejos noturnos incontrolaveis por doces.",
          "porque": "Excelente cenario de arbitragem de leilao oculto! Como a maioria dos afiliados satura o topo, esta oferta entrega ROI alto com custo baixo."},
 
         {"ranking": 12, "nome": "Neotonics", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 13200, "base_hoje": 290, "melhor_pais": "Alemanha (DE)", "semente": 13,
@@ -69,7 +69,7 @@ def main():
          "porque": "Oportunidade deserta no leilao europeu! O CPC na regiao da Alemanha entrega leads qualificados operando paginas limpas de review nativo."},
 
         {"ranking": 13, "nome": "Synogut", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 12400, "base_hoje": 260, "melhor_pais": "Estados Unidos (USA)", "semente": 12,
-         "dor": "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal persistente apos refeicoes basicas.",
+         "dor": "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal gangster pos-refeicoes básicas.",
          "porque": "Oferta evergreen de altissima conversao e estabilidade de mercado, estruturada com um funil de vendas altamente responsivo gringo."},
 
         {"ranking": 14, "nome": "Kerassentials", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 11800, "base_hoje": 240, "melhor_pais": "Reino Unido (UK)", "semente": 11,
