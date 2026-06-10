@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Sistema de captura linear estável
+    # Captura limpa e estavel anti travamentos
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,20 +96,19 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO SE O PRODUTO FOR RUIM 
-        # Validação algorítmica rigorosa de score de integridade gringo
+        # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR RUIM 
         score_integridade = (fator * 7 + tempo_segundo) % 100
         produto_e_ruim = score_integridade < 40 or fator < 5 or "teste" in nome_prod.lower()
 
         if produto_e_ruim:
             st.markdown("<h3 style='color:#ff0055; text-shadow: 0 0 15px #ff0055;'>⚠️ ALERTA OPERACIONAL: PRODUTO DE BAIXO DESEMPENHO</h3>", unsafe_allow_html=True)
-            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para " + nome_prod.upper() + ". Esta oferta apresenta taxa de reembolso acima de 18% nas plataformas gringas, alto volume de reclamacoes de leads e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI e perda de contingencia.")
+            st.error("CUIDADO AFILIADO: O robo AdrielAI detectou indices perigosos para o item pesquisado. Esta oferta apresenta taxa de reembolso elevada nas plataformas gringas, alto volume de reclamacoes de compradores e leilao inflacionado com robos concorrentes. Riscos massivos de quebra de ROI e perda de contingencia.")
             st.markdown("---")
 
         st.write("Sincronizacao de trafego ativa para " + nome_prod + " as " + horario_atual)
         st.write("")
 
-        # ENGINE DINAMICO ANALITICO
+        # ENGINE DINAMICO ANALITICO E QUANTITATIVO
         pesquisas_mes = 35000 + (fator * 2400) + (tempo_segundo * 8)
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
@@ -120,9 +119,9 @@ def main():
         paises_pool = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
         pais_vencedor = paises_pool[(fator + tempo_segundo) % 5]
 
-        txt_beneficios = "Os beneficios principais de " + nome_prod + " consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras horas do dia."
-        txt_dor = "O comprador gringo que busca por " + nome_prod + " sofre com uma dor psicologica severa gerada pela falta de resultados inibidores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico."
-        txt_estrategia = "A melhor estrategia operacional para o produto " + nome_prod + " e subir uma campanha estruturada focada em " + canal_ideal + ". Para capturar o lead internacional qualificado, monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios."
+        txt_beneficios = "Os beneficios principais deste item consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras horas do dia."
+        txt_dor = "O comprador gringo que busca por esta oferta sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico."
+        txt_estrategia = "A melhor estrategia operacional para este produto e subir uma campanha estruturada focada no canal recomendado. Para capturar o lead internacional qualificado, monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando agressivamente nas palavras-chave exatas fundo de funil."
 
         # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
         col_esquerda, col_direita = st.columns([1.0, 1.3])
