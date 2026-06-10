@@ -58,7 +58,7 @@ def main():
         elif nome == "Prostadine":
             return 16, "NORMAL", 9800, 190, "Australia (AU)", 9, "Dificuldade de fluxo urinario continuo e inchaco pelvico incomodo prostatico.", "Pouquissimos afiliados operando criativos e copys estruturadas para o mercado australiano, deixando a margem liquida livre de concorrentes agressivos."
         elif nome == "Fast Lean Pro":
-            return 17, "NORMAL", 8900, 170, "Estados Unidos (USA)", 8, "Falta de foco mental e ansiedade que quebra protocolos de jejum prolongado.", "Angulo de copia persuasivo revolucionario focado em simular o estado biologico de autofagia, convertendo muito via Google Display com menor leilao."
+            return 17, "NORMAL", 8900, 170, "Estados Unidos (USA)", 8, "Falta de foco mental e ansiedade que quebra protocols de jejum prolongado.", "Angulo de copia persuasivo revolucionario focado em simular o estado biologico de autofagia, convertendo muito via Google Display com menor leilao."
         elif nome == "Amiclear":
             return 18, "NORMAL", 8200, 150, "Reino Unido (UK)", 8, "Quebras bruscas de energia e prostracao fisica no meio do dia decorrentes de instabilidades.", "O produtor disponibiliza uma central de suporte completa com copys validadas, acelerando o processo de criacao de anuncios em oceanos azuis."
         elif nome == "Alpha Tonic":
@@ -66,7 +66,7 @@ def main():
         else:
             return 20, "NORMAL", 7100, 110, "Estados Unidos (USA)", 7, "Falta de lubrificacao articular natural gerando dores agudas e rigidez de movimentos.", "Presenca de forte endosso medico em video na VSL principal, quebrando objecoes e elevando as taxas de checkout em campanhas de menor concorrencia."
 
-    # Inicializacao estavel do estado de sessao de forma stic pura
+    # Inicializacao estavel do estado de sessao de forma pura
     if "radar_nome_ativo" not in st.session_state:
         st.session_state.radar_nome_ativo = "Alpilean"
 
@@ -81,10 +81,9 @@ def main():
         st.write("Selecione o produto abaixo:")
         st.write("")
         
-        # Geracao dos botoes lineares
+        # Geracao dos botoes lineares corrigidos com a variavel local ativa
         for idx, nome_item in enumerate(LISTA_PRODUTOS):
             r_rank, r_status, r_mes, r_hoje, r_pais, r_semente, r_dor, r_porque = buscar_produto_dados(nome_item)
             
             tag_status = "[ALTA]" if r_rank <= 10 else "[NORMAL]"
             seta_viva = "SUBINDO" if (tempo_segundo + idx) % 2 == 0 else "DECENDO"
-            texto_botao = nome_item + " " + tag_status + " - " + seta_viva
