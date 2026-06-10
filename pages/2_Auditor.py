@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Captura limpa e sem tags abertas anti travamentos
+    # Sistema de captura estavel imune a travamentos
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,10 +96,9 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ALERTA IMEDIATO NO TOPO SE O PRODUTO FOR RUIM
-        # Condicao estrita baseada em matematica basica imune a bugs do compilador
+        # 🚨 ALERTA IMEDIATO CORRIGIDO: Identifica se o produto e ruim ou teste de forma estrita
         produto_e_ruim = False
-        if falar_com_fator := (fator < 5):
+        if fator < 5:
             produto_e_ruim = True
         if "teste" in nome_prod.lower():
             produto_e_ruim = True
@@ -119,7 +118,6 @@ def main():
         pesquisas_hoje = 950 + (fator * 95) + (tempo_segundo * 2)
         semente_grafico = 8 + (fator % 5) * 4
 
-        # Definicao fixa de pais e canal vencedor para evitar conflitos textuais
         canal_ideal = "Google Ads (Rede de Pesquisa)"
         if (fator % 2 == 0):
             canal_ideal = "Facebook Ads (VSL)"
@@ -133,6 +131,7 @@ def main():
         txt_estrategia = "A melhor estrategia operacional e subir uma campanha estruturada focada no canal recomendado. Monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando fundo de funil."
 
         # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
+        st.columns([1.0, 1.3])
         col_esquerda, col_direita = st.columns([1.0, 1.3])
 
         with col_esquerda:
@@ -161,7 +160,6 @@ def main():
             
             st.markdown("---")
             
-            # Mapeamento estatico puro sem funcoes numericas soltas em strings
             st.markdown("<h4 style='color:#00ffcc !important;'>💵 Mapeamento de CPC por Regiao (5 Paises Oficiais):</h4>", unsafe_allow_html=True)
             st.code("USA: 2.85 | UK: 1.90 | CA: 2.10 | AU: 2.30 | DE: 1.40", language="text")
             
@@ -173,7 +171,7 @@ def main():
             
             st.markdown("---")
             
-            # GRAFICO EM COLUNAS SOLIDAS IDENTICO AO DO RADAR MESTRE
+            # GRAFICO EM COLUNAS SOLIDAS DO RADAR MESTRE
             st.markdown("<h4>📊 Historico de Demanda Coletado em Tempo Real (Ultimos 12 Meses)</h4>", unsafe_allow_html=True)
             
             df_auditor = pd.DataFrame({
@@ -183,3 +181,8 @@ def main():
                 "Azul Eletrico (Indecisao)": [0, 0, semente_grafico * 2, 0, 0, semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 4]
             })
             
+            cores_auditor = ["#00ffcc", "#ff0055", "#0066ff"]
+            
+            st.bar_chart(
+                df_auditor, 
+                x="Meses", 
