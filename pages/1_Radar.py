@@ -159,8 +159,6 @@ def main():
         st.markdown("<h4 style='color:#00ffcc;'>📊 Movimentacao Historica de Leilao (Sinais Comportamentais Neon)</h4>", unsafe_allow_html=True)
         
         meses_eixo = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
-        
-        # Mapeamento estrito de cores sólidas independentes por mês para evitar a mistura feia
         valores_jan_dez = [
             p_semente * 3, p_semente * 2, p_semente * 2, 
             p_semente * 4, p_semente * 3, p_semente * 3, 
@@ -168,15 +166,13 @@ def main():
             p_semente * 6, p_semente * 5, p_semente * 4
         ]
         
-        # Sequência estrita do semáforo: Verde Neon para Subindo, Vermelho Laser para Decendo, Azul para Indecisão
         cores_por_mes = [
-            "#00ffcc", "#ff0055", "#0066ff",  # Jan, Fev, Mar
-            "#00ffcc", "#ff0055", "#0066ff",  # Abr, Mai, Jun
-            "#00ffcc", "#ff0055", "#0066ff",  # Jul, Ago, Set
-            "#00ffcc", "#ff0055", "#0066ff"   # Out, Nov, Dez
+            "#00ffcc", "#ff0055", "#0066ff",  
+            "#00ffcc", "#ff0055", "#0066ff",  
+            "#00ffcc", "#ff0055", "#0066ff",  
+            "#00ffcc", "#ff0055", "#0066ff"   
         ]
         
-        # Efeito de Brilho Intenso Hover Customizado para cada canal de cor correspondente
         cores_hover = [
             "#33ffdd", "#ff4d88", "#3385ff",
             "#33ffdd", "#ff4d88", "#3385ff",
@@ -190,12 +186,27 @@ def main():
             y=valores_jan_dez,
             marker=dict(
                 color=cores_por_mes,
-                line=dict(color=cores_por_mes, width=2) # Borda neon sólida ao redor da barra
+                line=dict(color=cores_por_mes, width=2)
             ),
             hovermarker=dict(
-                color=cores_hover # Acende e brilha de forma intensa quando passa o mouse por cima
+                color=cores_hover
             ),
             hovertemplate="<b>Mês:</b> %{x}<br><b>Volume:</b> %{y:,.0f} searches<extra></extra>"
         ))
         
-        # Configuração do Layout de Alto Luxo Black-Label do Plotly Engine
+        fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=10, r=10, t=10, b=10),
+            showlegend=False,
+            hoverlabel=dict(
+                bgcolor="#0b1329",
+                font_size=13,
+                font_color="#00ffcc",
+                bordercolor="#00ffcc"
+            ),
+            xaxis=dict(
+                showgrid=False,
+                tickfont=dict(color="#94a3b8", size=12),
+                linecolor="#1e293b"
+            ),
