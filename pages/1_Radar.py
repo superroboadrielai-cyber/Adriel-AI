@@ -38,8 +38,15 @@ def main():
         {"ranking": 20, "nome": "Joint Genesis", "status": "✅ VALIDADO", "plataforma": "ClickBank", "buscas_mes": 7100, "buscas_hoje": 110, "melhor_pais": "Estados Unidos (USA)", "seta": "📉 RETORNO SEGURO", "semente": 7}
     ]
 
-    # 4. INTEL-ENGINE: MAPEIA INFORMAÇÕES CIRÚRGICAS SEM USAR CHAVES QUE TRAVAM O PARSER
-    def extrair_dossie_completo(nome_produto):
+    # Inicialização forçada da sessão
+    if "produto_radar" not in st.session_state:
+        st.session_state.produto_radar = produtos_dados[0]
+
+    # Carrega diretamente o item selecionado
+    p_sel = st.session_state.produto_radar
+
+    # 4. ENGINE DE AUDITORIA CIRÚRGICA
+    def extrair_dossie(nome_produto):
         if "Alpilean" in nome_produto or "Puravive" in nome_produto or "LeanBliss" in nome_produto:
             dor = "Metabolismo severamente travado e em estado latente induzido pela baixa temperatura das células e tecidos internos, gerando um bloqueio biológico crítico que impede a queima de gorduras profundas mesmo sob restrição calórica severa ou rotinas exaustivas de treinos aeróbicos."
             ganho = "Regulação térmica celular que dispara a queima calórica passiva em até 400% nas áreas viscerais mais resistentes do organismo."
@@ -68,5 +75,3 @@ def main():
         else:
             dor = "Falta de vitalidade corporal, fadiga severa e desgaste orgânico limitante que reduz a produtividade no trabalho e gera desespero por tratamentos naturais de alta absorção biológica rápida."
             ganho = "Suporte adaptógeno de alta concentração celular que repara os tecidos e devolve o vigor orgânico completo do usuário."
-            porque = "Nossa varredura localizou uma brecha operacional fantástica neste leilão secundário. Como a maioria das ferramentas comuns saturam apenas os top 3 líderes do mercado gringo, este produto está livre de concorrência ativa, garantindo ROI."
-            cpc = "USA: $1.95 | UK: $1.25 | CA: $1.45 | AU: $1.60 | DE: $1.00"
