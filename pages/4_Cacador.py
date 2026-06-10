@@ -34,7 +34,7 @@ def main():
     if "user_whatsapp_saved" not in st.session_state:
         st.session_state.user_whatsapp_saved = "5511999999999"
 
-    # Captura linear estável do número de telefone
+    # Input estavel para persistencia do telefone do usuario
     whats_input = st.text_input("Insira seu WhatsApp com Codigo do Pais e DDD (Ex: 5511999999999):", value=st.session_state.user_whatsapp_saved)
     botao_salvar_whats = st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO")
     
@@ -44,7 +44,7 @@ def main():
     
     st.markdown("---")
 
-    # Terminal de varredura mestre por digitação e cliques
+    # Terminal de varredura ativa
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura Sincronizada</h3>", unsafe_allow_html=True)
     
     produtos_novos_pool = ["KeraBiotics Gringo", "Glucovibe Launch", "LeanPulse Pro", "NeuroShield V2"]
