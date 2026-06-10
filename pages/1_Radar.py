@@ -6,19 +6,16 @@ def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
     st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    # 2. INJECAO VISUAL PREMIUM COMPILADA (ESTABILIDADE TOTAL CONTRA QUEDAS)
-    st.markdown('<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);}</style>', unsafe_allow_html=True)
-
-    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPETUOS</h1>', unsafe_allow_html=True)
+    st.title("💎 RADAR DE PRODUTOS PERPETUOS")
     st.write("Varredura automatizada e mapeamento operacional de ofertas de alta tracao nas plataformas gringas.")
 
     # Marcador de Varredura Viva Baseado no Relogio Atual do Servidor
     tempo_segundo = datetime.now().second
     horario_atual = datetime.now().strftime("%H:%M:%S")
-    st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva realizada com sucesso as <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span> (Dados recalculados conforme a oscilacao de trafego gringo).", unsafe_allow_html=True)
+    st.write(f"🛰️ Status do Ecossistema: ATIVO | Varredura viva realizada as {horario_atual}.")
     st.markdown("---")
 
-    # 3. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS OBRIGATÓRIOS (SINTAXE PURA)
+    # 3. BASE DE DADOS COMPLETA E ESTÁTICA DOS 20 PRODUTOS OBRIGATÓRIOS
     PRODUTOS_POOL = [
         {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 112000, "base_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "semente": 110,
          "dor": "Metabolismo severamente paralisado e travado induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos.",
@@ -29,7 +26,7 @@ def main():
          "porque": "A oferta mantem uma taxa de reembolso historicamente baixa e paga altas comissoes. O publico comprador dos Estados Unidos responde muito bem a paginas que expoem estudos cientificos estruturados, tornando a rede de pesquisa um oceano de lucro estavel."},
         
         {"ranking": 3, "nome": "Java Burn", "status": "🔥 ALTA", "plataforma": "BuyGoods", "base_mes": 87000, "base_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "semente": 85,
-         "dor": "Falta aguda de energy celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos.",
+         "dor": "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos.",
          "porque": "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique estao bem menores que no inflacionado mercado americano, mantendo alta conversao."},
         
         {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 74000, "base_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "semente": 72,
@@ -46,7 +43,7 @@ def main():
 
         {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 61000, "base_hoje": 1310, "melhor_pais": "Austrália (AU)", "semente": 60,
          "dor": "Acumulo nocivo de acido urico que gera inflamacoes nas articulacoes, cansaco muscular continuo e retencao liquida na regiao abdominal.",
-         "porque": "O formato inovador em pó simula um suco natural gringo e ativa forte curiosidade visual, gerando cliques baratos na regiao da Australia."},
+         "porque": "O formato inovador em pó simula um suco natural gringo e activa forte curiosidade visual, gerando cliques baratos na regiao da Australia."},
 
         {"ranking": 8, "nome": "Cortexi", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 58000, "base_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "semente": 57,
          "dor": "Zumbido estridente e agudo incessante no pavilhao auditivo que destroi a qualidade do sono profundo e gera cansaco mental diario.",
@@ -58,7 +55,7 @@ def main():
 
         {"ranking": 10, "nome": "Metanail Serum", "status": "🔥 ALTA", "plataforma": "ClickBank", "base_mes": 51000, "base_hoje": 980, "melhor_pais": "Canadá (CA)", "semente": 50,
          "dor": "Infeccao fungica severa e micoses profundas que destroem a queratina protetora e deixam as unhas dos pes amareladas e quebradicas.",
-         "porque": "Fator de transformacao visual violento. Rodar tráfego utilizando campanhas de display no mercado canadense entrega cliques  qualificadissimos."},
+         "porque": "Fator de transformacao visual violento. Rodar tráfego utilizando campanhas de display no mercado canadense entrega cliques qualificadissimos."},
 
         {"ranking": 11, "nome": "LeanBliss", "status": "✅ NORMAL", "plataforma": "BuyGoods", "base_mes": 14500, "base_hoje": 320, "melhor_pais": "Austrália (AU)", "semente": 14,
          "dor": "Ganho acelerado de gordura associado a picos severos de ansiedade alimentar cronica e desejos noturnos incontrolaveis por doces.",
@@ -80,3 +77,9 @@ def main():
          "dor": "Visao turva, fadiga ocular cronica devido ao uso excessivo de telas e degeneracao macular acelerada em leads seniores.",
          "porque": "Foco cirurgico em publico de alta idade no Canada. O leilao limpo permite vender kits de alta duracao com comissao cheia."},
 
+        {"ranking": 16, "nome": "Prostadine", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 9800, "base_hoje": 190, "melhor_pais": "Austrália (AU)", "semente": 9,
+         "dor": "Dificuldade de fluxo urinario continuo e inchaco pélvico incomodo prostático associado ao envelhecimento natural masculino.",
+         "porque": "Pouquissimos afiliados operando criativos e copys estruturadas para o mercado australiano, deixando a margem liquida livre."},
+
+        {"ranking": 17, "nome": "Fast Lean Pro", "status": "✅ NORMAL", "plataforma": "ClickBank", "base_mes": 8900, "base_hoje": 170, "melhor_pais": "Estados Unidos (USA)", "semente": 8,
+         "dor": "Falta de foco mental e ansiedade que quebra protocolos de jejum prolongado, impedindo a perda de peso estavel.",
