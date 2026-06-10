@@ -1,11 +1,10 @@
 import streamlit as st
-import pandas as pd
 
 # Configuração de Layout Amplo Executivo Premium Black (Grudado no Teto)
 st.set_page_config(page_title="Adriel-AI Pro", layout="wide", initial_sidebar_state="collapsed")
 
 # =============================================================================================================
-# INJEÇÃO DE CSS DE ALTO LUXO (ELIMINA A BARRA BRANCA, CENTRALIZA O CONTEÚDO E CRIA BOTÕES HORIZONTAIS)
+# INJEÇÃO DE CSS DE ALTO LUXO (EXTINGUE AS CAIXAS BRANCAS E CRIA CÁPSULAS NEON DE ALTO PADRÃO)
 # =============================================================================================================
 st.markdown("""
 <style>
@@ -23,12 +22,12 @@ st.markdown("""
     }
     .stHeader { display: none !important; }
     
-    /* 🚨 COMPACTAÇÃO DE TELA CHEIA: OCUPA 100% DA LARGURA DISPONÍVEL NO SEU MONITOR */
+    /* 🚨 COMPACTAÇÃO DE TELA CHEIA: PUXA O SEU SITE GRUDADO NO TETO DO MONITOR */
     .block-container {
-        padding-top: 1rem !important;
+        padding-top: 0.5rem !important;
         padding-bottom: 2rem !important;
-        padding-left: 3rem !important;
-        padding-right: 3rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
         max-width: 100% !important;
         width: 100% !important;
     }
@@ -36,7 +35,7 @@ st.markdown("""
     /* Oculta em definitivo as abas nativas cinzas padrão dos servidores */
     [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
 
-    /* MOLDURA HOLOGRÁFICA DO SEU PRINT TOTALMENTE EXPANDIDA SEM ENCOSTAR NAS LATERAIS */
+    /* MOLDURA HOLOGRÁFICA DO SEU PRINT EXPANDIDA COM PERFEIÇÃO */
     .caixa-holografica-real-print {
         background-color: #080f1d !important;
         border: 2px solid #00E5FF !important;
@@ -46,36 +45,46 @@ st.markdown("""
         width: 100% !important;
     }
     
-    /* DESIGN DOS NOVOS BOTÕES HORIZONTAIS EM CÁPSULA (FIM DO APERTO LATERAL) */
-    .menu-horizontal-container div.stButton > button {
-        background: #0f172a !important; 
-        color: #cbd5e1 !important; 
-        font-weight: 700 !important;
+    /* 🚨 DESTRUIÇÃO DAS CAIXAS BRANCAS: CONFIGURAÇÃO DE CÁPSULAS ESCURAS DE ALTA PERFORMANCE COM HOVER NEON */
+    .stButton > button {
+        background-color: #0f172a !important;
+        color: #cbd5e1 !important;
+        font-weight: 800 !important;
         font-size: 13px !important;
-        border: 1px solid #1e293b !important; 
-        text-align: center !important;
-        padding: 12px 10px !important;
+        border: 1px solid #1e293b !important;
+        padding: 12px 20px !important;
+        border-radius: 30px !important; /* Formato cápsula executivo da Apple */
         width: 100% !important;
-        border-radius: 30px !important; /* Formato cápsula executivo */
         cursor: pointer !important;
-        transition: all 0.2s ease-in-out !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
-    .menu-horizontal-container div.stButton > button:hover {
-        background: #1e293b !important;
-        color: #00FF87 !important;
+    
+    /* 🔥 HOVER VIBRANTE SUPREMO: QUANDO PASSA O MOUSE OU O DEDO, O BOTÃO CÁPSULA BRILHA EM NEON */
+    .stButton > button:hover {
+        background-color: #1e293b !important;
+        color: #00FF87 !important; /* O texto interno acende em verde vivo */
         border-color: #00FF87 !important;
+        box-shadow: 0 0 15px rgba(0, 255, 135, 0.4) !important;
+        transform: scale(1.02) !important;
     }
     
     .titulo-secao { 
         color: #00FF87; 
-        font-size: 18px; 
+        font-size: 16px; 
         font-weight: 800; 
         text-transform: uppercase; 
-        margin-top: 20px;
-        margin-bottom: 15px; 
+        margin-top: 25px;
+        margin-bottom: 12px; 
         letter-spacing: 0.5px; 
+    }
+    
+    /* Input customizado escuro */
+    .stTextInput > div > div > input {
+        background-color: #0f172a !important;
+        color: white !important;
+        border: 1px solid #1e293b !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -87,14 +96,13 @@ if "modulo_ativo" not in st.session_state:
 # =============================================================================================================
 # MARCA SUPERIOR EXECUTIVA CENTRALIZADA
 # =============================================================================================================
-st.markdown("<h2 style='color: #ffffff; font-size: 28px; font-weight: 900; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 8px; font-size:12px; border-radius:4px; vertical-align:middle; margin-left:5px;'>PRO</span></h2>", unsafe_allow_html=True)
-st.markdown("<p style='color: #475569; font-size: 11px; margin-top:-5px; letter-spacing:1px; text-transform: uppercase;'>ENTERPRISE CONTROL CENTER • WIDE INTERFACE</p>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: #ffffff; font-size: 26px; font-weight: 900; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 8px; font-size:11px; border-radius:4px; vertical-align:middle; margin-left:5px;'>PRO</span></h2>", unsafe_allow_html=True)
+st.markdown("<p style='color: #475569; font-size: 10px; margin-top:-5px; letter-spacing:1px; text-transform: uppercase;'>ENTERPRISE CONTROL CENTER • REFORMULATED PLATFORM</p>", unsafe_allow_html=True)
 st.write("---")
 
 # =============================================================================================================
-# 🚀 SELETOR DE MENUS HORIZONTAIS: REMOVE O ENCURTAMENTO LATERAL E ABRE A TELA CHEIA
+# 🚀 MENU HORIZONTAL REFORMULADO (FIM DAS CAIXAS BRANCAS FAZENDO FUNCIONAR AS ABAS)
 # =============================================================================================================
-st.markdown('<div class="menu-horizontal-container">', unsafe_allow_html=True)
 col_nav1, col_nav2, col_nav3 = st.columns(3)
 with col_nav1:
     if st.button("🎛️ Dashboard Geral", key="btn_nav_dash"): st.session_state.modulo_ativo = "Dashboard"; st.rerun()
@@ -102,12 +110,11 @@ with col_nav2:
     if st.button("🛰️ 1. Radar de Produtos", key="btn_nav_radar"): st.session_state.modulo_ativo = "Radar"; st.rerun()
 with col_nav3:
     if st.button("🔬 2. Auditor de Mercado", key="btn_nav_auditor"): st.session_state.modulo_ativo = "Auditor"; st.rerun()
-st.markdown('</div>', unsafe_allow_html=True)
 
 st.write("---")
 
 # =============================================================================================================
-# EXIBIÇÃO AMPLA EM TELA CHEIA DO CONTEÚDO (SEM COLUNAS APERTADAS)
+# EXIBIÇÃO AMPLA EM TELA CHEIA DO CONTEÚDO (CONFORME O SEU COMANDO DE NAVEGAÇÃO)
 # =============================================================================================================
 
 # 🛰️ GAVETA DO MÓDULO 1: RADAR DE PRODUTOS COMPLETO
@@ -162,4 +169,4 @@ elif st.session_state.modulo_ativo == "Dashboard":
     st.info("👤 Bem-vindo Comandante José Marques! Seu robô foi reformulado em tela cheia ampla. Use as cápsulas do menu superior horizontal no topo para navegar de forma simétrica e ultrarrápida pelas ferramentas.")
 
 # Rodapé unificado
-st.markdown('<div style="clear: both; text-align: center; font-size: 11px; color: #475569; padding-top: 50px;"><hr style="border-color: #1e293b;">© 2026 Adriel-AI Pro - Todos os Direitos Reservados.</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: center; font-size: 11px; color: #475569; padding-top: 50px;"><hr style="border-color: #1e293b;">© 2026 Adriel-AI Pro - Todos os Direitos Reservados.</div>', unsafe_allow_html=True)
