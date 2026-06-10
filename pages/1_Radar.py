@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import pandas as pd
 from datetime import datetime
 
 def main():
@@ -9,25 +10,18 @@ def main():
     # FORCADOR GLOBAL DE TEMA BLACK-LABEL CYBER-NEON E REMOCAO DA BARRA BRANCA SUPERIOR
     st.markdown("""
         <style>
-            /* 🪐 DESTRUIÇÃO DA BARRA BRANCA: Força ocultação total do cabeçalho nativo */
             header, [data-testid="stHeader"] {
                 background-color: rgba(0,0,0,0) !important;
                 background: transparent !important;
                 display: none !important;
             }
-            
-            /* Ajuste de margem superior para compensar a ocultação da barra */
             [data-testid="stAppViewContainer"] {
                 padding-top: 0px !important;
             }
-
-            /* Fundo principal da aplicação */
             html, body, [data-testid="stAppViewContainer"], .stApp {
                 background-color: #030712 !important;
                 color: #f9fafb !important;
             }
-            
-            /* CORREÇÃO DO MENU LATERAL: Traz os botões de volta com estilo escuro e neon */
             [data-testid="stSidebar"], section[data-testid="stSidebar"] div {
                 background-color: #090d16 !important;
             }
@@ -36,8 +30,6 @@ def main():
                 font-weight: bold !important;
                 text-shadow: 0 0 5px rgba(0,255,204,0.4) !important;
             }
-            
-            /* Botões do painel global */
             .stButton>button {
                 background-color: #0f172a !important;
                 color: #00ffcc !important;
@@ -96,11 +88,10 @@ def main():
     p_hoje = 1200 + (posicao_lista * 110) + (tempo_segundo * 2)
     p_semente = 10 + posicao_lista * 4
     
-    paises_oficiais = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
-    p_pais = paises_oficiais[posicao_lista % 5]
+    p_paises = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
+    p_pais = p_paises[posicao_lista % 5]
 
     p_dor = "Frustracao emotional extrema do comprador gringo devido ao acumulo de sintomas persistentese dores biologicas profundas associadas a " + p_nome + ", gerando esgotamento fisico cronico e bloqueando a capacidade de focar no trabalho ou manter uma rotina de alto rendimento diario."
-    
     p_porque = "O monitoramento do robo confirma trafego massivo e qualificado de fundo de funil para " + p_nome + ". O veredicto estrategico final indica que o leilao para o pais " + p_pais + " e a melhor oportunidade operacional gringo hoje, entregando cliques mais baratos e comissao limpa com baixa concorrencia."
 
     # 4. CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS (MAXIMO PREENCHIMENTO DE TELA)
@@ -125,7 +116,7 @@ def main():
 
     with col_direita:
         st.markdown("<h3 style='color:#00ffcc !important;'>⚡ Central de Inteligencia de Mercado</h3>", unsafe_allow_html=True)
-        st.header(p_sel_nome := p_nome)
+        st.header(p_nome)
         st.write("Classificacao: " + p_status + " - MONITORAMENTO ATIVO DO ROBO V5")
         st.write("")
         
@@ -148,9 +139,19 @@ def main():
         
         st.markdown("---")
         
-        st.markdown("<h4>📊 Historico de Demanda Coletado Agora (Grafico em Tempo Real)</h4>", unsafe_allow_html=True)
-        valores_barras = [p_semente * 2, p_semente * 3, p_semente * 4, p_semente * 3, p_semente * 5, p_semente * 6, p_semente * 7, p_semente * 6, p_semente * 8, p_semente * 9, p_semente * 10, p_semente * 9]
-        st.bar_chart(valores_barras)
+        # 🌟 GRÁFICO ULTRA LUXO ESTILO SEMÁFORO (CONVERSÃO EM CAMADAS DINÂMICAS)
+        st.markdown("<h4>📊 Densidade de Tráfego por Canal Preditivo (Sinal Semáforo)</h4>", unsafe_allow_html=True)
+        
+        # Criação da estrutura de dados empilhada para forçar o mapa de cores estático do Streamlit
+        df_semaforo = pd.DataFrame({
+            "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            "🟢 Baixo CPC (Oceano Azul)": [p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3],
+            "🟡 Volume Medio (Escala)": [p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 3, p_semente * 3],
+            "🔴 Alto Leilao (Top Volume)": [0, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 3]
+        })
+        
+        # Renderiza o gráfico multinível gerando o contraste semáforo nativo imediatamente
+        st.bar_chart(df_semaforo, x="Meses", y=["🟢 Baixo CPC (Oceano Azul)", "🟡 Volume Medio (Escala)", "🔴 Alto Leilao (Top Volume)"])
 
 if __name__ == "__main__":
     main()
