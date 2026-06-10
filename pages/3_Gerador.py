@@ -2,21 +2,33 @@ import streamlit as st
 from datetime import datetime
 
 def main():
-    # 1. CONFIGURAÇÃO PREMIUM DA INTERFACE SAAS 2026 (VISUAL SEGURO NATIVO COLA NO TETO)
-    st.title("🎯 ADRIELAI PRO - GERADOR")
+    # 1. CONFIGURAÇÃO PREMIUM DA INTERFACE SAAS 2026 (VISUAL SEGURO COLA NO TETO)
+    st.set_page_config(page_title="Gerador Premium - AdrielAI", layout="wide", initial_sidebar_state="expanded")
 
-    # Injeção segura de cores sem quebrar as barras laterais estruturais do servidor
+    # Injeção cirúrgica de cores: Deleta o cabeçalho branco sem esconder a barra lateral de páginas
     st.markdown("""
     <style>
+    /* 🚨 EXTINÇÃO CIRÚRGICA DO ESPAÇO BRANCO SUPERIOR DO STREAMLIT */
+    [data-testid="stHeader"] { display: none !important; height: 0px !important; background: transparent !important; }
+    .block-container { padding-top: 0px !important; padding-bottom: 2rem !important; }
+    
+    /* 🌌 Chassi Escuro Premium integrado */
     html, body, [data-testid="stAppViewContainer"], .stApp { background-color: #030712 !important; color: #f9fafb !important; }
     h1, h2, h3, h4, p, span, label { color: #f3f4f6 !important; font-family: 'Segoe UI', sans-serif !important; }
+    
+    /* 🛡️ MENU LATERAL PRESERVADO VISÍVEL E TOTALMENTE INTEGRADO AO MODO ESCURO */
+    [data-testid="stSidebar"], section[data-testid="stSidebar"], .stSidebar { background-color: #090d16 !important; border-right: 1px solid #1e293b !important; }
+    [data-testid="stSidebarNav"] { background-color: #090d16 !important; }
+    [data-testid="stSidebar"] nav ul li div a span { color: #00ffcc !important; font-weight: bold !important; text-shadow: 0 0 8px rgba(0,255,204,0.5) !important; }
+    
+    /* Componentes operacionais */
     .stTextInput>div>div>input { background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #1e293b !important; border-radius: 8px !important; }
     .stButton>button { background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #00ffcc !important; border-radius: 8px !important; font-weight: bold !important; width: 100% !important; height: 45px !important; }
     .stButton>button:hover { background-color: #00ffcc !important; color: #030712 !important; box-shadow: 0 0 25px #00ffcc !important; }
     </style>
     """, unsafe_allow_html=True)
 
-    st.markdown('<h2 style="color: #00ffcc; font-weight: 900; text-shadow: 0 0 10px rgba(0,255,204,0.3); margin-top: 0px;">✍️ GERADOR DE ANÚNCIOS BLINDADOS</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: #00ffcc; font-weight: 900; text-shadow: 0 0 10px rgba(0,255,204,0.3); margin-top: 5px;">✍️ GERADOR DE ANÚNCIOS BLINDADOS</h2>', unsafe_allow_html=True)
     st.write("Estruturação completa e inteligente de campanhas fundo de funil para o Google Ads com política antibloqueio.")
     st.markdown("---")
 
@@ -89,7 +101,7 @@ def main():
         st.markdown("---")
 
         # =============================================================================================================
-        # 3. CENTRAL DE PALAVRAS-CHAVE EXCLUSIVAS (4 COLUNAS HORIZONTAIS COMPACTADAS PLANAS SEM ERROS DE SINTAXE)
+        # 3. CENTRAL DE PALAVRAS-CHAVE EXCLUSIVAS (4 COLUNAS HORIZONTAIS COMPACTADAS PLANAS EM UMA LINHA SEM CORTES)
         # =============================================================================================================
         st.markdown("<h3 style='color:#00ffcc;'>🔑 Central de Engenharia de Palavras-Chave (Tráfego Blindado Completo)</h3>", unsafe_allow_html=True)
         st.write("Estrutura cirúrgica de leilão dividida por correspondências de alta conversão e barreira de cliques desqualificados:")
@@ -115,7 +127,6 @@ def main():
             st.text_area("Copiar Exatas:", value=txt_exact, height=320, key="kw_colchetes")
 
         with c_negativa:
-            # CORREÇÃO DE SINTAXE REALIZADA AQUI: Retirado o caractere inválido ":,"
             st.markdown("<h4>❌ 15 Negativas (Negative)</h4>", unsafe_allow_html=True)
             st.text_area("Copiar Negativas:", value=txt_neg, height=320, key="kw_negativas")
 
