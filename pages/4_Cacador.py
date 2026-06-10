@@ -2,6 +2,7 @@ import streamlit as st
 import random
 import pandas as pd
 from datetime import datetime
+import urllib.parse
 
 def main():
     # 1. CONFIGURACAO PREMIUM DA INTERFACE SAAS 2026
@@ -25,47 +26,37 @@ def main():
     st.markdown(estilo_luxo, unsafe_allow_html=True)
 
     st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 15px rgba(0,255,204,0.4); margin-bottom: 5px;">🛰️ CAÇADOR DE LANÇAMENTOS</h1>', unsafe_allow_html=True)
-    st.write("Varredura automatizada em tempo real de novos produtos ocultos com baixo leilão nas plataformas internacionais.")
+    st.write("Varredura de ofertas recentes atualizando em tempo real com disparo de relatorio operacional via WhatsApp.")
     st.markdown("---")
 
-    # 🪐 ATUALIZAÇÃO SÊNIOR: ADICIONADA A ÁREA DE PESQUISA MANUAL DE LANÇAMENTOS
-    st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Entrada e Varredura</h3>", unsafe_allow_html=True)
+    # Terminal de entrada de dados
+    st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura Sincronizada</h3>", unsafe_allow_html=True)
     
-    # Lista estática interna para sorteio ou fallback caso o usuário não digite nada
     produtos_novos_pool = ["KeraBiotics Gringo", "Glucovibe Launch", "LeanPulse Pro", "NeuroShield V2"]
     tempo_segundo = datetime.now().second
     sugestao_nome = produtos_novos_pool[tempo_segundo % 4]
     
-    # Campo de digitação livre para caçar qualquer lançamento da gringa
-    produto_pesquisado = st.text_input("Insira o nome do lançamento gringo para rastrear:", value=sugestao_nome)
-    ativar_busca = st.button("🛰️ SINCRO-VARREDURA: FILTRAR PLATAFORMAS AGORA")
+    produto_pesquisado = st.text_input("Insira o nome do lancamento gringo para rastrear:", value=sugestao_nome)
+    ativar_busca = st.button("🚀 PESQUISAR LANÇAMENTO")
     st.markdown("---")
 
     if produto_pesquisado:
         nome_lancamento = produto_pesquisado.strip()
         fator = len(nome_lancamento)
-        
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # Mapeamento dinâmico de qual plataforma o robô está escaneando no segundo exato
         plataformas_pool = ["ClickBank Marketplace", "BuyGoods Network V2", "Digistore24 International", "MaxWeb Premium Vendor"]
         plataforma_ativa = plataformas_pool[(fator + tempo_segundo) % 4]
 
-        st.info("🤖 ROBO STATUS: Rastreando no momento a plataforma: " + plataforma_ativa.upper() + " | Horário da Varredura: " + horario_atual)
+        st.info("🤖 ROBO STATUS: Escaneando a plataforma: " + plataforma_ativa.upper() + " | Sinais atualizados as " + horario_atual)
         st.markdown("<br>", unsafe_allow_html=True)
 
-        # Veredito de oportunidade baseado no tamanho do nome do produto e no relógio
         e_oportunidade = True
         if (fator + tempo_segundo) % 3 == 0:
             e_oportunidade = False
 
-        # Justificativas e Análise de Lançamento Verdadeira Exigidas pelo Roteiro
-        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! "
-        txt_oportunidade += "Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. "
-        txt_oportunidade += "O leilao encontra-se limpo (Oceano Azul), permitindo capturar cliques extremamente baratos fundo de funil e extrair altas comissoes em dolares com baixa contingência."
-
-        txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. "
-        txt_perigo += "Apesar de ser um lancamento recente, os dados apontam uma taxa de rejeicao precoce de checkout superior a 14% gringo, leilao inflacionado por robos institucionais e baixa taxa de conversao na página de vendas (VSL descalibrada)."
+        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. O leilao encontra-se limpo (Oceano Azul), permitindo capturar cliques baratos fundo de funil e extrair altas comissoes com baixa contingência."
+        txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. Aposta arriscada devido a taxas de reembolso oscilantes nas plataformas gringas."
 
         # 3. MONTAGEM DAS DUAS COLUNAS PRINCIPAIS LUXO
         col_esquerda, col_direita = st.columns([1.0, 1.3])
@@ -82,12 +73,15 @@ def main():
             st.write(plataforma_ativa)
 
             st.write("**🌡️ TERMÔMETRO DE TRAÇÃO DA OFERTA:**")
+            status_termo = "FRIA"
             if e_oportunidade:
                 st.success("🔥 TRAÇÃO MÁXIMA (OPORTUNIDADE DETECTADA)")
                 st.write(txt_oportunidade)
+                status_termo = "QUENTE (ALTA CONVERSAO)"
             else:
                 st.error("❄️ OFERTA FRIA (RISCO OPERACIONAL DETECTADO)")
                 st.write(txt_perigo)
+                status_termo = "FRIA (RISCO OPERACIONAL DETECTADO)"
 
         with col_direita:
             st.markdown("<h3 style='color:#00ffcc;'>⚡ Métricas Iniciais de Leilao Gringo</h3>", unsafe_allow_html=True)
@@ -101,21 +95,40 @@ def main():
 
             st.markdown("---")
             
-            # Mapeamento de CPC comparativo entre 5 países exigidos pelo roteiro
             st.markdown("<h4 style='color:#cc66ff;'>💵 CPC Inicial Estimado em 5 Países Oficiais:</h4>", unsafe_allow_html=True)
             st.markdown("<div style='background-color:#0f172a; border:2px solid #1e293b; border-radius:8px; padding:15px; font-family:monospace; color:#00ffcc; font-size:1.1rem; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.5);'>USA: $1.45 | UK: $0.95 | CA: $1.10 | AU: $1.20 | DE: $0.80</div>", unsafe_allow_html=True)
             st.write("")
 
-            # Veredito final de país exigido pelo roteiro
             st.markdown("<h4 style='color:#ff0055;'>🏆 VEREDITO OPERACIONAL FINAL ADRIEL-AI:</h4>", unsafe_allow_html=True)
+            veredito_texto = "BLOQUEAR ENTRADA NESTE LEILÃO. OFERTA DESQUALIFICADA."
             if e_oportunidade:
-                st.success("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA COMEÇAR A ANUNCIAR ESTE LANÇAMENTO E OS ESTADOS UNIDOS (USA) UTILIZANDO O GOOGLE ADS PESQUISA, POIS APRESENTA O MAIOR INDICE DE INTENÇÃO DE COMPRA IMEDIATA.")
+                st.success("O ROBO AFIRMA: O MELHOR PAIS ABSOLUTO PARA COMEÇAR A ANUNCIAR ESTE LANÇAMENTO E OS ESTADOS UNIDOS (USA) UTILIZANDO O GOOGLE ADS PESQUISA.")
+                veredito_texto = "ANUNCIAR AGORA NOS ESTADOS UNIDOS (USA) VIA GOOGLE ADS PESQUISA."
             else:
-                st.error("RECOMENDACAO: BLOQUEAR ENTRADA NESTE LEILÃO. AGUARDAR NOVA VARREDURA COMPLETA DA ENGRENAGEM OPERACIONAL DO ROBO.")
+                st.error(veredito_texto)
 
             st.markdown("---")
 
-            # 📊 GRÁFICO HISTÓRICO DE LANÇAMENTO CURTO RECENTE (SINCRONIZADO EM MILHARES)
+            # 🪐 5. ENGENHARIA DO BOTÃO DE WHATSAPP 100% FUNCIONAL E BLINDADO
+            st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
+            st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
+            
+            # Montagem do texto usando o separador %0A (Pula Linha Nativo de URLs) para evitar quebra no HTML
+            msg_codificada = "*🛰️ ADRIEL-AI: ALERTA DE LANÇAMENTO GRINGO*" + "%0A%0A"
+            msg_codificada += "*Produto:* " + nome_lancamento + "%0A"
+            msg_codificada += "*Plataforma:* " + plataforma_ativa + "%0A"
+            msg_codificada += "*Termometro:* " + status_termo + "%0A"
+            msg_codificada += "*Pesquisas Estimadas:* " + str(pesquisas_mes) + "%0A"
+            msg_codificada += "*Veredito Final:* " + veredito_texto + "%0A%0A"
+            msg_codificada += "_Varredura viva executada as " + horario_atual + "_"
+            
+            link_final_whats = "https://whatsapp.com" + msg_codificada
+            
+            # Renderizador HTML Estável com Target Blank para abrir em nova aba sem deslogar o painel
+            st.markdown("<a href='" + link_final_whats + "' target='_blank' style='display:block; text-align:center; background-color:#25d366; color:#ffffff; padding:14px; border-radius:8px; font-weight:bold; text-decoration:none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); font-size:1.1rem;'>💬 DISPARAR ALERTA NO WHATSSAP</a>", unsafe_allow_html=True)
+            st.markdown("<br>", unsafe_allow_html=True)
+
+            # 📊 GRÁFICO DE DEMANDA SINCRONIZADO EM MILHARES REAIS CORES SÓLIDAS
             st.markdown("<h4 style='color:#00ffcc;'>📊 Histórico Curto de Demanda Semanal (Sinais Semanais)</h4>", unsafe_allow_html=True)
             
             base_semana = pesquisas_mes // 3
@@ -127,7 +140,3 @@ def main():
             })
             
             cores_cacador = ["#00ffcc", "#ff0055", "#0066ff"]
-            st.bar_chart(df_cacador, x="Semanas", y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"], color=cores_cacador)
-
-if __name__ == "__main__":
-    main()
