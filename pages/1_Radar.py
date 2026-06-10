@@ -1,7 +1,6 @@
 import streamlit as st
 import random
 import pandas as pd
-import plotly.graph_objects as go
 from datetime import datetime
 
 def main():
@@ -155,47 +154,25 @@ def main():
         
         st.markdown("---")
         
-        # 🌟 5. ENGENHARIA DO GRÁFICO PLOTLY NEON COM COR SÓLIDA E BRILHO INTENSO NO HOVER MOUSE
-        st.markdown("<h4 style='color:#00ffcc;'>📊 Movimentacao Historica de Leilao (Sinais Comportamentais Neon)</h4>", unsafe_allow_html=True)
+        # 🌟 GRÁFICO CYBER-NEON COM COLUNAS DE CORES SÓLIDAS E INDEPENDENTES
+        st.markdown("<h4 style='color:#00ffcc;'>📊 Movimentacao Historica de Leilao (Status do Sinal Mensal)</h4>", unsafe_allow_html=True)
         
-        meses_eixo = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+        # Estrutura de dados reformulada de forma estrita: cada mês ganha um valor em apenas uma categoria de cor sólida
+        df_comportamento = pd.DataFrame({
+            "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            "Verde Neon (Subindo)":    [p_semente * 3, 0, 0, p_semente * 4, 0, 0, p_semente * 5, 0, 0, p_semente * 6, 0, 0],
+            "Laser Vermelho (Decendo)": [0, p_semente * 2, 0, 0, p_semente * 3, 0, 0, p_semente * 4, 0, 0, p_semente * 5, 0],
+            "Azul Eletrico (Indecisao)": [0, 0, p_semente * 2, 0, 0, p_semente * 3, 0, 0, p_semente * 4, 0, 0, p_semente * 4]
+        })
         
-        # Mapeamento estrito de cores sólidas independentes por mês para evitar a mistura feia
-        valores_jan_dez = [
-            p_semente * 3, p_semente * 2, p_semente * 2, 
-            p_semente * 4, p_semente * 3, p_semente * 3, 
-            p_semente * 5, p_semente * 4, p_semente * 4, 
-            p_semente * 6, p_semente * 5, p_semente * 4
-        ]
+        cores_comportamento = ["#00ffcc", "#ff0055", "#0066ff"]
         
-        # Sequência estrita do semáforo: Verde Neon para Subindo, Vermelho Laser para Decendo, Azul para Indecisão
-        cores_por_mes = [
-            "#00ffcc", "#ff0055", "#0066ff",  # Jan, Fev, Mar
-            "#00ffcc", "#ff0055", "#0066ff",  # Abr, Mai, Jun
-            "#00ffcc", "#ff0055", "#0066ff",  # Jul, Ago, Set
-            "#00ffcc", "#ff0055", "#0066ff"   # Out, Nov, Dez
-        ]
-        
-        # Efeito de Brilho Intenso Hover Customizado para cada canal de cor correspondente
-        cores_hover = [
-            "#33ffdd", "#ff4d88", "#3385ff",
-            "#33ffdd", "#ff4d88", "#3385ff",
-            "#33ffdd", "#ff4d88", "#3385ff",
-            "#33ffdd", "#ff4d88", "#3385ff"
-        ]
+        st.bar_chart(
+            df_comportamento, 
+            x="Meses", 
+            y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"],
+            color=cores_comportamento
+        )
 
-        fig = go.Figure()
-        fig.add_trace(go.Bar(
-            x=meses_eixo,
-            y=valores_jan_dez,
-            marker=dict(
-                color=cores_por_mes,
-                line=dict(color=cores_por_mes, width=2) # Borda neon sólida ao redor da barra
-            ),
-            hovermarker=dict(
-                color=cores_hover # Acende e brilha de forma intensa quando passa o mouse por cima
-            ),
-            hovertemplate="<b>Mês:</b> %{x}<br><b>Volume:</b> %{y:,.0f} searches<extra></extra>"
-        ))
-        
-        # Configuração do Layout de Alto Luxo Black-Label do Plotly Engine
+if __name__ == "__main__":
+    main()
