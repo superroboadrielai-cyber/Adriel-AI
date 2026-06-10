@@ -107,7 +107,7 @@ def main():
     p_paises = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
     p_pais = p_paises[posicao_lista % 5]
 
-    p_dor = "Frustracao emotional extrema do comprador gringo devido ao acumulo de sintomas persistentese dores biologicas profundas associadas a " + p_nome + ", gerando esgotamento fisico cronico e bloqueando a capacidade de focar no trabalho ou manter uma rotina de alto rendimento diario."
+    p_dor = "Frustracao emotional extrema do comprador gringo devido ao acumulo de sintomas persistentese dores biologicas profundas associadas a " + p_nome + ", gerando esgotamento fisico cronico e bloqueando a capacidade de focar no trabalho ou manter uma routine de alto rendimento diario."
     p_porque = "O monitoramento do robo confirma trafego massivo e qualificado de fundo de funil para " + p_nome + ". O veredicto estrategico final indica que o leilao para o pais " + p_pais + " e a melhor oportunidade operacional gringo hoje, entregando cliques mais baratos e comissao limpa com baixa concorrencia."
 
     # 4. CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS (MAXIMO PREENCHIMENTO DE TELA)
@@ -154,25 +154,25 @@ def main():
         
         st.markdown("---")
         
-        # 🌟 GRÁFICO ULTRA LUXO CYBER-NEON COM PALETA SEMÁFORO FORÇADA
-        st.markdown("<h4 style='color:#00ffcc;'>📊 Canal Preditivo de Conversao (Sinal Semaforo Neon)</h4>", unsafe_allow_html=True)
+        # 🌟 GRÁFICO CYBER-NEON COMPORTAMENTAL (VERDE=SUBINDO, VERMELHO=DECENDO, AZUL=INDECIZAO)
+        st.markdown("<h4 style='color:#00ffcc;'>📊 Movimentacao Historica de Leilao (Padrao de Sinais)</h4>", unsafe_allow_html=True)
         
-        # Estrutura de dados organizada
-        df_semaforo = pd.DataFrame({
+        # Estrutura de dados organizada conforme seu comando
+        df_comportamento = pd.DataFrame({
             "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-            "Verde Neon (Oceano Azul)": [p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 3, p_semente * 4, p_semente * 4, p_semente * 3, p_semente * 4, p_semente * 5, p_semente * 5, p_semente * 4],
-            "Ciber Amarelo (Tracao Real)": [p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3],
-            "Laser Vermelho (Top Leilao)": [0, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2]
+            "Verde Neon (Subindo)": [p_semente * 2, p_semente * 3, p_semente * 4, p_semente * 3, p_semente * 5, p_semente * 6, p_semente * 7, p_semente * 6, p_semente * 8, p_semente * 9, p_semente * 10, p_semente * 9],
+            "Laser Vermelho (Decendo)": [p_semente * 1, p_semente * 1, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3],
+            "Azul Eletrico (Indecisao)": [p_semente * 1, p_semente * 2, p_semente * 2, p_semente * 1, p_semente * 2, p_semente * 3, p_semente * 2, p_semente * 2, p_semente * 3, p_semente * 3, p_semente * 4, p_semente * 3]
         })
         
-        # Injeção de paleta hexadecimal direta no gráfico nativo (Verde Neon, Amarelo Cíber, Vermelho Laser)
-        cores_neon = ["#00ffcc", "#ffea00", "#ff0055"]
+        # Injeção da paleta comportamental exata (Verde Neon, Vermelho Laser, Azul Elétrico)
+        cores_comportamento = ["#00ffcc", "#ff0055", "#0066ff"]
         
         st.bar_chart(
-            df_semaforo, 
+            df_comportamento, 
             x="Meses", 
-            y=["Verde Neon (Oceano Azul)", "Ciber Amarelo (Tracao Real)", "Laser Vermelho (Top Leilao)"],
-            color=cores_neon
+            y=["Verde Neon (Subindo)", "Laser Vermelho (Decendo)", "Azul Eletrico (Indecisao)"],
+            color=cores_comportamento
         )
 
 if __name__ == "__main__":
