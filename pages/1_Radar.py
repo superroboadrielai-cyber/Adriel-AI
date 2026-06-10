@@ -88,7 +88,7 @@ st.markdown('<h1 class="titulo-cyber">💎 Radar de Produtos AdrielAI</h1>', uns
 st.write("Ecossistema premium de monitoramento contínuo com auditoria detalhada de mercado gringo.")
 st.markdown("<br>", unsafe_allow_html=True)
 
-# 3. BASE DE DADOS COMPLETA COM EXATAMENTE 20 PRODUTOS VALIDADOS (CORRIGIDA E VERIFICADA)
+# 3. BASE DE DADOS COMPLETA COM EXATAMENTE 20 PRODUTOS VALIDADOS (SINTAXE CORRIGIDA)
 PRODUTOS_DADOS = [
     {"ranking": 1, "nome": "Alpilean", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Nutracêutico", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "dor": "Metabolismo travado por baixa temperatura interna celular.", "porque": "Volume alto de tráfego qualificado de fundo de funil.", "cpc": "USA: $2.80 | UK: $1.90 | CA: $2.10 | AU: $2.30 | DE: $1.40", "fator": 10},
     {"ranking": 2, "nome": "Puravive", "status": "🔥 ALTA", "plataforma": "ClickBank", "nicho": "Emagrecimento", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "dor": "Falta de ativação do tecido adiposo marrom (BAT).", "porque": "Baixa taxa de reembolso e comissões altas por potes.", "cpc": "USA: $3.10 | UK: $2.20 | CA: $2.40 | AU: $2.50 | DE: $1.60", "fator": 15},
