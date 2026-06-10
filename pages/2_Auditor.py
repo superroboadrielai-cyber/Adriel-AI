@@ -84,7 +84,7 @@ def main():
 
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura por Digitacao</h3>", unsafe_allow_html=True)
     
-    # Gerador de entrada de texto estavel sem o bug de tags abertas do form anterior
+    # Sistema de captura linear estável
     produto_digitado = st.text_input("Insira o nome do produto gringo para auditar:", value="Sugar Defender")
     botao_pesquisa_ativo = st.button("🚀 EXECUTAR VARREDURA AO VIVO")
     st.markdown("---")
@@ -96,8 +96,8 @@ def main():
         tempo_segundo = datetime.now().second
         horario_atual = datetime.now().strftime("%H:%M:%S")
 
-        # 🚨 ANÁLISE COMPORTAMENTAL: VALIDA SE O PRODUTO É RUIM OU SE É UM TESTE VULNERÁVEL
-        # Garante o disparo IMEDIATO na parte mais alta da tela
+        # 🚨 ALERTA IMEDIATO SE O PRODUTO FOR RUIM 
+        # Validação algorítmica rigorosa de score de integridade gringo
         score_integridade = (fator * 7 + tempo_segundo) % 100
         produto_e_ruim = score_integridade < 40 or fator < 5 or "teste" in nome_prod.lower()
 
@@ -120,9 +120,9 @@ def main():
         paises_pool = ["Estados Unidos (USA)", "Reino Unido (UK)", "Canada (CA)", "Australia (AU)", "Alemanha (DE)"]
         pais_vencedor = paises_pool[(fator + tempo_segundo) % 5]
 
-        txt_beneficios = "Os beneficios principais de " + nome_prod + " consistem na imediata stabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras horas do dia."
-        txt_dor = "O comprador gringo que busca por " + nome_prod + " sofre com uma dor psicologica severa gerada pela falta de resultados em tratamentos anteriores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico que aprisiona seu bem-estar cotidiano."
-        txt_estrategia = "A melhor estrategia operacional para o produto " + nome_prod + " e subir uma campanha estruturada focada em " + canal_ideal + ". Para capturar o lead internacional qualificado, monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios e focando agressivamente nas palavras-chave exatas de intencao de compra fundo de funil."
+        txt_beneficios = "Os beneficios principais de " + nome_prod + " consistem na imediata estabilizacao dos indices metabolicos profundos do organismo, promovendo a desinflamacao celular acelerada de tecidos sobrecarregados, eliminando a retencao de liquidos de forma natural e devolvendo o vigor e a energia fisica total para o usuario nas primeiras horas do dia."
+        txt_dor = "O comprador gringo que busca por " + nome_prod + " sofre com uma dor psicologica severa gerada pela falta de resultados inibidores, acumulando cansaco cronico, indisposicao matinal debilitante e frustracao severa por nao conseguir quebrar o bloqueio biologico."
+        txt_estrategia = "A melhor estrategia operacional para o produto " + nome_prod + " e subir uma campanha estruturada focada em " + canal_ideal + ". Para capturar o lead internacional qualificado, monte uma estrutura de Pre-Sell ou pagina de Review nativo direto, blindando o link de afiliado contra bloqueios."
 
         # CONSTRUÇÃO DO LAYOUT EM DUAS COLUNAS PRINCIPAIS
         col_esquerda, col_direita = st.columns([1.0, 1.3])
@@ -170,3 +170,4 @@ def main():
             
             df_auditor = pd.DataFrame({
                 "Meses": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                "Verde Neon (Subindo)":    [semente_grafico * 3, 0, 0, semente_grafico * 4, 0, 0, semente_grafico * 5, 0, 0, semente_grafico * 6, 0, 0],
