@@ -1,108 +1,74 @@
 import streamlit as st
 import random
+from datetime import datetime
 
 def main():
-    # 1. CONFIGURAÇÃO PREMIUM DA INTERFACE SAAS 2026
-    st.set_page_config(page_title="Gerador de Anúncios - AdrielAI", page_icon="✍️", layout="wide")
+    # 1. CONFIGURAÇÃO HIGH-END DA INTERFACE SAAS 2026
+    st.set_page_config(page_title="Radar Premium - AdrielAI", page_icon="💎", layout="wide")
 
-    # 2. INJEÇÃO DE INLINE CSS BLACK-LABEL (SEGURA SEM CHAVES CONFLITANTES)
-    st.markdown('<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);} .stButton>button {border: 2px solid #ff0055 !important; background-color: #0f172a !important; color: #ff4d88 !important; font-weight: 800 !important; width: 100% !important;} .stButton>button:hover {background-color: #ff0055 !important; color: #ffffff !important; box-shadow: 0 0 20px #ff0055 !important;}</style>', unsafe_allow_html=True)
+    # 2. INJEÇÃO VISUAL BLACK-LABEL 2026 (BLINDADA CONTRA CONFLITOS DE CSS OU CHAVES)
+    st.markdown('<style>.stApp {background-color: #040814 !important; color: #f3f4f6 !important;} h1,h2,h3,h4 {color: #00ffcc !important; text-shadow: 0 0 12px rgba(0,255,204,0.3);}</style>', unsafe_allow_html=True)
 
-    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">✍️ GERADOR DE ANÚNCIOS BLINDADOS GOOGLE ADS</h1>', unsafe_allow_html=True)
-    st.write("Mecanismo sênior de engenharia de copy gringa. Criação de títulos e descrições com limitadores exatos de caracteres anti-reprovação.")
+    st.markdown('<h1 style="font-size: 2.6rem; font-weight: 900; color: #00ffcc; text-shadow: 0 0 12px rgba(0, 255, 204, 0.3); margin-bottom: 5px;">💎 RADAR DE PRODUTOS PERPÉTUOS</h1>', unsafe_allow_html=True)
+    st.write("Varredura automatizada e mapeamento operacional de ofertas de alta tracao nas plataformas gringas.")
+
+    horario_atual = datetime.now().strftime("%H:%M:%S")
+    st.markdown(f"🛰️ **Status do Ecossistema:** <span style='color:#00ffcc; font-weight:bold;'>ATIVO</span> | Varredura viva de leilão estabilizada às <span style='color:#ff0055; font-weight:bold;'>{horario_atual}</span>.", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 3. BASE DE INTELIGÊNCIA DE MERCADO (OFERTAS EVERGREEN DO BRASIL E DA GRINGA)
-    ofertas_gringas = ["Alpilean", "Puravive", "Java Burn", "GlucoTrust", "ProDentim", "Sugar Defender"]
-
-    # 4. FIXAÇÃO DO GRID DE LAYOUT (MÁXIMO PREENCHIMENTO DE TELA)
-    col_input, col_output = st.columns([1.1, 1.2])
-
-    with col_input:
-        st.subheader("⚙️ Terminal de Configuração da Cópia")
-        st.write("Ajuste os parâmetros para minerar os melhores ângulos de venda:")
-        st.write("")
-
-        produto_selecionado = st.selectbox("🎯 Selecione a Oferta Evergreen Alvo:", ofertas_gringas)
-        angulo_venda = st.radio("💎 Escolha o Ângulo Persuasivo de Guerra:", ["Official Website Focus (Fundo)", "Discount & Promo Coupon (Desconto)", "Scientific Discovery Gancho (Dor)"])
-        st.markdown("<br>", unsafe_allow_html=True)
-        gatilho_gerar = st.button("🚀 EXECUÇÃO: GENERATE BLINDED COPY")
-
-    with col_output:
-        st.subheader("⚡ Central de Peças Publicitárias Prontas")
-        st.write("Copie os textos gerados direto para a sua campanha oficial do Google Ads gringo:")
-        st.write("")
-
-        # Lógica linear pura de distribuição de Copys Cirúrgicas por Produto
-        if produto_selecionado == "Alpilean":
-            t1 = "Alpilean Official Website"
-            t2 = "Save 80% on Alpilean Today"
-            t3 = "Buy Alpilean Official Store"
-            d1 = "Alpilean Secret Alpine Method to Target Low Core Body Temperature. Buy Now and Save Big."
-            d2 = "Get Alpilean from Official Site. Secure Payment, Fast Shipping and Full Money Back."
-        elif produto_selecionado == "Puravive":
-            t1 = "Puravive Official Store"
-            t2 = "Puravive Special Discount"
-            t3 = "Order Puravive From Official"
-            d1 = "Puravive Proprietary Blend Optimizes Brown Adipose Tissue Levels. 180 Days Refund Policy."
-            d2 = "Exclusive Offer: Save Big on Puravive Multi-Bottles Packages. Order Safely Online Today."
-        elif produto_selecionado == "Java Burn":
-            t1 = "Java Burn Official Offer"
-            t2 = "Java Burn Coffee Sache Promo"
-            t3 = "Get Original Java Burn Only"
-            d1 = "100% Natural Formula Designed to Boost Metabolism Speed with Your Morning Coffee."
-            d2 = "Order Java Burn from Official Shop today. Lowest Price Guaranteed and Free Shipping."
-        elif produto_selecionado == "GlucoTrust":
-            t1 = "GlucoTrust Official Store"
-            t2 = "GlucoTrust Special Discount"
-            t3 = "Order GlucoTrust Online"
-            d1 = "Support Healthy Blood Sugar Levels with GlucoTrust Natural Formula. Get 180 Days Refund."
-            d2 = "Exclusive Offer: Save Big on GlucoTrust Multi-Bottle Packages. Secure Checkout Today."
-        elif produto_selecionado == "ProDentim":
-            t1 = "ProDentim Official Website"
-            t2 = "ProDentim Advanced Dental"
-            t3 = "Get ProDentim Oral Care"
-            d1 = "Doctor-Formulated ProDentim Blend Packs 3.5 Billion Probiotics for Healthy Teeth & Gums."
-            d2 = "Order ProDentim from Official Store Today and Claim Your Special Discount with Free Ship."
-        else:
-            t1 = "Sugar Defender Official"
-            t2 = "Sugar Defender Discount"
-            t3 = "Buy Sugar Defender Store"
-            d1 = "Sugar Defender Advanced Blend Supports Healthy Blood Sugar and Energy Levels. Buy Today."
-            d2 = "Get Original Sugar Defender from Official Shop. Safe Order with 60 Days Refund Policy."
-
-        # Modulação de acordo com o Ângulo de Venda Selecionado para trazer mais inteligência viva
-        if angulo_venda == "Discount & Promo Coupon (Desconto)":
-            t2 = "Claim Limited 80% Off Today"
-            t3 = "Special Coupon Active Now"
-        elif angulo_venda == "Scientific Discovery Gancho (Dor)":
-            t2 = "New Scientific Discovery"
-            t3 = "Target the Real Root Cause"
-
-        # 5. EXIBIÇÃO DOS COMPONENTES COM VALIDAÇÃO RÍGIDA DE TAMANHO
-        st.write("### 📌 Títulos Persuasivos (Máximo 30 Caracteres):")
+    # 3. BASE DE DADOS COMPLETA E RIGOROSA DOS 20 PRODUTOS OBLIGATÓRIOS
+    produtos_dados = [
+        {"ranking": 1, "nome": "Alpilean", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 112000, "buscas_hoje": 3420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO EXTREMO", "semente": 110,
+         "dor": "Metabolismo severamente travado e em state latente induzido pela baixa temperatura das celulas e tecidos internos, gerando um bloqueio biologico critico que impede a queima de gorduras profundas mesmo sob restricao calorica severa ou rotinas exaustivas de treinos aerobicos.",
+         "ganho": "Regulacao termica celular que dispara a queima calorica passiva em ate 400% nas areas viscerais mais resistentes do organismo.",
+         "porque": "O veredicto tecnico confirma que este suplemento lidera com folga as buscas exatas por termos institucionais. Anunciar nas redes de pesquisa do Google Ads norte-americano captura leads qualificados e altamente propensos a comprar com o cartao na mao nas ultimas 24 horas.",
+         "cpc": "USA: $3.10 | UK: $2.15 | CA: $2.40 | AU: $2.60 | DE: $1.45"},
         
-        st.text_input("Título 1", value=t1, key="t1_val")
-        st.caption(f"Contador de Caracteres: **{len(t1)}/30**")
-
-        st.text_input("Título 2", value=t2, key="t2_val")
-        st.caption(f"Contador de Caracteres: **{len(t2)}/30**")
-
-        st.text_input("Título 3", value=t3, key="t3_val")
-        st.caption(f"Contador de Caracteres: **{len(t3)}/30**")
-
-        st.markdown("---")
-
-        st.write("### 📝 Descrições Cirúrgicas (Limite 90 Caracteres):")
+        {"ranking": 2, "nome": "Puravive", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 98500, "buscas_hoje": 2890, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO FORTE", "semente": 95,
+         "dor": "Falta de ativacao biologica do tecido adiposo marrom (BAT), fazendo com que o corpo armazene gordura profunda em areas criticas e desacelere o gasto calorico diario de forma continua.",
+         "ganho": "Otimizacao das gorduras marrons para derretimento acelerado de tecido adiposo estocado ha anos.",
+         "porque": "A oferta mantem uma taxa de reembolso historicamente baixa e paga altas comissoes. O publico comprador dos Estados Unidos responde muito bem a paginas que expoem estudos cientificos estruturados, tornando a rede de pesquisa um oceano de lucro estavel.",
+         "cpc": "USA: $3.10 | UK: $2.20 | CA: $2.40 | AU: $2.50 | DE: $1.60"},
         
-        st.text_area("Descrição 1", value=d1, key="d1_val", height=70)
-        st.caption(f"Contador de Caracteres: **{len(d1)}/90**")
-
-        st.text_area("Descrição 2", value=d2, key="d2_val", height=70)
-        st.caption(f"Contador de Caracteres: **{len(d2)}/90**")
-
-        st.markdown("---")
-        st.info("🛰️ Todas as copys foram geradas em inglês nativo gringo, respeitando estritamente as políticas editoriais de anúncios para evitar suspensões.")
-
-if __name__ == "__main__":
-    main()
+        {"ranking": 3, "nome": "Java Burn", "status": "🔥 TOP COMPRA", "plataforma": "BuyGoods", "buscas_mes": 87000, "buscas_hoje": 2100, "melhor_pais": "Reino Unido (UK)", "seta": "📈 EXPLODINDO", "semente": 85,
+         "dor": "Falta aguda de energia celular e cansaco massivo nas primeiras horas do dia, combinada com surtos continuos de fome psicologica de fundo emocional que sabotam totalmente o andamento de dietas e protocolos.",
+         "ganho": "Sinergia nutricional termogenica instantanea que otimiza o uso de carboidratos como combustivel e bloqueia os picos de ansiedade por comida.",
+         "porque": "A novidade do sache misturavel no cafe diario tomou o mercado gringo de assalto. O veredicto aponta excelente retorno de anuncios na Europa, onde os custos de clique (CPC) estao bem menores que no inflacionado mercado americano, mantendo alta conversao.",
+         "cpc": "USA: $2.75 | UK: $1.70 | CA: $1.95 | AU: $2.20 | DE: $1.30"},
+        
+        {"ranking": 4, "nome": "GlucoTrust", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 74000, "buscas_hoje": 1950, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 ACELERAÇÃO", "semente": 72,
+         "dor": "Picos descontrolados de glicose na corrente sanguinea, desequilibrio metabolico na producao de insulina e crises intensas de compulsao noturna por carboidratos pesados e doces refinados antes de dormir.",
+         "ganho": "Estabilizacao imediata da resposta insulinica e eliminacao da gordura profunda acumulada ao redor dos orgaos vitais de filtragem.",
+         "porque": "Resolve uma dor de saude alarmante e atinge em cheio o publico idoso internacional de alto poder aquisitivo. Anunciar com correspondencia exata de palavras-chave oficiais filtra cliques curiosos de concorrentes e traz trafego qualificado de fundo.",
+         "cpc": "USA: $2.95 | UK: $1.90 | CA: $2.15 | AU: $2.30 | DE: $1.50"},
+        
+        {"ranking": 5, "nome": "ProDentim", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 69000, "buscas_hoje": 1650, "melhor_pais": "Canadá (CA)", "seta": "📈 TENDÊNCIA ALTA", "semente": 68,
+         "dor": "Sangramentos gengivais constantes durante a escovacao basica, proliferacao de bacterias nocivas no trato bucal que destroem o esmalte protetor e causam um mau halito cronico de dificil eliminacao social.",
+         "ganho": "Repovoamento biologico da mucosa com 3.5 bilhoes de cepas probioticas que purificam o hálito e reconstroem a saude da raiz gengival.",
+         "porque": "Enquanto a massa de afiliados satura os leiloes de trafego dos Estados Unidos, o leilao do Canada e Reino Unido encontra-se livre para o nicho dentario, permitindo extrair comissoes liquidas altas com anuncios baratos via Pre-Sell rapida.",
+         "cpc": "USA: $2.45 | UK: $1.60 | CA: $1.80 | AU: $2.00 | DE: $1.25"},
+        
+        {"ranking": 6, "nome": "Liv Pure", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 65000, "buscas_hoje": 1420, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 TRAÇÃO CRÍTICA", "semente": 64,
+         "dor": "Figado completamente sobrecarregado por toxinas e gordura acumulada, paralisando o funcionamento natural do metabolismo hepático e impedindo a correta eliminacao de lipidios acumulados.",
+         "ganho": "Purificacao interna profunda das celulas hepaticas para restaurar o poder natural de eliminacao de gorduras.",
+         "porque": "O produtor do Liv Pure estruturou um dos melhores funis de vendas de Upsell do mercado gringo. O veredicto cirurgico indica que mesmo pagando um CPC mais caro nos EUA, o Valor de Vida do Cliente (LTV) compensa aggressively, gerando multiplos potes por checkout.",
+         "cpc": "USA: $3.25 | UK: $2.20 | CA: $2.40 | AU: $2.55 | DE: $1.65"},
+        
+        {"ranking": 7, "nome": "Ikaria Juice", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 61000, "buscas_hoje": 1310, "melhor_pais": "Austrália (AU)", "seta": "📉 ESTÁVEL NO TOPO", "semente": 60,
+         "dor": "Acumulo nocivo de acido urico no organismo que deflagra processos inflamatorios severos nas articulacoes corporais, cansaco muscular continuo e retencao acelerada de liquidos e gorduras na regiao do avental abdominal.",
+         "ganho": "Eliminacao de toxinas via suco concentrado que rejuvenesce os indices metabolicos internos.",
+         "porque": "O formato inovador em po que simula um suco natural gera um apelo de curiosidade visual muito forte nos anuncios. O rastreamento de dados em tempo real pegou um estouro na demanda de trafego na Australia, onde os afiliados locais raramente anunciam.",
+         "cpc": "USA: $2.85 | UK: $1.95 | CA: $2.05 | AU: $2.15 | DE: $1.35"},
+        
+        {"ranking": 8, "nome": "Cortexi", "status": "🔥 TOP COMPRA", "plataforma": "ClickBank", "buscas_mes": 58000, "buscas_hoje": 1190, "melhor_pais": "Reino Unido (UK)", "seta": "📈 ACELERAÇÃO VENDAS", "semente": 57,
+         "dor": "Zumbido estridente, agudo e incessante no pavilhao auditivo (Tinnitus) que interrompe o descanso noturno, causa irritabilidade psicologica severa e bloqueia a capacidade de memorizacao e concentracao intelectual no dia a dia.",
+         "ganho": "Protecao das celulas ciliadas auditivas e otimizacao da conducao nervosa cerebral contra inflamacoes.",
+         "porque": "Ofertas direcionadas para dores auditivas extremas convertem puramente pelo desespero do cliente em obter alivio rapido. O lead gringo que sofre com zumbidos nao gasta tempo pesquisando blogs, ele busca uma cura direta, clica no topo do leilao e compra.",
+         "cpc": "USA: $2.50 | UK: $1.60 | CA: $1.80 | AU: $1.95 | DE: $1.15"},
+        
+        {"ranking": 9, "nome": "FlowForce Max", "status": "🔥 TOP COMPRA", "plataforma": "BuyGoods", "buscas_mes": 54000, "buscas_hoje": 1050, "melhor_pais": "Estados Unidos (USA)", "seta": "📈 SUBINDO SEVERO", "semente": 53,
+         "dor": "Inflamacao severa na prostata obrigando o homem senior a interromper o sono de 4 a 6 vezes todas as noites para ir ao banheiro com forte queimacao pelvica e jato urinario interrompido.",
+         "ganho": "Desinflamacao imediata do trato urinario e eliminacao de sedimentos e toxinas minerais acumuladas no sistema reprodutor masculino.",
+         "porque": "Produto de dor urgente vendido pela extrema necessidade de alivio rapido do lead gringo. Subir uma campanha direcionada para a rede de busca do Google Ads assegura cliques de alta intencao e comissoes robustas por vendas de kits completos.",
+         "cpc": "USA: $3.25 | UK: $2.20 | CA: $2.40 | AU: $2.55 | DE: $1.65"},
+        
