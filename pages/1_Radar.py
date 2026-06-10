@@ -61,7 +61,7 @@ def main():
             return 7, "ALTA", 61000, 1310, "Australia (AU)", 60, dor, porque
 
         elif nome == "Cortexi":
-            dor = "Zumbido estridente e agudo incessante no pavilhao auditivo que destroi a qualidade do sono profundo, " + "causa irritabilidade psicologica severa e bloqueia a concentracao intelectual no dia a dia."
+            dor = "Zumbido estridente e agudo incessante no pavilhao auditivo que destroi a qualidade do sono profundo, " + "causa irritabilidade psicologica severa e blocks a concentracao intelectual no dia a dia."
             porque = "Oferta movida pelo desespero por alivio imediato. O lead gringo nao gasta tempo pesquisando blogs, " + "ele busca uma solucao direta no topo do Google Search e adquire kits de alto valor de comissao."
             return 8, "ALTA", 58000, 1190, "Reino Unido (UK)", 57, dor, porque
 
@@ -85,9 +85,8 @@ def main():
             porque = "Oportunidade deserta no leilao europeu. O custo por clique na regiao da Alemanha entrega leads qualificados " + "operando paginas limpas de review nativo com baixa concorrencia de lances publicitarios."
             return 12, "NORMAL", 13200, 290, "Alemanha (DE)", 13, dor, porque
 
-        {"ranking": 13, "nome": "Synogut"}
-        if nome == "Synogut":
-            dor = "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal pos-refeicoes básicas " + "que reduzem o bem-estar e causam dores abdominais agudas continuas."
+        elif nome == "Synogut":
+            dor = "Constipacao intestinal cronica dolorosa, gases severos e inchaco estomacal pos-refeicoes basicas " + "que reduzem o bem-estar e causam dores abdominais agudas continuas."
             porque = "Oferta evergreen de altissima conversao e estabilidade de mercado, estruturada com um funil de vendas " + "altamente responsivo gringo de menor leilao concorrente na rede de pesquisa."
             return 13, "NORMAL", 12400, 260, "Estados Unidos (USA)", 12, dor, porque
 
@@ -104,3 +103,5 @@ def main():
         elif nome == "Prostadine":
             dor = "Dificuldade de fluxo urinario continuo e inchaco pelvico incomodo prostatico associado ao envelhecimento " + "natural masculino e falta de nutrientes especificos."
             porque = "Pouquissimos afiliados operando criativos e copys estruturadas para o mercado australiano, deixando " + "a margem liquida livre de concorrentes agressivos de lances publicitarios."
+            return 16, "NORMAL", 9800, 190, "Australia (AU)", 9, dor, porque
+
