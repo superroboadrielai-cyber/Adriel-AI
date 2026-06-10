@@ -15,8 +15,8 @@ def main():
     estilo_luxo += "[data-testid='stSidebar'], section[data-testid='stSidebar'] div {background-color: #090d16 !important;}"
     estilo_luxo += "[data-testid='stSidebar'] nav ul li div a span {color: #00ffcc !important; font-weight: bold !important; text-shadow: 0 0 8px rgba(0,255,204,0.5) !important;}"
     estilo_luxo += ".stTextInput>div>div>input {background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #1e293b !important; border-radius: 8px !important; font-size: 1.1rem !important;}"
-    estilo_luxo += ".stTextInput>div>div>input:focus {border-color: #00ffcc !important; box-shadow: 0 0 15px rgba(0, 255, 204, 0.3) !important;}"
-    estilo_luxo += ".stButton>button {background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #00ffcc !important; border-radius: 8px !important; font-weight: bold !important; box-shadow: 0 0 10px rgba(0, 255, 204, 0.15) !important; transition: all 0.3s ease-in-out !important; width: 100% !important; height: 45px !important;}"
+    estilo_luxo += ".stTextInput>div>div>input:focus {border-color: #00ffcc !important; box-shadow: 0 0 15px rgba(0,255,204,0.3) !important;}"
+    estilo_luxo += ".stButton>button {background-color: #0f172a !important; color: #00ffcc !important; border: 2px solid #00ffcc !important; border-radius: 8px !important; font-weight: bold !important; box-shadow: 0 0 10px rgba(0,255,204,0.15) !important; transition: all 0.3s ease-in-out !important; width: 100% !important; height: 45px !important;}"
     estilo_luxo += ".stButton>button:hover {background-color: #00ffcc !important; color: #030712 !important; box-shadow: 0 0 25px #00ffcc, 0 0 45px rgba(0,255,204,0.4) !important; transform: scale(1.01);}"
     estilo_luxo += "[data-testid='stMetricContainer'] {background: linear-gradient(135deg, #0f172a, #030712) !important; border: 1px solid #1e293b !important; border-left: 4px solid #00ffcc !important; padding: 15px !important; border-radius: 10px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;}"
     estilo_luxo += "h1, h2, h3, h4, span, p, label {color: #f3f4f6 !important;}"
@@ -34,17 +34,17 @@ def main():
     if "user_whatsapp_saved" not in st.session_state:
         st.session_state.user_whatsapp_saved = "5511999999999"
 
-    # Input estavel para persistencia do telefone do usuario
+    # Input estavel para salvar o numero de forma persistente
     whats_input = st.text_input("Insira seu WhatsApp com Codigo do Pais e DDD (Ex: 5511999999999):", value=st.session_state.user_whatsapp_saved)
     botao_salvar_whats = st.button("💾 SALVAR CONFIGURACAO DE NOTIFICACAO")
     
     if botao_salvar_whats:
         st.session_state.user_whatsapp_saved = whats_input.strip()
-        st.success("Configuracao de notificacao salva para o terminal!")
+        st.success("Configuracao salva com sucesso!")
     
     st.markdown("---")
 
-    # Terminal de varredura ativa
+    # Terminal de varredura ativa por digitacao
     st.markdown("<h3 style='color:#00ffcc;'>⚙️ Terminal de Varredura Sincronizada</h3>", unsafe_allow_html=True)
     
     produtos_novos_pool = ["KeraBiotics Gringo", "Glucovibe Launch", "LeanPulse Pro", "NeuroShield V2"]
@@ -70,8 +70,8 @@ def main():
         if (fator + tempo_segundo) % 3 == 0:
             e_oportunidade = False
 
-        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. O leilao encontra-se limpo (Oceano Azul), permitindo clicar barato e extrair lucro."
-        txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. Aposta arriscada devido a taxas de reembolso oscilantes nas plataformas gringas."
+        txt_oportunidade = "O veredicto confirma que " + nome_lancamento + " e uma EXCELENTE OPORTUNIDADE operacional! Por se tratar de um produto recem-lancado no mercado internacional, a concorrencia de lances de outros afiliados no Google Ads e praticamente nula. O leilao encontra-se limpo, permitindo clicar barato e extrair lucro."
+        txt_perigo = "O veredicto indica que " + nome_lancamento + " NAO e uma oportunidade recomendada no momento. Aposta arriscada devido a taxas de reembolso oscilantes."
 
         # 3. MONTAGEM DAS DUAS COLUNAS PRINCIPAIS LUXO
         col_esquerda, col_direita = st.columns([1.0, 1.3])
@@ -124,11 +124,10 @@ def main():
 
             st.markdown("---")
 
-            # 📲 DISPARO REAL PARA O NÚMERO SELECIONADO E SALVO
+            # 📲 DISPARO REAL DO WHATSAPP DIRECIONADO AO NÚMERO SALVO
             st.markdown("<h4 style='color:#00ffcc;'>📲 Compartilhar Alerta via WhatsApp</h4>", unsafe_allow_html=True)
             st.write("Dispare o relatorio desse lancamento gringo diretamente para seu WhatsApp:")
             
-            # Geração textual linear purificada livre de quebras internas
             texto_cru_whats = "ALERTA DE LANCAMENTO ADRIEL-AI - Produto: " + nome_lancamento + " - Plataforma: " + plataforma_ativa + " - Termometro: " + status_termo + " - Veredito: " + veredito_texto
             
             num_destino = st.session_state.user_whatsapp_saved
@@ -137,11 +136,13 @@ def main():
             st.markdown("<a href='" + link_final_whats + "' target='_blank' style='display:block; text-align:center; background-color:#25d366; color:#ffffff; padding:14px; border-radius:8px; font-weight:bold; text-decoration:none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); font-size:1.1rem;'>💬 DISPARAR ALERTA NO WHATSSAP</a>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
 
-            # 📊 GRÁFICO DE DEMANDA SINCRONIZADO EM MILHARES REAIS CORES SÓLIDAS
+            # 📊 GRÁFICO CYBER-NEON PURIFICADO 100% LIVRE DE ARGUMENTOS INSTÁVEIS
             st.markdown("<h4 style='color:#00ffcc;'>📊 Histórico Curto de Demanda Semanal (Sinais Semanais)</h4>", unsafe_allow_html=True)
             
             base_semana = pesquisas_mes // 3
             df_cacador = pd.DataFrame({
                 "Semanas": ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
-                "Verde Neon (Subindo)": [base_semana, 0, int(base_semana * 1.2), 0],
-                "Laser Vermelho (Decendo)": [0, int(base_semana * 0.95), 0, 0],
+                "Demanda Estimada": [base_semana, int(base_semana * 0.95), int(base_semana * 1.2), int(base_semana * 1.1)]
+            })
+            
+            # 🪐 COMPILADOR DE SEGURANÇA MÁXIMA: Gráfico gerado sem o parâmetro color que causava quebras estáticas
