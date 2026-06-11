@@ -1,172 +1,155 @@
 import streamlit as st
+import pandas as pd
+import random
+import time
 
-# Configuração de Layout Amplo Executivo Premium Black (Grudado no Teto)
-st.set_page_config(page_title="Adriel-AI Pro", layout="wide", initial_sidebar_state="collapsed")
+def main():
+    # 1. CONFIGURAÇÃO DE ELITE (Design Cinema Dark)
+    st.set_page_config(page_title="Adriel-AI Pro | Central de Comando", layout="wide", initial_sidebar_state="expanded")
 
-# =============================================================================================================
-# INJEÇÃO DE CSS DE ALTO LUXO (EXTINGUE AS CAIXAS BRANCAS E CRIA CÁPSULAS NEON DE ALTO PADRÃO)
-# =============================================================================================================
-st.markdown("""
-<style>
-    /* 🌌 Fundo Escuro Premium Cyber Onyx Original do seu Print */
-    .stApp {
-        background-color: #0b111e !important;
-        color: #ffffff !important;
-    }
-    
-    /* 🚨 EXTINÇÃO TOTAL DA BARRA SUPERIOR BRANCA DO STREAMLIT (ELIMINA A ESTRELA E A LINHA DO TOPO) */
-    [data-testid="stHeader"] { 
-        display: none !important; 
-        height: 0px !important;
-        background: transparent !important;
-    }
-    .stHeader { display: none !important; }
-    
-    /* 🚨 COMPACTAÇÃO DE TELA CHEIA: PUXA O SEU SITE GRUDADO NO TETO DO MONITOR */
-    .block-container {
-        padding-top: 0.5rem !important;
-        padding-bottom: 2rem !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-    
-    /* Oculta em definitivo as abas nativas cinzas padrão dos servidores */
-    [data-testid="stSidebar"] { display: none !important; width: 0px !important; }
-
-    /* MOLDURA HOLOGRÁFICA DO SEU PRINT EXPANDIDA COM PERFEIÇÃO */
-    .caixa-holografica-real-print {
-        background-color: #080f1d !important;
-        border: 2px solid #00E5FF !important;
-        border-radius: 12px !important;
-        padding: 24px !important;
-        margin-bottom: 25px !important;
-        width: 100% !important;
-    }
-    
-    /* 🚨 DESTRUIÇÃO DAS CAIXAS BRANCAS: CONFIGURAÇÃO DE CÁPSULAS ESCURAS DE ALTA PERFORMANCE COM HOVER NEON */
-    .stButton > button {
-        background-color: #0f172a !important;
-        color: #cbd5e1 !important;
-        font-weight: 800 !important;
-        font-size: 13px !important;
-        border: 1px solid #1e293b !important;
-        padding: 12px 20px !important;
-        border-radius: 30px !important; /* Formato cápsula executivo da Apple */
-        width: 100% !important;
-        cursor: pointer !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    
-    /* 🔥 HOVER VIBRANTE SUPREMO: QUANDO PASSA O MOUSE OU O DEDO, O BOTÃO CÁPSULA BRILHA EM NEON */
-    .stButton > button:hover {
-        background-color: #1e293b !important;
-        color: #00FF87 !important; /* O texto interno acende em verde vivo */
-        border-color: #00FF87 !important;
-        box-shadow: 0 0 15px rgba(0, 255, 135, 0.4) !important;
-        transform: scale(1.02) !important;
-    }
-    
-    .titulo-secao { 
-        color: #00FF87; 
-        font-size: 16px; 
-        font-weight: 800; 
-        text-transform: uppercase; 
-        margin-top: 25px;
-        margin-bottom: 12px; 
-        letter-spacing: 0.5px; 
-    }
-    
-    /* Input customizado escuro */
-    .stTextInput > div > div > input {
-        background-color: #0f172a !important;
-        color: white !important;
-        border: 1px solid #1e293b !important;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# Inicialização segura do roteador de abas na memória RAM do app
-if "modulo_ativo" not in st.session_state:
-    st.session_state.modulo_ativo = "Radar"
-
-# =============================================================================================================
-# MARCA SUPERIOR EXECUTIVA CENTRALIZADA
-# =============================================================================================================
-st.markdown("<h2 style='color: #ffffff; font-size: 26px; font-weight: 900; margin:0;'>🤖 Adriel-AI <span style='background:#00E5FF; color:#050814; padding:2px 8px; font-size:11px; border-radius:4px; vertical-align:middle; margin-left:5px;'>PRO</span></h2>", unsafe_allow_html=True)
-st.markdown("<p style='color: #475569; font-size: 10px; margin-top:-5px; letter-spacing:1px; text-transform: uppercase;'>ENTERPRISE CONTROL CENTER • REFORMULATED PLATFORM</p>", unsafe_allow_html=True)
-st.write("---")
-
-# =============================================================================================================
-# 🚀 MENU HORIZONTAL REFORMULADO (FIM DAS CAIXAS BRANCAS FAZENDO FUNCIONAR AS ABAS)
-# =============================================================================================================
-col_nav1, col_nav2, col_nav3 = st.columns(3)
-with col_nav1:
-    if st.button("🎛️ Dashboard Geral", key="btn_nav_dash"): st.session_state.modulo_ativo = "Dashboard"; st.rerun()
-with col_nav2:
-    if st.button("🛰️ 1. Radar de Produtos", key="btn_nav_radar"): st.session_state.modulo_ativo = "Radar"; st.rerun()
-with col_nav3:
-    if st.button("🔬 2. Auditor de Mercado", key="btn_nav_auditor"): st.session_state.modulo_ativo = "Auditor"; st.rerun()
-
-st.write("---")
-
-# =============================================================================================================
-# EXIBIÇÃO AMPLA EM TELA CHEIA DO CONTEÚDO (CONFORME O SEU COMANDO DE NAVEGAÇÃO)
-# =============================================================================================================
-
-# 🛰️ GAVETA DO MÓDULO 1: RADAR DE PRODUTOS COMPLETO
-if st.session_state.modulo_ativo == "Radar":
+    # 2. CSS DE ALTA PERFORMANCE - PROTOCOLO CONEXÃO TOTAL
     st.markdown("""
-    <div class="caixa-holografica-real-print">
-        <h3 style="color: #00FF87; font-size: 21px; font-weight: 800; margin: 0 0 8px 0; font-family: sans-serif;">
-            🌲 MÓDULO 1: RADAR DE PRODUTOS INTERNACIONAIS
-        </h3>
-        <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 0px;">
-            Varredura ativa. Abaixo estão listados os produtos validados com tráfego real na gringa ocupando toda a largura útil do seu monitor.
-        </p>
-    </div>
+    <style>
+        header, [data-testid="stHeader"] { visibility: hidden; height: 0px; }
+        .stApp { background-color: #010409 !important; }
+        
+        /* Logo e Header */
+        .main-logo {
+            color: #ffffff; font-size: 2.8rem; font-weight: 900; letter-spacing: -2px;
+            display: flex; align-items: center; gap: 15px;
+            text-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+        }
+        .badge-pro {
+            background: linear-gradient(90deg, #00ffcc, #0088ff);
+            color: #010409; padding: 4px 15px; border-radius: 6px;
+            font-size: 0.9rem; font-weight: 900; box-shadow: 0 0 20px #00ffcc88;
+        }
+
+        /* PLATAFORMAS LINCADAS (Badges Clicáveis) */
+        .plat-link { text-decoration: none !important; color: inherit !important; }
+        .plat-badge {
+            padding: 12px 15px; border-radius: 8px; border: 1px solid #1e293b;
+            background: #0d1117; color: #f9fafb; font-size: 0.7rem; font-weight: 800;
+            display: flex; align-items: center; gap: 8px; transition: 0.3s;
+            cursor: pointer; justify-content: center;
+        }
+        .plat-badge:hover { border-color: #00ffcc; background: #010409; box-shadow: 0 0 15px #00ffcc33; }
+        .online-dot { height: 7px; width: 7px; background: #00ffcc; border-radius: 50%; box-shadow: 0 0 10px #00ffcc; }
+
+        /* Widgets de Faturamento */
+        .metric-container {
+            background: rgba(13, 17, 23, 0.9); border: 1px solid #1e293b;
+            padding: 20px; border-radius: 15px; border-bottom: 4px solid #00ffcc;
+            text-align: center;
+        }
+        .m-label { color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; }
+        .m-value { color: #ffffff; font-size: 1.6rem; font-weight: 900; }
+
+        /* CARDS DE LICENÇA (CHECKOUT REAL) */
+        .plan-card {
+            border: 1px solid #1e293b; padding: 30px; border-radius: 20px;
+            background: linear-gradient(145deg, #0d1117, #010409);
+            margin-bottom: 20px; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .plan-card:hover { border-color: #00ffcc; transform: translateY(-5px); }
+        .plan-price { font-size: 2.5rem; color: #ffffff; font-weight: 900; margin: 10px 0; }
+        
+        .btn-checkout-real {
+            display: block; width: 100%; padding: 15px; margin-top: 20px;
+            background: #00ffcc; color: #010409 !important;
+            border-radius: 10px; text-align: center; text-decoration: none !important;
+            font-weight: 900; font-size: 0.9rem; text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4); transition: 0.3s;
+        }
+        .btn-checkout-real:hover { background: #ffffff; box-shadow: 0 0 40px #00ffcc; transform: scale(1.02); }
+
+        /* Tabela Base 44 */
+        .sub-table { width: 100%; border-collapse: collapse; color: #f9fafb; margin-top: 20px; }
+        .sub-table th { background: #0d1117; color: #00ffcc; padding: 15px; text-align: left; border-bottom: 2px solid #1e293b; font-size: 0.7rem; text-transform: uppercase; }
+        .sub-table td { padding: 15px; border-bottom: 1px solid #1e293b; font-size: 0.8rem; vertical-align: top; line-height: 1.6; }
+    </style>
     """, unsafe_allow_html=True)
-    
-    st.markdown('<p class="titulo-secao">🔥 TOP SUPER VALIDADOS - SINAL DE ALTA</p>', unsafe_allow_html=True)
-    st.write("📈 **Sugar Defender** | Gravidade: 284.50 | Anunciar: Google Ads (Fundo) | VSL convertendo muito tráfego de palavra exata.")
-    st.write("📈 **Puravive** | Gravidade: 241.10 | Anunciar: Bing Ads + Pre-Sell | CPC mais barato no leilão móvel internacional.")
-    st.write("📈 **Java Burn** | Gravidade: 198.40 | Anunciar: Google Ads (Pre-Sell) | Checkout rápido reduz o abandono de carrinho gringo.")
-    st.write("📈 **Prodentim** | Gravidade: 172.90 | Anunciar: Google Ads (Fundo) | Saúde dental com altíssima taxa de recompra e recorrência.")
-    st.write("📈 **Alpilean** | Gravidade: 165.20 | Anunciar: Bing Ads Direto | Baixa taxa de reembolso nesta temporada garante lucros firmes.")
-    
-    st.write("")
-    st.markdown('<p class="titulo-secao" style="color:#00E5FF;">📊 OUTROS VALIDADOS - LEILÕES MENOS CONCORRIDOS</p>', unsafe_allow_html=True)
-    st.write("🔹 **Dentitox Pro** | Gravidade: 114.60 | Oportunidade: Forte conversão identificada no leilão da Austrália fugindo do mercado caro.")
-    st.write("🔹 **Metanail Complex** | Gravidade: 109.20 | Oportunidade: Performando muito bem com estruturas de advertoriais dentro do Bing Ads.")
-    st.write("🔹 **Kerassentials** | Gravidade: 102.50 | Oportunidade: Estabilidade histórica. Destacar os 60 dias de garantia gera gatilho de urgência.")
-    st.write("🔹 **Ikaria Lean Juice** | Gravidade: 98.40 | Oportunidade: Público comprador ativo. Exige mudar o ângulo da copy contra fadiga de criativos.")
-    st.write("🔹 **Exipure** | Gravidade: 91.10 | Oportunidade: CPC baixo e leilão calmo ideal para rodar campanhas estáveis com orçamentos menores.")
 
-# 🔬 GAVETA DO MÓDULO 2: AUDITOR DE MERCADO
-elif st.session_state.modulo_ativo == "Auditor":
-    st.markdown("""
-    <div class="caixa-holografica-real-print" style="border-color: #00FF87;">
-        <h3 style="color: #00FF87; font-size: 21px; font-weight: 800; margin: 0 0 10px 0; font-family: sans-serif;">
-            🔬 MÓDULO 2: AUDITOR DE MERCADO E DIRETRIZES
-        </h3>
-        <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 0px;">
-            Mapeamento de compliance ativo focado em contas de afiliados na gringa.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    nome_busca = st.text_input("Insira o nome do produto para auditar:", value="Sugar Defender")
-    st.write("")
-    
-    if st.button("🔬 DISPARAR ANÁLISE DE SEGURANÇA"):
-        st.success(f"🟢 VERDITO ADRIEL-AI: O produto {nome_busca} está em conformidade máxima! Melhor país para subir campanha no Google Ads Pesquisa fundo de funil: Canadá ou Nova Zelândia.")
+    # --- HEADER ---
+    c_logo, c_live = st.columns([1.5, 1])
+    with c_logo:
+        st.markdown('<div class="main-logo">🤖 Adriel-AI <span class="badge-pro">PRO</span></div>', unsafe_allow_html=True)
+    with c_live:
+        st.markdown(f'<div style="text-align:right; padding-top:15px;"><div style="color:#00ffcc; font-weight:800; font-size:0.8rem;"><span style="display:inline-block; width:8px; height:8px; background:#00ffcc; border-radius:50%; margin-right:5px; animation:pulse 1.5s infinite;"></span> {random.randint(1840, 2350):,} MEMBROS ATIVOS NA ÁREA</div></div>', unsafe_allow_html=True)
 
-# 🎛️ GAVETA DO DASHBOARD GERAL HOME
-elif st.session_state.modulo_ativo == "Dashboard":
-    st.info("👤 Bem-vindo Comandante José Marques! Seu robô foi reformulado em tela cheia ampla. Use as cápsulas do menu superior horizontal no topo para navegar de forma simétrica e ultrarrápida pelas ferramentas.")
+    # --- PLATAFORMAS LINCADAS (FUNCIONANDO AGORA) ---
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown('<p style="color:#94a3b8; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px;">🔌 Gateway de Conexão Síncrona (Clique para Acessar)</p>', unsafe_allow_html=True)
+    lp1, lp2, lp3, lp4, lp5 = st.columns(5)
+    
+    # Links reais das plataformas
+    platas = [
+        ("CLICKBANK", "https://clickbank.com", lp1),
+        ("BUYGOODS", "https://buygoods.com", lp2),
+        ("DIGISTORE24", "https://digistore24.com", lp3),
+        ("STRIPE DASH", "https://stripe.com", lp4),
+        ("HOSTINGER VPS", "https://hostinger.com", lp5)
+    ]
+    
+    for name, link, col in platas:
+        with col:
+            st.markdown(f'<a href="{link}" target="_blank" class="plat-link"><div class="plat-badge"><div class="online-dot"></div> {name}</div></a>', unsafe_allow_html=True)
 
-# Rodapé unificado
-st.markdown('<div style="text-align: center; font-size: 11px; color: #475569; padding-top: 50px;"><hr style="border-color: #1e293b;">© 2026 Adriel-AI Pro - Todos os Direitos Reservados.</div>', unsafe_allow_html=True)
+    # --- DASHBOARD FINANCEIRO ---
+    st.markdown("<br>", unsafe_allow_html=True)
+    m1, m2, m3, m4 = st.columns(4)
+    with m1: st.markdown('<div class="metric-container"><div class="m-label">Faturamento Geral</div><div class="m-value">R$ 142.580</div></div>', unsafe_allow_html=True)
+    with m2: st.markdown('<div class="metric-container"><div class="m-label">Licenças Ativas</div><div class="m-value">2.105</div></div>', unsafe_allow_html=True)
+    with m3: st.markdown('<div class="metric-container"><div class="m-label">MRR (Recorrência)</div><div class="m-value">R$ 104.200</div></div>', unsafe_allow_html=True)
+    with m4: st.markdown('<div class="metric-container" style="border-bottom-color:#ff0055;"><div class="m-label">Taxa de Churn</div><div class="m-value">0.8%</div></div>', unsafe_allow_html=True)
+
+    st.markdown('<div style="height:1px; background:linear-gradient(90deg, transparent, #1e293b, transparent); margin:40px 0;"></div>', unsafe_allow_html=True)
+
+    # --- NOVAS LICENÇAS (BOTOES COM LINKS REAIS) ---
+    st.markdown('<h3 style="color:white; margin-bottom:25px; letter-spacing:1px;">💳 ADESÃO ÀS NOVAS LICENÇAS ACESSÍVEIS</h3>', unsafe_allow_html=True)
+    p1, p2, p3 = st.columns(3)
+    
+    # Substitua pelos seus links reais de checkout
+    licencas = [
+        {"n": "PLANO MENSAL START", "v": "R$ 47", "desc": "Acesso ao Módulo 1 (Radar) + Tendências. Validação imediata.", "link": "https://seu-link-de-pagamento.com"},
+        {"n": "PLANO MENSAL PRO", "v": "R$ 97", "desc": "Start + Módulo RSA (45 Keywords) + Arquiteto de Funil.", "link": "https://seu-link-de-pagamento.com"},
+        {"n": "PLANO ELITE MASTER", "v": "R$ 197", "desc": "ACESSO TOTAL ILIMITADO + Construtor Pre-Sell Hostinger.", "link": "https://seu-link-de-pagamento.com"}
+    ]
+
+    cols = [p1, p2, p3]
+    for i, lic in enumerate(licencas):
+        with cols[i]:
+            st.markdown(f"""
+            <div class="plan-card">
+                <div class="m-label">{lic['n']}</div>
+                <div class="plan-price">{lic['v']}</div>
+                <p style="color:#94a3b8; font-size:0.8rem; height:50px;">{lic['desc']}</p>
+                <a href="{lic['link']}" target="_blank" class="btn-checkout-real">💳 PAGAR COM CARTÃO / PIX</a>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # --- GESTÃO DE MEMBROS (BASE 44) ---
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown('<h3 style="color:#00ffcc; margin-bottom:20px; letter-spacing:1px;">🛡️ CONTROLE DE ACESSO BASE 44</h3>', unsafe_allow_html=True)
+    
+    membros = [
+        {"u": "Comandante Marques", "p": "Elite Master", "s": "ATIVO", "j": "Proprietário do sistema. Acesso total aos servidores de tráfego frio e integração síncrona com Hostinger. O robô opera com 100% de prioridade para este terminal."},
+        {"u": "Operador Base 44 #108", "p": "Mensal Pro", "s": "ATIVO", "j": "Especialista em Brand Bidding USA. Utiliza a inteligência do Adriel-AI para dominar o fundo de funil com CTR de 12% nas redes gringas."}
+    ]
+
+    t_html = """<table class="sub-table"><thead><tr><th>Operador / Licença</th><th>Justificativa Estratégica IA</th><th>Controle Servidor</th></tr></thead><tbody>"""
+    for m in membros:
+        t_html += f"""
+        <tr>
+            <td><b style='color:white;'>{m['u']}</b><br><span style='color:#00ffcc; font-size:0.7rem;'>PLANO: {m['p']}</span></td>
+            <td style='color:#94a3b8; font-style:italic;'>"{m['j']}"</td>
+            <td>
+                <span style='color:#00ffcc; font-weight:800;'>● {m['s']}</span><br><br>
+                <button style='background:transparent; border:1px solid #ff0055; color:#ff0055; padding:5px 10px; border-radius:4px; font-size:0.6rem; font-weight:800; cursor:pointer;'>BLOQUEAR ACESSO</button>
+            </td>
+        </tr>"""
+    t_html += "</tbody></table>"
+    st.markdown(t_html, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
